@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tl="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <com.flyco.tablayout.SegmentTabLayout
+            android:id="@+id/tl_4"
+            android:layout_width="wrap_content"
+            android:layout_height="33dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            tl:tl_bar_color="#ffffff"
+            tl:tl_indicator_color="@color/main_color"
+            tl:tl_indicator_corner_radius="4dp"
+            tl:tl_tab_padding="25dp"
+            tl:tl_textsize="15dp" />
+
+        <TextView
+            android:id="@+id/more_other"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|end"
+            android:drawableLeft="@drawable/title"
+            android:paddingBottom="5dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingTop="5dp" />
+
+    </FrameLayout>
+
+    <include layout="@layout/layout_menu_line" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:visibility="gone"
+        />
+    <com.threehmis.bjaj.widget.NoScrollViewPager
+        android:id="@+id/vp_page"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"  />
+    <include layout="@layout/layout_menu_line" />
+</LinearLayout>

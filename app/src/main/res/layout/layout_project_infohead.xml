@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/garybg"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/garybg"
+        android:padding="10dp"
+        android:text="工程概况"
+        android:textColor="@color/main_color"
+        android:textSize="18dp" />
+
+    <include layout="@layout/layout_menu_linemain" />
+
+    <include android:id="@+id/item1"
+        layout="@layout/layout_item_type" />
+
+    <include layout="@layout/layout_menu_line2" />
+
+    <include android:id="@+id/item2"
+        layout="@layout/layout_item_type" />
+
+    <include layout="@layout/layout_menu_line2" />
+
+    <include android:id="@+id/item3"
+        layout="@layout/layout_item_type" />
+
+    <include layout="@layout/layout_menu_line2" />
+
+    <include android:id="@+id/item4"
+        layout="@layout/layout_item_type" />
+
+    <include layout="@layout/layout_menu_line2" />
+
+    <include android:id="@+id/item5"
+        layout="@layout/layout_item_type" />
+
+    <include layout="@layout/layout_menu_line2" />
+
+    <include android:id="@+id/item6"
+        layout="@layout/layout_item_type" />
+
+    <include layout="@layout/layout_menu_line2" />
+
+    <include android:id="@+id/item7"
+        layout="@layout/layout_item_type" />
+    <include layout="@layout/layout_menu_line2" />
+    <include android:id="@+id/item8"
+        layout="@layout/layout_item_type" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/garybg"
+        android:padding="10dp"
+        android:text="主要参建企业"
+        android:textColor="@color/main_color"
+        android:textSize="18dp" />
+    <include layout="@layout/layout_menu_line2" />
+    <include android:id="@+id/item9"
+        layout="@layout/layout_item_type" />
+    <include layout="@layout/layout_menu_line2" />
+    <include android:id="@+id/item10"
+        layout="@layout/layout_item_type" />
+    <include layout="@layout/layout_menu_line2" />
+    <include android:id="@+id/item11"
+        layout="@layout/layout_item_type" />
+    <include layout="@layout/layout_menu_line2" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/garybg"
+        android:padding="10dp"
+        android:text="主要参建人员"
+        android:textColor="@color/main_color"
+        android:textSize="18dp" />
+    <include layout="@layout/layout_menu_line2" />
+    <include android:id="@+id/item12"
+        layout="@layout/layout_item_type" />
+    <include layout="@layout/layout_menu_line2" />
+    <include android:id="@+id/item13"
+        layout="@layout/layout_item_type" />
+    <include layout="@layout/layout_menu_line2" />
+    <include android:id="@+id/item14"
+        layout="@layout/layout_item_type" />
+    <include layout="@layout/layout_menu_line2" />
+
+
+</LinearLayout>

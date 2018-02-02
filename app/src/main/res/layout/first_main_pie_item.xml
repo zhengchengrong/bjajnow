@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:stv="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="@dimen/dp_5"
+    android:orientation="vertical"
+    >
+    <TextView
+        android:id="@+id/stv_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_30"
+        android:text="施工许可工程1865项"
+        android:textStyle="bold"
+        android:gravity="center_vertical"
+        android:textSize="@dimen/sp_20"
+        />
+    <com.threehmis.bjaj.widget.supertextview.SuperTextView
+        android:id="@+id/stv_content1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_25"
+        stv:sCenterTopTextString=" "
+        stv:sCenterViewGravity="left_center"
+        stv:sLeftIconRes="@drawable/blue"
+        stv:sLeftTopTextString="市政1719项目,总面积5251万,总造价21512亿元"
+        stv:sLeftViewGravity="left_center"
+      />
+    <com.threehmis.bjaj.widget.supertextview.SuperTextView
+        android:id="@+id/stv_content2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_25"
+        stv:sCenterTopTextString=" "
+        stv:sCenterViewGravity="left_center"
+        stv:sLeftIconRes="@drawable/red"
+        stv:sLeftTopTextString="市政1719项目,总面积5251万,总造价21512亿元"
+        stv:sLeftViewGravity="left_center"
+        />
+    <com.threehmis.bjaj.widget.chartview.BarChart01View
+        android:id="@+id/mPieChart"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_300"
+    />
+</LinearLayout>

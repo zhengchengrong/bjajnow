@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/garybg"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/box_item_selector"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="编辑"
+        android:textColor="@color/gary"
+        android:textSize="18dp" />
+
+    <include layout="@layout/layout_menu_line" />
+
+    <TextView
+        android:id="@+id/dele"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/box_item_selector"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="删除"
+        android:textColor="@color/gary"
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/cancer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/box_item_selector"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="取消"
+        android:textColor="@color/gary"
+        android:textSize="18dp" />
+
+</LinearLayout>

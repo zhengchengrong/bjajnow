@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <include layout="@layout/layout_menu_line" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#fbfbfb"
+        android:gravity="center_vertical"
+        android:visibility="gone"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/gaikuang"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#fbfbfb"
+            android:button="@null"
+            android:checked="true"
+            android:drawableTop="@drawable/btn_maps"
+            android:gravity="center"
+            android:text="工程概况"
+            android:textColor="@color/tab_item" />
+
+        <RadioButton
+            android:id="@+id/tongji"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#fbfbfb"
+            android:button="@null"
+            android:drawableTop="@drawable/btn_notice"
+            android:gravity="center"
+            android:text="执法统计"
+            android:textColor="@color/tab_item" />
+
+        <RadioButton
+            android:id="@+id/baogao"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#fbfbfb"
+            android:button="@null"
+            android:drawableTop="@drawable/btn_count"
+            android:gravity="center"
+            android:text="检测报告"
+            android:textColor="@color/tab_item" />
+
+
+    </RadioGroup>
+
+
+</LinearLayout>
+
+

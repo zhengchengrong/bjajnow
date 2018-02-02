@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/tv_main_city"
+            android:layout_width="@dimen/dp_100"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_gray"
+            android:drawableRight="@drawable/down"
+            android:padding="@dimen/dp_10"
+            android:textColor="@android:color/black"
+            android:text="全市"
+            android:layout_marginTop="@dimen/dp_8"
+            android:layout_marginLeft="@dimen/dp_8"
+            android:layout_marginRight="@dimen/dp_10"
+            android:textSize="@dimen/sp_16"/>
+
+        <TextView
+            android:layout_marginLeft="5dp"
+            android:layout_width="@dimen/dp_100"
+            android:layout_height="wrap_content"
+            android:drawableRight="@drawable/down"
+            android:textColor="@android:color/black"
+            android:padding="@dimen/dp_10"
+            android:background="@drawable/shape_gray"
+            android:text="2017"
+            android:layout_marginTop="@dimen/dp_8"
+            android:textSize="@dimen/sp_16" />
+    </LinearLayout>

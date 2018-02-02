@@ -1,0 +1,237 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center_vertical"
+        android:text="建设单位"
+        android:textColor="@color/black"
+        android:textSize="16dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/shape_fang_white"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:lines="2"
+            android:paddingBottom="5dp"
+            android:paddingLeft="5dp"
+            android:text="建设单位行位行为11"
+            android:textColor="@color/black"
+            android:textSize="14dp" />
+
+        <include layout="@layout/layout_menu_line2" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+
+            <CheckedTextView
+                android:id="@+id/ok"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="15dp"
+                android:button="@null"
+                android:drawableLeft="@drawable/btn_select_dot"
+                android:drawablePadding="5dp"
+                android:gravity="center_vertical"
+                android:text="符合"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+
+                />
+
+            <CheckedTextView
+                android:id="@+id/nook"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp"
+                android:button="@null"
+                android:drawableLeft="@drawable/btn_select_dot"
+                android:drawablePadding="5dp"
+                android:gravity="center_vertical"
+                android:text="不符合"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+
+                />
+            <!--<CheckedTextView-->
+            <!--android:id="@+id/ok"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="30dp"-->
+            <!--android:drawableLeft="@drawable/ck_agreement"-->
+            <!--android:drawablePadding="10dp"-->
+            <!--android:text="符合"-->
+            <!--android:textColor="@color/black"-->
+            <!--android:textSize="15dp" />-->
+
+            <!--<CheckedTextView-->
+            <!--android:id="@+id/nook"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="30dp"-->
+            <!--android:drawableLeft="@drawable/ck_agreement"-->
+            <!--android:drawablePadding="10dp"-->
+            <!--android:text="不符合"-->
+            <!--android:textColor="@color/black"-->
+            <!--android:textSize="15dp" />-->
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/camera"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/shape_fangzhen_blue"
+                android:drawableLeft="@drawable/camera"
+                android:drawablePadding="5dp"
+                android:gravity="center_vertical"
+                android:paddingBottom="4dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="15dp"
+                android:paddingTop="4dp"
+                android:text="拍照"
+                android:textColor="@color/blue"
+                android:textSize="12dp" />
+
+            <TextView
+                android:id="@+id/save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/shape_centergreen_btn"
+                android:paddingBottom="6dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="6dp"
+                android:text="保存"
+                android:textColor="@color/white"
+                android:textSize="12dp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_pics"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp">
+
+                <ImageView
+                    android:id="@+id/pic1"
+                    android:layout_width="60dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/t_pic"
+                     />
+
+                <ImageView
+                    android:id="@+id/type1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/play_btn"
+                    />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp">
+
+                <ImageView
+                    android:id="@+id/pic2"
+                    android:layout_width="60dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/t_pic" />
+
+                <ImageView
+                    android:id="@+id/type2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                     />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp">
+
+                <ImageView
+                    android:id="@+id/pic3"
+                    android:layout_width="60dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/t_pic" />
+
+                <ImageView
+                    android:id="@+id/type3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                     />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp">
+
+                <ImageView
+                    android:id="@+id/pic4"
+                    android:layout_width="60dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/t_pic" />
+
+                <ImageView
+                    android:id="@+id/type4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                     />
+
+            </FrameLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>
