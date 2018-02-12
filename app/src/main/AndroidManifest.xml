@@ -67,20 +67,11 @@
         <activity android:name=".module.home.fragment.map.griddetail.schedule.ScheduleDetailActivity"/>
 
 
-
         <!-- 权限提示 -->
         <activity
             android:name=".utils.PermissionsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-
-
-
-
-
-
-
-
 
 
         <!-- 百度定位配置 -->
