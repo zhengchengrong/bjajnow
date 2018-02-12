@@ -31,16 +31,12 @@ import android.graphics.Canvas;
  * @Description 主图表区网格绘制类
  * @author XiongChuanLiang<br/>(xcl_168@aliyun.com)
  */
-
 public class PlotGridRender extends PlotGrid {
-		
-	private boolean mMajorTickLine = false;	
+	private boolean mMajorTickLine = false;
 	private final int BLOB_WIDTH =  2;;
-	
 	public PlotGridRender()
 	{
 	}
-	
 	/**
 	 * 是否为主Tick对应的网格线,如果是,在划线时需加粗
 	 * @param primary 是否为主Tick如是则会加粗显示
@@ -49,7 +45,6 @@ public class PlotGridRender extends PlotGrid {
 	{
 		mMajorTickLine = primary;
 	}
-		
 	/**
 	 * 绘制奇数行填充
 	 * @param left		左边X坐标
@@ -65,7 +60,6 @@ public class PlotGridRender extends PlotGrid {
              canvas.drawRect( left,  bottom  ,right, top,getOddRowsBgColorPaint());
 		 }		
 	}
-	
 	/**
 	 * 绘制偶数行填充
 	 * @param left 		左边X坐标
@@ -81,9 +75,6 @@ public class PlotGridRender extends PlotGrid {
 			 canvas.drawRect( left,  bottom  ,right, top,getEvenRowsBgColorPaint());
 		 }		
 	}
-	
-		
-	
 	/**
 	 * 绘制横向网格线
 	 * @param startX	起始点X坐标
@@ -102,15 +93,12 @@ public class PlotGridRender extends PlotGrid {
 				 initWidth = getHorizontalLinePaint().getStrokeWidth() ;
 				 getHorizontalLinePaint().setStrokeWidth( initWidth + BLOB_WIDTH );	
 			 }
-			 
-			 DrawHelper.getInstance().drawLine(this.getHorizontalLineStyle(), 
+			 DrawHelper.getInstance().drawLine(this.getHorizontalLineStyle(),
 									 startX, startY, stopX, stopY,
 									canvas, getHorizontalLinePaint());
-			 
 			 if(mMajorTickLine)getHorizontalLinePaint().setStrokeWidth(initWidth);
 		 }
 	}
-	
 	/**
 	 * 绘制竖向网格线
 	 * @param startX	起始点X坐标
@@ -129,17 +117,11 @@ public class PlotGridRender extends PlotGrid {
 				 initWidth = getVerticalLinePaint().getStrokeWidth() ;
 				 getVerticalLinePaint().setStrokeWidth( initWidth + BLOB_WIDTH );	
 			 }
-			 
 			 //默认是minor
 			 DrawHelper.getInstance().drawLine(this.getVerticalLineStyle(), 
 												 startX, startY, stopX, stopY,
 												canvas, getVerticalLinePaint());
-			
 			 if(mMajorTickLine)getVerticalLinePaint().setStrokeWidth(initWidth);
-			
 		 }
 	}
-	
-
-
 }

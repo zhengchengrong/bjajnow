@@ -38,31 +38,24 @@ public class PlotGrid {
 	 private Paint mPaintGridLineHorizontal = null;
 	 //竖向网格线
 	 private Paint mPaintGridLineVertical = null;
-	 
 	 //是否显示横向网格线
 	 private boolean mGridLinesHorizontalVisible = false;
 	 //是否显示竖向网格线
 	 private boolean mGridLinesVerticalVisible = false;		
-
 	 //是否显示奇数行填充色
 	 private boolean mOddRowBgColorVisible = false;
 	//是否显示偶数行填充色
 	 private boolean mEvenRowBgColorVisible = false;
-	 
 	 //横向网格线
 	 private Paint mPaintOddBgColor = null;
 	 //竖向网格线
 	 private Paint mPaintEvenBgColor = null;
-	 
 	 // Solid、Dot、Dash。
 	 private XEnum.LineStyle mHorizontalLineStyle = XEnum.LineStyle.SOLID;
 	 private XEnum.LineStyle mVerticalLineStyle = XEnum.LineStyle.SOLID;
-	
 	public PlotGrid()
 	{		
-
 	}
-		
 	private void initEvenBgColorPaint()
 	{
 		if(null == mPaintEvenBgColor)
@@ -73,7 +66,6 @@ public class PlotGrid {
 			mPaintEvenBgColor.setAntiAlias(true);
 		}
 	}
-	
 	private void initOddBgColorPaint()
 	{
 		if(null == mPaintOddBgColor)
@@ -84,7 +76,6 @@ public class PlotGrid {
 			mPaintOddBgColor.setAntiAlias(true);
 		}
 	}
-	
 	private void initHorizontalLinePaint()
 	{
 		if(null == mPaintGridLineHorizontal)
@@ -95,7 +86,6 @@ public class PlotGrid {
 			mPaintGridLineHorizontal.setColor(Color.rgb(180, 205, 230));
 		}		
 	}
-	
 	private void initVerticalLinePaint()
 	{
 		if(null == mPaintGridLineVertical)
@@ -106,7 +96,6 @@ public class PlotGrid {
 			mPaintGridLineVertical.setAntiAlias(true);
 		}
 	}
-		
 	/**
 	 * 设置奇数行填充色
 	 * @param color 填充色
@@ -140,8 +129,6 @@ public class PlotGrid {
 		mGridLinesHorizontalVisible = false;
 		if(null != mPaintGridLineHorizontal)mPaintGridLineHorizontal = null;
 	}
-	
-	
 	/**
 	 * 返回是否显示横向网格线
 	 * @return 是否显示
@@ -150,7 +137,6 @@ public class PlotGrid {
 	{
 		return mGridLinesHorizontalVisible;
 	}	
-	
 	/**
 	 * 显示竖向网格线
 	 * 
@@ -168,8 +154,6 @@ public class PlotGrid {
 		mGridLinesVerticalVisible = false;
 		if(null != mPaintGridLineVertical)mPaintGridLineVertical =null;
 	}
-	
-	
 	/**
 	 * 返回是否显示竖向网格线
 	 * @return 是否显示
@@ -178,8 +162,6 @@ public class PlotGrid {
 	{
 		return mGridLinesVerticalVisible;
 	}
-	
-	
 	/**
 	 * 显示奇数行背景色
 	 */
@@ -187,7 +169,6 @@ public class PlotGrid {
 	{
 		mOddRowBgColorVisible = true;
 	}
-	
 	/**
 	 * 隐藏奇数行背景色
 	 */
@@ -196,7 +177,6 @@ public class PlotGrid {
 		mOddRowBgColorVisible = false;
 		if(null != mPaintOddBgColor) mPaintOddBgColor = null;
 	}
-	
 	/**
 	 * 返回是否显示奇数行填充
 	 * @return 是否填充
@@ -205,7 +185,6 @@ public class PlotGrid {
 	{
 		return mOddRowBgColorVisible;
 	}
-	
 	/**
 	 * 显示偶数行背景色
 	 */
@@ -213,7 +192,6 @@ public class PlotGrid {
 	{
 		mEvenRowBgColorVisible = true;
 	}
-	
 	/**
 	 * 隐藏偶数行背景色
 	 */
@@ -222,8 +200,6 @@ public class PlotGrid {
 		mEvenRowBgColorVisible = false;
 		if(null != mPaintEvenBgColor) mPaintEvenBgColor = null;
 	}
-	
-	
 	/**
 	 * 返回是否显示偶数行填充
 	 * @return 是否填充
@@ -232,7 +208,6 @@ public class PlotGrid {
 	{
 		return mEvenRowBgColorVisible;
 	}
-				
 	/**
 	 * 开放横向网格线画笔
 	 * @return 画笔
@@ -242,7 +217,6 @@ public class PlotGrid {
 		initHorizontalLinePaint();
 		return mPaintGridLineHorizontal;	
 	}
-			 
 	/**
 	 * 开放竖向网格线画笔
 	 * @return 画笔
@@ -252,7 +226,6 @@ public class PlotGrid {
 		initVerticalLinePaint();
 		return mPaintGridLineVertical;	
 	}
-	
 	/**
 	 * 开放奇数行填充画笔
 	 * @return 画笔
@@ -262,7 +235,6 @@ public class PlotGrid {
 		initOddBgColorPaint();
 		return mPaintOddBgColor;	
 	}
-	 
 	/**
 	 * 开放偶数行填充画笔
 	 * @return 画笔
@@ -272,7 +244,6 @@ public class PlotGrid {
 		initEvenBgColorPaint();
 		return mPaintEvenBgColor;	
 	}
-
 	/**
 	 * 返回竖向网格线当前绘制风格
 	 * @return  绘制风格
@@ -281,7 +252,6 @@ public class PlotGrid {
 	{ 
 		return mVerticalLineStyle;
 	}
-
 	/**
 	 * 设置竖向网格线当前绘制风格
 	 * @param style 绘制风格
@@ -290,7 +260,6 @@ public class PlotGrid {
 	{
 		mVerticalLineStyle = style;
 	}
-	
 	/**
 	 * 返回横向网格线当前绘制风格
 	 * @return 绘制风格
@@ -299,7 +268,6 @@ public class PlotGrid {
 	{
 		return mHorizontalLineStyle;
 	}
-
 	/**
 	 * 设置横向网格线当前绘制风格 
 	 * @param style 绘制风格
@@ -308,5 +276,4 @@ public class PlotGrid {
 	{
 		mHorizontalLineStyle = style;
 	}
-	 
 }

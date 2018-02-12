@@ -141,7 +141,7 @@ public class EventChart extends XChart {
 			final float x, final float y, final RectF r) {
 		if (!getListenItemClickStatus())
 			return;
-		savePointRecord(dataID, childID, x, y, r.left, r.top, r.right, r.bottom);
+		savePointRecord(dataID, childID, x, y, r.left, r.top, r.right, r.bottom); // dataID 数据列表的第Index个, childID 数据列表的第Index个
 	}
 
 	protected void savePointRecord(final int dataID, final int childID,

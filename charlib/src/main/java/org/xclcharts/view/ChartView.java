@@ -42,29 +42,22 @@ import android.view.View;
 public abstract class ChartView extends GraphicalView {
 	
 	//private ChartTouch mChartTouch[];	
-	private List<ChartTouch> mTouch = new ArrayList<ChartTouch>();
+	private List<ChartTouch> mTouch = new ArrayList<ChartTouch>(); // 手势操作对象列表。
 	
 	public ChartView(Context context) {
 		super(context);
-		// TODO Auto-generated constructor stub				
-		
-	}	
+	}
 	
 	 public ChartView(Context context, AttributeSet attrs){   
 	        super(context, attrs);   	   
 	 }
-	 
-	 
 	 public ChartView(Context context, AttributeSet attrs, int defStyle) {
 			super(context, attrs, defStyle);
 		
 	 }
-	 
-	 
 	@Override
 	public void render(Canvas canvas) {
-		// TODO Auto-generated method stub
-		
+
 	}
 		
 	@Override
@@ -87,7 +80,7 @@ public abstract class ChartView extends GraphicalView {
 	 * @param chart 图表类
 	 */
 	public void bindTouch(View view, XChart chart){
-		mTouch.add(new ChartTouch(this,chart));	
+		mTouch.add(new ChartTouch(this,chart));	 // 给ChartView添加手势的操作对象。
 	}
 	
 	/**

@@ -36,41 +36,29 @@ import android.graphics.Paint.Style;
  * @author XiongChuanLiang<br/>(xcl_168@aliyun.com)
  * 
  */
-
 public class PlotArea {
-	
 	//主图表区范围
 	protected float mLeft  = 0.0f;
 	protected float mTop  = 0.0f;
 	protected float mRight   = 0.0f;
 	protected float mBottom  = 0.0f;
-	
 	private float mWidth = 0.0f;
 	private float mHeight = 0.0f;
-	
 	//主图表区背景色,即画X轴与Y轴围成的区域
 	private Paint mBackgroundPaint = null;	
-	
 	//是否画背景色
 	private boolean mBackgroundColorVisible = false;
-	
 	//扩展宽度
 	private float mExtWidth = 0.0f;
-	
 	//是否应用渲染模式
 	private boolean mApplayGradient = false;
-		
 	private int mBeginColor = Color.WHITE;
     private int mEndColor = Color.WHITE;
 	private Shader.TileMode mTileMode = Shader.TileMode.MIRROR;
 	private XEnum.Direction mDirection = XEnum.Direction.VERTICAL;
-		
-	
 	public PlotArea()
 	{
-
 	}
-	
 	private void initBackgroundPaint()
 	{
 		if(null == mBackgroundPaint)
@@ -80,8 +68,6 @@ public class PlotArea {
 			mBackgroundPaint.setColor(Color.WHITE);
 		}
 	}
-	
-	
 	/**
 	 * 开放主图表区背景画笔，即画X轴与Y轴围成的区域的背景画笔。
 	 * @return 画笔
@@ -91,7 +77,6 @@ public class PlotArea {
 		 initBackgroundPaint();
 		 return mBackgroundPaint;
 	 }
-	 
 	 /**
 	  * 设置是否显示背景色
 	  * @param visible 是否显示背景色
@@ -100,7 +85,6 @@ public class PlotArea {
 	{
 		mBackgroundColorVisible = visible;
 	}
-	
 	/**
 	 * 返回是否显示背景色
 	 * @return 是否显示背景色
@@ -109,8 +93,6 @@ public class PlotArea {
 	{
 		return mBackgroundColorVisible;
 	}
-	
-	
 	/**
 	 * 设置是否显示背景色及其背景色的值
 	 * @param visible 是否显示背景色
@@ -120,12 +102,9 @@ public class PlotArea {
 	{
 		mBackgroundColorVisible = visible;
 		getBackgroundPaint().setColor(color);
-		
 		setBeginColor(color);
 		setEndColor(color);		
 	}	
-	
-
 	/**
 	 * 绘图区左边位置X坐标
 	 * @return X坐标
@@ -137,7 +116,6 @@ public class PlotArea {
 	public float getPlotLeft() {
 		return mLeft;
 	}
-
 	/**
 	 * 绘图区上方Y坐标
 	 * @return Y坐标
@@ -149,7 +127,6 @@ public class PlotArea {
 	public float getPlotTop() {
 		return mTop ;
 	}
-	
 	/**
 	 * 绘图区下方Y坐标
 	 * @return Y坐标
@@ -157,11 +134,9 @@ public class PlotArea {
 	public float getBottom() {
 		return mBottom ;
 	}
-	
 	public float getPlotBottom() {
 		return mBottom ;
 	}
-	
 	/**
 	 * 绘图区右边位置X坐标
 	 * @return X坐标
@@ -169,7 +144,6 @@ public class PlotArea {
 	public float getRight() {
 		return mRight;
 	}
-	
 	public float getPlotRight() {
 		return (mRight + mExtWidth);
 	}
@@ -182,13 +156,9 @@ public class PlotArea {
 		mWidth = Math.abs(mRight - mLeft);		
 		return mWidth;
 	}
-	
-	
-	public float getPlotWidth() {		
+	public float getPlotWidth() {
 		return Math.abs(mRight + mExtWidth - mLeft);		
 	}
-	
-
 	/**
 	 * 绘图区高度
 	 * @return 高度
@@ -197,12 +167,10 @@ public class PlotArea {
 		mHeight = Math.abs(getBottom() - getTop());
 		return mHeight;
 	}
-	
-	public float getPlotHeight() {		
+	public float getPlotHeight() {
 		mHeight = Math.abs(getPlotBottom() - getPlotTop());
 		return mHeight;
 	}
-		
 	/*
 	public void showRoundRect(Canvas canvas)
 	{
@@ -210,7 +178,6 @@ public class PlotArea {
 		border.renderBorder(canvas, mLeft  , mTop  , mRight , mBottom  ); 
 	}
 	*/
-	
 	/**
 	 * 扩展绘图区的实际宽度,用来处理需要很大显示范围的图表
 	 * @param width 宽度
@@ -224,7 +191,6 @@ public class PlotArea {
 	{
 		return mExtWidth;
 	}
-	
 	/**
 	 * 设置 是否应用渲染模式
 	 */
@@ -250,7 +216,6 @@ public class PlotArea {
 	{
 		mDirection = direction;
 	}
-	
 	/**
 	 * 返回渐变渲染方向	
 	 * @return 方向	
@@ -259,7 +224,6 @@ public class PlotArea {
 	{
 		return mDirection;
 	}
-	
 	/**
 	 * 设置渲染模式
 	 * @param tm	渲染模式
@@ -268,7 +232,6 @@ public class PlotArea {
 	 {
 		 mTileMode = tm;
 	 }
-	 
 	 /**
 	  * 返回渲染模式
 	  * @return 渲染模式
@@ -277,7 +240,6 @@ public class PlotArea {
 	 {
 		 return mTileMode;
 	 }
-	 
 	 /**
 	  * 设置起始颜色
 	  * @param color	颜色
@@ -286,7 +248,6 @@ public class PlotArea {
 	 {
 		 mBeginColor = color;
 	 }
-	 
 	 /**
 	  * 设置结束颜色
 	  * @param color	颜色
@@ -295,8 +256,6 @@ public class PlotArea {
 	 {
 		 mEndColor = color;
 	 }
-	 
-	 
 	 /**
 	  * 返回起始颜色
 	  * @return	颜色
@@ -305,7 +264,6 @@ public class PlotArea {
 	 {
 		 return mBeginColor;
 	 }
-	 
 	 /**
 	  * 返回结束颜色
 	  * @return	颜色
@@ -314,6 +272,4 @@ public class PlotArea {
 	 {
 		 return mEndColor;
 	 }
-	
-	
 }

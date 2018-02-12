@@ -35,24 +35,17 @@ import android.graphics.Paint.Style;
  */
 
 public class Border {		
-
-	//线的基类画笔	
+	//线的基类画笔
 	private Paint mPaintBorderLine = null;
-
 	private XEnum.LineStyle mLineStyle = XEnum.LineStyle.SOLID;
 	private XEnum.RectType mRectType = XEnum.RectType.ROUNDRECT;	
 	private int mRaidus = 15;
 	protected static final int mBorderSpadding = 5;
-	
 	//背景画笔
 	protected Paint mPaintBackground = null;
-
 	public Border()
 	{							
-									
 	}
-	
-	
 	/**
 	 * 开放线的画笔
 	 * @return 画笔
@@ -69,7 +62,6 @@ public class Border {
 		}
 		return mPaintBorderLine;
 	}
-		
 	/**
 	 * 设置线的颜色	
 	 * @param color 线的颜色
@@ -78,7 +70,6 @@ public class Border {
 	{			
 		getLinePaint().setColor(color );
 	}
-	
 	/**
 	 * 设置边框线类型
 	 * @param style 线类型
@@ -87,7 +78,6 @@ public class Border {
 	{				
 		mLineStyle = style;
 	}	
-	
 	/**
 	 * 设置边框类型
 	 * @param type 框类型
@@ -96,7 +86,6 @@ public class Border {
 	{				
 		mRectType = type;
 	}
-				
 	/**
 	 * 返回边框线类型
 	 * @return 边框线类型
@@ -105,7 +94,6 @@ public class Border {
 	{
 		return mLineStyle;		
 	}
-	
 	/**
 	 * 返回边框类型
 	 * @return 边框类型
@@ -114,7 +102,6 @@ public class Border {
 	{
 		return mRectType;
 	}
-	
 	/**
 	 * 设置角圆弧半径
 	 * @param radius 半径
@@ -123,7 +110,6 @@ public class Border {
 	{
 		mRaidus = radius;
 	}
-	
 	/**
 	 * 返回角圆弧半径
 	 * @return 半径
@@ -132,7 +118,6 @@ public class Border {
 	{		
 		return mRaidus;		
 	}
-	
 	/**
 	 * 返回边框所占宽度
 	 * @return 边框所占宽度
@@ -146,7 +131,6 @@ public class Border {
 		}		
 		return width;
 	}
-	
 	/**
 	 * 开放背景画笔
 	 * @return 画笔
@@ -163,5 +147,4 @@ public class Border {
 		}
 		return mPaintBackground;
 	}
-	
 }

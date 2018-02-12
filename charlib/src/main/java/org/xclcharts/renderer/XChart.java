@@ -63,7 +63,6 @@ import android.graphics.PointF;
 import android.graphics.Shader;
 
 public class XChart implements IRender {
-		
 	//private static final String TAG = "XChart";
 	// 开放主图表区
 	protected PlotAreaRender plotArea = null;
@@ -79,7 +78,6 @@ public class XChart implements IRender {
 	// 图宽高
 	private float mWidth = 0.0f;
 	private float mHeight = 0.0f;
-
 	// 图的内边距属性
 	private float mPaddingTop = 0.f;
 	private float mPaddingBottom = 0.f;
@@ -87,48 +85,37 @@ public class XChart implements IRender {
 	private float mPaddingRight = 0.f;
 	// 是否画背景色
 	private boolean mBackgroundColorVisible = false;
-	
 	//坐标系原点坐标
 	protected float[] mTranslateXY = new float[2];		
-		
 	//是否显示边框
 	private boolean mShowBorder = false;
 	private BorderRender mBorder = null;
-	
 	//图例类
 	protected PlotLegendRender plotLegend = null;
-	
 	//动态图例
 	private LegendRender mDyLegend = null;
-	
+
 	private boolean mEnableScale = true;
 	private float mXScale = 0.0f, mYScale = 0.0f;
 	private float mCenterX  = 0.0f, mCenterY  = 0.0f;
-		
 	//是否显示十字交叉线
 	private boolean mDyLineVisible = false;
 	private DyLineRender mDyLine = null;
-	
 	//是否平移
 	protected boolean mEnablePanMode = true;
 	//平移模式下的可移动方向
 	private XEnum.PanMode mPlotPanMode = XEnum.PanMode.FREE;
 	//限制图表滑动范围
 	private boolean mControlPanRange = true;
-		
-		
 	public XChart() {
 		initChart();		
 	}
-
 	private void initChart() {
 		//默认的原点坐标
 		mTranslateXY[0] = 0.0f;
 		mTranslateXY[1] = 0.0f;
-				
 		//图例
 		if(null == plotLegend)plotLegend = new PlotLegendRender(this);	
-		
 		// 图表
 		if(null == plotArea)plotArea = new PlotAreaRender();
 		
@@ -136,7 +123,6 @@ public class XChart implements IRender {
 		
 		if(null == plotTitle)plotTitle = new PlotTitleRender();						
 	}
-	
 	/**
 	 * 返回当前绘制的是什么类型的图
 	 * @return 类型
@@ -145,8 +131,6 @@ public class XChart implements IRender {
 	{
 		return XEnum.ChartType.NONE;
 	}
-
-	
 	/**
 	 * 开放图例基类
 	 * @return	基类
@@ -157,7 +141,6 @@ public class XChart implements IRender {
 		if(null == plotLegend)plotLegend = new PlotLegendRender(this);
 		return plotLegend;
 	}	
-
 	/**
 	 * 用于指定绘图区与图范围的内边距。单位为PX值. 即用于确定plotArea范围
 	 * 
@@ -180,8 +163,6 @@ public class XChart implements IRender {
 		if (right > 0)
 			mPaddingRight = right ;
 	}
-			
-
 	/**
 	 * 返回主图表区基类
 	 * 
@@ -191,7 +172,6 @@ public class XChart implements IRender {
 		if(null == plotArea)plotArea = new PlotAreaRender();
 		return plotArea;
 	}
-
 	/**
 	 * 返回主图表区网格基类
 	 * 
@@ -201,7 +181,6 @@ public class XChart implements IRender {
 		if(null == plotGrid)plotGrid = new PlotGridRender();
 		return plotGrid;
 	}
-
 	/**
 	 * 返回图的标题基类
 	 * 
@@ -211,7 +190,6 @@ public class XChart implements IRender {
 		if(null == plotTitle)plotTitle = new PlotTitleRender();
 		return plotTitle;
 	}
-	
 	/**
 	 * 设置图表绘制范围.
 	 * @param width
@@ -222,8 +200,6 @@ public class XChart implements IRender {
 	public void setChartRange( float width,float height) {	
 		setChartRange(0.0f,0.0f,width,height);
 	}
-	
-
 	/**
 	 * 设置图表绘制范围,以指定起始点及长度方式确定图表大小.
 	 * 
@@ -250,7 +226,6 @@ public class XChart implements IRender {
 		if (Float.compare(width, 0.0f) > 0)mWidth = width;
 		if (Float.compare(height, 0.0f) > 0)mHeight = height;
 	}
-
 	/**
 	 * 设置标题
 	 * 
@@ -259,7 +234,6 @@ public class XChart implements IRender {
 	public void setTitle(String title) {
 		if(null!= plotTitle)plotTitle.setTitle(title);
 	}
-
 	/**
 	 * 设置子标题
 	 * 
@@ -268,7 +242,6 @@ public class XChart implements IRender {
 	public void addSubtitle(String subtitle) {
 		if(null!= plotTitle)plotTitle.setSubtitle(subtitle);
 	}
-
 	/**
 	 * 设置标题上下显示位置,即图上边距与绘图区间哪个位置(靠上，居中，靠下).
 	 * @param position 显示位置
@@ -276,7 +249,6 @@ public class XChart implements IRender {
 	public void setTitleVerticalAlign(XEnum.VerticalAlign position) {
 		if(null!= plotTitle)plotTitle.setVerticalAlign(position);
 	}
-
 	/**
 	 * 设置标题横向显示位置(靠左，居中，靠右)
 	 * 
@@ -285,8 +257,6 @@ public class XChart implements IRender {
 	public void setTitleAlign(XEnum.HorizontalAlign align) {
 		if(null!= plotTitle)plotTitle.setTitleAlign(align);
 	}
-	
-
 	/**
 	 * 返回图表左边X坐标
 	 * 
@@ -295,7 +265,6 @@ public class XChart implements IRender {
 	public float getLeft() {		
 		return mLeft;
 	}
-
 	/**
 	 * 返回图表上方Y坐标
 	 * 
@@ -304,7 +273,6 @@ public class XChart implements IRender {
 	public float getTop() {
 		return mTop;
 	}
-
 	/**
 	 * 返回图表右边X坐标
 	 * 
@@ -313,7 +281,6 @@ public class XChart implements IRender {
 	public float getRight() {
 		return mRight;
 	}
-
 	/**
 	 * 返回图表底部Y坐标
 	 * 
@@ -322,7 +289,6 @@ public class XChart implements IRender {
 	public float getBottom() {
 		return mBottom;
 	}
-
 	/**
 	 * 返回图表宽度
 	 * 
@@ -332,7 +298,6 @@ public class XChart implements IRender {
 		
 		return mWidth;
 	}
-
 	/**
 	 * 返回图表高度
 	 * 
@@ -341,7 +306,6 @@ public class XChart implements IRender {
 	public float getHeight() {
 		return mHeight;
 	}
-
 	/**
 	 * 返回图绘制区相对图顶部边距的高度
 	 * 
@@ -359,7 +323,6 @@ public class XChart implements IRender {
 	public float getPaddingBottom() {
 		return mPaddingBottom;
 	}
-
 	/**
 	 * 图绘制区相对图左边边距的宽度
 	 * 
@@ -377,7 +340,6 @@ public class XChart implements IRender {
 	public float getPaddingRight() {
 		return mPaddingRight;
 	}
-	
 	/**
 	 * 返回图中心点坐标
 	 * @return 坐标
@@ -389,8 +351,6 @@ public class XChart implements IRender {
 		point.y = this.getTop() + div(this.getHeight() , 2f) ;		
 		return point;
 	}
-	
-	
 	/**
 	 * 设置绘画时的坐标系原点位置
 	 * @param x 原点x位置
@@ -403,7 +363,6 @@ public class XChart implements IRender {
 		mTranslateXY[0] = x;
 		mTranslateXY[1] = y;
 	}
-	
 	/**
 	 * 返回坐标系原点坐标
 	 * @return 原点坐标
@@ -412,12 +371,10 @@ public class XChart implements IRender {
 	{
 		return mTranslateXY;
 	}
-		
 	/**
 	 * 计算图的显示范围,依屏幕px值来计算.
 	 */
 	protected void calcPlotRange() {	
-		
 		int borderWidth = getBorderWidth();
 		if(null == plotArea) return;
 		plotArea.setBottom(sub(this.getBottom() - borderWidth/2 , mPaddingBottom) );
@@ -425,7 +382,6 @@ public class XChart implements IRender {
 		plotArea.setRight(sub(this.getRight() - borderWidth/2 , mPaddingRight));		
 		plotArea.setTop(add(this.getTop() + borderWidth/2 , mPaddingTop));
 	}
-	
 	/**
 	 * 绘制标题
 	 */
@@ -436,8 +392,6 @@ public class XChart implements IRender {
 				mLeft + borderWidth, mRight - borderWidth, mTop + borderWidth,
 				mWidth, this.plotArea.getTop(), canvas);
 	}
-	
-	
 	/**
 	 * 绘制批注
 	 * @param anchorSet 批注集合
@@ -475,8 +429,6 @@ public class XChart implements IRender {
 		}
 		return false;
 	}
-	
-	
 	/**
 	 * 设置是否绘制背景
 	 * 
@@ -485,10 +437,8 @@ public class XChart implements IRender {
 	public void setApplyBackgroundColor(boolean visible) {
 		mBackgroundColorVisible = visible;
 	}
-
 	/**
 	 * 设置图的背景色
-	 * 
 	 * @param color   背景色
 	 */
 	public void setBackgroundColor(int color) {
@@ -499,7 +449,6 @@ public class XChart implements IRender {
 		if(null == mBorder)mBorder = new BorderRender();
 		mBorder.getBackgroundPaint().setColor(color);		
 	}
-	
 	/**
 	 * 设置图的渐变背景色
 	 * @param direction	渐变方向
@@ -507,9 +456,7 @@ public class XChart implements IRender {
 	 * @param endColor	结束颜色
 	 */
 	public void setBackgroundColor(XEnum.Direction direction, int beginColor,int endColor) {
-		
 		//getPlotArea().getBackgroundPaint().setColor(areaColor);
-		
 		if(beginColor == endColor)
 		{
 			getBackgroundPaint().setColor(beginColor);
@@ -534,8 +481,6 @@ public class XChart implements IRender {
 		if(null == mBorder)mBorder = new BorderRender();
 		mBorder.getBackgroundPaint().setColor(endColor);		
 	}
-
-	
 	/**
 	 * 开放背景画笔
 	 * 
@@ -545,7 +490,6 @@ public class XChart implements IRender {
 		if(null == mBorder)mBorder = new BorderRender();
 		return mBorder.getBackgroundPaint();			
 	}
-	
 	/**
 	 * 显示矩形边框
 	 */
@@ -555,7 +499,6 @@ public class XChart implements IRender {
 		 if(null == mBorder)mBorder = new BorderRender();
 		 mBorder.setBorderRectType(XEnum.RectType.RECT);
 	}
-	
 	/**
 	 * 显示圆矩形边框
 	 */
@@ -565,7 +508,6 @@ public class XChart implements IRender {
 		if(null == mBorder)mBorder = new BorderRender();
 		mBorder.setBorderRectType(XEnum.RectType.ROUNDRECT);
 	}
-	
 	/**
 	 * 隐藏边框
 	 */
@@ -574,7 +516,6 @@ public class XChart implements IRender {
 		 mShowBorder = false;
 		 if(null != mBorder)mBorder = null;
 	}	
-	
 	/**
 	 * 开放边框绘制类
 	 * @return 边框绘制类
@@ -584,7 +525,6 @@ public class XChart implements IRender {
 		if(null == mBorder)mBorder = new BorderRender();
 		return mBorder; 
 	}
-	
 	/**
 	 * 是否显示边框
 	 * @return 是否显示
@@ -593,7 +533,6 @@ public class XChart implements IRender {
 	{
 		return mShowBorder;
 	}
-	
 	/**
 	 * 得到边框宽度,默认为5px
 	 * @return 边框宽度
@@ -608,7 +547,6 @@ public class XChart implements IRender {
 		}
 		return borderWidth;
 	}
-	
 	/**
 	 * 设置边框宽度
 	 * @param width 边框宽度
@@ -619,7 +557,6 @@ public class XChart implements IRender {
 		 if(null == mBorder)mBorder = new BorderRender();
 		 mBorder.setRoundRadius(width);
 	}
-	
 	/**
 	 * 绘制边框
 	 * @param canvas 画布
@@ -633,7 +570,6 @@ public class XChart implements IRender {
 								 mLeft  , mTop  , mRight , mBottom  ); 
 		}
 	}
-	
 	/**
 	 * 绘制图的背景
 	 */
@@ -654,9 +590,6 @@ public class XChart implements IRender {
 			}
 		}
 	}
-	
-	
-	
 	/**
 	 * 设置缩放参数
 	 * @param xScale	x方向缩放比例
@@ -672,7 +605,6 @@ public class XChart implements IRender {
 		mCenterX  = centerX;
 		mCenterY  = centerY;
 	}
-		
 	protected boolean getClikedScaleStatus()
 	{		
 		if(!mEnableScale)return true;	
@@ -687,7 +619,6 @@ public class XChart implements IRender {
 			return false;
 		}
 	}
-	
 	/**
 	 * 缩放图表
 	 * @param canvas	画布
@@ -695,7 +626,6 @@ public class XChart implements IRender {
 	private void scaleChart(Canvas canvas)
 	{
 		if(!mEnableScale)return;
-		
 		if( Float.compare(mCenterX, 0.0f) == 1 ||
 				Float.compare(mCenterY, 0.0f) == 1	)
 			{							
@@ -704,7 +634,6 @@ public class XChart implements IRender {
 				//canvas.scale(mScale, mScale,plotArea.getCenterX(),plotArea.getCenterY());					
 			}
 	}
-	
 	/**
 	 * 激活图表缩放(但注意，图表缩放后，如果有同时激活click事件，
 	 * 	则缩放状态下，点击处理无效。
@@ -714,7 +643,6 @@ public class XChart implements IRender {
 	{
 		mEnableScale = true;
 	}
-	
 	/**
 	 * 禁用图表缩放
 	 */
@@ -722,7 +650,6 @@ public class XChart implements IRender {
 	{
 		mEnableScale = false;
 	}
-	
 	/**
 	 * 返回图表缩放状态 
 	 * @return 缩放状态 
@@ -731,8 +658,6 @@ public class XChart implements IRender {
 	{
 		return mEnableScale;
 	}
-	
-	
 	/**
 	 * 设置手势平移模式
 	 * @param mode	平移模式
@@ -741,7 +666,6 @@ public class XChart implements IRender {
 	{
 		 mPlotPanMode = mode;
 	}
-	
 	/**
 	 * 返回当前图表平移模式
 	 * @return 平移模式
@@ -750,7 +674,6 @@ public class XChart implements IRender {
 	{
 		return mPlotPanMode;
 	}
-	
 	/**
 	 * 激活平移模式
 	 */
@@ -758,7 +681,6 @@ public class XChart implements IRender {
 	{
 		mEnablePanMode = true;		
 	}
-	
 	/**
 	 * 禁用平移模式
 	 */
@@ -766,7 +688,6 @@ public class XChart implements IRender {
 	{
 		mEnablePanMode = false;		
 	}
-	
 	 /**
 	  * 限制图表滑动范围,开启则图表不能滑动出可见范围
 	  */
@@ -774,7 +695,6 @@ public class XChart implements IRender {
 	 {
 		 mControlPanRange = true;
 	 }
-	 
 	 /**
 	  * 不限制图表滑动范围
 	  */
@@ -782,7 +702,6 @@ public class XChart implements IRender {
 	 {
 		 mControlPanRange = false;
 	 }
-	 
 	 /**
 	  * '是否有限制图表滑动范围
 	  * @return 状态
@@ -791,7 +710,6 @@ public class XChart implements IRender {
 	 {
 		 return mControlPanRange;
 	 }	 
-	
 	/**
 	 * 返回当前图表的平移状态
 	 * @return  平移状态
@@ -811,8 +729,6 @@ public class XChart implements IRender {
 		
 		return mDyLegend;
 	}
-			
-		
 	/**
 	 * 绘制十字交叉线
 	 */
@@ -820,7 +736,6 @@ public class XChart implements IRender {
 	{
 		mDyLineVisible = true;
 	}
-	
 	/**
 	 * 不绘制十字交叉线
 	 */
@@ -828,7 +743,6 @@ public class XChart implements IRender {
 	{
 		mDyLineVisible = false;
 	}
-	
 	/**
 	 * 返回是否显示十字交叉线
 	 * @return 是否显示
@@ -837,7 +751,6 @@ public class XChart implements IRender {
 	{
 		return mDyLineVisible;
 	}
-	
 	/**
 	 * 开放十字交叉线绘制基类
 	 * @return 交叉线绘制基类
@@ -847,7 +760,6 @@ public class XChart implements IRender {
 		if(null == mDyLine) mDyLine = new DyLineRender();
 		return mDyLine;
 	}
-	
 	//交叉线
 	private void drawDyLine(Canvas canvas)
 	{
@@ -856,7 +768,6 @@ public class XChart implements IRender {
 		mDyLine.renderLine(canvas,plotArea.getLeft(),plotArea.getTop(),
 								  plotArea.getRight(),plotArea.getBottom());
 	}
-	
 	private void drawDyLegend(Canvas canvas)
 	{
 		//动态图例
@@ -866,7 +777,6 @@ public class XChart implements IRender {
 			mDyLegend.renderInfo(canvas);
 		}
 	}
-		
 	/**
 	 * 用于延迟绘制
 	 * @param canvas	画布
@@ -884,47 +794,31 @@ public class XChart implements IRender {
 		}
 		return true;
 	}
-	
-
 	@Override
 	public boolean render(Canvas canvas) throws Exception {
 		// TODO Auto-generated method stubcalcPlotRange
 		boolean ret = true;
 		try {
-			
 				if (null == canvas)
 						return false;
-				
-				
-				canvas.save();
-				
+					canvas.save();
 					//缩放图表
 					scaleChart(canvas);	
-					
-					//绘制图表	
+					//绘制图表
 					ret = postRender(canvas);	
-					
 					//绘制边框
 					renderBorder(canvas);	
-															
 					//动态图例
 					drawDyLegend(canvas);	
-					
 					//十字交叉线
 					drawDyLine(canvas);
-										
-				canvas.restore();
-			
-				
-				return ret;					
+					canvas.restore();
+				return ret;
 		} catch (Exception e) {
 			throw e;
 		}
 	}
-
-	
 	//math计算类函数 ----------------------------------------------------------------
-	
 	/**
 	 * Java是无法精确计算小数后面的，激活后会
 	 * 忽略Java数据计算时的误差。能提高绘制性能，(但饼图类图表慎用)
@@ -933,7 +827,6 @@ public class XChart implements IRender {
     {
 		 MathHelper.getInstance().disableHighPrecision();
     }
-    
 	/**
 	 * 激活Java数据精确计算，考虑计算的误差。
 	 */
@@ -941,7 +834,6 @@ public class XChart implements IRender {
     {
     	 MathHelper.getInstance().enabledHighPrecision();
     }
-    
 	/**
 	 * 加法运算
 	 * @param v1 参数1
@@ -952,7 +844,6 @@ public class XChart implements IRender {
 	 {
 		 return MathHelper.getInstance().add(v1, v2);
 	 }
-		 
 	 /**
 	  * 减法运算
 	  * @param v1 参数1
@@ -963,7 +854,6 @@ public class XChart implements IRender {
 	 {
 		 return MathHelper.getInstance().sub(v1, v2);
 	 }
-		 
 	 /**
 	  * 乘法运算
 	  * @param v1 参数1
@@ -974,7 +864,6 @@ public class XChart implements IRender {
 	 {
 		return MathHelper.getInstance().mul(v1, v2);
 	 }
-		 
 	 /**
 	  * 除法运算,当除不尽时，精确到小数点后10位
 	  * @param v1 参数1
@@ -985,7 +874,6 @@ public class XChart implements IRender {
 	 {
 		 return MathHelper.getInstance().div(v1, v2);
 	 }
-	 
 	//math计算类函数 ----------------------------------------------------------------
 	 
 }

@@ -32,17 +32,13 @@ import android.graphics.Canvas;
  *  
  */
 public class DyLineRender extends DyLine{
-	
-	
 	private float mLeft = 0.0f;
 	private float mTop = 0.0f;
 	private float mRight = 0.0f;
 	private float mBottom = 0.0f;
-	
 	public DyLineRender()
 	{
 	}
-		
 	// Cross 指定交叉的水平线和垂直线。
 	// BackwardDiagonal 从右上到左下的对角线的线条图案。
 	// Vertical		垂直线
@@ -54,7 +50,6 @@ public class DyLineRender extends DyLine{
 		//横线
 		drawHorizontal(canvas);
 	}
-	
 	private void drawBackwardDiagonal(Canvas canvas)
 	{		
 		//竖线
@@ -64,13 +59,11 @@ public class DyLineRender extends DyLine{
 		DrawHelper.getInstance().drawLine(getLineDrawStyle(), 
 				mLeft, mCenterXY.y, mCenterXY.x, mCenterXY.y,canvas,getLinePaint());	
 	}
-	
 	private void drawVertical(Canvas canvas) //竖线
 	{			
 		DrawHelper.getInstance().drawLine(getLineDrawStyle(), 
 				mCenterXY.x, mTop, mCenterXY.x, mBottom,canvas,getLinePaint());	
 	}
-	
 	private void drawHorizontal(Canvas canvas)
 	{
 		DrawHelper.getInstance().drawLine(getLineDrawStyle(), 
@@ -92,13 +85,10 @@ public class DyLineRender extends DyLine{
 		  Float.compare(mCenterXY.y, top) == -1 ||
 		  Float.compare(mCenterXY.y, bottom) == 0 ||
 		  Float.compare(mCenterXY.y, bottom) == 1 ) return;
-		
-		
 		mLeft = left;
 		mTop = top;
 		mRight = right;
 		mBottom = bottom;
-		
 		switch(getDyLineStyle())
 		{
 		case Cross:

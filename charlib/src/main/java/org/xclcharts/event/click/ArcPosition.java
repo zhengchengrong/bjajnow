@@ -93,8 +93,7 @@ public class ArcPosition extends PositionRecord {
 	
 	@Override
 	protected boolean compareRange(float x, float y) {
-		// TODO Auto-generated method stub
-		if(null == mCirXY)return false;								
+		if(null == mCirXY)return false;
 		return compareRadius( x,  y) ;
 	}
 		
@@ -105,8 +104,7 @@ public class ArcPosition extends PositionRecord {
 		{							
 			float Angle1 = (float) MathHelper.getInstance().getDegree(mCirXY.x, mCirXY.y, x,y);
 			float currAngle = getAngle();	
-		
-			//??? 如果有设初始角度(mInitAngle)，则初始角度范围内的那个扇区点击判断会有问题，原因还没查出来			
+			//??? 如果有设初始角度(mInitAngle)，则初始角度范围内的那个扇区点击判断会有问题，原因还没查出来
 			if( Float.compare(currAngle, Angle1) == 1 
 					|| Float.compare(currAngle, Angle1) == 0  )
 			{						

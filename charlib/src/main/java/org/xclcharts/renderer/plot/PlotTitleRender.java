@@ -34,15 +34,11 @@ import android.graphics.Paint.Align;
  */
 
 public class PlotTitleRender extends PlotTitle{
-	
-	
 	//protected static final int mBorderSpadding = 5;
-
 	public PlotTitleRender()
 	{
 			
 	}
-	
 	/**
 	 * 绘制标题
 	 */
@@ -54,24 +50,17 @@ public class PlotTitleRender extends PlotTitle{
 							Canvas canvas)
 	{
 		//排除掉border width
-	
 		String title = getTitle();
 		String subTitle = getSubtitle();
-		
 		float titleHeight = 0.f;
 		float subtitleHeight = 0.f;
 		float totalHeight = 0.f;
-		
 		float titleInitY = 0.0f;
-		
 		float titleX = 0.0f;
 		float titleY = 0.0f;
-		
 		float subtitleX = 0.0f;
 		float subtitleY = 0.0f;
-		
-		if(title.length() == 0 && subTitle.length() == 0) return;	
-
+		if(title.length() == 0 && subTitle.length() == 0) return;
 		if(title.length() > 0 )
 		{
 			 titleHeight = DrawHelper.getInstance().getPaintFontHeight(getTitlePaint());			
@@ -82,7 +71,6 @@ public class PlotTitleRender extends PlotTitle{
 		}			
 		totalHeight = titleHeight + subtitleHeight;	
 		float pcHeight = Math.abs(plotTop - chartTop) ;		
-		
 		//用来确定 titleY,需要Chart top的值
 		switch(this.getVerticalAlign())
 		{
@@ -96,14 +84,11 @@ public class PlotTitleRender extends PlotTitle{
 			titleInitY = plotTop - titleHeight;			
 			break;
 		}
-		
-		
 		switch(this.getTitleAlign())
 		{
 		case LEFT:
 			titleX = chartLeft;
 			titleY = titleInitY;
-			
 			subtitleX = chartLeft;
 			subtitleY = titleY + subtitleHeight;
 			
@@ -111,28 +96,21 @@ public class PlotTitleRender extends PlotTitle{
 			getSubtitlePaint().setTextAlign(Align.LEFT);			
 			break;
 		case CENTER:
-			
 			titleX = Math.round(chartLeft + chartWidth / 2);
 			titleY = titleInitY;
-						
-			getTitlePaint().setTextAlign(Align.CENTER);			
+			getTitlePaint().setTextAlign(Align.CENTER);
 			getSubtitlePaint().setTextAlign(Align.CENTER);	
 			break;
 		case RIGHT:
-			
 			titleX = chartRight;
 			titleY = titleInitY;
-									
-			getTitlePaint().setTextAlign(Align.RIGHT);			
+			getTitlePaint().setTextAlign(Align.RIGHT);
 			getSubtitlePaint().setTextAlign(Align.RIGHT);								
 			break;
 		}
-	
-		subtitleY = DrawHelper.getInstance().drawText(canvas, this.getTitlePaint(), title, titleX, titleY);		
+		subtitleY = DrawHelper.getInstance().drawText(canvas, this.getTitlePaint(), title, titleX, titleY);
 		subtitleX = titleX;
 		subtitleY = titleY + subtitleHeight;
-		
 		DrawHelper.getInstance().drawText(canvas, this.getSubtitlePaint(), subTitle, subtitleX, subtitleY);
-		
 	}
 }

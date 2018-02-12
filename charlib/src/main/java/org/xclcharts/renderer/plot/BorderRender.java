@@ -34,15 +34,11 @@ import android.graphics.Paint.Style;
  * 
  */
 public class BorderRender extends Border {
-	
-	private RectF mRect = new RectF();	
+	private RectF mRect = new RectF();
 	private Path mPath = null;
-	
-
 	public BorderRender()
 	{
 	}
-	
 	/**
 	 * 边框默认内边距
 	 * @return 内边距
@@ -67,8 +63,6 @@ public class BorderRender extends Border {
 				break;
 			}
 	 }
-	 
-	 
 	public void renderRect(Canvas canvas,RectF rect,
 							boolean showBoxBorder,boolean showBackground)
 	{			
@@ -92,8 +86,6 @@ public class BorderRender extends Border {
 			break;
 		}			
 	}
-	
-
 	public void renderCapRect(Canvas canvas,RectF rect,float capHeight,
 			boolean showBoxBorder,boolean showBackground)
 	{	
@@ -155,9 +147,6 @@ public class BorderRender extends Border {
 		mPath.close();		
 		canvas.drawPath(mPath, getBackgroundPaint());
 		mPath.reset();
-	
-		
-		
 		/*
 		if(showBoxBorder)
 		{										
@@ -173,31 +162,21 @@ public class BorderRender extends Border {
 			mPath.reset();
 		}
 		*/
-		
 	}
-	
-	
 	public void renderRound(Canvas canvas,RectF rect,float capHeight,
 			boolean showBoxBorder,boolean showBackground)
 	{	
-		
-		setPaintLineStyle();	
-		
+		setPaintLineStyle();
 		if(null == mRect)mRect = new RectF();
 		mRect.left = rect.left + mBorderSpadding;
 		mRect.top = rect.top + mBorderSpadding;
 		mRect.right = rect.right - mBorderSpadding;
 		mRect.bottom = rect.bottom - mBorderSpadding;	
-		
-		if(showBackground)	
+		if(showBackground)
 		  canvas.drawRoundRect(mRect, this.getRoundRadius(), this.getRoundRadius(), getBackgroundPaint());
-		
-		if(showBoxBorder)	
+		if(showBoxBorder)
 			  canvas.drawRoundRect(mRect, this.getRoundRadius(), this.getRoundRadius(), getLinePaint());
-				
 	}
-	
-
 	/**
 	 * 绘制边
 	 * @param canvas	画布
@@ -209,14 +188,11 @@ public class BorderRender extends Border {
 	public void renderBorder(String type ,Canvas canvas,
 							 float left,float top,float right,float bottom)
 	{
-		
 		mRect.left = left + mBorderSpadding;
 		mRect.top = top + mBorderSpadding;
 		mRect.right = right - mBorderSpadding;
 		mRect.bottom = bottom - mBorderSpadding;		
-			
-		setPaintLineStyle();	
-		
+		setPaintLineStyle();
 		switch(getBorderRectType())
 		{
 			case RECT:				
@@ -241,6 +217,4 @@ public class BorderRender extends Border {
 			break;
 		}
 	}
-	
-	
 }

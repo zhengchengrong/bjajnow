@@ -45,14 +45,14 @@ public class HomeActivity extends BaseActivity<HomePresenter> implements IHomeVi
     @BindView(R.id.tl_home)
     CommonTabLayout mTlHome;
     private ArrayList<Fragment> mFragments = new ArrayList<>();
-
-    private String[] mTitles = {"首页", "工程分布","待办"};
+        //
+    private String[] mTitles = {"首页", "工程分布","待办","消息动态","资料中心"};
     private int[] mIconUnselectIds = {
-            R.drawable.homeg, R.drawable.mapg,
-            R.drawable.daibang};
+            R.drawable.logo_home_unselect, R.drawable.logo_map_unselect,
+            R.drawable.logo_work_unselect,R.drawable.logo_message_unselect,R.drawable.logo_person_unselect};
     private int[] mIconSelectIds = {
-            R.drawable.home, R.drawable.map,
-            R.drawable.daiban};
+            R.drawable.logo_home_select, R.drawable.logo_map_select,
+            R.drawable.logo_work_select,R.drawable.logo_message_select,R.drawable.logo_person_select};
     private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
 
     @Override
@@ -72,6 +72,8 @@ public class HomeActivity extends BaseActivity<HomePresenter> implements IHomeVi
     protected void initViews() {
         mFragments.add(new MainFragment());
         mFragments.add(new MainMapFragment());
+        mFragments.add(new NoticeFragment());
+        mFragments.add(new NoticeFragment());
         mFragments.add(new NoticeFragment());
         for (int i = 0; i < mTitles.length; i++) {
             mTabEntities.add(new TabEntity(mTitles[i], mIconSelectIds[i], mIconUnselectIds[i]));

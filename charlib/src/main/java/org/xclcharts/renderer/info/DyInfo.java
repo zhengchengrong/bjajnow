@@ -422,8 +422,7 @@ public class DyInfo {
 		}
 		
 	}
-	
-	
+
 	/**
 	 * 不显示标签边框		
 	 */

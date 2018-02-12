@@ -52,92 +52,68 @@ import android.graphics.RectF;
  *
  */
 public class PlotLegendRender extends PlotLegend{
-	
 	//private static final String TAG = "PlotLegendRender";
-	
 	private PlotArea mPlotArea = null;
 	private XChart mXChart = null;
-
 	private float mKeyLabelX = 0.0f;
 	private float mKeyLabelY = 0.0f;
-
 	/////////////////////////////////////
-	
-	private ArrayList<PlotDot> mLstDotStyle = null;
-	private ArrayList<String> mLstKey = null;
-	private ArrayList<Integer> mLstColor = null;
-	
+	private ArrayList<PlotDot> mLstDotStyle = null; // 样式
+	private ArrayList<String> mLstKey = null; // 值
+	private ArrayList<Integer> mLstColor = null; // 颜色
 	private float mRectWidth = 0.0f;
 	private float mRectHeight = 0.0f;
-	
 	LinkedHashMap<Integer,Integer> mMapID = new LinkedHashMap<Integer,Integer>();
-	
 	private boolean mIsLnChart = false;
 	private Paint mPaintLine = null;
-	
-	enum EnumChartType{AXIS,CIR,LN,RD};	
+	enum EnumChartType{AXIS,CIR,LN,RD};
 	EnumChartType mType = EnumChartType.AXIS;
-	
-	//此处的5.f相当于this.getBox().getLinePaint()的高度	
+	//此处的5.f相当于this.getBox().getLinePaint()的高度
 	private final int BOX_LINE_SIZE = 5;	
-	
 	///////////////////////////////////
 	public PlotLegendRender()
 	{
 	}
-		
 	public PlotLegendRender(XChart xChart)
 	{
 		mXChart = xChart;		
 	}
-		
 	public void setXChart(XChart xChart)
 	{
 		mXChart = xChart;
 	}	
-	
 	private void initEnv()
 	{
 		mKeyLabelX = mKeyLabelY = 0.0f;
 		mRectWidth = mRectHeight = 0.0f;			
 	}
-					
 	private float getLabelTextWidth(String key)
 	{
 		return  DrawHelper.getInstance().getTextWidth(getPaint(),key );
 	}
-	
 	private float getLabelTextHeight()
 	{
 		return DrawHelper.getInstance().getPaintFontHeight(getPaint());
 	}		
-	
 	///////////////////////////////
-	
 	// 1. 转成arraylist,convertArray
 	// 2. calcRect
 	// 3. calcStartXY
 	// 4. drawLegend
-	
 	public boolean renderBarKey(Canvas canvas,List<BarData> dataSet) {
 		if (isShow() == false) return false;	
 		refreshLst();
 		convertArrayBarKey(dataSet);
 		render(canvas);
-		
 		return true;
 	}
-	
-	public void renderLineKey(Canvas canvas, List<LnData> dataSet) {	
+	public void renderLineKey(Canvas canvas, List<LnData> dataSet) {
 		if (isShow() == false) return;	
-		
 		setLnChartStatus();
 		refreshLst();
 		convertArrayLineKey(dataSet);
 		render(canvas);
 	}
-	
-	
 	public void renderPieKey(Canvas canvas,List<PieData> dataSet)
 	{		
 		if (isShow() == false) return;	
@@ -146,18 +122,15 @@ public class PlotLegendRender extends PlotLegend{
 		convertArrayPieKey(dataSet);
 		render(canvas);
 	}
-	
 	public void renderRdKey(Canvas canvas,List<RadarData> dataSet)
 	{
 		if (isShow() == false) return;	
-		
 		setLnChartStatus();
 		refreshLst();
 		convertArrayRadarKey(dataSet);
 		render(canvas);
 	}
-	
-	public void renderPointKey(Canvas canvas, List<ScatterData> dataSet) 
+	public void renderPointKey(Canvas canvas, List<ScatterData> dataSet)
 	{
 		if (isShow() == false) return;		
 		refreshLst();
@@ -185,16 +158,13 @@ public class PlotLegendRender extends PlotLegend{
 	{		
 		if (isShow() == false) return;	
 		if("" == key||key.length() == 0) return;	
-		
 		refreshLst();
-									
 		mLstKey.add(key);
 		mLstColor.add(textColor);		
 		PlotDot pDot = new PlotDot();
 		pDot.setDotStyle(XEnum.DotStyle.RECT);
 		mLstDotStyle.add(pDot);
-		
-		render(canvas);		
+		render(canvas);
 	}
 	
 	
@@ -235,17 +205,13 @@ public class PlotLegendRender extends PlotLegend{
 		int countText = (null != mLstKey)?mLstKey.size():0;
 		if(0 == countText && 0 == countDots ) return;
 		//int count = (countText > countDots)?countText:countDots;
-															
 		String text = "";
 		float textHeight = getLabelTextHeight();
-										
 		int row = 1;
 		mMapID.clear();
-		
 		float areaWidth = mPlotArea.getWidth() - 2 * mMargin;
 		float rectWidth = getRectWidth();
-		
-		float rowWidth = 0.0f;	
+		float rowWidth = 0.0f;
 		float rowHeight = textHeight;	
 		float maxHeight = rowHeight;
 		float maxWidth = 0.0f;					
@@ -372,10 +338,8 @@ public class PlotLegendRender extends PlotLegend{
 			default:
 				break;
 		}	
-				
 	}
 		
-	
 	private void drawLegend(Canvas canvas)
 	{			
 		int countDots = (null != mLstDotStyle)? mLstDotStyle.size():0 ;	
@@ -410,7 +374,6 @@ public class PlotLegendRender extends PlotLegend{
 			    	currRowX = mKeyLabelX + mMargin;	
 			    	currRowID = row;
 			    }
-			    
 			    //颜色
 			    if(countColor > id)
 			    {
@@ -455,11 +418,9 @@ public class PlotLegendRender extends PlotLegend{
 			    currRowX += this.getLabelTextWidth(label);			
 			    currRowX += mColSpan;				  
 		}
-		
 		mMapID.clear();
 		clearLst();
 	}
-	
 	private void clearLst()
 	{
 		if(null != mLstDotStyle)
@@ -478,30 +439,23 @@ public class PlotLegendRender extends PlotLegend{
 			mLstColor = null;
 		}
 	}
-	
-
 	private void drawBox(Canvas canvas)
 	{				
 		if(!mShowBox)return;
-		
-		RectF rect = new RectF();	
+		RectF rect = new RectF();
 		rect.left = mKeyLabelX ;
 		rect.right = mKeyLabelX + mRectWidth;
 		rect.top = mKeyLabelY;
 		rect.bottom = mKeyLabelY + mRectHeight;	
-				
-		mBorder.renderRect(canvas, rect,mShowBoxBorder,mShowBackground);			
+		mBorder.renderRect(canvas, rect,mShowBoxBorder,mShowBackground);
 	}
-		
 	private void refreshLst()
 	{
 		initEnv();
-		
 		if(null == mLstKey)
 			mLstKey = new ArrayList<String>();
 		else
 			mLstKey.clear();
-			
 		if(null == mLstDotStyle)
 			mLstDotStyle = new ArrayList<PlotDot>();
 		else
@@ -512,10 +466,7 @@ public class PlotLegendRender extends PlotLegend{
 		else
 			mLstColor.clear();		
 	}
-	
-
 	////////////////////////////////
-
 	private void convertArrayLineKey(List<LnData> dataSet)
 	{
 		if(null == dataSet) return;
@@ -531,11 +482,9 @@ public class PlotLegendRender extends PlotLegend{
 			mLstDotStyle.add(cData.getPlotLine().getPlotDot());
 		}
 	}
-	
 	private void convertArrayBarKey(List<BarData> dataSet)
 	{
 		if(null == dataSet) return;
-				
 		String key = "";
 		for (BarData cData : dataSet) {
 			key = cData.getKey();				
@@ -550,8 +499,6 @@ public class PlotLegendRender extends PlotLegend{
 			mLstDotStyle.add(dot);			
 		}
 	}
-	
-	
 	private void convertArrayPieKey(List<PieData> dataSet)
 	{
 		if(null == dataSet) return;
@@ -570,11 +517,9 @@ public class PlotLegendRender extends PlotLegend{
 			mLstDotStyle.add(dot);
 		}
 	}
-	
 	private void convertArrayRadarKey(List<RadarData> dataSet)
 	{
 		if(null == dataSet) return;
-		
 		String key = "";
 		for(RadarData cData : dataSet){
 			key = cData.getLineKey();				
@@ -586,12 +531,9 @@ public class PlotLegendRender extends PlotLegend{
 			mLstDotStyle.add(cData.getPlotLine().getPlotDot());
 		}
 	}
-	
-
 	private void convertArrayPointKey(List<ScatterData> dataSet)
 	{
 		if(null == dataSet) return;
-		
 		String key = "";
 		for (ScatterData cData : dataSet) {
 			key = cData.getKey();				
@@ -603,17 +545,14 @@ public class PlotLegendRender extends PlotLegend{
 			mLstDotStyle.add(cData.getPlotDot());
 		}
 	}
-	
 	private void convertArrayBubbleKey(List<BubbleData> dataSet)
 	{
 		if(null == dataSet) return;
-		
 		String key = "";
 		for (BubbleData cData : dataSet) {
 			key = cData.getKey();				
 			if(!isDrawKey(key))continue;
 			if("" == key)continue;
-			
 			mLstKey.add(key);
 			mLstColor.add(cData.getColor());
 			
@@ -626,28 +565,23 @@ public class PlotLegendRender extends PlotLegend{
 	private void convertArrayArcLineKey(List<ArcLineData> dataSet)
 	{
 		if(null == dataSet) return;
-		
 		String key = "";
 		for (ArcLineData cData : dataSet) {
 			key = cData.getKey();	
 			if(!isDrawKey(key))continue;
 			if("" == key)continue;
-			
 			mLstKey.add(key);
 			mLstColor.add(cData.getBarColor());
-			
 			PlotDot pDot = new PlotDot();
 			pDot.setDotStyle(XEnum.DotStyle.RECT);
 			mLstDotStyle.add(pDot);
 		}
 	}
-	
 	private boolean isDrawKey(String key)
 	{
 		if("" == key||key.length() == 0) return false;
 		return true;
 	}
-	
 	////////////////////////////////
 }
 
