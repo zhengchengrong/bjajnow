@@ -427,4 +427,14 @@
     <dimen name="sp_40">40sp</dimen>
     <dimen name="sp_42">42sp</dimen>
     <dimen name="sp_48">48sp</dimen>
+    <dimen name="dp_admin_main">50dp</dimen>
+    <dimen name="sp_admin_main_01">20sp</dimen>
+    <dimen name="sp_admin_main_02">18sp</dimen>
+    <dimen name="sp_admin_main_03">16sp</dimen>
+    <dimen name="sp_admin_main_04">14sp</dimen>
+    <dimen name="sp_admin_main_05">12sp</dimen>
+
+    <dimen name="dp_admin_main_radius">12dp</dimen>
+    <dimen name="dp_admin_main_elevation">8dp</dimen>
+
 </resources>

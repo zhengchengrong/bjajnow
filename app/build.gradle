@@ -120,4 +120,5 @@ dependencies {
     /*    provided("com.tinkerpatch.tinker:tinker-android-anno:1.8.0")
         compile("com.tinkerpatch.sdk:tinkerpatch-android-sdk:1.1.8")*/
     compile project(':charlib')
+    compile 'org.jetbrains:annotations-java5:15.0'
 }

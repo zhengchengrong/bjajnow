@@ -18,6 +18,7 @@ import com.threehmis.bjaj.dialog.MainMoreDialog;
 import com.threehmis.bjaj.injector.components.DaggerHomeComponent;
 import com.threehmis.bjaj.injector.modules.HomeModule;
 import com.threehmis.bjaj.module.base.BaseActivity;
+import com.threehmis.bjaj.module.home.fragment.adminmain.AdminMainFragment;
 import com.threehmis.bjaj.module.home.fragment.main.MainFragment;
 import com.threehmis.bjaj.module.home.fragment.map.MainMapFragment;
 import com.threehmis.bjaj.module.home.fragment.notice.NoticeFragment;
@@ -70,7 +71,8 @@ public class HomeActivity extends BaseActivity<HomePresenter> implements IHomeVi
     }
     @Override
     protected void initViews() {
-        mFragments.add(new MainFragment());
+//        mFragments.add(new MainFragment());
+        mFragments.add(new AdminMainFragment());// 添加管理员的页面
         mFragments.add(new MainMapFragment());
         mFragments.add(new NoticeFragment());
         mFragments.add(new NoticeFragment());

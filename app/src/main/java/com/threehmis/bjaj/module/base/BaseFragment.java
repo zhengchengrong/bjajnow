@@ -68,7 +68,7 @@ public abstract class BaseFragment<T extends IBasePresenter> extends com.trello.
     protected abstract void updateViews(boolean isRefresh);
 
 
-    @Nullable
+    @org.jetbrains.annotations.Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         fragmentView = inflater.inflate(attachLayoutRes(),container,false);
