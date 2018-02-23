@@ -127,7 +127,7 @@ public class HomeActivity extends BaseActivity<HomePresenter> implements IHomeVi
             }
         });
         mViewPager.setCurrentItem(0);
-        mViewPager.setOffscreenPageLimit(2);
+        mViewPager.setOffscreenPageLimit(4);
     }
 
 

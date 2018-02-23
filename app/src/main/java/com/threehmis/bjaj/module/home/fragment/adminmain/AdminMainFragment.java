@@ -15,6 +15,8 @@ import com.threehmis.bjaj.R;
 import com.threehmis.bjaj.module.base.BaseFragment;
 import com.threehmis.bjaj.module.home.fragment.adminmain.childmainfragment.AllCityFragment;
 import com.threehmis.bjaj.module.home.fragment.adminmain.childmainfragment.AllTownFragment;
+import com.threehmis.bjaj.module.home.fragment.map.MapFragment;
+import com.threehmis.bjaj.module.home.fragment.map.griddetail.projectinfo.ProjectListFragment;
 
 import java.util.ArrayList;
 
@@ -32,11 +34,10 @@ public class AdminMainFragment extends BaseFragment implements OnTabSelectListen
     @BindView(R.id.vp)
     ViewPager mVp;
     private ArrayList<Fragment> mFragments = new ArrayList<>();
-    private final String[] mTitles = {
-            "全市数据统计", "各区县数据统计"
-    };
+    private Fragment fragment1;
+    private Fragment fragment2;
     private MyPagerAdapter mAdapter;
-
+    String[] mTitles;
     @Override
     protected void initInjector() {
 
@@ -44,8 +45,14 @@ public class AdminMainFragment extends BaseFragment implements OnTabSelectListen
 
     @Override
     protected void initViews() {
-        mFragments.add(new AllCityFragment());
-        mFragments.add(new AllTownFragment());
+        mTitles= new String[]{
+                "全市数据统计", "各区县数据统计"
+        };
+        fragment1 = new AllCityFragment();
+        fragment2 = new AllTownFragment();
+        mFragments.clear();
+        mFragments.add(fragment1);
+        mFragments.add(fragment2);
         mAdapter = new MyPagerAdapter(getActivity().getSupportFragmentManager());
         mVp.setAdapter(mAdapter);
         mTlAdminMain.setViewPager(mVp);

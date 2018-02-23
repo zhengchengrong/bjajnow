@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -8,6 +8,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         >
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_admin_main"
@@ -77,6 +78,7 @@
                         android:textSize="@dimen/sp_admin_main_03"
                         />
                     <TextView
+                        android:id="@+id/tv_all_num_01_a"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="监督工程"
@@ -104,6 +106,7 @@
 
                         />
                     <TextView
+                        android:id="@+id/tv_all_num_02_b"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="在建工程"
@@ -129,6 +132,7 @@
                         android:gravity="center_horizontal"
                         />
                     <TextView
+                        android:id="@+id/tv_all_num_03_c"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="停工工程"
@@ -163,6 +167,7 @@
                         android:textColor="@color/redbrown"
                         />
                     <TextView
+                        android:id="@+id/tv_all_num_04_d"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="中止监督工程"
@@ -188,6 +193,7 @@
                         android:textSize="@dimen/sp_admin_main_03"
                         />
                     <TextView
+                        android:id="@+id/tv_all_num_05_e"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="终止监督工程"
@@ -206,6 +212,7 @@
 
             >
             <android.support.v7.widget.CardView
+                android:id="@+id/cv_01"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_40"
                 android:layout_weight="1"
@@ -228,6 +235,7 @@
                         android:textSize="@dimen/sp_admin_main_05"
                         />
                     <TextView
+                        android:id="@+id/tv_all_xuke_01_a"
                         android:layout_gravity="center"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -241,6 +249,7 @@
 
             </android.support.v7.widget.CardView>
             <android.support.v7.widget.CardView
+                android:id="@+id/cv_02"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_40"
                 android:layout_weight="1"
@@ -249,14 +258,32 @@
                 app:cardCornerRadius="@dimen/dp_admin_main_radius"
                 android:layout_margin="@dimen/dp_5"
                 >
-                <TextView
-                    android:layout_gravity="center"
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="v7View)"
-                    />
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/tv_all_xuke_02"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="施工许可4500项"
+                        android:gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/dp_2"
+                        android:textSize="@dimen/sp_admin_main_05"
+                        />
+                    <TextView
+                        android:id="@+id/tv_all_xuke_02_b"
+                        android:layout_gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="施工许可1500项"
+                        android:textSize="@dimen/sp_admin_main_05"
+                        android:layout_below="@+id/tv_all_xuke_02"
+                        android:gravity="center_horizontal"
+                        />
+                </RelativeLayout>
             </android.support.v7.widget.CardView>
             <android.support.v7.widget.CardView
+                android:id="@+id/cv_03"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_40"
                 android:layout_weight="1"
@@ -264,13 +291,35 @@
                 app:cardElevation="@dimen/dp_admin_main_elevation"
                 app:cardCornerRadius="@dimen/dp_admin_main_radius"
                 >
-                <TextView
-                    android:layout_gravity="center"
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="v7View)"
-                    />
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/tv_all_xuke_03"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="施工许可4500项"
+                        android:gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/dp_2"
+                        android:textSize="@dimen/sp_admin_main_05"
+                        />
+                    <TextView
+                        android:id="@+id/tv_all_xuke_03_c"
+                        android:layout_gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="施工许可1500项"
+                        android:textSize="@dimen/sp_admin_main_05"
+                        android:layout_below="@+id/tv_all_xuke_03"
+                        android:gravity="center_horizontal"
+                        />
+                </RelativeLayout>
             </android.support.v7.widget.CardView>
         </LinearLayout>
+        <com.threehmis.bjaj.widget.WrapContentHeightViewPager
+            android:id="@+id/vp_city"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </com.threehmis.bjaj.widget.WrapContentHeightViewPager>
     </LinearLayout>
-</android.support.v4.widget.NestedScrollView>
+</ScrollView>

@@ -98,64 +98,68 @@ public class BarChart02View extends DemoView {
 		try {
 			//设置绘图区默认缩进px值,留置空间显示Axis,Axistitle....	
 			int [] ltrb = getBarLnDefaultSpadding();
-			chart.setPadding(DensityUtil.dip2px(getContext(), 50),ltrb[1], ltrb[2],  ltrb[3]);
+			chart.setPadding(DensityUtil.dip2px(getContext(), 80),DensityUtil.dip2px(getContext(), 40), DensityUtil.dip2px(getContext(), 40), DensityUtil.dip2px(getContext(), 30));
 			
 	
-			chart.setTitle("每日收益情况");
-			chart.addSubtitle("(XCL-Charts Demo)");		
-			chart.setTitleVerticalAlign(XEnum.VerticalAlign.MIDDLE);
-			chart.setTitleAlign(XEnum.HorizontalAlign.LEFT);
+			chart.setTitle("工程数量");
+//			chart.addSubtitle("(XCL-Charts Demo)");
+			chart.setTitleVerticalAlign(XEnum.VerticalAlign.TOP);
+			chart.setTitleAlign(XEnum.HorizontalAlign.CENTER);
 		
 			//数据源
 			chart.setDataSource(chartData);
 			chart.setCategories(chartLabels);	
 			
 			//轴标题
-			chart.getAxisTitle().setLeftTitle("所售商品");
+		/*	chart.getAxisTitle().setLeftTitle("所售商品");
 			chart.getAxisTitle().setLowerTitle("纯利润(天)");
-			chart.getAxisTitle().setRightTitle("生意兴隆通四海,财源茂盛达三江。");
+			chart.getAxisTitle().setRightTitle("生意兴隆通四海,财源茂盛达三江。");*/
 			
 			//数据轴
-			chart.getDataAxis().setAxisMax(500);
-			chart.getDataAxis().setAxisMin(100);
-			chart.getDataAxis().setAxisSteps(100);
+			chart.getDataAxis().setAxisMax(3000);
+			chart.getDataAxis().setAxisMin(500);
+			chart.getDataAxis().setAxisSteps(500); // 设置x轴每格的倍数
 											
-			chart.getDataAxis().getTickLabelPaint().
-									setColor(Color.rgb(199, 88, 122));
-		
-			
-			chart.getDataAxis().setLabelFormatter(new IFormatterTextCallBack(){
+			/*chart.getDataAxis().getTickLabelPaint().
+									setColor(Color.rgb(199, 88, 122));*/
+			chart.getPlotLegend().setType(XEnum.LegendType.COLUMN);
+			chart.getPlotLegend().setHorizontalAlign(XEnum.HorizontalAlign.RIGHT);
+
+/*			chart.getDataAxis().setLabelFormatter(new IFormatterTextCallBack(){
 
 				@Override
 				public String textFormatter(String value) {
 					// TODO Auto-generated method stub				
+*//*
+					String tmp = value+"万元";
+*//*
 					String tmp = value+"万元";
 					return tmp;
 				}
 				
-			});
+			});*/
 			
 			//网格
-			chart.getPlotGrid().showHorizontalLines();
+			/*chart.getPlotGrid().showHorizontalLines();*/
 			chart.getPlotGrid().showVerticalLines();
 			chart.getPlotGrid().showEvenRowBgColor();
 			
 			//标签轴文字旋转-45度
-			chart.getCategoryAxis().setTickLabelRotateAngle(-45f);
+			/*chart.getCategoryAxis().setTickLabelRotateAngle(-45f);*/
 			//横向显示柱形
 			chart.setChartDirection(XEnum.Direction.HORIZONTAL);
 			//在柱形顶部显示值
 			chart.getBar().setItemLabelVisible(true);
 			chart.getBar().getItemLabelPaint().setTextSize(22);
 			
-			chart.setItemLabelFormatter(new IFormatterDoubleCallBack() {
+	/*		chart.setItemLabelFormatter(new IFormatterDoubleCallBack() {
 				@Override
 				public String doubleFormatter(Double value) {
 					// TODO Auto-generated method stub
 					DecimalFormat df=new DecimalFormat("[#0]");
 					String label = df.format(value).toString();
 					return label;
-				}});	 
+				}});	 */
 				  
 			//激活点击监听
 			chart.ActiveListenItemClick();
@@ -181,28 +185,33 @@ public class BarChart02View extends DemoView {
 	{
 		//标签对应的柱形数据集
 		List<Double> dataSeriesA= new LinkedList<Double>();
-		dataSeriesA.add((double)200); 
-		dataSeriesA.add((double)250); 
-		dataSeriesA.add((double)400);
-		BarData BarDataA = new BarData("小熊",dataSeriesA, Color.rgb(0, 0,255));
-		
-		
+		dataSeriesA.add((double)500);
+		dataSeriesA.add((double)1000);
+		dataSeriesA.add((double)2000);
+		BarData BarDataA = new BarData("危大工程",dataSeriesA, Color.rgb(151, 185,96));
+
 		List<Double> dataSeriesB= new LinkedList<Double>();
-		dataSeriesB.add((double)300);
-		dataSeriesB.add((double)150);
-		dataSeriesB.add((double)450);
-		BarData BarDataB = new BarData("小周",dataSeriesB, Color.rgb(255, 0, 0));
-		
-		
+		dataSeriesB.add((double)800);
+		dataSeriesB.add((double)1150);
+		dataSeriesB.add((double)1450);
+		BarData BarDataB = new BarData("临时工程",dataSeriesB, Color.rgb(198, 81, 80));
+
+		List<Double> dataSeriesC= new LinkedList<Double>();
+		dataSeriesC.add((double)1300);
+		dataSeriesC.add((double)1150);
+		dataSeriesC.add((double)1450);
+		BarData BarDataC = new BarData("施工许可",dataSeriesC, Color.rgb(0, 110,185));
 		chartData.add(BarDataA);
 		chartData.add(BarDataB);
+		chartData.add(BarDataC);
+
 	}
 	
 	private void chartLabels()
 	{		
-		chartLabels.add("擂茶"); 
-		chartLabels.add("槟榔"); 				
-		chartLabels.add("纯净水(强势插入，演示多行标签)"); 
+		chartLabels.add("区城区安全监督站");
+		chartLabels.add("区城区安全监督站");
+		chartLabels.add("区城区安全监督站");
 	}
 	
 	
@@ -222,7 +231,7 @@ public class BarChart02View extends DemoView {
 		super.onTouchEvent(event);		
 		if(event.getAction() == MotionEvent.ACTION_UP)
 		{			
-			triggerClick(event.getX(),event.getY());
+			//triggerClick(event.getX(),event.getY());
 		}
 		return true;
 	}

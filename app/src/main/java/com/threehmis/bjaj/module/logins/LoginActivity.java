@@ -128,16 +128,16 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements ILogi
                             RxToast.showToast(Const.INPUT_PASSWORD);
                             return;
                         }
-                        dialog = new ProgressDialog(this);
+              /*          dialog = new ProgressDialog(this);
 
                         dialog.setCanceledOnTouchOutside(false);
                         dialog.setCancelable(true);
                         dialog.setTitle("正在登陆...");
 
                         dialog.show();
-                        mPresenter.login(phoneNum,password);
+                        mPresenter.login(phoneNum,password);*/
                         //登陆成功后，跳转到主页面
-                   //     startActivity(HomeActivity.class);
+                    startActivity(HomeActivity.class);
                         break;
                 }
     }

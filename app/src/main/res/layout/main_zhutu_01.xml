@@ -7,6 +7,6 @@
     <com.threehmis.bjaj.widget.chartview.BarChart02View
         android:id="@+id/mHorizontalBarChart"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_400"
+        android:layout_height="@dimen/dp_240"
         />
 </RelativeLayout>
