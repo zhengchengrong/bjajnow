@@ -40,6 +40,7 @@ import org.xclcharts.event.click.BarPosition;
 import org.xclcharts.renderer.XEnum;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -56,7 +57,23 @@ public class BarChart02View extends DemoView {
 	//标签轴
 	private List<String> chartLabels = new LinkedList<String>();
 	private List<BarData> chartData = new LinkedList<BarData>();
-	
+
+	public List<String> getChartLabels() {
+		return chartLabels;
+	}
+
+	public void setChartLabels(List<String> chartLabels) {
+		this.chartLabels = chartLabels;
+	}
+
+	public List<BarData> getChartData() {
+		return chartData;
+	}
+
+	public void setChartData(List<BarData> chartData) {
+		this.chartData = chartData;
+		initView();
+	}
 
 	public BarChart02View(Context context) {
 		super(context);
@@ -76,10 +93,9 @@ public class BarChart02View extends DemoView {
 	 
 	 private void initView()
 	 {		 
-		 	chartLabels();
-			chartDataSet();			
-			chartRender();
-			
+		 /*	chartLabels();
+			chartDataSet();			*/
+			//chartRender();
 			//綁定手势滑动事件
 			//this.bindTouch(this,chart);
 	 }
@@ -93,7 +109,7 @@ public class BarChart02View extends DemoView {
     }  
 	
 	
-	private void chartRender()
+	public void chartRender(String title,int axisMax,int axismin,int asisStep)
 	{
 		try {
 			//设置绘图区默认缩进px值,留置空间显示Axis,Axistitle....	
@@ -101,11 +117,10 @@ public class BarChart02View extends DemoView {
 			chart.setPadding(DensityUtil.dip2px(getContext(), 80),DensityUtil.dip2px(getContext(), 40), DensityUtil.dip2px(getContext(), 40), DensityUtil.dip2px(getContext(), 30));
 			
 	
-			chart.setTitle("工程数量");
+			chart.setTitle(title);
 //			chart.addSubtitle("(XCL-Charts Demo)");
 			chart.setTitleVerticalAlign(XEnum.VerticalAlign.TOP);
 			chart.setTitleAlign(XEnum.HorizontalAlign.CENTER);
-		
 			//数据源
 			chart.setDataSource(chartData);
 			chart.setCategories(chartLabels);	
@@ -116,10 +131,12 @@ public class BarChart02View extends DemoView {
 			chart.getAxisTitle().setRightTitle("生意兴隆通四海,财源茂盛达三江。");*/
 			
 			//数据轴
-			chart.getDataAxis().setAxisMax(3000);
+/*			chart.getDataAxis().setAxisMax(3000);
 			chart.getDataAxis().setAxisMin(500);
-			chart.getDataAxis().setAxisSteps(500); // 设置x轴每格的倍数
-											
+			chart.getDataAxis().setAxisSteps(500); // 设置x轴每格的倍数*/
+			chart.getDataAxis().setAxisMax(axisMax);
+			chart.getDataAxis().setAxisMin(axismin);
+			chart.getDataAxis().setAxisSteps(asisStep); // 设置x轴每格的倍数
 			/*chart.getDataAxis().getTickLabelPaint().
 									setColor(Color.rgb(199, 88, 122));*/
 			chart.getPlotLegend().setType(XEnum.LegendType.COLUMN);
@@ -183,8 +200,9 @@ public class BarChart02View extends DemoView {
 	}
 	private void chartDataSet()
 	{
+
 		//标签对应的柱形数据集
-		List<Double> dataSeriesA= new LinkedList<Double>();
+	List<Double> dataSeriesA= new LinkedList<Double>();
 		dataSeriesA.add((double)500);
 		dataSeriesA.add((double)1000);
 		dataSeriesA.add((double)2000);
@@ -209,9 +227,9 @@ public class BarChart02View extends DemoView {
 	
 	private void chartLabels()
 	{		
+		/*chartLabels.add("区城区安全监督站");
 		chartLabels.add("区城区安全监督站");
-		chartLabels.add("区城区安全监督站");
-		chartLabels.add("区城区安全监督站");
+		chartLabels.add("区城区安全监督站");*/
 	}
 	
 	
