@@ -48,9 +48,7 @@ public class LoginPresenter implements IBasePresenter{
         GetLoginListReq req = new GetLoginListReq();
         req.setUsername(phoneNum);
         req.setPassword(password);
-        String str = new Gson().toJson(req);
-
-        Observable<BaseBeanRsp<GetLoginListRsp>> observable = RetrofitFactory.getInstance().toLogin(str);
+        Observable<BaseBeanRsp<GetLoginListRsp>> observable = RetrofitFactory.getInstance().toLogin(req);
         observable.compose(RxSchedulers.<BaseBeanRsp<GetLoginListRsp>>compose(
         )).subscribe(new BaseObserver<GetLoginListRsp>(mLoginView) {
             @Override

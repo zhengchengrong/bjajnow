@@ -15,7 +15,7 @@ import com.threehmis.bjaj.R;
 import com.threehmis.bjaj.api.Const;
 import com.threehmis.bjaj.api.RetrofitFactory;
 import com.threehmis.bjaj.api.bean.respon.GetMenusListRsp;
-import com.threehmis.bjaj.module.home.fragment.map.griddetail.projectinfo.MainInfoActivity;
+import com.threehmis.bjaj.module.home.fragment.map.griddetail.projectinfo.ProjectInfoActivity;
 import com.threehmis.bjaj.module.home.fragment.map.griddetail.schedule.ScheduleActivity;
 import com.threehmis.bjaj.utils.SPUtils;
 import com.threehmis.bjaj.utils.VHUtil;
@@ -94,10 +94,10 @@ public class MenusGridviewAdapter extends android.widget.BaseAdapter {
         public void onClick(View view) {
             switch (name) {
                 case "工程信息":  //工程信息
-                    Intent intent = new Intent(activity, MainInfoActivity.class);
+                    Intent intent = new Intent(activity, ProjectInfoActivity.class);
                     Bundle bundle1 = new Bundle();
-                    bundle1.putString("projectID", projectID);
-                    intent.putExtra("projectName", projectName);
+                    bundle1.putString(Const.PROJECTID, projectID);
+                    intent.putExtra(Const.PROJECTNAME, projectName);
                     intent.putExtras(bundle1);
                     activity.startActivity(intent);
                     break;

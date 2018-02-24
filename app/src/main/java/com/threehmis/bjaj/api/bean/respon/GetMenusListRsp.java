@@ -14,8 +14,9 @@ public class GetMenusListRsp implements Serializable {
 	 * interfaceType : 0 表示对内使用,1表示对外使用
 	 */
 
-	public String menuCode;
-	public String menuNameShow;
+	public String customerId; // 登录用户ID
+	public String menuCode; // 功能编号
+	public String menuNameShow; // 功能名称
 	public String menuUrl;
 	public String parentCode;
 	public int orderId;

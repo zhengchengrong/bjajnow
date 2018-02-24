@@ -21,6 +21,7 @@ import com.threehmis.bjaj.module.base.BaseActivity;
 import com.threehmis.bjaj.module.home.fragment.adminmain.AdminMainFragment;
 import com.threehmis.bjaj.module.home.fragment.main.MainFragment;
 import com.threehmis.bjaj.module.home.fragment.map.MainMapFragment;
+import com.threehmis.bjaj.module.home.fragment.message.MessageFragment;
 import com.threehmis.bjaj.module.home.fragment.notice.NoticeFragment;
 import com.threehmis.bjaj.module.logins.LoginActivity;
 import com.threehmis.bjaj.utils.DensityUtils;
@@ -75,7 +76,7 @@ public class HomeActivity extends BaseActivity<HomePresenter> implements IHomeVi
         mFragments.add(new AdminMainFragment());// 添加管理员的页面
         mFragments.add(new MainMapFragment());
         mFragments.add(new NoticeFragment());
-        mFragments.add(new NoticeFragment());
+        mFragments.add(new MessageFragment());
         mFragments.add(new NoticeFragment());
         for (int i = 0; i < mTitles.length; i++) {
             mTabEntities.add(new TabEntity(mTitles[i], mIconSelectIds[i], mIconUnselectIds[i]));

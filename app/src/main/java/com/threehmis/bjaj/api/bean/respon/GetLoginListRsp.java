@@ -25,6 +25,16 @@ public class GetLoginListRsp implements Serializable {
 	private String projectCode;
 	private String userType;
 
+	private String personId;
+
+	public String getPersonId() {
+		return personId;
+	}
+
+	public void setPersonId(String personId) {
+		this.personId = personId;
+	}
+
 	public String getUserType() {
 		return userType;
 	}

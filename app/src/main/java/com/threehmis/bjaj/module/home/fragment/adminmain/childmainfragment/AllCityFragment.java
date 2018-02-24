@@ -134,7 +134,7 @@ public class AllCityFragment extends BaseFragment implements View.OnClickListene
         mCv02.setOnClickListener(this);
         mCv03.setOnClickListener(this);
 
-        mVpCity.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        /*mVpCity.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int i, float v, int i1) {
                 if(i==0){
@@ -179,7 +179,7 @@ public class AllCityFragment extends BaseFragment implements View.OnClickListene
             public void onPageScrollStateChanged(int i) {
 
             }
-        });
+        });*/
     }
 
     @Override
@@ -201,11 +201,11 @@ public class AllCityFragment extends BaseFragment implements View.OnClickListene
                 mCv02.setCardBackgroundColor(mActivity.getResources().getColor(R.color.white));
                 mCv03.setCardBackgroundColor(mActivity.getResources().getColor(R.color.white));
                 mTvAllXuke01.setTextColor(mActivity.getResources().getColor(R.color.white));
-                mTvAllXuke02.setTextColor(mActivity.getResources().getColor(R.color.admin_main_unselect_text));
-                mTvAllXuke03.setTextColor(mActivity.getResources().getColor(R.color.admin_main_unselect_text));
+                mTvAllXuke02.setTextColor(mActivity.getResources().getColor(R.color.main_text_color));
+                mTvAllXuke03.setTextColor(mActivity.getResources().getColor(R.color.main_text_color));
                 mTvAllXuke01A.setTextColor(mActivity.getResources().getColor(R.color.white));
-                mTvAllXuke02B.setTextColor(mActivity.getResources().getColor(R.color.admin_main_unselect_text));
-                mTvAllXuke03C.setTextColor(mActivity.getResources().getColor(R.color.admin_main_unselect_text));
+                mTvAllXuke02B.setTextColor(mActivity.getResources().getColor(R.color.main_text_color));
+                mTvAllXuke03C.setTextColor(mActivity.getResources().getColor(R.color.main_text_color));
 
                 mVpCity.setCurrentItem(0);
                 break;
@@ -213,23 +213,23 @@ public class AllCityFragment extends BaseFragment implements View.OnClickListene
                 mCv01.setCardBackgroundColor(mActivity.getResources().getColor(R.color.white));
                 mCv02.setCardBackgroundColor(mActivity.getResources().getColor(R.color.main_color));
                 mCv03.setCardBackgroundColor(mActivity.getResources().getColor(R.color.white));
-                mTvAllXuke01.setTextColor(mActivity.getResources().getColor(R.color.admin_main_unselect_text));
+                mTvAllXuke01.setTextColor(mActivity.getResources().getColor(R.color.main_text_color));
                 mTvAllXuke02.setTextColor(mActivity.getResources().getColor(R.color.white));
-                mTvAllXuke03.setTextColor(mActivity.getResources().getColor(R.color.admin_main_unselect_text));
-                mTvAllXuke01A.setTextColor(mActivity.getResources().getColor(R.color.admin_main_unselect_text));
+                mTvAllXuke03.setTextColor(mActivity.getResources().getColor(R.color.main_text_color));
+                mTvAllXuke01A.setTextColor(mActivity.getResources().getColor(R.color.main_text_color));
                 mTvAllXuke02B.setTextColor(mActivity.getResources().getColor(R.color.white));
-                mTvAllXuke03C.setTextColor(mActivity.getResources().getColor(R.color.admin_main_unselect_text));
+                mTvAllXuke03C.setTextColor(mActivity.getResources().getColor(R.color.main_text_color));
                 mVpCity.setCurrentItem(1);
                 break;
             case R.id.cv_03:
                 mCv01.setCardBackgroundColor(mActivity.getResources().getColor(R.color.white));
                 mCv02.setCardBackgroundColor(mActivity.getResources().getColor(R.color.white));
                 mCv03.setCardBackgroundColor(mActivity.getResources().getColor(R.color.main_color));
-                mTvAllXuke01.setTextColor(mActivity.getResources().getColor(R.color.admin_main_unselect_text));
-                mTvAllXuke02.setTextColor(mActivity.getResources().getColor(R.color.admin_main_unselect_text));
+                mTvAllXuke01.setTextColor(mActivity.getResources().getColor(R.color.main_text_color));
+                mTvAllXuke02.setTextColor(mActivity.getResources().getColor(R.color.main_text_color));
                 mTvAllXuke03.setTextColor(mActivity.getResources().getColor(R.color.white));
-                mTvAllXuke01A.setTextColor(mActivity.getResources().getColor(R.color.admin_main_unselect_text));
-                mTvAllXuke02B.setTextColor(mActivity.getResources().getColor(R.color.admin_main_unselect_text));
+                mTvAllXuke01A.setTextColor(mActivity.getResources().getColor(R.color.main_text_color));
+                mTvAllXuke02B.setTextColor(mActivity.getResources().getColor(R.color.main_text_color));
                 mTvAllXuke03C.setTextColor(mActivity.getResources().getColor(R.color.white));
                 mVpCity.setCurrentItem(2);
                 break;

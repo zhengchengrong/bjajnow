@@ -33,8 +33,7 @@ public abstract class BaseObserver<T> implements Observer<BaseBeanRsp<T>>{
 
     @Override
     public void onNext(BaseBeanRsp<T> value) {
-        // 隐藏加载
-        mBaseView.hideLoading();
+
         if (value.isSuccess()) {
             onHandleSuccess(value);
         } else if(value.isError()){ // 如果数据为空，显示空视图

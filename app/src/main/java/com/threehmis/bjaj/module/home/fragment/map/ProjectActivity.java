@@ -13,17 +13,22 @@ import com.threehmis.bjaj.AndroidApplication;
 import com.threehmis.bjaj.R;
 import com.threehmis.bjaj.adapter.MenusGridviewAdapter;
 import com.threehmis.bjaj.adapter.ProjectRollAdapter;
+import com.threehmis.bjaj.api.BaseObserver;
 import com.threehmis.bjaj.api.Const;
 import com.threehmis.bjaj.api.RetrofitFactory;
+import com.threehmis.bjaj.api.RxSchedulers;
 import com.threehmis.bjaj.api.bean.BaseBeanRsp;
 import com.threehmis.bjaj.api.bean.request.GetMenusListReq;
 import com.threehmis.bjaj.api.bean.respon.GetMenusListRsp;
+import com.threehmis.bjaj.api.bean.respon.GetSearchRsp;
 import com.threehmis.bjaj.utils.CDUtil;
 import com.threehmis.bjaj.utils.OkhttpCallbackUtils;
 import com.threehmis.bjaj.widget.NoScrollGridView;
 
 
 import java.io.IOException;
+
+import io.reactivex.Observable;
 
 public class ProjectActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -63,25 +68,23 @@ public class ProjectActivity extends AppCompatActivity implements View.OnClickLi
         GetMenusListReq req =new GetMenusListReq();
         req.customerId=customerId;
         req.appType=1+"";
-            AndroidApplication.getInstance().doPostAsyncfilexx(RetrofitFactory.BASE_URL+"menu/getMenus", req,
-                    new OkhttpCallbackUtils<GetMenusListRsp>(new TypeReference<BaseBeanRsp<GetMenusListRsp>>() {
-                    }) {
-                        @Override
-                        public void onFailure(IOException e) {
-                            super.onFailure(e);
-                            Toast.makeText(getApplicationContext(), "网络连接失败，请稍后重试！", Toast.LENGTH_SHORT).show();
-                        }
-                        @Override
-                        public void onResponse(BaseBeanRsp<GetMenusListRsp> t) {
-                            super.onResponse(t);
-                            if (t.verification) {
-                                adapter.DateNotify(t.projectList);
-                                CDUtil.saveObject(t.projectList, "MenusDate");
-                            } else {
-                                Toast.makeText(getApplicationContext(), t.result, Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
+        Observable<BaseBeanRsp<GetMenusListRsp>> observable = RetrofitFactory.getInstance().getMenuList(req);
+        observable.compose(RxSchedulers.<BaseBeanRsp<GetMenusListRsp>>compose(
+        )).subscribe(new BaseObserver<GetMenusListRsp>() {
+            @Override
+            protected void onHandleSuccess(BaseBeanRsp<GetMenusListRsp> getSearchRspBaseBeanRsp) {
+                if (getSearchRspBaseBeanRsp.verification) {
+                    adapter.DateNotify(getSearchRspBaseBeanRsp.projectList);
+                    CDUtil.saveObject(getSearchRspBaseBeanRsp.projectList, "MenusDate");
+                } else {
+                    Toast.makeText(getApplicationContext(), getSearchRspBaseBeanRsp.result, Toast.LENGTH_SHORT).show();
+                }
+            }
+            @Override
+            protected void onHandleEmpty(BaseBeanRsp<GetMenusListRsp> t) {
+                Toast.makeText(getApplicationContext(), "网络连接失败，请稍后重试！", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
     @Override
     public void onClick(View view) {

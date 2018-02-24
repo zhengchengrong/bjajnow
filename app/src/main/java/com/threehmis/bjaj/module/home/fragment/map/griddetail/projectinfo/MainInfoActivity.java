@@ -1,3 +1,4 @@
+/*
 package com.threehmis.bjaj.module.home.fragment.map.griddetail.projectinfo;
 
 import android.os.Bundle;
@@ -101,3 +102,4 @@ public class MainInfoActivity extends AppCompatActivity {
         }
     }
 }
+*/

@@ -98,6 +98,7 @@ public class AndroidApplication extends MultiDexApplication {
 
     //Okhttp post 方式上传数据
     public <T> void doPostAsyncfile(String url, BaseBeanReq<T> object, Callback callback) {
+        String str = JSON.toJSONString(object);
         RequestBody requestBody = new FormBody.Builder()
                 .add("params", JSON.toJSONString(object))
                 .build();
@@ -227,4 +228,13 @@ public class AndroidApplication extends MultiDexApplication {
                 .readObject(Const.LOGINDATE);
         return getLoginListRsp!=null?getLoginListRsp.get(0).customerId:"";
     }
+
+    public String getpersonId() {
+        //读取缓存 拿userId
+        ArrayList<GetLoginListRsp> getLoginListRsp = (ArrayList<GetLoginListRsp>) CDUtil
+                .readObject(Const.LOGINDATE);
+        return getLoginListRsp!=null?getLoginListRsp.get(0).getPersonId():"";
+    }
+
+
 }

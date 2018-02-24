@@ -19,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/str_admin_main_city"
-            android:layout_marginLeft="@dimen/dp_20"
+            android:layout_marginLeft="@dimen/dp_10"
             android:layout_centerVertical="true"
             android:textSize="@dimen/sp_admin_main_02"
             android:textStyle="bold"
@@ -40,7 +40,6 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
-                android:layout_marginLeft="@dimen/dp_10"
                 >
             </Spinner>
 
@@ -83,6 +82,7 @@
                         android:layout_height="wrap_content"
                         android:text="监督工程"
                         android:gravity="center_horizontal"
+                        android:textColor="@color/main_text_color"
                         android:layout_below="@+id/tv_all_num_01"
                         />
                 </RelativeLayout>
@@ -111,6 +111,8 @@
                         android:layout_height="wrap_content"
                         android:text="在建工程"
                         android:gravity="center_horizontal"
+                        android:textColor="@color/main_text_color"
+
                         android:layout_below="@+id/tv_all_num_02"
                         />
                 </RelativeLayout>
@@ -136,6 +138,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="停工工程"
+                        android:textColor="@color/main_text_color"
+
                         android:gravity="center_horizontal"
                         android:layout_below="@+id/tv_all_num_03"
                         />
@@ -171,6 +175,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="中止监督工程"
+                        android:textColor="@color/main_text_color"
+
                         android:gravity="center_horizontal"
                         android:layout_below="@+id/tv_all_num_04"
                         />
@@ -197,6 +203,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="终止监督工程"
+                        android:textColor="@color/main_text_color"
+
                         android:gravity="center_horizontal"
                         android:layout_below="@+id/tv_all_num_05"
                         />

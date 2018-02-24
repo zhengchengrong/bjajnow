@@ -3,6 +3,7 @@ package com.threehmis.bjaj.widget;
 import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
 
 /**
@@ -31,5 +32,14 @@ public class WrapContentHeightViewPager extends ViewPager {
         }
         heightMeasureSpec = MeasureSpec.makeMeasureSpec(height, MeasureSpec.EXACTLY);
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+    }
+    @Override
+    public boolean onTouchEvent(MotionEvent arg0) {
+        return false;
+    }
+
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent arg0) {
+        return false;
     }
 }

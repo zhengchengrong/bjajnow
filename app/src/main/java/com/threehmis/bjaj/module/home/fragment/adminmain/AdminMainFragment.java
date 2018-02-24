@@ -8,6 +8,11 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.flyco.tablayout.SlidingTabLayout;
 import com.flyco.tablayout.listener.OnTabSelectListener;
@@ -15,8 +20,6 @@ import com.threehmis.bjaj.R;
 import com.threehmis.bjaj.module.base.BaseFragment;
 import com.threehmis.bjaj.module.home.fragment.adminmain.childmainfragment.AllCityFragment;
 import com.threehmis.bjaj.module.home.fragment.adminmain.childmainfragment.AllTownFragment;
-import com.threehmis.bjaj.module.home.fragment.map.MapFragment;
-import com.threehmis.bjaj.module.home.fragment.map.griddetail.projectinfo.ProjectListFragment;
 
 import java.util.ArrayList;
 
@@ -33,11 +36,22 @@ public class AdminMainFragment extends BaseFragment implements OnTabSelectListen
     SlidingTabLayout mTlAdminMain;
     @BindView(R.id.vp)
     ViewPager mVp;
+    @BindView(R.id.iv_flag01)
+    ImageView mIvFlag01;
+    @BindView(R.id.tv_admin_main_bottom)
+    TextView mTvAdminMainBottom;
+    @BindView(R.id.iv_flag02)
+    ImageView mIvFlag02;
+    @BindView(R.id.rl_admin_main_bottom)
+    RelativeLayout mRlAdminMainBottom;
     private ArrayList<Fragment> mFragments = new ArrayList<>();
     private Fragment fragment1;
     private Fragment fragment2;
     private MyPagerAdapter mAdapter;
     String[] mTitles;
+    Animation alphaAnimation;
+    Animation translateAnimatioin;
+
     @Override
     protected void initInjector() {
 
@@ -45,7 +59,7 @@ public class AdminMainFragment extends BaseFragment implements OnTabSelectListen
 
     @Override
     protected void initViews() {
-        mTitles= new String[]{
+        mTitles = new String[]{
                 "全市数据统计", "各区县数据统计"
         };
         fragment1 = new AllCityFragment();
@@ -56,6 +70,18 @@ public class AdminMainFragment extends BaseFragment implements OnTabSelectListen
         mAdapter = new MyPagerAdapter(getActivity().getSupportFragmentManager());
         mVp.setAdapter(mAdapter);
         mTlAdminMain.setViewPager(mVp);
+        alphaAnimation = AnimationUtils.loadAnimation(mActivity, R.anim.alphaanim);
+        mRlAdminMainBottom.setVisibility(View.VISIBLE);
+        mRlAdminMainBottom.startAnimation(alphaAnimation);
+        translateAnimatioin = AnimationUtils.loadAnimation(mActivity, R.anim.translateanimanim);
+        mIvFlag02.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mRlAdminMainBottom.startAnimation(translateAnimatioin);
+
+            }
+        });
+
     }
 
     @Override
@@ -78,6 +104,8 @@ public class AdminMainFragment extends BaseFragment implements OnTabSelectListen
     public void onTabReselect(int position) {
 
     }
+
+
 
     private class MyPagerAdapter extends FragmentPagerAdapter {
         public MyPagerAdapter(FragmentManager fm) {

@@ -6,7 +6,7 @@ import com.threehmis.bjaj.api.bean.respon.GetLoginListRsp;
 public class GetSearchReq extends BaseBeanReq<GetLoginListRsp> {
 
 //	A2016000008L ,project/findByNameOrNo
-	public Object param,userId,pageno,pagesize,customerId;
+	public Object param,userId,pageno,pagesize,customerId,keyword,personId;
 
 //	@Override
 //	public TypeReference<BaseBeanRsp<GetLoginListRsp>> myTypeReference() {

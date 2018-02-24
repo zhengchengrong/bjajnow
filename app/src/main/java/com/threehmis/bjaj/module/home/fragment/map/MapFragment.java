@@ -35,11 +35,15 @@ import com.baidu.mapapi.map.MyLocationConfiguration;
 import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.map.TextureMapView;
 import com.baidu.mapapi.model.LatLng;
+import com.google.gson.Gson;
 import com.threehmis.bjaj.AndroidApplication;
 import com.threehmis.bjaj.R;
+import com.threehmis.bjaj.api.BaseObserver;
 import com.threehmis.bjaj.api.Const;
 import com.threehmis.bjaj.api.RetrofitFactory;
+import com.threehmis.bjaj.api.RxSchedulers;
 import com.threehmis.bjaj.api.bean.BaseBeanRsp;
+import com.threehmis.bjaj.api.bean.request.GetLoginListReq;
 import com.threehmis.bjaj.api.bean.request.GetSearchReq;
 import com.threehmis.bjaj.api.bean.respon.GetLoginListRsp;
 import com.threehmis.bjaj.api.bean.respon.GetSearchRsp;
@@ -51,6 +55,7 @@ import com.threehmis.bjaj.utils.RegexUtil;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import io.reactivex.Observable;
 import okhttp3.Call;
 import okhttp3.Callback;
 
@@ -288,13 +293,33 @@ public class MapFragment extends Fragment {
     private void getInteract() {
 
         GetSearchReq req = new GetSearchReq();
-        req.param = write.getText().toString();
-        req.userId = AndroidApplication.getInstance().getuserId();
+        req.keyword = write.getText().toString();
+        req.personId = AndroidApplication.getInstance().getpersonId();
+       // req.param = write.getText().toString();
+      //  req.userId = AndroidApplication.getInstance().getuserId();
         // 访问网络
-        AndroidApplication.getInstance().doPostAsyncfile(RetrofitFactory.BASE_URL + "project/findByNameOrNo", req, new OkHttpcallback());
+      //  AndroidApplication.getInstance().doPostAsyncfile(RetrofitFactory.BASE_URL + "project/getProjectListByKeyword", req, new OkHttpcallback());
+
+      //  String str = new Gson().toJson(req);
+
+        Observable<BaseBeanRsp<GetSearchRsp>> observable = RetrofitFactory.getInstance().byKeyForMapLocal(req);
+        observable.compose(RxSchedulers.<BaseBeanRsp<GetSearchRsp>>compose(
+        )).subscribe(new BaseObserver<GetSearchRsp>() {
+            @Override
+            protected void onHandleSuccess(BaseBeanRsp<GetSearchRsp> getSearchRspBaseBeanRsp) {
+                if (getSearchRsp.verification) {
+                    mHandler.sendEmptyMessage(RetrofitFactory.MSG_SUCESS);
+                } else {
+                    mHandler.sendEmptyMessage(RetrofitFactory.MSG_FAIL);
+                }
+            }
+            @Override
+            protected void onHandleEmpty(BaseBeanRsp<GetSearchRsp> t) {
+            }
+        });
     }
 
-    class OkHttpcallback implements Callback {
+ /*   class OkHttpcallback implements Callback {
 
 
         @Override
@@ -325,7 +350,7 @@ public class MapFragment extends Fragment {
 
 
         }
-    }
+    }*/
 
     protected Handler mHandler = new Handler() {
         @Override
