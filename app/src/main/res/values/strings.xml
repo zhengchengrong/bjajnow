@@ -15,5 +15,7 @@
     <string name="str_admin_all_town">各县区数据统计</string>
     <string name="tv_bottom_text">通过全流程无纸化办理业务，减少办事企业跑路次数6000次，通过数据共享减少企业填报2,7452项。</string>
     <string name="fragment_message_title">消息动态</string>
+    <string name="project_info_title">工程信息</string>
+    <string name="check_look">查看</string>
 
 </resources>

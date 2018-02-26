@@ -69,5 +69,16 @@
     <color name="admin_main_unselect_text">#6C6C6C</color>
     <color name="admin_main_select_text">#333333</color>
     <color name="main_text_color">#6D6E76</color>
+    <!-- 公共分割线-->
+    <color name="stroke_checked_color">#FF4081</color>
+    <color name="stroke_unchecked_color">#e3e3e3</color>
+    <color name="flowlayout_checked_color">#57609e</color>
+    <color name="flowlayout_unchecked_color">#f2f5f9</color>
+    <color name="flowlayout_unenable_color">#999999</color>
+
+    <color name="flowlayout_checked_tv_color">#8d8ea3</color>
+
+
+
 
 </resources>

@@ -18,6 +18,78 @@ public class ProjectInfoTwoRep {
     private String unitName;
     private String gradeNo;
     private String grade;
+    private String unitTypeNote;
+    private String personname;
+    private String duty;
+    private String title;
+    private String regisQualification;
+    private String titleNo;
+    private String tel;
+    private String safeProduceNum;
+
+    public String getPersonname() {
+        return personname;
+    }
+
+    public void setPersonname(String personname) {
+        this.personname = personname;
+    }
+
+    public String getDuty() {
+        return duty;
+    }
+
+    public void setDuty(String duty) {
+        this.duty = duty;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getRegisQualification() {
+        return regisQualification;
+    }
+
+    public void setRegisQualification(String regisQualification) {
+        this.regisQualification = regisQualification;
+    }
+
+    public String getTitleNo() {
+        return titleNo;
+    }
+
+    public void setTitleNo(String titleNo) {
+        this.titleNo = titleNo;
+    }
+
+    public String getTel() {
+        return tel;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
+
+    public String getSafeProduceNum() {
+        return safeProduceNum;
+    }
+
+    public void setSafeProduceNum(String safeProduceNum) {
+        this.safeProduceNum = safeProduceNum;
+    }
+
+    public String getUnitTypeNote() {
+        return unitTypeNote;
+    }
+
+    public void setUnitTypeNote(String unitTypeNote) {
+        this.unitTypeNote = unitTypeNote;
+    }
 
     public String getUnitType() {
         return unitType;

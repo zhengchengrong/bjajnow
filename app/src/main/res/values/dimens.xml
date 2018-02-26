@@ -436,5 +436,6 @@
 
     <dimen name="dp_admin_main_radius">12dp</dimen>
     <dimen name="dp_admin_main_elevation">8dp</dimen>
-
+    <!-- 公共分割线-->
+    <dimen name="dirver_horizontal_height">1dip</dimen>
 </resources>
