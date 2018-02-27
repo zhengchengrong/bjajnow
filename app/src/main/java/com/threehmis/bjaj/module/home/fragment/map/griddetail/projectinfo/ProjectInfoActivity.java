@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -67,11 +68,12 @@ public class ProjectInfoActivity extends BaseActivity implements View.OnClickLis
     private View view02;
     private DLFlowLayout mContainer;
     private TextView tv_view02_01,tv_view02_02,tv_view02_03,tv_view02_04,tv_view02_05,tv_view02_06,tv_view02_07,tv_view02_08,tv_view02_09,tv_view02_10,tv_project_code01;
-    private RelativeLayout rl_info_10;
-
+    private RelativeLayout rl_info_10,rl_info_05,rl_info_06,rl_info_07,rl_info_08;
+    private View view_info_05,view_info_06,view_info_07,view_info_08;
 
     private ArrayList<Flow> view02MList;
     private ArrayList<ProjectInfoTwoRep> mProjectInfoTwoReps;
+    private LinearLayout course_viewflipper;
 
     private View view03;
     private RecyclerView view03MRecyclerView;
@@ -172,7 +174,15 @@ public class ProjectInfoActivity extends BaseActivity implements View.OnClickLis
         tv_view02_10 = view02.findViewById(R.id.tv_safe_produce_num02);
         rl_info_10 = view02.findViewById(R.id.rl_info_10);
         tv_project_code01 = view02.findViewById(R.id.tv_project_code01);
-
+        rl_info_05 = view02.findViewById(R.id.rl_info_05);
+        rl_info_06 = view02.findViewById(R.id.rl_info_06);
+        rl_info_07 = view02.findViewById(R.id.rl_info_07);
+        rl_info_08 = view02.findViewById(R.id.rl_info_08);
+        view_info_05= view02.findViewById(R.id.view_info_05);
+        view_info_06= view02.findViewById(R.id.view_info_06);
+        view_info_07= view02.findViewById(R.id.view_info_07);
+        view_info_08= view02.findViewById(R.id.view_info_08);
+        course_viewflipper = view02.findViewById(R.id.course_viewflipper);
         mProjectInfoTwoReps = new ArrayList<ProjectInfoTwoRep>();
         view02MList = new ArrayList<Flow>();
         Flow flow = new Flow();
@@ -181,7 +191,7 @@ public class ProjectInfoActivity extends BaseActivity implements View.OnClickLis
         view02MList.add(flow);
         Flow flow2 = new Flow();
         flow2.setFlowId("2");
-        flow2.setFlowName("施工总承包");
+        flow2.setFlowName("施工总承包单位");
         view02MList.add(flow2);
         Flow flow3 = new Flow();
         flow3.setFlowId("3");
@@ -221,41 +231,119 @@ public class ProjectInfoActivity extends BaseActivity implements View.OnClickLis
                     CheckBox chk = (CheckBox)mContainer.getChildAt(i).findViewById(R.id.single_select_chk);
                     chk.setBackground(getResources().getDrawable(R.drawable.shape_admin_flow_color));
                     chk.setTextColor(getResources().getColor(R.color.white));
-                }
-                Flow flow =  view02MList.get(i);
-                String type = flow.getFlowName();
-                if(type.equals("建设单位")){
-                    for(int j=0;j<mProjectInfoTwoReps.size();j++){
-                        ProjectInfoTwoRep projectInfoTwoRep = mProjectInfoTwoReps.get(j);
-                        if(projectInfoTwoRep.getUnitTypeNote().equals(type)){
-                            tv_view02_01.setText(projectInfoTwoRep.getUnitName()==null?"":projectInfoTwoRep.getUnitName());
-                            tv_view02_02.setText(projectInfoTwoRep.getGradeNo()==null?"":projectInfoTwoRep.getGradeNo());
-                            tv_view02_03.setText(projectInfoTwoRep.getGrade()==null?"":projectInfoTwoRep.getGrade());
-                            tv_view02_04.setText(projectInfoTwoRep.getPersonname()==null?"":projectInfoTwoRep.getPersonname());
-                            tv_view02_05.setText(projectInfoTwoRep.getDuty()==null?"":projectInfoTwoRep.getDuty());
-                            tv_view02_06.setText(projectInfoTwoRep.getTitle()==null?"":projectInfoTwoRep.getTitle());
-                            tv_view02_07.setText(projectInfoTwoRep.getRegisQualification()==null?"":projectInfoTwoRep.getRegisQualification());
-                            tv_view02_08.setText(projectInfoTwoRep.getTitleNo()==null?"":projectInfoTwoRep.getTitleNo());
-                            tv_view02_09.setText(projectInfoTwoRep.getTel()==null?"":projectInfoTwoRep.getTel());
-                            rl_info_10.setVisibility(View.GONE);
+                    Flow flow =  view02MList.get(i);
+                    String type = flow.getFlowName();
+                    rl_info_05.setVisibility(View.VISIBLE);
+                    rl_info_06.setVisibility(View.VISIBLE);
+                    rl_info_07.setVisibility(View.VISIBLE);
+                    rl_info_08.setVisibility(View.VISIBLE);
+                    view_info_05.setVisibility(View.VISIBLE);
+                    view_info_06.setVisibility(View.VISIBLE);
+                    view_info_07.setVisibility(View.VISIBLE);
+                    view_info_08.setVisibility(View.VISIBLE);
+                    course_viewflipper.setVisibility(View.GONE);
+
+                    if(type.equals("建设单位")){
+                        for(int j=0;j<mProjectInfoTwoReps.size();j++){
+                            ProjectInfoTwoRep projectInfoTwoRep = mProjectInfoTwoReps.get(j);
+                            if(projectInfoTwoRep.getUnitTypeNote().equals(type)){
+                                course_viewflipper.setVisibility(View.VISIBLE);
+                                tv_view02_01.setText(projectInfoTwoRep.getUnitName()==null?"":projectInfoTwoRep.getUnitName());
+                                tv_view02_02.setText(projectInfoTwoRep.getGradeNo()==null?"":projectInfoTwoRep.getGradeNo());
+                                tv_view02_03.setText(projectInfoTwoRep.getGrade()==null?"":projectInfoTwoRep.getGrade());
+                                tv_view02_04.setText(projectInfoTwoRep.getPersonname()==null?"":projectInfoTwoRep.getPersonname());
+                                tv_view02_05.setText(projectInfoTwoRep.getDuty()==null?"":projectInfoTwoRep.getDuty());
+                                tv_view02_06.setText(projectInfoTwoRep.getTitle()==null?"":projectInfoTwoRep.getTitle());
+                                tv_view02_07.setText(projectInfoTwoRep.getRegisQualification()==null?"":projectInfoTwoRep.getRegisQualification());
+                                tv_view02_08.setText(projectInfoTwoRep.getTitleNo()==null?"":projectInfoTwoRep.getTitleNo());
+                                tv_view02_09.setText(projectInfoTwoRep.getTel()==null?"":projectInfoTwoRep.getTel());
+                                rl_info_10.setVisibility(View.GONE);
+                            }
                         }
                     }
-                }
-                if(type.equals("监理单位")){
-                    for(int j=0;j<mProjectInfoTwoReps.size();j++){
-                        ProjectInfoTwoRep projectInfoTwoRep = mProjectInfoTwoReps.get(j);
-                        if(projectInfoTwoRep.getUnitTypeNote().equals(type)){
-                            tv_view02_01.setText(projectInfoTwoRep.getUnitName()==null?"":projectInfoTwoRep.getUnitName());
-                            tv_project_code01.setText("工程监理企业资质证书");
-                            tv_view02_02.setText(projectInfoTwoRep.getGradeNo()==null?"":projectInfoTwoRep.getGradeNo());
-                            tv_view02_03.setText(projectInfoTwoRep.getGrade()==null?"":projectInfoTwoRep.getGrade());
-                            tv_view02_04.setText(projectInfoTwoRep.getPersonname()==null?"":projectInfoTwoRep.getPersonname());
-                            tv_view02_05.setText(projectInfoTwoRep.getDuty()==null?"":projectInfoTwoRep.getDuty());
-                            tv_view02_06.setText(projectInfoTwoRep.getTitle()==null?"":projectInfoTwoRep.getTitle());
-                            tv_view02_07.setText(projectInfoTwoRep.getRegisQualification()==null?"":projectInfoTwoRep.getRegisQualification());
-                            tv_view02_08.setText(projectInfoTwoRep.getTitleNo()==null?"":projectInfoTwoRep.getTitleNo());
-                            tv_view02_09.setText(projectInfoTwoRep.getTel()==null?"":projectInfoTwoRep.getTel());
-                            rl_info_10.setVisibility(View.GONE);
+                    if(type.equals("施工总承包单位")){
+                        for(int j=0;j<mProjectInfoTwoReps.size();j++){
+                            ProjectInfoTwoRep projectInfoTwoRep = mProjectInfoTwoReps.get(j);
+                            if(projectInfoTwoRep.getUnitTypeNote().equals(type)){
+                                course_viewflipper.setVisibility(View.VISIBLE);
+                                tv_view02_01.setText(projectInfoTwoRep.getUnitName()==null?"":projectInfoTwoRep.getUnitName());
+                                tv_project_code01.setText("建筑施工企业资质证书编号");
+                                tv_view02_02.setText(projectInfoTwoRep.getGradeNo()==null?"":projectInfoTwoRep.getGradeNo());
+                                tv_view02_03.setText(projectInfoTwoRep.getGrade()==null?"":projectInfoTwoRep.getGrade());
+                                tv_view02_04.setText(projectInfoTwoRep.getPersonname()==null?"":projectInfoTwoRep.getPersonname());
+                                tv_view02_05.setText(projectInfoTwoRep.getDuty()==null?"":projectInfoTwoRep.getDuty());
+                                tv_view02_06.setText(projectInfoTwoRep.getTitle()==null?"":projectInfoTwoRep.getTitle());
+                                tv_view02_07.setText(projectInfoTwoRep.getRegisQualification()==null?"":projectInfoTwoRep.getRegisQualification());
+                                tv_view02_08.setText(projectInfoTwoRep.getTitleNo()==null?"":projectInfoTwoRep.getTitleNo());
+                                tv_view02_09.setText(projectInfoTwoRep.getTel()==null?"":projectInfoTwoRep.getTel());
+                                rl_info_10.setVisibility(View.VISIBLE);
+                                tv_view02_10.setText(projectInfoTwoRep.getSafeProduceNum()==null?"":projectInfoTwoRep.getSafeProduceNum());
+                            }
+                        }
+                    }
+                    if(type.equals("监理单位")){
+                        for(int j=0;j<mProjectInfoTwoReps.size();j++){
+                            ProjectInfoTwoRep projectInfoTwoRep = mProjectInfoTwoReps.get(j);
+                            if(projectInfoTwoRep.getUnitTypeNote().equals(type)){
+                                course_viewflipper.setVisibility(View.VISIBLE);
+                                tv_view02_01.setText(projectInfoTwoRep.getUnitName()==null?"":projectInfoTwoRep.getUnitName());
+                                tv_project_code01.setText("工程监理企业资质证书");
+                                tv_view02_02.setText(projectInfoTwoRep.getGradeNo()==null?"":projectInfoTwoRep.getGradeNo());
+                                tv_view02_03.setText(projectInfoTwoRep.getGrade()==null?"":projectInfoTwoRep.getGrade());
+                                tv_view02_04.setText(projectInfoTwoRep.getPersonname()==null?"":projectInfoTwoRep.getPersonname());
+                                tv_view02_05.setText(projectInfoTwoRep.getDuty()==null?"":projectInfoTwoRep.getDuty());
+                                tv_view02_06.setText(projectInfoTwoRep.getTitle()==null?"":projectInfoTwoRep.getTitle());
+                                tv_view02_07.setText(projectInfoTwoRep.getRegisQualification()==null?"":projectInfoTwoRep.getRegisQualification());
+                                tv_view02_08.setText(projectInfoTwoRep.getTitleNo()==null?"":projectInfoTwoRep.getTitleNo());
+                                tv_view02_09.setText(projectInfoTwoRep.getTel()==null?"":projectInfoTwoRep.getTel());
+                                rl_info_10.setVisibility(View.GONE);
+                            }
+                        }
+                    }
+                    if(type.equals("劳务分包单位")||type.equals("专业分包单位") ){
+                        for(int j=0;j<mProjectInfoTwoReps.size();j++){
+                            ProjectInfoTwoRep projectInfoTwoRep = mProjectInfoTwoReps.get(j);
+                            if(projectInfoTwoRep.getUnitTypeNote().equals(type)){
+                                course_viewflipper.setVisibility(View.VISIBLE);
+                                tv_view02_01.setText(projectInfoTwoRep.getUnitName()==null?"":projectInfoTwoRep.getUnitName());
+                                tv_project_code01.setText("建筑施工企业资质证书编号");
+                                tv_view02_02.setText(projectInfoTwoRep.getGradeNo()==null?"":projectInfoTwoRep.getGradeNo());
+                                tv_view02_03.setText(projectInfoTwoRep.getGrade()==null?"":projectInfoTwoRep.getGrade());
+                                tv_view02_04.setText(projectInfoTwoRep.getPersonname()==null?"":projectInfoTwoRep.getPersonname());
+                                tv_view02_05.setText(projectInfoTwoRep.getDuty()==null?"":projectInfoTwoRep.getDuty());
+                                tv_view02_06.setText(projectInfoTwoRep.getTitle()==null?"":projectInfoTwoRep.getTitle());
+                                tv_view02_07.setText(projectInfoTwoRep.getRegisQualification()==null?"":projectInfoTwoRep.getRegisQualification());
+                                tv_view02_08.setText(projectInfoTwoRep.getTitleNo()==null?"":projectInfoTwoRep.getTitleNo());
+                                tv_view02_09.setText(projectInfoTwoRep.getTel()==null?"":projectInfoTwoRep.getTel());
+                                rl_info_10.setVisibility(View.GONE);
+                            }
+                        }
+                    }
+                    if(type.equals("勘察单位")|| type.equals("设计单位")){
+                        rl_info_05.setVisibility(View.GONE);
+                        rl_info_06.setVisibility(View.GONE);
+                        rl_info_07.setVisibility(View.GONE);
+                        rl_info_08.setVisibility(View.GONE);
+                        view_info_05.setVisibility(View.GONE);
+                        view_info_06.setVisibility(View.GONE);
+                        view_info_07.setVisibility(View.GONE);
+                        view_info_08.setVisibility(View.GONE);
+                        for(int j=0;j<mProjectInfoTwoReps.size();j++){
+                            ProjectInfoTwoRep projectInfoTwoRep = mProjectInfoTwoReps.get(j);
+                            if(projectInfoTwoRep.getUnitTypeNote().equals(type)){
+                                course_viewflipper.setVisibility(View.VISIBLE);
+                                tv_view02_01.setText(projectInfoTwoRep.getUnitName()==null?"":projectInfoTwoRep.getUnitName());
+                                tv_project_code01.setText("建筑施工企业资质证书编号");
+                                tv_view02_02.setText(projectInfoTwoRep.getGradeNo()==null?"":projectInfoTwoRep.getGradeNo());
+                                tv_view02_03.setText(projectInfoTwoRep.getGrade()==null?"":projectInfoTwoRep.getGrade());
+                                tv_view02_04.setText(projectInfoTwoRep.getPersonname()==null?"":projectInfoTwoRep.getPersonname());
+                                tv_view02_05.setText(projectInfoTwoRep.getDuty()==null?"":projectInfoTwoRep.getDuty());
+                                tv_view02_06.setText(projectInfoTwoRep.getTitle()==null?"":projectInfoTwoRep.getTitle());
+                                tv_view02_07.setText(projectInfoTwoRep.getRegisQualification()==null?"":projectInfoTwoRep.getRegisQualification());
+                                tv_view02_08.setText(projectInfoTwoRep.getTitleNo()==null?"":projectInfoTwoRep.getTitleNo());
+                                tv_view02_09.setText(projectInfoTwoRep.getTel()==null?"":projectInfoTwoRep.getTel());
+                                rl_info_10.setVisibility(View.GONE);
+                            }
                         }
                     }
                 }

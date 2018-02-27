@@ -15,10 +15,13 @@ import com.threehmis.bjaj.R;
 import com.threehmis.bjaj.api.Const;
 import com.threehmis.bjaj.api.RetrofitFactory;
 import com.threehmis.bjaj.api.bean.respon.GetMenusListRsp;
+import com.threehmis.bjaj.module.home.fragment.map.griddetail.localcheck.LocalCheckActivity;
 import com.threehmis.bjaj.module.home.fragment.map.griddetail.projectinfo.ProjectInfoActivity;
 import com.threehmis.bjaj.module.home.fragment.map.griddetail.schedule.ScheduleActivity;
+import com.threehmis.bjaj.module.home.fragment.map.griddetail.taskcheck.TaskCheckActivity;
 import com.threehmis.bjaj.utils.SPUtils;
 import com.threehmis.bjaj.utils.VHUtil;
+import com.vondear.rxtools.RxSPUtils;
 
 
 import java.util.ArrayList;
@@ -92,9 +95,11 @@ public class MenusGridviewAdapter extends android.widget.BaseAdapter {
 
         @Override
         public void onClick(View view) {
-            switch (name) {
-                case "工程信息":  //工程信息
-                    Intent intent = new Intent(activity, ProjectInfoActivity.class);
+            RxSPUtils.putString(activity,Const.PROJECTID,projectID); // 保存项目id
+            Intent  intent;
+            switch (pos) {
+                case 0:  //工程信息
+                     intent = new Intent(activity, ProjectInfoActivity.class);
                     Bundle bundle1 = new Bundle();
                     bundle1.putString(Const.PROJECTID, projectID);
                     intent.putExtra(Const.PROJECTNAME, projectName);
@@ -102,13 +107,20 @@ public class MenusGridviewAdapter extends android.widget.BaseAdapter {
                     activity.startActivity(intent);
                     break;
 
-               case "形象进度"://形象进度
-                   Intent intent2 = new Intent(activity, ScheduleActivity.class);
-                    Bundle bundle2 = new Bundle(); //该类用作携带数据
-                    bundle2.putString("projectID", projectID);
-                    intent2.putExtras(bundle2);
-                    activity.startActivity(intent2);
-
+               case 1://形象进度
+                   intent = new Intent(activity, ScheduleActivity.class);
+                   intent.putExtra(Const.PROJECTID,projectID);
+                    activity.startActivity(intent);
+                    break;
+                case 4://任务指派
+                    intent = new Intent(activity, TaskCheckActivity.class);
+                    intent.putExtra(Const.PROJECTID,projectID);
+                    activity.startActivity(intent);
+                    break;
+                case 5://现场检测
+                    intent = new Intent(activity, LocalCheckActivity.class);
+                    intent.putExtra(Const.PROJECTID,projectID);
+                    activity.startActivity(intent);
                     break;
                 /*
                 case "安全监督":  //安全监督

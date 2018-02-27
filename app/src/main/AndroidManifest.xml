@@ -62,9 +62,14 @@
         <!--首页-->
         <activity android:name=".module.home.fragment.map.OtherProjectActivity"/>
         <activity android:name=".module.home.fragment.map.ProjectActivity"/>
+        <!--九宫格-->
         <activity android:name=".module.home.fragment.map.griddetail.projectinfo.ProjectInfoActivity"/>
         <activity android:name=".module.home.fragment.map.griddetail.schedule.ScheduleActivity"/>
         <activity android:name=".module.home.fragment.map.griddetail.schedule.ScheduleDetailActivity"/>
+        <activity android:name=".module.home.fragment.map.griddetail.taskcheck.TaskCheckActivity"/>
+        <activity android:name=".module.home.fragment.map.griddetail.localcheck.LocalCheckActivity"/>
+        <activity android:name=".module.home.fragment.map.griddetail.localcheck.LocalCheckDetailActivity"/>
+
 
 
         <!-- 权限提示 -->

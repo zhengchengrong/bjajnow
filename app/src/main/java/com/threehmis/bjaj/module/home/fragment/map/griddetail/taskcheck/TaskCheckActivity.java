@@ -1,14 +1,16 @@
-package com.threehmis.bjaj.module.home.fragment.map.griddetail.schedule;
+package com.threehmis.bjaj.module.home.fragment.map.griddetail.taskcheck;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.flyco.tablayout.SegmentTabLayout;
 import com.threehmis.bjaj.R;
+import com.threehmis.bjaj.module.base.BaseActivity;
+import com.threehmis.bjaj.module.home.fragment.map.griddetail.schedule.ScheduleFragment01;
+import com.threehmis.bjaj.module.home.fragment.map.griddetail.schedule.ScheduleFragment02;
 
 import java.util.ArrayList;
 
@@ -16,10 +18,10 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * 形象进度
+ * Created by llz on 2018/2/27.
  */
-public class ScheduleActivity extends AppCompatActivity {
 
+public class TaskCheckActivity extends BaseActivity {
     @BindView(R.id.tv_title)
     TextView mTvTitle;
     @BindView(R.id.other)
@@ -31,27 +33,36 @@ public class ScheduleActivity extends AppCompatActivity {
     @BindView(R.id.fl_change)
     FrameLayout mFlChange;
     private ArrayList<Fragment> mFragments2 = new ArrayList<>();
-    private String[] mTitles_2 = {"工程形象进度", "单体形象进度"};
+    private String[] mTitles_2 = {"未完成", "已完成"};
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected int attachLayoutRes() {
+        return R.layout.activity_task_check;
+    }
 
-        setContentView(R.layout.activity_stop_work);
-        ButterKnife.bind(this);
+    @Override
+    protected void initInjector() {
 
+    }
+
+    @Override
+    protected void initViews() {
         initTitle();
-        Fragment fragment1 = new ScheduleFragment01();
-        Fragment fragment2 = new ScheduleFragment02();
+        Fragment fragment1 = new TaskCheckFragment01();
+        Fragment fragment2 = new TaskCheckFragment02();
         mFragments2.add(fragment1);
         mFragments2.add(fragment2);
         SegmentTabLayout tabLayout_4 = (SegmentTabLayout) findViewById(R.id.tl_4);
         tabLayout_4.setTabData(mTitles_2, this, R.id.fl_change, mFragments2);
+    }
+
+    @Override
+    protected void updateViews(boolean isRefresh) {
 
     }
 
     private void initTitle() {
-        mTvTitle.setText("形象进度");
+        mTvTitle.setText("任务指派");
         mTvBack.setVisibility(View.VISIBLE);
         mTvBack.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -17,5 +17,16 @@
     <string name="fragment_message_title">消息动态</string>
     <string name="project_info_title">工程信息</string>
     <string name="check_look">查看</string>
+    <string name="et_local_observer">地基与基础</string>
+    <string name="local_search">查询</string>
+    <string name="content_empty">内容为空</string>
+    <string name="task_num">任务编号</string>
+    <string name="check_date">检查日期</string>
+    <string name="check_person">检查人</string>
+    <string name="check_yiju">检查依据</string>
+    <string name="check_result">检查结果</string>
+    <string name="safe_type">安全指标类别</string>
+    <string name="project_danti">工程单体</string>
+    <string name="check_part">检查部位</string>
 
 </resources>

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    >
+<include
+    layout="@layout/my_include_title"
+    />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_10"
+        android:background="@color/light_gray"
+        />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp_30"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:layout_marginLeft="@dimen/dp_20"
+    >
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.2"
+        android:text="@string/task_num"
+        android:textSize="@dimen/sp_admin_main_03"
+        />
+    <TextView
+        android:id="@+id/tv_01"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/task_num"
+        android:textSize="@dimen/sp_admin_main_03"
+
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.2"
+        android:text="@string/check_date"
+        android:textSize="@dimen/sp_admin_main_03"
+
+        />
+    <TextView
+        android:id="@+id/tv_02"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/check_date"
+        android:textSize="@dimen/sp_admin_main_03"
+
+        />
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_30"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="@dimen/dp_20"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:text="@string/check_person"
+            android:textSize="@dimen/sp_admin_main_03"
+
+            />
+        <TextView
+            android:id="@+id/tv_03"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/task_num"
+            android:textSize="@dimen/sp_admin_main_03"
+
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_30"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="@dimen/dp_20"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:text="@string/check_yiju"
+            android:textSize="@dimen/sp_admin_main_03"
+
+            />
+        <RadioGroup
+            android:id="@+id/rg_basic"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+
+            android:layout_height="wrap_content" >
+            <RadioButton
+                android:id="@+id/rb_01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="计划"
+                android:layout_marginRight="@dimen/dp_10"
+                />
+            <RadioButton
+                android:id="@+id/rb_02"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/dp_10"
+                android:text="专项"/>
+            <RadioButton
+                android:id="@+id/rb_03"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="其他"/>
+        </RadioGroup>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/sp_admin_main_02"
+        android:text="@string/check_result"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginBottom="@dimen/dp_10"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_3"
+        android:background="@color/main_color"
+        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/dp_10"
+        >
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+        </android.support.v7.widget.RecyclerView>
+        <com.threehmis.bjaj.widget.EmptyLayout
+            android:id="@+id/empty_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+        </com.threehmis.bjaj.widget.EmptyLayout>
+    </RelativeLayout>
+</LinearLayout>

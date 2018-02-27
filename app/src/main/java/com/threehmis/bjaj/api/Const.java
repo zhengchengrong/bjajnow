@@ -37,6 +37,7 @@ public class Const {
     public static final String PROJECTNAME = "projectName";
     public static final String CUSTOMERID = "customerId";
     public static final String INTERFACEURL = "interfaceUrl";
+    public static final String BEAN = "bean";
 
 
     private Const() {
