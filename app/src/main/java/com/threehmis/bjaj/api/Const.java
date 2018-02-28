@@ -38,6 +38,9 @@ public class Const {
     public static final String CUSTOMERID = "customerId";
     public static final String INTERFACEURL = "interfaceUrl";
     public static final String BEAN = "bean";
+    public static final String DATES = "dates";
+    public static final String PROJECTCODE = "projectCode";
+    public static final String SGXKZH="sgxkzh";
 
 
     private Const() {

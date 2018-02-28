@@ -181,6 +181,10 @@ public class MapFragment extends Fragment {
                         intent.putExtra("projectID", getLoginListRsp.get(i).projectID);
                         intent.putExtra("projectName", getLoginListRsp.get(i).projectName);
                         intent.putExtra("customerId", getLoginListRsp.get(i).customerId);
+                        intent.putExtra(Const.SGXKZH,getLoginListRsp.get(i).getSgxkzh());
+                        intent.putExtra(Const.PROJECTCODE,getLoginListRsp.get(i).getProjectCode());
+                        intent.putExtra(Const.SGXKZH,getLoginListRsp.get(i).getSgxkzh());
+
                         startActivity(intent);
 
                     }

@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
 <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white"
@@ -133,25 +138,100 @@
         />
     <View
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_3"
+        android:layout_height="@dimen/dp_2"
         android:background="@color/main_color"
         />
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_10"
         >
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_10"
             >
         </android.support.v7.widget.RecyclerView>
         <com.threehmis.bjaj.widget.EmptyLayout
             android:id="@+id/empty_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             >
         </com.threehmis.bjaj.widget.EmptyLayout>
     </RelativeLayout>
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="其他问题"
+    android:textSize="@dimen/sp_admin_main_02"
+    android:layout_marginLeft="@dimen/dp_10"
+    android:layout_marginTop="@dimen/dp_5"
+    android:layout_marginBottom="@dimen/dp_5"
+    />
+<View
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp_2"
+    android:background="@color/main_color"
+    android:layout_marginTop="@dimen/dp_10"
+    />
+    <EditText
+        android:id="@+id/et_01"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_60"
+        android:layout_marginTop="@dimen/dp_10"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40">
+        <ImageView
+            android:id="@+id/iv_photo"
+            android:layout_width="@dimen/dp_30"
+            android:layout_height="@dimen/dp_30"
+            android:src="@drawable/photo_logo"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_centerVertical="true"
+            />
+        <ImageView
+            android:id="@+id/iv_add"
+            android:layout_width="@dimen/dp_30"
+            android:layout_height="@dimen/dp_30"
+            android:src="@drawable/add_logo"
+            android:layout_marginRight="@dimen/dp_10"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            />
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:background="@color/light_gray"
+        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_centerVertical="true"
+            android:text="附件"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/sp_admin_main_03"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/dp_10"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:text="上传"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/sp_admin_main_03"
+            />
+    </RelativeLayout>
 </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

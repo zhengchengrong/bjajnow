@@ -15,8 +15,13 @@ import com.threehmis.bjaj.R;
 import com.threehmis.bjaj.api.Const;
 import com.threehmis.bjaj.api.RetrofitFactory;
 import com.threehmis.bjaj.api.bean.respon.GetMenusListRsp;
+import com.threehmis.bjaj.module.home.fragment.map.griddetail.jsj.JsjActivity;
 import com.threehmis.bjaj.module.home.fragment.map.griddetail.localcheck.LocalCheckActivity;
+import com.threehmis.bjaj.module.home.fragment.map.griddetail.monitorrecode.MonitorRecodeActivity;
 import com.threehmis.bjaj.module.home.fragment.map.griddetail.projectinfo.ProjectInfoActivity;
+import com.threehmis.bjaj.module.home.fragment.map.griddetail.qzjx.QzjxActivity;
+import com.threehmis.bjaj.module.home.fragment.map.griddetail.rectificationnotify.RectificationNotifyActivity;
+import com.threehmis.bjaj.module.home.fragment.map.griddetail.safecomment.SafeCommentActivity;
 import com.threehmis.bjaj.module.home.fragment.map.griddetail.schedule.ScheduleActivity;
 import com.threehmis.bjaj.module.home.fragment.map.griddetail.taskcheck.TaskCheckActivity;
 import com.threehmis.bjaj.utils.SPUtils;
@@ -35,12 +40,14 @@ public class MenusGridviewAdapter extends android.widget.BaseAdapter {
 
     List<GetMenusListRsp> listRsps = new ArrayList<>();
     private Activity activity;
-    private String projectID, projectName;
+    private String projectID, projectName,projectCode,sgxkzh;
 
-    public MenusGridviewAdapter(Activity activity, String projectID, String projectName) {
+    public MenusGridviewAdapter(Activity activity, String projectID, String projectName,String projectCode,String sgxkzh) {
         this.activity = activity;
         this.projectID = projectID;
         this.projectName = projectName;
+        this.projectCode = projectCode;
+        this.sgxkzh = sgxkzh;
     }
 
     @Override
@@ -117,9 +124,39 @@ public class MenusGridviewAdapter extends android.widget.BaseAdapter {
                     intent.putExtra(Const.PROJECTID,projectID);
                     activity.startActivity(intent);
                     break;
-                case 5://现场检测
+                case 5://现场检查
                     intent = new Intent(activity, LocalCheckActivity.class);
                     intent.putExtra(Const.PROJECTID,projectID);
+                    activity.startActivity(intent);
+                    break;
+                case 6://监督记录
+                    intent = new Intent(activity, MonitorRecodeActivity.class);
+                    intent.putExtra(Const.PROJECTID,projectID);
+                    activity.startActivity(intent);
+                    break;
+                case 7://整改通知
+                    intent = new Intent(activity, RectificationNotifyActivity.class);
+                    intent.putExtra(Const.PROJECTID,projectID);
+                    activity.startActivity(intent);
+                    break;
+                case 9://安评信息
+                    intent = new Intent(activity, SafeCommentActivity.class);
+                    intent.putExtra(Const.PROJECTID,projectID);
+                    intent.putExtra(Const.PROJECTCODE,projectCode);
+                    activity.startActivity(intent);
+                    break;
+                case 11://起重机械
+                    intent = new Intent(activity, QzjxActivity.class);
+                    intent.putExtra(Const.PROJECTID,projectID);
+                    intent.putExtra(Const.PROJECTCODE,projectCode);
+                    intent.putExtra(Const.SGXKZH,sgxkzh);
+                    activity.startActivity(intent);
+                    break;
+                case 12://脚手架
+                    intent = new Intent(activity, JsjActivity.class);
+                    intent.putExtra(Const.PROJECTID,projectID);
+                    intent.putExtra(Const.PROJECTCODE,projectCode);
+                    intent.putExtra(Const.SGXKZH,sgxkzh);
                     activity.startActivity(intent);
                     break;
                 /*

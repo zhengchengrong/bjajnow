@@ -23,9 +23,20 @@ public class GetLoginListRsp implements Serializable {
 	public String customerId;
 	public String address;
 	private String projectCode;
+
+	public String getSgxkzh() {
+		return sgxkzh;
+	}
+
+	public void setSgxkzh(String sgxkzh) {
+		this.sgxkzh = sgxkzh;
+	}
+
 	private String userType;
 
 	private String personId;
+
+	private String sgxkzh;
 
 	public String getPersonId() {
 		return personId;

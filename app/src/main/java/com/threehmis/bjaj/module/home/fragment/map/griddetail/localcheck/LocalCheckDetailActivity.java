@@ -102,6 +102,10 @@ public class LocalCheckDetailActivity extends BaseActivity {
         mBaseQuickAdapter = new BaseQuickAdapter<ProjectTaskCheckRsp.CheckDivisionVOSetBean, BaseViewHolder>(R.layout.item_local_check_detail, datas) {
             @Override
             protected void convert(BaseViewHolder baseViewHolder, ProjectTaskCheckRsp.CheckDivisionVOSetBean rowsBean) {
+                baseViewHolder.setText(R.id.tv_01,rowsBean.getCheckType());
+                baseViewHolder.setText(R.id.tv_02,rowsBean.getCheckPart());
+                baseViewHolder.setText(R.id.tv_03,rowsBean.getSingleProject());
+                baseViewHolder.setText(R.id.tv_04,rowsBean.getCheckPart());
 
             }
         };

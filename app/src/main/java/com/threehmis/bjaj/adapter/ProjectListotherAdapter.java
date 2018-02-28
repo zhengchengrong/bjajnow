@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.threehmis.bjaj.AndroidApplication;
 import com.threehmis.bjaj.R;
+import com.threehmis.bjaj.api.Const;
 import com.threehmis.bjaj.api.bean.respon.GetLoginListRsp;
 import com.threehmis.bjaj.module.home.fragment.map.ProjectActivity;
 
@@ -86,7 +87,10 @@ public class ProjectListotherAdapter extends RecyclerView.Adapter<ProjectListoth
             Intent intent = new Intent(context, ProjectActivity.class);
             intent.putExtra("projectID",listRsps.get(position).projectID);
             intent.putExtra("projectName",listRsps.get(position).projectName);
+            intent.putExtra(Const.PROJECTCODE,listRsps.get(position).getProjectCode());
             intent.putExtra("customerId", AndroidApplication.getInstance().getcustomerId());
+            intent.putExtra(Const.SGXKZH,listRsps.get(position).getSgxkzh());
+
             context.startActivity(intent);
         }
     }

@@ -38,7 +38,7 @@ public class ProjectActivity extends AppCompatActivity implements View.OnClickLi
     private TextView title;
     NoScrollGridView mygridView;
 
-    private String projectID,projectName,customerId;
+    private String projectID,projectName,customerId,projectCode,sgxkzh;
     private MenusGridviewAdapter adapter;
 
     @Override
@@ -48,6 +48,8 @@ public class ProjectActivity extends AppCompatActivity implements View.OnClickLi
         projectID=getIntent().getStringExtra(Const.PROJECTID);
         projectName=getIntent().getStringExtra(Const.PROJECTNAME);
         customerId=getIntent().getStringExtra(Const.CUSTOMERID);
+        projectCode = getIntent().getStringExtra(Const.PROJECTCODE);
+        sgxkzh = getIntent().getStringExtra(Const.SGXKZH);
         if(TextUtils.isEmpty(customerId)){
             customerId = "BJAJ001";
         }
@@ -60,7 +62,7 @@ public class ProjectActivity extends AppCompatActivity implements View.OnClickLi
         rollviewpager.setAdapter(squareRollAdapter);
         back = (ImageView) findViewById(R.id.back);
         back.setOnClickListener(this);
-        adapter = new MenusGridviewAdapter(this,projectID,projectName);
+        adapter = new MenusGridviewAdapter(this,projectID,projectName,projectCode,sgxkzh);
         mygridView.setAdapter(adapter);
         getData();
     }

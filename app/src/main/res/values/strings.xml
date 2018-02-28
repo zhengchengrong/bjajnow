@@ -28,5 +28,17 @@
     <string name="safe_type">安全指标类别</string>
     <string name="project_danti">工程单体</string>
     <string name="check_part">检查部位</string>
+    <string name="safe_check_point">安全检查点</string>
+    <string name="qzjx_01">设备登记编号</string>
+    <string name="qzjx_02">设备名称 (类型)</string>
+    <string name="qzjx_03">设备型号</string>
+    <string name="qzjx_04">设备使用登记编号</string>
+    <string name="qzjx_05">是否已注销</string>
+    <string name="jsj_01">单体名称</string>
+    <string name="jsj_02">产品名称</string>
+    <string name="jsj_03">产品型号</string>
+    <string name="jsj_04">检测时间</string>
+    <string name="jsj_05">检测结论</string>
+    <string name="jsj_06">是否已拆除</string>
 
 </resources>

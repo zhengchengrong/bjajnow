@@ -83,6 +83,8 @@ public class ProjectListAdapter extends RecyclerView.Adapter<ProjectListAdapter.
             intent.putExtra(Const.PROJECTID,listRsps.get(position).projectID);
             intent.putExtra(Const.PROJECTNAME,listRsps.get(position).projectName);
             intent.putExtra(Const.CUSTOMERID,listRsps.get(position).getCustomerId());
+            intent.putExtra(Const.PROJECTCODE,listRsps.get(position).getProjectCode());
+            intent.putExtra(Const.SGXKZH,listRsps.get(position).getSgxkzh());
             context.startActivity(intent);
         }
     }
