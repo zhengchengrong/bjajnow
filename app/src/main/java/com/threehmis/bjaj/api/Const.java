@@ -41,6 +41,7 @@ public class Const {
     public static final String DATES = "dates";
     public static final String PROJECTCODE = "projectCode";
     public static final String SGXKZH="sgxkzh";
+    public static final String IMAGEURL = "iamge_url";
 
 
     private Const() {

@@ -1,5 +1,6 @@
 package com.threehmis.bjaj.module.home.fragment.map.griddetail.projectinfo;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -22,6 +23,7 @@ import com.threehmis.bjaj.api.Const;
 import com.threehmis.bjaj.api.RetrofitFactory;
 import com.threehmis.bjaj.api.RxSchedulers;
 import com.threehmis.bjaj.api.bean.request.ProjectInfoReq;
+import com.threehmis.bjaj.api.bean.respon.AccessoryBeanRes;
 import com.threehmis.bjaj.api.bean.respon.GetMyProjectInfoRsp;
 import com.threehmis.bjaj.api.bean.respon.ProjectInfoOneRep;
 import com.threehmis.bjaj.api.bean.respon.ProjectInfoTwoRep;
@@ -83,9 +85,11 @@ public class ProjectInfoActivity extends BaseActivity implements View.OnClickLis
     private View view04;
     private RecyclerView view04MRecyclerView;
     private BaseQuickAdapter mBase04QuickAdapter;
-    ArrayList<String> fourDatas;
 
     ArrayList<ProjectInfoTwoRep> twoReps;
+    ArrayList<AccessoryBeanRes> fourReps;
+    ArrayList<AccessoryBeanRes> fourRepsDatas;
+
 
     @Override
     protected int attachLayoutRes() {
@@ -135,12 +139,18 @@ public class ProjectInfoActivity extends BaseActivity implements View.OnClickLis
     private void initView04() {
         view04MRecyclerView = view04.findViewById(R.id.rv_content_four);
         view04MRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        fourDatas = new ArrayList<String>();
-        mBase04QuickAdapter = new BaseQuickAdapter<String, BaseViewHolder>(R.layout.item_project_info, fourDatas) {
+        mBase04QuickAdapter = new BaseQuickAdapter<AccessoryBeanRes, BaseViewHolder>(R.layout.item_project_info, fourRepsDatas) {
             @Override
-            protected void convert(BaseViewHolder baseViewHolder,  String str) {
-                baseViewHolder.setText(R.id.tv_project_item01, str);
-
+            protected void convert(BaseViewHolder baseViewHolder, final AccessoryBeanRes beanRes) {
+                baseViewHolder.setText(R.id.tv_project_item01, beanRes.getFileName());
+                baseViewHolder.getView(R.id.tv_project_item02).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(ProjectInfoActivity.this,ProjectInfoImageVPActivity.class);
+                        intent.putExtra(Const.IMAGEURL,beanRes.getFileUrl());
+                        startActivity(intent);
+                    }
+                });
             }
         };
         view04MRecyclerView.setAdapter(mBase04QuickAdapter);
@@ -184,6 +194,8 @@ public class ProjectInfoActivity extends BaseActivity implements View.OnClickLis
         view_info_08= view02.findViewById(R.id.view_info_08);
         course_viewflipper = view02.findViewById(R.id.course_viewflipper);
         mProjectInfoTwoReps = new ArrayList<ProjectInfoTwoRep>();
+        fourReps = new ArrayList<AccessoryBeanRes>();
+        fourRepsDatas = new ArrayList<AccessoryBeanRes>();
         view02MList = new ArrayList<Flow>();
         Flow flow = new Flow();
         flow.setFlowId("1");
@@ -408,7 +420,9 @@ public class ProjectInfoActivity extends BaseActivity implements View.OnClickLis
             @Override
             public void onNext(Object o) {
                 GetMyProjectInfoRsp getMyProjectInfoRsp = (GetMyProjectInfoRsp) o;
-                ProjectInfoOneRep projectInfoOneRep = new Gson().fromJson(new Gson().toJson(getMyProjectInfoRsp.getProjectList().get(0)), ProjectInfoOneRep.class);
+                String str = new Gson().toJson(getMyProjectInfoRsp.getProjectList().get(0));
+                ArrayList<ProjectInfoOneRep> res = new Gson().fromJson( new Gson().toJson(getMyProjectInfoRsp.getProjectList().get(0)),ArrayList.class);
+                ProjectInfoOneRep projectInfoOneRep = new Gson().fromJson(new Gson().toJson(res.get(0)),ProjectInfoOneRep.class);
                 tv_01.setText(projectInfoOneRep.getProjectCode()==null?"":projectInfoOneRep.getProjectCode());
                 tv_02.setText(projectInfoOneRep.getProjectName()==null?"":projectInfoOneRep.getProjectName());
                 tv_03.setText(projectInfoOneRep.getProjectNum()==null?"":projectInfoOneRep.getProjectNum());
@@ -445,7 +459,12 @@ public class ProjectInfoActivity extends BaseActivity implements View.OnClickLis
                     mProjectInfoTwoReps.add(rep);
                 }
                 threeDatas.addAll((ArrayList<String>) getMyProjectInfoRsp.getProjectList().get(2));
-                mBaseQuickAdapter.notifyDataSetChanged();
+                // AccessoryBeanRes fourReps
+                fourReps = (ArrayList<AccessoryBeanRes>) getMyProjectInfoRsp.getProjectList().get(3);
+                for (int i = 0; i < fourReps.size(); i++) {
+                    AccessoryBeanRes rep = new Gson().fromJson(new Gson().toJson(fourReps.get(i)), AccessoryBeanRes.class);
+                    fourRepsDatas.add(rep);
+                }
             }
 
             @Override

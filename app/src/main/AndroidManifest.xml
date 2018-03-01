@@ -64,6 +64,7 @@
         <activity android:name=".module.home.fragment.map.ProjectActivity"/>
         <!--九宫格-->
         <activity android:name=".module.home.fragment.map.griddetail.projectinfo.ProjectInfoActivity"/>
+        <activity android:name=".module.home.fragment.map.griddetail.projectinfo.ProjectInfoImageVPActivity"/>
         <activity android:name=".module.home.fragment.map.griddetail.schedule.ScheduleActivity"/>
         <activity android:name=".module.home.fragment.map.griddetail.schedule.ScheduleDetailActivity"/>
         <activity android:name=".module.home.fragment.map.griddetail.taskcheck.TaskCheckActivity"/>

@@ -13,7 +13,7 @@ public class ProjectInfoOneRep {
      * projectName : 海淀北部燃气热电冷联供项目外部10KV电源供电管道
      * projectNum : 京建安[2018]0053号
      * sgxkzh : [2018]施[海]市政字0015号
-     * bjDate : 2018-02-02 08:50:31.0
+     * bjDate : 2018-02-02
      * region : 海淀区
      * address : 北清路到翠湖南
      * projectType : 市政
@@ -21,7 +21,7 @@ public class ProjectInfoOneRep {
      * projectCost : 2043.101
      * high : 0.0
      * contractPeriod : 120
-     * tfzyDate : null
+     * tfzyDate :
      * singleProject : null,电力管线（地埋）
      */
 

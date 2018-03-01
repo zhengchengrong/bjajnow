@@ -71,11 +71,7 @@
             android:textSize="@dimen/sp_admin_main_03"
             />
     </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_3"
-        android:background="@color/main_color"
-        />
+    <include layout="@layout/layout_menu_linegreen" />
 
     <RelativeLayout
         android:layout_width="match_parent"
