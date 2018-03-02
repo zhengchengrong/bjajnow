@@ -160,10 +160,11 @@ public class ProjectInfoActivity extends BaseActivity implements View.OnClickLis
         view03MRecyclerView = view03.findViewById(R.id.rv_content);
         view03MRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         threeDatas = new ArrayList<String>();
-        mBaseQuickAdapter = new BaseQuickAdapter<String, BaseViewHolder>(R.layout.item_project_info, threeDatas) {
+        mBaseQuickAdapter = new BaseQuickAdapter<String, BaseViewHolder>(R.layout.item_project_info02, threeDatas) {
             @Override
             protected void convert(BaseViewHolder baseViewHolder,  String str) {
                 baseViewHolder.setText(R.id.tv_project_item01, str);
+                baseViewHolder.getView(R.id.tv_project_item02).setVisibility(View.GONE);
             }
         };
         view03MRecyclerView.setAdapter(mBaseQuickAdapter);

@@ -48,6 +48,7 @@ public class RectificationNotifyActivity extends BaseActivity {
     private String[] mTitles_2 = {"未回复", "已回复"};
 
     int mYear, mMonth, mDay;
+
     String days="";
     @Override
     protected int attachLayoutRes() {

@@ -73,7 +73,18 @@ public class TaskCheckFragment01 extends BaseFragment {
                 baseViewHolder.setText(R.id.tv_02,rowsBean.getCheckNum());
                 baseViewHolder.setText(R.id.tv_03,rowsBean.getCheckMen());
                 baseViewHolder.setText(R.id.tv_04,rowsBean.getCheckDate());
-
+                baseViewHolder.getView(R.id.tv_05).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        RxToast.showToast("修改");
+                    }
+                });
+                baseViewHolder.getView(R.id.tv_06).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        RxToast.showToast("删除");
+                    }
+                });
             }
         };
         mRvContent.setAdapter(mBaseQuickAdapter);

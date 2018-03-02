@@ -35,7 +35,7 @@
         android:textColor="@color/main_text_color"
         android:layout_gravity="center_vertical"
         android:visibility="gone"
-        android:drawableLeft="@drawable/icon_back_white"
+        android:drawableLeft="@drawable/icon_back_bule"
         />
 
 </FrameLayout>

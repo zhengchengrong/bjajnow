@@ -1,5 +1,7 @@
 package com.threehmis.bjaj.module.home.fragment.map.griddetail.schedule;
 
+import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -27,6 +29,9 @@ import com.threehmis.bjaj.api.bean.respon.ProjectProgressRsp;
 import com.threehmis.bjaj.api.bean.respon.ProjectStatusRsp;
 import com.threehmis.bjaj.module.base.BaseFragment;
 import com.threehmis.bjaj.module.home.fragment.adminmain.childmainfragment.AllCityFragment;
+import com.threehmis.bjaj.module.home.fragment.map.griddetail.projectinfo.ProjectInfoActivity;
+import com.threehmis.bjaj.module.home.fragment.map.griddetail.projectinfo.ProjectInfoImageVPActivity;
+import com.threehmis.bjaj.utils.GlideTools;
 import com.threehmis.bjaj.widget.EmptyLayout;
 import com.vondear.rxtools.RxSPUtils;
 import com.vondear.rxtools.view.RxToast;
@@ -61,6 +66,8 @@ public class ScheduleFragment02 extends BaseFragment {
     private String id = "";
     private String type = "单体名称";
 
+    private String imageUrl;
+
     @Override
     protected void initInjector() {
 
@@ -75,7 +82,20 @@ public class ScheduleFragment02 extends BaseFragment {
             @Override
             protected void convert(BaseViewHolder baseViewHolder, ProjectProgressRsp rowsBean) {
                 baseViewHolder.setText(R.id.tv_01, baseViewHolder.getAdapterPosition() + 1 + "");
-                baseViewHolder.setText(R.id.tv_02, rowsBean.getProjectName());
+                baseViewHolder.setText(R.id.tv_02, rowsBean.getBranchName());
+                baseViewHolder.setText(R.id.tv_03, rowsBean.getProjectXXJD());
+                baseViewHolder.setText(R.id.tv_04, rowsBean.getCreatedate());
+                imageUrl =rowsBean.getXxjdPhoto() ;
+                ImageView imageView = (ImageView) baseViewHolder.getView(R.id.tv_05);
+                GlideTools.GlideNoId(imageUrl,imageView);
+                imageView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(mActivity,ProjectInfoImageVPActivity.class);
+                        intent.putExtra(Const.IMAGEURL,imageUrl);
+                        startActivity(intent);
+                    }
+                });
             }
         };
         mRvContent.setAdapter(mBaseQuickAdapter);
@@ -94,23 +114,21 @@ public class ScheduleFragment02 extends BaseFragment {
         mTvSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(TextUtils.isEmpty(mEtSearch.getText().toString())){
-                    RxToast.showToast(R.string.content_empty);
-                    return;
-                }
+
                 getDatas();
             }
         });
-
+        getDatas();
     }
 
     private void getDatas() {
         ProjectInfoProgressReq req = new ProjectInfoProgressReq();
-        req.setProjectId(id);
+       // req.setProjectId(id);
+        req.setProjectId("0132f691-b8c5-411f-8d28-758c989470b2");
         if(type.equals("单体名称")){
-            req.setBranchName(mEtSearch.getText().toString());
+            req.setBranchName(TextUtils.isEmpty(mEtSearch.getText().toString())?"":mEtSearch.getText().toString());
         }else{
-            req.setProjectXxjd(mEtSearch.getText().toString());
+            req.setProjectXxjd(TextUtils.isEmpty(mEtSearch.getText().toString())?"":mEtSearch.getText().toString());
         }
         Observable<BaseBeanRsp<ProjectProgressRsp>> observable = RetrofitFactory.getInstance().getProjectProgress(req);
         observable.compose(RxSchedulers.<BaseBeanRsp<ProjectProgressRsp>>compose(

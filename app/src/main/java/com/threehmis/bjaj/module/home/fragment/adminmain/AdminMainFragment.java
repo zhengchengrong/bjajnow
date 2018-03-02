@@ -85,6 +85,12 @@ public class AdminMainFragment extends BaseFragment implements OnTabSelectListen
     }
 
     @Override
+    public void onStop() {
+        super.onStop();
+        mRlAdminMainBottom.clearAnimation();
+    }
+
+    @Override
     protected void updateViews(boolean isRefresh) {
 
     }

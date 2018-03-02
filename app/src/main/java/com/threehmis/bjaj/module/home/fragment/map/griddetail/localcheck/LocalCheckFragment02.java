@@ -1,7 +1,9 @@
 package com.threehmis.bjaj.module.home.fragment.map.griddetail.localcheck;
 
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
@@ -55,7 +57,13 @@ public class LocalCheckFragment02 extends BaseFragment {
                 baseViewHolder.setText(R.id.tv_02,rowsBean.getCheckNum());
                 baseViewHolder.setText(R.id.tv_03,rowsBean.getCheckMen());
                 baseViewHolder.setText(R.id.tv_04,rowsBean.getCheckDate());
+                baseViewHolder.getView(R.id.tv_05).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        RxToast.showToast("查看");
 
+                    }
+                });
             }
         };
         mRvContent.setAdapter(mBaseQuickAdapter);

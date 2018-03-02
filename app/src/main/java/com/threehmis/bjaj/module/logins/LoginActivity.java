@@ -118,7 +118,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements ILogi
                     finish();
                     break;
                     case R.id.login:
-                        String phoneNum = mPhoneNum.getText().toString();
+                  /*      String phoneNum = mPhoneNum.getText().toString();
                         String password = mPassword.getText().toString();
                         if(TextUtils.isEmpty(phoneNum)){
                             RxToast.showToast(Const.INPUT_ACCOUNT);
@@ -135,9 +135,9 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements ILogi
                         dialog.setTitle("正在登陆...");
 
                         dialog.show();
-                        mPresenter.login(phoneNum,password);
+                        mPresenter.login(phoneNum,password);*/
                         //登陆成功后，跳转到主页面
-                    //   startActivity(HomeActivity.class);
+                    startActivity(HomeActivity.class);
                         break;
                 }
     }

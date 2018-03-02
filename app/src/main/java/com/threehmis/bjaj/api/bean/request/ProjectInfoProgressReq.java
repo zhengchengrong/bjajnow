@@ -5,11 +5,11 @@ package com.threehmis.bjaj.api.bean.request;
 public class ProjectInfoProgressReq {
 
 
-	private String projectId;
+	private String projectId="";
 
-	private String branchName;
+	private String branchName="";
 
-	private String projectXxjd;
+	private String projectXxjd="";
 
 	public String getBranchName() {
 		return branchName;

@@ -33,7 +33,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:padding="10dp"
-                android:src="@drawable/back" />
+                android:src="@drawable/icon_back_white" />
 
             <TextView
                 android:id="@+id/title"

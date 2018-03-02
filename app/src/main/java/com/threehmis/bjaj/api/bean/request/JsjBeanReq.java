@@ -6,9 +6,9 @@ package com.threehmis.bjaj.api.bean.request;
 
 public class JsjBeanReq {
 
-    private  String sgxkzh;
+    private  String sgxkzh="";
 
-    private String cpmc;
+    private String cpmc="";
 
     public String getCpmc() {
         return cpmc;

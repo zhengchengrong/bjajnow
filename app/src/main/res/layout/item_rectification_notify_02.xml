@@ -14,7 +14,6 @@
             android:id="@+id/tv_01"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="序号"
             android:layout_weight="2.2"
             android:gravity="center_vertical|center_horizontal"
             android:textSize="@dimen/sp_admin_main_03"
@@ -23,7 +22,6 @@
             android:id="@+id/tv_02"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="任务编号"
             android:layout_weight="2"
             android:gravity="center_vertical|center_horizontal"
             android:textSize="@dimen/sp_admin_main_03"
@@ -32,7 +30,6 @@
             android:id="@+id/tv_03"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="检查人"
             android:layout_weight="2"
             android:gravity="center_vertical|center_horizontal"
             android:textSize="@dimen/sp_admin_main_03"
@@ -41,41 +38,20 @@
             android:id="@+id/tv_04"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="检查日期"
             android:layout_weight="2"
             android:gravity="center_vertical|center_horizontal"
             android:textSize="@dimen/sp_admin_main_03"
             />
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
-            >
-
         <TextView
             android:id="@+id/tv_05"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="修改"
-            android:gravity="center_vertical"
-            android:textSize="@dimen/sp_admin_main_03"
+            android:text="查看"
+            android:layout_weight="2"
+            android:gravity="center_vertical|center_horizontal"
             android:textColor="@color/main_color"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/dp_4"
-            android:layout_marginLeft="@dimen/dp_4"
+            android:textSize="@dimen/sp_admin_main_03"
             />
-            <TextView
-                android:id="@+id/tv_06"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="删除"
-                android:gravity="center_vertical"
-                android:textSize="@dimen/sp_admin_main_03"
-                android:layout_centerVertical="true"
-                android:textColor="@color/main_color"
-                android:layout_toRightOf="@+id/tv_05"
-                />
-        </RelativeLayout>
     </LinearLayout>
     <View
         android:layout_width="match_parent"

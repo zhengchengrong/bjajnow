@@ -41,5 +41,6 @@
     <string name="jsj_05">检测结论</string>
     <string name="jsj_06">是否已拆除</string>
     <string name="check">查看</string>
+    <string name="supervision_plan_alter01">含有超过一定规模的危险性较大的分部分项工程情况：</string>
 
 </resources>

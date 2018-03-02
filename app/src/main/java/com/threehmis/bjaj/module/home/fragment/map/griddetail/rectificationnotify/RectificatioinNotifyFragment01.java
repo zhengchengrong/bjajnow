@@ -71,14 +71,13 @@ public class RectificatioinNotifyFragment01 extends BaseFragment {
         id = RxSPUtils.getString(mActivity, Const.PROJECTID);
         mProjectStatusRsps = new ArrayList<ProjectTaskCheckRsp>();
         mRvContent.setLayoutManager(new LinearLayoutManager(mActivity));
-        mBaseQuickAdapter = new BaseQuickAdapter<ProjectTaskCheckRsp, BaseViewHolder>(R.layout.item_local_check_01, mProjectStatusRsps) {
+        mBaseQuickAdapter = new BaseQuickAdapter<ProjectTaskCheckRsp, BaseViewHolder>(R.layout.item_rectification_notify_01, mProjectStatusRsps) {
             @Override
             protected void convert(BaseViewHolder baseViewHolder, final ProjectTaskCheckRsp rowsBean) {
                 baseViewHolder.setText(R.id.tv_01, baseViewHolder.getAdapterPosition() + 1 + "");
                 baseViewHolder.setText(R.id.tv_02, rowsBean.getCheckNum());
                 baseViewHolder.setText(R.id.tv_03, rowsBean.getCheckMen());
-                baseViewHolder.setText(R.id.tv_04, rowsBean.getCheckDate());
-                baseViewHolder.getView(R.id.tv_05).setOnClickListener(new View.OnClickListener() {
+                baseViewHolder.getView(R.id.tv_04).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(mActivity, LocalCheckDetailActivity.class);
@@ -140,7 +139,7 @@ public class RectificatioinNotifyFragment01 extends BaseFragment {
 
     @Override
     protected int attachLayoutRes() {
-        return R.layout.fragment_task_check01;
+        return R.layout.fragment_rectification_notify01;
     }
 
 

@@ -6,7 +6,7 @@ package com.threehmis.bjaj.api.bean.request;
 
 public class QzjxBeanReq {
 
-    private  String sgxkzh;
+    private  String sgxkzh="";
 
     public String getSgxkzh() {
         return sgxkzh;

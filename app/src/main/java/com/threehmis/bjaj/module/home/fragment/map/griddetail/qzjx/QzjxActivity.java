@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -15,7 +17,6 @@ import com.threehmis.bjaj.api.RetrofitFactory;
 import com.threehmis.bjaj.api.RxSchedulers;
 import com.threehmis.bjaj.api.bean.BaseBeanRsp;
 import com.threehmis.bjaj.api.bean.request.QzjxBeanReq;
-import com.threehmis.bjaj.api.bean.respon.ProjectStatusRsp;
 import com.threehmis.bjaj.api.bean.respon.QzjxBeanRsp;
 import com.threehmis.bjaj.module.base.BaseActivity;
 import com.threehmis.bjaj.widget.EmptyLayout;
@@ -43,15 +44,24 @@ public class QzjxActivity extends BaseActivity {
     @BindView(R.id.empty_layout)
     EmptyLayout mEmptyLayout;
     ArrayList<QzjxBeanRsp> mQzjxBeanRsps = new ArrayList<QzjxBeanRsp>();
+    @BindView(R.id.tv_01)
+    TextView mTv01;
+    @BindView(R.id.et_01)
+    EditText mEt01;
+    @BindView(R.id.tv_search)
+    ImageView mTvSearch;
     private String sgxkzh;
     BaseQuickAdapter mBaseQuickAdapter;
+
     @Override
     protected int attachLayoutRes() {
         return R.layout.activity_qzjx;
     }
+
     @Override
     protected void initInjector() {
     }
+
     @Override
     protected void initViews() {
         sgxkzh = getIntent().getStringExtra(Const.SGXKZH);
@@ -60,14 +70,14 @@ public class QzjxActivity extends BaseActivity {
         mBaseQuickAdapter = new BaseQuickAdapter<QzjxBeanRsp, BaseViewHolder>(R.layout.item_qzjx, mQzjxBeanRsps) {
             @Override
             protected void convert(BaseViewHolder baseViewHolder, QzjxBeanRsp rowsBean) {
-                baseViewHolder.setText(R.id.tv_01,rowsBean.getSbdjbh());
-                baseViewHolder.setText(R.id.tv_02,rowsBean.getSblx());
-                baseViewHolder.setText(R.id.tv_03,rowsBean.getSbxh());
-                baseViewHolder.setText(R.id.tv_04,rowsBean.getSfyzx());
+                baseViewHolder.setText(R.id.tv_01, rowsBean.getSbdjbh());
+                baseViewHolder.setText(R.id.tv_02, rowsBean.getSblx());
+                baseViewHolder.setText(R.id.tv_03, rowsBean.getSbxh());
+                baseViewHolder.setText(R.id.tv_04, rowsBean.getSfyzx());
             }
         };
         mRvContent.setAdapter(mBaseQuickAdapter);
-      getDate();
+        getDate();
     }
 
     private void getDate() {
@@ -80,14 +90,15 @@ public class QzjxActivity extends BaseActivity {
         )).subscribe(new BaseObserver<QzjxBeanRsp>() {
             @Override
             protected void onHandleSuccess(BaseBeanRsp<QzjxBeanRsp> qzjxBean) {
-                if(qzjxBean.getProjectList().size()>0) {
+                if (qzjxBean.getProjectList().size() > 0) {
                     mEmptyLayout.hide();
                     mQzjxBeanRsps.addAll(qzjxBean.getProjectList());
                     mBaseQuickAdapter.notifyDataSetChanged();
-                }else{
+                } else {
                     showEmpty();
                 }
             }
+
             @Override
             protected void onHandleEmpty(BaseBeanRsp<QzjxBeanRsp> t) {
                 RxToast.showToast(t.getResult());
@@ -100,6 +111,7 @@ public class QzjxActivity extends BaseActivity {
     protected void updateViews(boolean isRefresh) {
 
     }
+
     private void initTitle() {
         mTvTitle.setText("起重机械");
         mTvBack.setVisibility(View.VISIBLE);
@@ -109,5 +121,12 @@ public class QzjxActivity extends BaseActivity {
                 finish();
             }
         });
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
     }
 }

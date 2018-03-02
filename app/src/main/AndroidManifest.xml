@@ -75,6 +75,7 @@
         <activity android:name=".module.home.fragment.map.griddetail.safecomment.SafeCommentActivity"/>
         <activity android:name=".module.home.fragment.map.griddetail.qzjx.QzjxActivity"/>
         <activity android:name=".module.home.fragment.map.griddetail.jsj.JsjActivity"/>
+        <activity android:name=".module.home.fragment.map.griddetail.supervisionplan.SupervisionPlanActivity"/>
 
 
         <!-- 权限提示 -->
