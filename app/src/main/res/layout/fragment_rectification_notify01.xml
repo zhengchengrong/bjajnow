@@ -72,7 +72,7 @@
             />
     </LinearLayout>
 
-    <include layout="@layout/layout_menu_linegreen" />
+    <include layout="@layout/layout_menu_line_main_color" />
 
     <RelativeLayout
         android:layout_width="match_parent"

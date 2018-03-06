@@ -7,15 +7,26 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.threehmis.bjaj.R;
+import com.threehmis.bjaj.api.BaseObserver;
+import com.threehmis.bjaj.api.Const;
+import com.threehmis.bjaj.api.RetrofitFactory;
+import com.threehmis.bjaj.api.RxSchedulers;
+import com.threehmis.bjaj.api.bean.BaseBeanRsp;
+import com.threehmis.bjaj.api.bean.request.SupervisionPlanFirstReq;
+import com.threehmis.bjaj.api.bean.respon.SupervisionPlanFirstRsp;
 import com.threehmis.bjaj.module.base.BaseFragment;
-import com.threehmis.bjaj.module.home.fragment.map.griddetail.rectificationnotify.RectificationNotifyActivity;
+import com.vondear.rxtools.RxSPUtils;
+import com.vondear.rxtools.view.RxToast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import io.reactivex.Observable;
 
 /**
  * Created by llz on 2018/3/2.
@@ -53,7 +64,7 @@ public class SupervisionPlanFragment01 extends BaseFragment {
     @BindView(R.id.tv_08)
     TextView mTv08;
     @BindView(R.id.tv_date_08)
-    EditText mTvDate08;
+    TextView mTvDate08;
     @BindView(R.id.tv_09)
     TextView mTv09;
     @BindView(R.id.et_09)
@@ -70,8 +81,22 @@ public class SupervisionPlanFragment01 extends BaseFragment {
     TextView mTv12;
     @BindView(R.id.et_12)
     EditText mEt12;
+    @BindView(R.id.tv_bottom_01)
+    TextView mTvBottom01;
+    @BindView(R.id.rb_01)
+    RadioButton mRb01;
+    @BindView(R.id.rb_02)
+    RadioButton mRb02;
+    @BindView(R.id.rg_01)
+    RadioGroup mRg01;
+    @BindView(R.id.tv_bottom_02)
+    TextView mTvBottom02;
     int mYear, mMonth, mDay;
-    String days="";
+    String days = "";
+
+    String id = "";
+
+
     @Override
     protected void initInjector() {
 
@@ -79,6 +104,8 @@ public class SupervisionPlanFragment01 extends BaseFragment {
 
     @Override
     protected void initViews() {
+        id = RxSPUtils.getString(mActivity, Const.PROJECTID);
+
         mTvDate02.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -97,6 +124,52 @@ public class SupervisionPlanFragment01 extends BaseFragment {
                 new DatePickerDialog(mActivity, onDateSetListener3, mYear, mMonth, mDay).show();
             }
         });
+
+        getDatas();
+    }
+
+    private void getDatas() {
+        SupervisionPlanFirstReq req = new SupervisionPlanFirstReq();
+         req.setProjectId(id);
+      //  req.setProjectId("5f82526c-ffae-4b4d-b63b-0d357c7db42d");
+        req.setMonitorName(Const.SUPERVISIONPLANTEXT);
+        Observable<BaseBeanRsp<SupervisionPlanFirstRsp>> observable = RetrofitFactory.getInstance().getMonitorInfo(req);
+        observable.compose(RxSchedulers.<BaseBeanRsp<SupervisionPlanFirstRsp>>compose(
+        )).subscribe(new BaseObserver<SupervisionPlanFirstRsp>() {
+            @Override
+            protected void onHandleSuccess(BaseBeanRsp<SupervisionPlanFirstRsp> beanRsp) {
+
+                if (beanRsp.getProjectList().size() > 0 && beanRsp.getProjectList().get(0) != null) {
+                    SupervisionPlanFirstRsp supervisionPlanFirstRsp = beanRsp.getProjectList().get(0);
+                    mEt01.setText(supervisionPlanFirstRsp.getJdjhJHBH());
+                    mTvDate02.setText(supervisionPlanFirstRsp.getJdjhBZRQ());
+                    mEt03.setText(supervisionPlanFirstRsp.getJdjhBZR());
+                    mEt04.setText(supervisionPlanFirstRsp.getJdjhAQJDBH());
+                    mEt05.setText(supervisionPlanFirstRsp.getJdjhGCMC());
+                    mEt06.setText(supervisionPlanFirstRsp.getJdjhGCDZ());
+                    mTvDate07.setText(supervisionPlanFirstRsp.getJdjhJHKGRQ());
+                    mTvDate08.setText(supervisionPlanFirstRsp.getJdjhJHJGRQ());
+                    mEt09.setText(supervisionPlanFirstRsp.getJdjhJDZZ());
+                    mEt10.setText(supervisionPlanFirstRsp.getJdjhJDZZZFZH());
+                    mEt11.setText(supervisionPlanFirstRsp.getJdjhJDY());
+                    mEt12.setText(supervisionPlanFirstRsp.getJdjhJDYZFZH());
+                    mTvBottom01.setText("含有超过一定规模的危险性较大的分部分项工程情况：共有"+supervisionPlanFirstRsp.getJdjhWDGC()+"项。具体包括:");
+                    mTvBottom02.setText("(共"+supervisionPlanFirstRsp.getJdjhAQSG()+"起)在施工安全监督周期内，计划对该工程进行施工安全抽查"+supervisionPlanFirstRsp.getJdjhAQCC()+"次");
+                    if(supervisionPlanFirstRsp.getJdjhWFS().equals("$U_CHECKBOX_ON$")){
+                        mRb01.setChecked(true);
+                    }else{
+                        mRb02.setChecked(false);
+                    }
+
+                }
+
+            }
+
+            @Override
+            protected void onHandleEmpty(BaseBeanRsp<SupervisionPlanFirstRsp> t) {
+                RxToast.showToast(t.getResult());
+            }
+        });
     }
 
     @Override
@@ -113,8 +186,6 @@ public class SupervisionPlanFragment01 extends BaseFragment {
      * 日期选择器对话框监听
      */
     private DatePickerDialog.OnDateSetListener onDateSetListener1 = new DatePickerDialog.OnDateSetListener() {
-
-
 
 
         @Override
@@ -151,8 +222,6 @@ public class SupervisionPlanFragment01 extends BaseFragment {
     private DatePickerDialog.OnDateSetListener onDateSetListener2 = new DatePickerDialog.OnDateSetListener() {
 
 
-
-
         @Override
         public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
             mYear = year;
@@ -187,8 +256,6 @@ public class SupervisionPlanFragment01 extends BaseFragment {
     private DatePickerDialog.OnDateSetListener onDateSetListener3 = new DatePickerDialog.OnDateSetListener() {
 
 
-
-
         @Override
         public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
             mYear = year;
@@ -217,4 +284,6 @@ public class SupervisionPlanFragment01 extends BaseFragment {
             mTvDate08.setText(days);
         }
     };
+
+
 }

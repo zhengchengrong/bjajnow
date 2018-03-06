@@ -100,7 +100,7 @@
                 android:textColor="@color/green"
                 android:textSize="15dp" />
 
-            <include layout="@layout/layout_menu_linegreen" />
+            <include layout="@layout/layout_menu_line_main_color" />
 
             <ListView
                 android:id="@+id/infolist"

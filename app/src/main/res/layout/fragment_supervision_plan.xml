@@ -180,7 +180,7 @@
                 android:id="@+id/tv_06"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="工程名称"
+                android:text="工程地址"
                 android:layout_centerVertical="true"
                 android:textSize="@dimen/sp_16"
                 />
@@ -219,7 +219,7 @@
             <TextView
                 android:id="@+id/tv_date_07"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
                 android:textSize="@dimen/sp_16"
@@ -248,7 +248,7 @@
             android:layout_centerVertical="true"
             android:textSize="@dimen/sp_16"
             />
-            <EditText
+            <TextView
                 android:id="@+id/tv_date_08"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -396,15 +396,69 @@
             />
 
         <TextView
+            android:id="@+id/tv_bottom_01"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
             android:textSize="@dimen/sp_14"
-            android:text="@string/supervision_plan_alter01"
+            android:text="含有超过一定规模的危险性较大的分部分项工程情况：共有0项。具体包括:"
+            android:lineSpacingExtra="@dimen/dp_6"
             android:textColor="@color/admin_main_select_text"
-
+            android:layout_margin="@dimen/dp_8"
+            android:layout_marginTop="@dimen/dp_10"
             />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            >
+        <TextView
+            android:id="@+id/tv_flag06"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/sp_14"
+            android:text="施工单位近一年内生产安全事故情况:"
+            android:lineSpacingExtra="@dimen/dp_6"
+            android:textColor="@color/admin_main_select_text"
+            android:layout_marginLeft="@dimen/dp_8"
+            />
+            <RadioGroup
+                android:id="@+id/rg_01"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@+id/tv_flag06"
+                android:orientation="horizontal"
+                >
+                <RadioButton
+                    android:id="@+id/rb_01"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="未发生"
+                    android:textSize="@dimen/sp_14"
+                    />
+                <RadioButton
+                    android:id="@+id/rb_02"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="发生过"
+                    android:textSize="@dimen/sp_14"
+                    />
+            </RadioGroup>
+        </RelativeLayout>
+        <TextView
+            android:id="@+id/tv_bottom_02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/sp_14"
+            android:text="(共2起)在施工安全监督周期内，计划对该工程进行施工安全抽查5次"
+            android:lineSpacingExtra="@dimen/dp_6"
+            android:textColor="@color/admin_main_select_text"
+            android:layout_marginLeft="@dimen/dp_8"
+            />
+
     </LinearLayout>
 
 </android.support.v4.widget.NestedScrollView>

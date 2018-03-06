@@ -42,6 +42,9 @@ public class Const {
     public static final String PROJECTCODE = "projectCode";
     public static final String SGXKZH="sgxkzh";
     public static final String IMAGEURL = "iamge_url";
+    public static final String SUPERVISIONPLANTEXT = "监督计划";
+    public static final String SUPERVISIONPLANTEXT2 = "监督计划变更";
+    public static final String SUPERVISIONPLANTEXT3 = "监督交底";
 
 
     private Const() {

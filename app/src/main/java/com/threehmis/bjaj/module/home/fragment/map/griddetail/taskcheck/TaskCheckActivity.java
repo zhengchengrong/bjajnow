@@ -1,16 +1,16 @@
 package com.threehmis.bjaj.module.home.fragment.map.griddetail.taskcheck;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.flyco.tablayout.SegmentTabLayout;
 import com.threehmis.bjaj.R;
 import com.threehmis.bjaj.module.base.BaseActivity;
-import com.threehmis.bjaj.module.home.fragment.map.griddetail.schedule.ScheduleFragment01;
-import com.threehmis.bjaj.module.home.fragment.map.griddetail.schedule.ScheduleFragment02;
 
 import java.util.ArrayList;
 
@@ -32,6 +32,8 @@ public class TaskCheckActivity extends BaseActivity {
     SegmentTabLayout mTl4;
     @BindView(R.id.fl_change)
     FrameLayout mFlChange;
+    @BindView(R.id.btn_add)
+    Button mBtnAdd;
     private ArrayList<Fragment> mFragments2 = new ArrayList<>();
     private String[] mTitles_2 = {"未完成", "已完成"};
 
@@ -54,6 +56,14 @@ public class TaskCheckActivity extends BaseActivity {
         mFragments2.add(fragment2);
         SegmentTabLayout tabLayout_4 = (SegmentTabLayout) findViewById(R.id.tl_4);
         tabLayout_4.setTabData(mTitles_2, this, R.id.fl_change, mFragments2);
+
+        mBtnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(TaskCheckActivity.this,TaskCheckAddActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -71,4 +81,5 @@ public class TaskCheckActivity extends BaseActivity {
             }
         });
     }
+
 }

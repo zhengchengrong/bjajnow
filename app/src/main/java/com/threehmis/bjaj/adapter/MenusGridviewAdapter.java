@@ -23,6 +23,7 @@ import com.threehmis.bjaj.module.home.fragment.map.griddetail.qzjx.QzjxActivity;
 import com.threehmis.bjaj.module.home.fragment.map.griddetail.rectificationnotify.RectificationNotifyActivity;
 import com.threehmis.bjaj.module.home.fragment.map.griddetail.safecomment.SafeCommentActivity;
 import com.threehmis.bjaj.module.home.fragment.map.griddetail.schedule.ScheduleActivity;
+import com.threehmis.bjaj.module.home.fragment.map.griddetail.supervisionjd.SupervisionJDActivity;
 import com.threehmis.bjaj.module.home.fragment.map.griddetail.supervisionplan.SupervisionPlanActivity;
 import com.threehmis.bjaj.module.home.fragment.map.griddetail.taskcheck.TaskCheckActivity;
 import com.threehmis.bjaj.utils.SPUtils;
@@ -114,7 +115,6 @@ public class MenusGridviewAdapter extends android.widget.BaseAdapter {
                     intent.putExtras(bundle1);
                     activity.startActivity(intent);
                     break;
-
                case 1://形象进度
                    intent = new Intent(activity, ScheduleActivity.class);
                    intent.putExtra(Const.PROJECTID,projectID);
@@ -122,6 +122,11 @@ public class MenusGridviewAdapter extends android.widget.BaseAdapter {
                     break;
                 case 2://监督计划
                     intent = new Intent(activity, SupervisionPlanActivity.class);
+                    intent.putExtra(Const.PROJECTID,projectID);
+                    activity.startActivity(intent);
+                    break;
+                case 3://监督交底
+                    intent = new Intent(activity, SupervisionJDActivity.class);
                     intent.putExtra(Const.PROJECTID,projectID);
                     activity.startActivity(intent);
                     break;

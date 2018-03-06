@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tl="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <include
+        android:id="@+id/include"
         layout="@layout/my_include_title"
         />
     <com.flyco.tablayout.SegmentTabLayout
@@ -19,13 +20,33 @@
         tl:tl_indicator_color="@color/main_color"
         tl:tl_indicator_corner_radius="4dp"
         tl:tl_tab_padding="40dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/include"
         tl:tl_textsize="15dp" />
 
     <FrameLayout
         android:id="@+id/fl_change"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/tl_4"
         android:background="@color/garybg"/>
 
 
-</LinearLayout>
+
+    <Button
+        android:id="@+id/btn_add"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_60"
+        android:text="添加"
+        android:background="@color/white"
+        android:textColor="@color/main_color"
+        android:layout_alignParentBottom="true"
+        android:textSize="@dimen/sp_admin_main_01"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:background="@color/light_gray"
+        android:layout_alignTop="@+id/btn_add"
+        />
+</RelativeLayout>

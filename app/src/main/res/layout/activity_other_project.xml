@@ -87,7 +87,7 @@
 
     </LinearLayout>
 
-    <include layout="@layout/layout_menu_linegreen" />
+    <include layout="@layout/layout_menu_line_main_color" />
 
     <com.jcodecraeer.xrecyclerview.XRecyclerView
         android:id="@+id/recyclerview"
