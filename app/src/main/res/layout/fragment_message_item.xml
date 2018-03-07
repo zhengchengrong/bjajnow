@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/white"
+    >
+
+    <TextView
+        android:id="@+id/tv_01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2018-01-14"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:gravity="center_vertical|center_horizontal"
+        android:background="@drawable/shape_gray"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:paddingTop="@dimen/dp_5"
+        android:paddingBottom="@dimen/dp_5"
+        android:paddingLeft="@dimen/dp_10"
+        android:paddingRight="@dimen/dp_10"
+        android:textColor="@color/admin_main_select_text"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_10"
+        android:background="@drawable/shape_main_color"
+        android:layout_margin="@dimen/dp_10"
+        >
+
+        <ImageView
+            android:id="@+id/iv_01"
+            android:layout_width="@dimen/dp_80"
+            android:layout_height="@dimen/dp_60"
+            android:background="@drawable/default_pic"
+            android:layout_marginRight="@dimen/dp_10"
+            />
+
+
+        <TextView
+            android:id="@+id/tv_02"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="监督站：丰台区工程质量安全监督站于2018-01-14日对工程:北京市国际会议中心三期完成安全监督申请手续办理"
+            android:layout_toRightOf="@+id/iv_01"
+            android:textSize="@dimen/sp_admin_main_03"
+            />
+
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -85,11 +85,6 @@
             />
 
     </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_10"
-        android:background="@color/light_gray"
-        />
     <com.threehmis.bjaj.widget.NoScrollViewPager
         android:id="@+id/vp_project_info"
         android:layout_width="match_parent"

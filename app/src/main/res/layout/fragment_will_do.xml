@@ -5,17 +5,22 @@
     android:orientation="vertical"
     android:background="@color/white"
     >
+
     <include
-        android:id="@+id/include"
-        layout="@layout/my_include_title"></include>
+        layout="@layout/my_include_title"
+        />
+
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_1"
         android:background="@color/light_gray"
         />
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+
+        >
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_content"
             android:layout_width="match_parent"

@@ -393,6 +393,7 @@ public class ProjectInfoActivity extends BaseActivity implements View.OnClickLis
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     private void initTitle() {
         mTvTitle.setText(R.string.project_info_title);
         mTvBack.setVisibility(View.VISIBLE);
@@ -402,6 +403,14 @@ public class ProjectInfoActivity extends BaseActivity implements View.OnClickLis
                 finish();
             }
         });
+        mTvProject01.setBackground(this.getResources().getDrawable(R.drawable.shape_admin_main_half_color));
+        mTvProject01.setTextColor(this.getResources().getColor(R.color.white));
+        mTvProject02.setBackground(this.getResources().getDrawable(R.drawable.shape_admin_white_half_color_no_stroke));
+        mTvProject02.setTextColor(this.getResources().getColor(R.color.main_color));
+        mTvProject03.setBackground(this.getResources().getDrawable(R.drawable.shape_admin_white_half_color_no_stroke));
+        mTvProject03.setTextColor(this.getResources().getColor(R.color.main_color));
+        mTvProject04.setBackground(this.getResources().getDrawable(R.drawable.shape_admin_white_half_color));
+        mTvProject04.setTextColor(this.getResources().getColor(R.color.main_color));
     }
     private void getDatas() {
         Bundle bundle = this.getIntent().getExtras();// 获取传递过来的封装了数据的Bundle

@@ -105,6 +105,7 @@ public class MenusGridviewAdapter extends android.widget.BaseAdapter {
         @Override
         public void onClick(View view) {
             RxSPUtils.putString(activity,Const.PROJECTID,projectID); // 保存项目id
+            RxSPUtils.putString(activity,Const.PROJECTNAME,projectName); // 保存项目名
             Intent  intent;
             switch (pos) {
                 case 0:  //工程信息

@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.chad.library.adapter.base.BaseItemDraggableAdapter;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.google.gson.Gson;
@@ -32,6 +33,7 @@ import com.vondear.rxtools.RxSPUtils;
 import com.vondear.rxtools.view.RxToast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -94,12 +96,12 @@ public class TaskCheckFragment01 extends BaseFragment {
     private void getDatas() {
         ProjectCheckTaskReq req = new ProjectCheckTaskReq();
        // req.setProjectId(id);
-   /*     req.setProjectId(id);
+        req.setProjectId(id);
         req.setCheckStatus(0+"");
-        req.setSignDate(DateUtil.getStringDateShort());*/
-       req.setProjectId("1bb69ede-b55f-46e8-b35b-1540ae7bd152");
+        req.setSignDate(DateUtil.getStringDateShort());
+/*       req.setProjectId("1bb69ede-b55f-46e8-b35b-1540ae7bd152");
         req.setCheckStatus(2+"");
-        req.setSignDate("2018-01-29");
+        req.setSignDate("2018-01-29");*/
         Observable<BaseBeanRsp<ProjectTaskCheckRsp>> observable = RetrofitFactory.getInstance().getCheckTask(req);
         observable.compose(RxSchedulers.<BaseBeanRsp<ProjectTaskCheckRsp>>compose(
         )).subscribe(new BaseObserver<ProjectTaskCheckRsp>() {
@@ -124,6 +126,7 @@ public class TaskCheckFragment01 extends BaseFragment {
     protected int attachLayoutRes() {
         return R.layout.fragment_task_check01;
     }
+
 
 
 }

@@ -1,5 +1,7 @@
+/*
 package com.threehmis.bjaj.widget;
 
+*/
 /*
  * Copyright (C) 2011 The Android Open Source Project
  *
@@ -14,7 +16,8 @@ package com.threehmis.bjaj.widget;
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
+ *//*
+
 
 
 import android.content.Context;
@@ -53,6 +56,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
+*/
 /**
  * Layout manager that allows the user to flip left and right
  * through pages of data.  You supply an implementation of a
@@ -62,7 +66,8 @@ import java.util.Comparator;
  * development.  The API will likely change in later updates of
  * the compatibility library, requiring changes to the source code
  * of apps when they are compiled against the newer version.</p>
- */
+ *//*
+
 public class NoPreloadViewPager extends ViewGroup {
     private static final String TAG ="NoPreLoadViewPager";
     private static final boolean DEBUG = false;
@@ -120,25 +125,33 @@ public class NoPreloadViewPager extends ViewGroup {
     private boolean mIsUnableToDrag;
     private int mTouchSlop;
     private float mInitialMotionX;
-    /**
+    */
+/**
      * Position of the last motion event.
-     */
+     *//*
+
     private float mLastMotionX;
     private float mLastMotionY;
-    /**
+    */
+/**
      * ID of the active pointer. This is used to retain consistency during
      * drags/flings if multiple pointers are used.
-     */
+     *//*
+
     private int mActivePointerId = INVALID_POINTER;
-    /**
+    */
+/**
      * Sentinel value for no current active pointer.
      * Used by {@link #mActivePointerId}.
-     */
+     *//*
+
     private static final int INVALID_POINTER = -1;
 
-    /**
+    */
+/**
      * Determines speed during touch scrolling
-     */
+     *//*
+
     private VelocityTracker mVelocityTracker;
     private int mMinimumVelocity;
     private int mMaximumVelocity;
@@ -155,30 +168,39 @@ public class NoPreloadViewPager extends ViewGroup {
 
     private OnPageChangeListener mOnPageChangeListener;
 
-    /**
+    */
+/**
      * Indicates that the pager is in an idle, settled state. The current page
      * is fully in view and no animation is in progress.
-     */
+     *//*
+
     public static final int SCROLL_STATE_IDLE = 0;
 
-    /**
+    */
+/**
      * Indicates that the pager is currently being dragged by the user.
-     */
+     *//*
+
     public static final int SCROLL_STATE_DRAGGING = 1;
 
-    /**
+    */
+/**
      * Indicates that the pager is in the process of settling to a final position.
-     */
+     *//*
+
     public static final int SCROLL_STATE_SETTLING = 2;
 
     private int mScrollState = SCROLL_STATE_IDLE;
 
-    /**
+    */
+/**
      * Callback interface for responding to changing state of the selected page.
-     */
+     *//*
+
     public interface OnPageChangeListener {
 
-        /**
+        */
+/**
          * This method will be invoked when the current page is scrolled, either as part
          * of a programmatically initiated smooth scroll or a user initiated touch scroll.
          *
@@ -186,18 +208,22 @@ public class NoPreloadViewPager extends ViewGroup {
          *                 Page position+1 will be visible if positionOffset is nonzero.
          * @param positionOffset Value from [0, 1) indicating the offset from the page at position.
          * @param positionOffsetPixels Value in pixels indicating the offset from position.
-         */
+         *//*
+
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels);
 
-        /**
+        */
+/**
          * This method will be invoked when a new page becomes selected. Animation is not
          * necessarily complete.
          *
          * @param position Position index of the new selected page.
-         */
+         *//*
+
         public void onPageSelected(int position);
 
-        /**
+        */
+/**
          * Called when the scroll state changes. Useful for discovering when the user
          * begins dragging, when the pager is automatically settling to the current page,
          * or when it is fully stopped/idle.
@@ -206,7 +232,8 @@ public class NoPreloadViewPager extends ViewGroup {
          * @see android.support.v4.view.ViewPager#SCROLL_STATE_IDLE
          * @see android.support.v4.view.ViewPager#SCROLL_STATE_DRAGGING
          * @see android.support.v4.view.ViewPager#SCROLL_STATE_SETTLING
-         */
+         *//*
+
         public void onPageScrollStateChanged(int state);
     }
 
@@ -306,24 +333,28 @@ public class NoPreloadViewPager extends ViewGroup {
         return mAdapter;
     }
 
-    /**
+    */
+/**
      * Set the currently selected page. If the ViewPager has already been through its first
      * layout there will be a smooth animated transition between the current item and the
      * specified item.
      *
      * @param item Item index to select
-     */
+     *//*
+
     public void setCurrentItem(int item) {
         mPopulatePending = false;
         setCurrentItemInternal(item, !mFirstLayout, false);
     }
 
-    /**
+    */
+/**
      * Set the currently selected page.
      *
      * @param item Item index to select
      * @param smoothScroll True to smoothly scroll to the new item, false to transition immediately
-     */
+     *//*
+
     public void setCurrentItem(int item, boolean smoothScroll) {
         mPopulatePending = false;
         setCurrentItemInternal(item, smoothScroll, false);
@@ -383,18 +414,21 @@ public class NoPreloadViewPager extends ViewGroup {
         mOnPageChangeListener = listener;
     }
 
-    /**
+    */
+/**
      * Returns the number of pages that will be retained to either side of the
      * current page in the view hierarchy in an idle state. Defaults to 1.
      *
      * @return How many pages will be kept offscreen on either side
      * @see #setOffscreenPageLimit(int)
-     */
+     *//*
+
     public int getOffscreenPageLimit() {
         return mOffscreenPageLimit;
     }
 
-    /**
+    */
+/**
      * Set the number of pages that should be retained to either side of the
      * current page in the view hierarchy in an idle state. Pages beyond this
      * limit will be recreated from the adapter when needed.
@@ -410,7 +444,8 @@ public class NoPreloadViewPager extends ViewGroup {
      * This setting defaults to 1.</p>
      *
      * @param limit How many pages will be kept offscreen in an idle state.
-     */
+     *//*
+
     public void setOffscreenPageLimit(int limit) {
         if (limit < DEFAULT_OFFSCREEN_PAGES) {
             Log.w(TAG, "Requested offscreen page limit " + limit + " too small; defaulting to " +
@@ -423,14 +458,16 @@ public class NoPreloadViewPager extends ViewGroup {
         }
     }
 
-    /**
+    */
+/**
      * Set the margin between pages.
      *
      * @param marginPixels Distance between adjacent pages in pixels
      * @see #getPageMargin()
      * @see #setPageMarginDrawable(android.graphics.drawable.Drawable)
      * @see #setPageMarginDrawable(int)
-     */
+     *//*
+
     public void setPageMargin(int marginPixels) {
         final int oldMargin = mPageMargin;
         mPageMargin = marginPixels;
@@ -441,20 +478,24 @@ public class NoPreloadViewPager extends ViewGroup {
         requestLayout();
     }
 
-    /**
+    */
+/**
      * Return the margin between pages.
      *
      * @return The size of the margin in pixels
-     */
+     *//*
+
     public int getPageMargin() {
         return mPageMargin;
     }
 
-    /**
+    */
+/**
      * Set a drawable that will be used to fill the margin between pages.
      *
      * @param d Drawable to display between pages
-     */
+     *//*
+
     public void setPageMarginDrawable(Drawable d) {
         mMarginDrawable = d;
         if (d != null) refreshDrawableState();
@@ -462,11 +503,13 @@ public class NoPreloadViewPager extends ViewGroup {
         invalidate();
     }
 
-    /**
+    */
+/**
      * Set a drawable that will be used to fill the margin between pages.
      *
      * @param resId Resource ID of a drawable to display between pages
-     */
+     *//*
+
     public void setPageMarginDrawable(int resId) {
         setPageMarginDrawable(getContext().getResources().getDrawable(resId));
     }
@@ -495,23 +538,27 @@ public class NoPreloadViewPager extends ViewGroup {
         return (float) Math.sin(f);
     }
 
-    /**
+    */
+/**
      * Like {@link android.view.View#scrollBy}, but scroll smoothly instead of immediately.
      *
      * @param x the number of pixels to scroll by on the X axis
      * @param y the number of pixels to scroll by on the Y axis
-     */
+     *//*
+
     void smoothScrollTo(int x, int y) {
         smoothScrollTo(x, y, 0);
     }
 
-    /**
+    */
+/**
      * Like {@link android.view.View#scrollBy}, but scroll smoothly instead of immediately.
      *
      * @param x the number of pixels to scroll by on the X axis
      * @param y the number of pixels to scroll by on the Y axis
      * @param velocity the velocity associated with a fling, if applicable. (0 otherwise)
-     */
+     *//*
+
     void smoothScrollTo(int x, int y, int velocity) {
         if (getChildCount() == 0) {
             // Nothing to do.
@@ -992,11 +1039,13 @@ public class NoPreloadViewPager extends ViewGroup {
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
-        /*
+        */
+/*
          * This method JUST determines whether we want to intercept the motion.
          * If we return true, onMotionEvent will be called and we do the actual
          * scrolling there.
-         */
+         *//*
+
 
         final int action = ev.getAction() & MotionEventCompat.ACTION_MASK;
 
@@ -1025,15 +1074,19 @@ public class NoPreloadViewPager extends ViewGroup {
 
         switch (action) {
             case MotionEvent.ACTION_MOVE: {
-                /*
+                */
+/*
                  * mIsBeingDragged == false, otherwise the shortcut would have caught it. Check
                  * whether the user has moved far enough from his original down touch.
-                 */
+                 *//*
 
-                /*
+
+                */
+/*
                 * Locally do absolute value. mLastMotionY is set to the y value
                 * of the down event.
-                */
+                *//*
+
                 final int activePointerId = mActivePointerId;
                 if (activePointerId == INVALID_POINTER) {
                     // If we don't have a valid id, the touch down wasn't on content.
@@ -1077,10 +1130,12 @@ public class NoPreloadViewPager extends ViewGroup {
             }
 
             case MotionEvent.ACTION_DOWN: {
-                /*
+                */
+/*
                  * Remember location of down touch.
                  * ACTION_DOWN always refers to pointer index 0.
-                 */
+                 *//*
+
                 mLastMotionX = mInitialMotionX = ev.getX();
                 mLastMotionY = ev.getY();
                 mActivePointerId = MotionEventCompat.getPointerId(ev, 0);
@@ -1107,10 +1162,12 @@ public class NoPreloadViewPager extends ViewGroup {
                 break;
         }
 
-        /*
+        */
+/*
         * The only time we want to intercept motion events is if we are in the
         * drag mode.
-        */
+        *//*
+
         return mIsBeingDragged;
     }
 
@@ -1144,10 +1201,12 @@ public class NoPreloadViewPager extends ViewGroup {
 
         switch (action & MotionEventCompat.ACTION_MASK) {
             case MotionEvent.ACTION_DOWN: {
-                /*
+                */
+/*
                  * If being flinged and user touches, stop the fling. isFinished
                  * will be false if being flinged.
-                 */
+                 *//*
+
                 completeScroll();
 
                 // Remember where the motion event started
@@ -1318,7 +1377,8 @@ public class NoPreloadViewPager extends ViewGroup {
         }
     }
 
-    /**
+    */
+/**
      * Start a fake drag of the pager.
      *
      * <p>A fake drag can be useful if you want to synchronize the motion of the ViewPager
@@ -1334,7 +1394,8 @@ public class NoPreloadViewPager extends ViewGroup {
      *
      * @see #fakeDragBy(float)
      * @see #endFakeDrag()
-     */
+     *//*
+
     public boolean beginFakeDrag() {
         if (mIsBeingDragged) {
             return false;
@@ -1355,12 +1416,14 @@ public class NoPreloadViewPager extends ViewGroup {
         return true;
     }
 
-    /**
+    */
+/**
      * End a fake drag of the pager.
      *
      * @see #beginFakeDrag()
      * @see #fakeDragBy(float)
-     */
+     *//*
+
     public void endFakeDrag() {
         if (!mFakeDragging) {
             throw new IllegalStateException("No fake drag in progress. Call beginFakeDrag first.");
@@ -1386,13 +1449,15 @@ public class NoPreloadViewPager extends ViewGroup {
         mFakeDragging = false;
     }
 
-    /**
+    */
+/**
      * Fake drag by an offset in pixels. You must have called {@link #beginFakeDrag()} first.
      *
      * @param xOffset Offset in pixels to drag by.
      * @see #beginFakeDrag()
      * @see #endFakeDrag()
-     */
+     *//*
+
     public void fakeDragBy(float xOffset) {
         if (!mFakeDragging) {
             throw new IllegalStateException("No fake drag in progress. Call beginFakeDrag first.");
@@ -1430,7 +1495,8 @@ public class NoPreloadViewPager extends ViewGroup {
         ev.recycle();
     }
 
-    /**
+    */
+/**
      * Returns true if a fake drag is in progress.
      *
      * @return true if currently in a fake drag, false otherwise.
@@ -1438,7 +1504,8 @@ public class NoPreloadViewPager extends ViewGroup {
      * @see #beginFakeDrag()
      * @see #fakeDragBy(float)
      * @see #endFakeDrag()
-     */
+     *//*
+
     public boolean isFakeDragging() {
         return mFakeDragging;
     }
@@ -1483,7 +1550,8 @@ public class NoPreloadViewPager extends ViewGroup {
         }
     }
 
-    /**
+    */
+/**
      * Tests scrollability within child views of v given a delta of dx.
      *
      * @param v View to test for horizontal scrollability
@@ -1493,7 +1561,8 @@ public class NoPreloadViewPager extends ViewGroup {
      * @param x X coordinate of the active touch point
      * @param y Y coordinate of the active touch point
      * @return true if child views of v can be scrolled by delta of dx.
-     */
+     *//*
+
     protected boolean canScroll(View v, boolean checkV, int dx, int x, int y) {
         if (v instanceof ViewGroup) {
             final ViewGroup group = (ViewGroup) v;
@@ -1523,14 +1592,16 @@ public class NoPreloadViewPager extends ViewGroup {
         return super.dispatchKeyEvent(event) || executeKeyEvent(event);
     }
 
-    /**
+    */
+/**
      * You can call this function yourself to have the scroll view perform
      * scrolling from a key event, just as if the event had been dispatched to
      * it by the view hierarchy.
      *
      * @param event The key event to execute.
      * @return Return true if the event was handled, else false.
-     */
+     *//*
+
     public boolean executeKeyEvent(KeyEvent event) {
         boolean handled = false;
         if (event.getAction() == KeyEvent.ACTION_DOWN) {
@@ -1608,9 +1679,11 @@ public class NoPreloadViewPager extends ViewGroup {
         return false;
     }
 
-    /**
+    */
+/**
      * We only want the current page that is being shown to be focusable.
-     */
+     *//*
+
     @Override
     public void addFocusables(ArrayList<View> views, int direction, int focusableMode) {
         final int focusableCount = views.size();
@@ -1652,9 +1725,11 @@ public class NoPreloadViewPager extends ViewGroup {
         }
     }
 
-    /**
+    */
+/**
      * We only want the current page that is being shown to be touchable.
-     */
+     *//*
+
     @Override
     public void addTouchables(ArrayList<View> views) {
         // Note that we don't call super.addTouchables(), which means that
@@ -1671,9 +1746,11 @@ public class NoPreloadViewPager extends ViewGroup {
         }
     }
 
-    /**
+    */
+/**
      * We only want the current page that is being shown to be focusable.
-     */
+     *//*
+
     @Override
     protected boolean onRequestFocusInDescendants(int direction,
                                                   Rect previouslyFocusedRect) {
@@ -1738,4 +1815,4 @@ public class NoPreloadViewPager extends ViewGroup {
             dataSetChanged();
         }
     }
-}
+}*/

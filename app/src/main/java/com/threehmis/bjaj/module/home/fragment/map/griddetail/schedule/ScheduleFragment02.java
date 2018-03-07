@@ -135,6 +135,7 @@ public class ScheduleFragment02 extends BaseFragment {
         )).subscribe(new BaseObserver<ProjectProgressRsp>() {
             @Override
             protected void onHandleSuccess(BaseBeanRsp<ProjectProgressRsp> projectProgressRspBaseBeanRsp) {
+                mProjectStatusRsps.clear();
                 mProjectStatusRsps.addAll(projectProgressRspBaseBeanRsp.getProjectList());
                 mBaseQuickAdapter.notifyDataSetChanged();
             }

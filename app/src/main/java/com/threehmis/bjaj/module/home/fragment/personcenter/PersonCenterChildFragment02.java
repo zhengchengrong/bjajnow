@@ -1,17 +1,13 @@
 package com.threehmis.bjaj.module.home.fragment.personcenter;
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
+import android.content.Intent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.threehmis.bjaj.R;
 import com.threehmis.bjaj.module.base.BaseFragment;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 
 /**
  * Created by llz on 2018/3/6.
@@ -39,7 +35,8 @@ public class PersonCenterChildFragment02 extends BaseFragment {
         mTv01.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                    Intent intent = new Intent(mActivity,PersonCenterDetailActivity.class);
+                    startActivity(intent);
             }
         });
     }

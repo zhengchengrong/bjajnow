@@ -15,7 +15,7 @@ import com.threehmis.bjaj.adapter.MainZhuTuViewPagerAdaper;
 import com.threehmis.bjaj.api.bean.respon.ChangeAddressResponBean;
 import com.threehmis.bjaj.module.base.BaseFragment;
 import com.threehmis.bjaj.utils.DensityUtils;
-import com.threehmis.bjaj.widget.NoPreloadViewPager;
+import com.threehmis.bjaj.widget.NoScrollViewPager;
 import com.threehmis.bjaj.widget.SpinerPopWindow;
 import com.threehmis.bjaj.widget.supertextview.SuperTextView;
 
@@ -53,7 +53,7 @@ public class MainFragment extends BaseFragment implements View.OnClickListener {
     private View header01,footer01,footer02;
     // 柱状图
     SegmentTabLayout mSlidingTabLayout;
-    NoPreloadViewPager viewPager;
+    NoScrollViewPager viewPager;
     private String[] mTitles_3 = {"工程总数", "危大工程", "执法人员", "检查量"};
     //柱状图的views
     private List<View> views=new ArrayList<View>();
@@ -152,7 +152,7 @@ public class MainFragment extends BaseFragment implements View.OnClickListener {
         // 添加头部02
         footer02 = View.inflate(mActivity,R.layout.fragment_main_footer02,null);
         mSlidingTabLayout = (SegmentTabLayout) footer02.findViewById(R.id.tabLayout);
-         viewPager = (NoPreloadViewPager)footer02.findViewById(R.id.viewPager);
+         viewPager = (NoScrollViewPager)footer02.findViewById(R.id.viewPager);
          initViewPager();// 初始化各个视图
         MainZhuTuViewPagerAdaper mainZhuTuViewPagerAdaper = new MainZhuTuViewPagerAdaper(views,mActivity);
          viewPager.setAdapter(mainZhuTuViewPagerAdaper);
@@ -167,7 +167,7 @@ public class MainFragment extends BaseFragment implements View.OnClickListener {
             public void onTabReselect(int position) {
             }
         });
-        viewPager.setOnPageChangeListener(new NoPreloadViewPager.OnPageChangeListener() {
+        viewPager.setOnPageChangeListener(new NoScrollViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 

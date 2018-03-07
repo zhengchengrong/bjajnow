@@ -1,155 +1,90 @@
 package com.threehmis.bjaj.module.home.fragment.notice;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
-import android.util.Log;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+import android.widget.TextView;
 
-import com.jcodecraeer.xrecyclerview.ProgressStyle;
-import com.jcodecraeer.xrecyclerview.XRecyclerView;
-import com.threehmis.bjaj.AndroidApplication;
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.BaseViewHolder;
 import com.threehmis.bjaj.R;
-import com.threehmis.bjaj.adapter.WilldoAdapter;
-import com.threehmis.bjaj.api.RetrofitFactory;
-import com.threehmis.bjaj.api.bean.request.GetHistoryReq;
+import com.threehmis.bjaj.api.bean.respon.ProjectStatusRsp;
+import com.threehmis.bjaj.api.bean.respon.WillDoRsp;
+import com.threehmis.bjaj.module.base.BaseFragment;
+import com.threehmis.bjaj.module.home.fragment.notice.activity.WillDoSafeJDSXSQActivity;
+import com.threehmis.bjaj.widget.EmptyLayout;
+
+import java.util.ArrayList;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 
-import java.io.IOException;
+public class WilldoFragment extends BaseFragment {
 
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Response;
+    @BindView(R.id.tv_title)
+    TextView mTvTitle;
+    @BindView(R.id.other)
+    TextView mOther;
+    @BindView(R.id.tv_back)
+    TextView mTvBack;
+    @BindView(R.id.rv_content)
+    RecyclerView mRvContent;
+    @BindView(R.id.empty_layout)
+    EmptyLayout mEmptyLayout;
 
+    ArrayList<WillDoRsp> mWillDoRsps;
+    BaseQuickAdapter mBaseQuickAdapter;
+    @Override
+    protected void initInjector() {
 
-public class WilldoFragment extends Fragment {
-
-    private XRecyclerView recyclerview;
-    private int pageIndex = 1,pagesize=20;
-    private WilldoAdapter mAdapter;
-
+    }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    protected void initViews() {
+        initTitle();
+        mRvContent.setLayoutManager(new LinearLayoutManager(mActivity));
+        mWillDoRsps = new ArrayList<WillDoRsp>();
+        WillDoRsp willDoRsp = new WillDoRsp();
+        willDoRsp.setDate("2018-09-12");
+        willDoRsp.setTitle("安全监督手续申请审核");
+        willDoRsp.setType("0");
+        mWillDoRsps.add(willDoRsp);
 
-        View view = inflater.inflate(R.layout.fragment_willdo, container, false);
-
-        recyclerview = (XRecyclerView) view.findViewById(R.id.recyclerview);
-
-
-        return view;
-    }
-
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        recyclerview.setLayoutManager(new LinearLayoutManager(
-                getActivity(), LinearLayoutManager.VERTICAL, false));
-
-        recyclerview.setRefreshProgressStyle(ProgressStyle.BallScaleRippleMultiple);
-
-        recyclerview.setLaodingMoreProgressStyle(ProgressStyle.Pacman);
-
-        recyclerview.setArrowImageView(R.drawable.iconfont_downgrey);
-        recyclerview.setLoadingListener(new XRecyclerViewLoadingListener());
-
-        mAdapter = new WilldoAdapter();
-        recyclerview.setAdapter(mAdapter);
-
-//        getData();
-
-    }
-
-    private void getData() {
-
-        GetHistoryReq req = new GetHistoryReq();
-
-//        req.projectId=projectId;
-//        req.inspectionType=isquality?"0":"1"; //0.质量 1.安全
-        req.pageno=pageIndex+"";
-        req.pagesize=pagesize+"";
-
-        AndroidApplication.getInstance().doPostAsyncfile(RetrofitFactory.BASE_URL+"inspection/inspectionList",req,new okhttpcall());
-
-
-    }
-
-    class okhttpcall implements Callback {
-
-
-        @Override
-        public void onFailure(Call call, IOException e) {
-
-            mHandler.sendEmptyMessage(RetrofitFactory.MSG_FAIL);
-        }
-
-        @Override
-        public void onResponse(Call call, Response response) throws IOException {
-
-            String body = response.body().string();
-
-            Log.d("CD", "DDDDDDDDDD=" + body);
-
-//            getHistoryRsp = JSON.parseObject(body, new TypeReference<BaseBeanRsp<GetHistoryRsp>>() {});
-
-
-//            mHandler.sendEmptyMessage(getHistoryRsp.verification ? RetrofitFactory.MSG_SUCESS : RetrofitFactory.MSG_FAIL);
-
-        }
-    }
-
-    protected Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-
-            switch (msg.what) {
-                case RetrofitFactory.MSG_SUCESS:
-
-//                    if (pageIndex == 1) recyclerview.refreshComplete();
-//                    if (pageIndex != 1) recyclerview.loadMoreComplete();
-//                    mAdapter.notifyData(getHistoryRsp.projectList, pageIndex);
-
-                    break;
-                case RetrofitFactory.MSG_FAIL:
-
-                    Toast.makeText(getContext(), "获取数据失败!", Toast.LENGTH_SHORT).show();
-                    break;
-                default:
-                    break;
+        mBaseQuickAdapter = new BaseQuickAdapter<WillDoRsp, BaseViewHolder>(R.layout.woill_do_item_01, mWillDoRsps) {
+            @Override
+            protected void convert(BaseViewHolder baseViewHolder, WillDoRsp rowsBean) {
+                baseViewHolder.setText(R.id.title,rowsBean.getTitle());
+                baseViewHolder.setText(R.id.type,rowsBean.getType());
+                baseViewHolder.setText(R.id.time,rowsBean.getDate());
+                baseViewHolder.getView(R.id.ll_woill).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(mActivity,WillDoSafeJDSXSQActivity.class);
+                        startActivity(intent);
+                    }
+                });
             }
-            super.handleMessage(msg);
-        }
-    };
+        };
+        mRvContent.setAdapter(mBaseQuickAdapter);
+    }
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
+    protected void updateViews(boolean isRefresh) {
 
-        mHandler.removeCallbacksAndMessages(null);
     }
 
-
-    class XRecyclerViewLoadingListener implements XRecyclerView.LoadingListener {
-
-        @Override
-        public void onRefresh() {
-
-            recyclerview.refreshComplete();
-        }
-
-        @Override
-        public void onLoadMore() {
-            recyclerview.loadMoreComplete();
-        }
+    @Override
+    protected int attachLayoutRes() {
+        return R.layout.fragment_will_do;
     }
 
-
+    private void initTitle() {
+        mTvTitle.setText("待办事项");
+    }
 }

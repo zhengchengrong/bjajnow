@@ -65,7 +65,7 @@ public class SupervisionPlanFragment02 extends BaseFragment {
                 baseViewHolder.setText(R.id.tv_01,baseViewHolder.getAdapterPosition()+1+"");
                 baseViewHolder.setText(R.id.tv_02,rowsBean.getJdjhBGRQ());
                 baseViewHolder.setText(R.id.tv_03,rowsBean.getJdjhBGR());
-                baseViewHolder.getView(R.id.tv_04).setOnClickListener(new View.OnClickListener() {
+                baseViewHolder.getView(R.id.ll_01).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         RxToast.showToast("查看");

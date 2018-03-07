@@ -12,8 +12,11 @@ import android.widget.TextView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.threehmis.bjaj.R;
+import com.threehmis.bjaj.api.bean.respon.MessageBeanRsp;
 import com.threehmis.bjaj.module.base.BaseFragment;
 import com.threehmis.bjaj.widget.EmptyLayout;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -35,6 +38,7 @@ public class MessageFragment extends BaseFragment {
     @BindView(R.id.empty_layout)
     EmptyLayout mEmptyLayout;
     BaseQuickAdapter mBaseQuickAdapter;
+    private ArrayList<MessageBeanRsp> mMessageBeanRsps = new ArrayList<MessageBeanRsp>();
     @Override
     protected void initInjector() {
 
@@ -42,15 +46,27 @@ public class MessageFragment extends BaseFragment {
     @Override
     protected void initViews() {
         mTvTitle.setText(R.string.fragment_message_title);
-       /* mRvContent.setLayoutManager(new LinearLayoutManager(mActivity));
-        mBaseQuickAdapter = new BaseQuickAdapter<KcListBean.RowsBean, BaseViewHolder>(R.layout.rv_observer_item, list) {
-            @Override
-            protected void convert(BaseViewHolder baseViewHolder,  KcListBean.RowsBean rowsBean) {
+       mRvContent.setLayoutManager(new LinearLayoutManager(mActivity));
+       MessageBeanRsp messageBeanRsp = new MessageBeanRsp();
+        messageBeanRsp.setContent("213");
+        messageBeanRsp.setMydate("2018-07-21");
+        messageBeanRsp.setUrl("");
+        mMessageBeanRsps.add(messageBeanRsp);
 
+        MessageBeanRsp messageBeanRsp2 = new MessageBeanRsp();
+        messageBeanRsp2.setContent("213");
+        messageBeanRsp2.setMydate("2018-07-21");
+        messageBeanRsp2.setUrl("");
+        mMessageBeanRsps.add(messageBeanRsp2);
+        mBaseQuickAdapter = new BaseQuickAdapter<MessageBeanRsp, BaseViewHolder>(R.layout.fragment_message_item, mMessageBeanRsps) {
+            @Override
+            protected void convert(BaseViewHolder baseViewHolder,  MessageBeanRsp rowsBean) {
+                baseViewHolder.setText(R.id.tv_01,rowsBean.getMydate());
+                baseViewHolder.setText(R.id.tv_02,rowsBean.getContent());
             }
         };
         mRvContent.setAdapter(mBaseQuickAdapter);
-        mBaseQuickAdapter.setEnableLoadMore(true);*/
+        mBaseQuickAdapter.setEnableLoadMore(true);
     }
     @Override
     protected void updateViews(boolean isRefresh) {

@@ -78,6 +78,8 @@
         <activity android:name=".module.home.fragment.map.griddetail.jsj.JsjActivity"/>
         <activity android:name=".module.home.fragment.map.griddetail.supervisionplan.SupervisionPlanActivity"/>
         <activity android:name=".module.home.fragment.map.griddetail.supervisionjd.SupervisionJDActivity"/>
+        <activity android:name=".module.home.fragment.personcenter.PersonCenterDetailActivity"/>
+        <activity android:name=".module.home.fragment.notice.activity.WillDoSafeJDSXSQActivity"/>
 
 
         <!-- 权限提示 -->

@@ -1,38 +1,28 @@
 package com.threehmis.bjaj.module.home;
 
 import android.Manifest;
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.widget.FrameLayout;
 
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
-import com.flyco.tablayout.utils.UnreadMsgUtils;
-import com.flyco.tablayout.widget.MsgView;
 import com.threehmis.bjaj.R;
 import com.threehmis.bjaj.adapter.HomeFragmentPagerAdapter;
 import com.threehmis.bjaj.api.bean.TabEntity;
-import com.threehmis.bjaj.dialog.MainMoreDialog;
 import com.threehmis.bjaj.injector.components.DaggerHomeComponent;
 import com.threehmis.bjaj.injector.modules.HomeModule;
 import com.threehmis.bjaj.module.base.BaseActivity;
 import com.threehmis.bjaj.module.home.fragment.adminmain.AdminMainFragment;
-import com.threehmis.bjaj.module.home.fragment.main.MainFragment;
 import com.threehmis.bjaj.module.home.fragment.map.MainMapFragment;
 import com.threehmis.bjaj.module.home.fragment.message.MessageFragment;
-import com.threehmis.bjaj.module.home.fragment.notice.NoticeFragment;
+import com.threehmis.bjaj.module.home.fragment.notice.WilldoFragment;
 import com.threehmis.bjaj.module.home.fragment.personcenter.PersonCenterFragment;
-import com.threehmis.bjaj.module.logins.LoginActivity;
-import com.threehmis.bjaj.utils.DensityUtils;
 import com.threehmis.bjaj.widget.NoScrollViewPager;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 import kr.co.namee.permissiongen.PermissionGen;
 
 /**
@@ -76,7 +66,7 @@ public class HomeActivity extends BaseActivity<HomePresenter> implements IHomeVi
 //        mFragments.add(new MainFragment());
         mFragments.add(new AdminMainFragment());// 添加管理员的页面
         mFragments.add(new MainMapFragment());
-        mFragments.add(new NoticeFragment());
+        mFragments.add(new WilldoFragment());
         mFragments.add(new MessageFragment());
         mFragments.add(new PersonCenterFragment());
         for (int i = 0; i < mTitles.length; i++) {
