@@ -132,14 +132,13 @@
                 android:textSize="@dimen/sp_admin_main_03"
 
                 />
+
             <TextView
                 android:id="@+id/tv_02"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="@dimen/sp_admin_main_03"
-                android:text="武卫兵"
-                />
+                android:textSize="@dimen/sp_admin_main_03" />
         </LinearLayout>
         <RelativeLayout
             android:layout_width="match_parent"

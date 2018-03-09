@@ -1,5 +1,6 @@
 package com.threehmis.bjaj.module.home.fragment.map.griddetail.qzjx;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -74,6 +75,13 @@ public class QzjxActivity extends BaseActivity {
                 baseViewHolder.setText(R.id.tv_02, rowsBean.getSblx());
                 baseViewHolder.setText(R.id.tv_03, rowsBean.getSbxh());
                 baseViewHolder.setText(R.id.tv_04, rowsBean.getSfyzx());
+                baseViewHolder.getView(R.id.ll_qzjx).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                            Intent intent = new Intent(QzjxActivity.this,QzjxDetailActivity.class);
+                            startActivity(intent);
+                    }
+                });
             }
         };
         mRvContent.setAdapter(mBaseQuickAdapter);
@@ -83,8 +91,8 @@ public class QzjxActivity extends BaseActivity {
     private void getDate() {
         showLoading();
         QzjxBeanReq req = new QzjxBeanReq();
-        req.setSgxkzh(sgxkzh);
-        //req.setSgxkzh("[2013]施建字0330号");
+        //req.setSgxkzh(sgxkzh);
+        req.setSgxkzh("[2013]施建字0330号");
         Observable<BaseBeanRsp<QzjxBeanRsp>> observable = RetrofitFactory.getInstance().getQZJX(req);
         observable.compose(RxSchedulers.<BaseBeanRsp<QzjxBeanRsp>>compose(
         )).subscribe(new BaseObserver<QzjxBeanRsp>() {
@@ -123,10 +131,4 @@ public class QzjxActivity extends BaseActivity {
         });
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
 }

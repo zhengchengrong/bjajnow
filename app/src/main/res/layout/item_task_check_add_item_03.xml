@@ -6,18 +6,19 @@
     android:background="@color/white"
     >
     <LinearLayout
+        android:id="@+id/ll_01"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:background="@drawable/shape_main_color"
         >
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/dp_6"
             >
             <TextView
+                android:id="@+id/tv_flag01"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="安全检查点"
@@ -29,6 +30,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
+                android:layout_toRightOf="@+id/tv_flag01"
 
                 />
         </RelativeLayout>
@@ -40,7 +42,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="是否需要上传照片"
+                android:text="类型"
                 android:drawableLeft="@drawable/qzjx_loggo"
                 android:drawablePadding="@dimen/dp_4"
                 />
@@ -50,46 +52,6 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
 
-                />
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/dp_6"
-            >
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="应得分"
-                android:drawableLeft="@drawable/qzjx_loggo"
-                android:drawablePadding="@dimen/dp_4"
-                />
-            <TextView
-                android:id="@+id/tv_03"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                />
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/dp_6"
-            >
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="素材及引用"
-                android:drawableLeft="@drawable/qzjx_loggo"
-                android:drawablePadding="@dimen/dp_4"
-                />
-            <TextView
-                android:id="@+id/tv_04"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:text="查看"
-                android:textColor="@color/main_color"
                 />
         </RelativeLayout>
 

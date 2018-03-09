@@ -26,11 +26,13 @@ import com.threehmis.bjaj.api.Const;
 import com.threehmis.bjaj.api.RetrofitFactory;
 import com.threehmis.bjaj.api.RxSchedulers;
 import com.threehmis.bjaj.api.bean.BaseBeanRsp;
+import com.threehmis.bjaj.api.bean.request.CommonProjectIdReq;
 import com.threehmis.bjaj.api.bean.request.TaskCheckAddBeanReq;
 import com.threehmis.bjaj.api.bean.request.TaskCheckAddReq;
 import com.threehmis.bjaj.api.bean.respon.QzjxBeanRsp;
 import com.threehmis.bjaj.api.bean.respon.SupervisionPlanFirstRsp;
 import com.threehmis.bjaj.module.base.BaseActivity;
+import com.threehmis.bjaj.utils.SPUtils;
 import com.threehmis.bjaj.widget.EmptyLayout;
 import com.vondear.rxtools.RxLogUtils;
 import com.vondear.rxtools.RxSPUtils;
@@ -108,6 +110,7 @@ public class TaskCheckAddActivity extends BaseActivity {
 
 
     private boolean isCommit;
+
     @Override
     protected int attachLayoutRes() {
         return R.layout.activity_task_check_add;
@@ -121,6 +124,9 @@ public class TaskCheckAddActivity extends BaseActivity {
     @Override
     protected void initViews() {
         initTitle();
+        getData01();
+        getData02();
+        getData03("");
         listId = new ArrayList<String>();
         listCheckTaskId = new ArrayList<String>();
         listSingleProject = new ArrayList<String>();
@@ -181,12 +187,7 @@ public class TaskCheckAddActivity extends BaseActivity {
                     RxToast.showToast("请输入检查日期!");
                     return;
                 }
-                if(TextUtils.isEmpty(mTv02.getText().toString())){
-                    RxToast.showToast("检查人不能为空!");
-                    return;
-                }
                 mItemDragAdapter.notifyDataSetChanged();
-
 
             }
         });
@@ -219,8 +220,10 @@ public class TaskCheckAddActivity extends BaseActivity {
             }
         });
     }
-
-
+    MaterialDialog dialog01;
+    MaterialDialog dialog02;
+    MaterialDialog dialog03;
+    BaseQuickAdapter mBaseQuickAdapter2;
     public class ItemDragAdapter extends BaseItemDraggableAdapter<TaskCheckAddBeanReq, BaseViewHolder> {
         public ItemDragAdapter(ArrayList<TaskCheckAddBeanReq> data) {
             super(R.layout.item_task_check_add_01, data);
@@ -231,6 +234,10 @@ public class TaskCheckAddActivity extends BaseActivity {
             final TextView tv_01 = baseViewHolder.getView(R.id.et_01);
             final TextView tv_02 = baseViewHolder.getView(R.id.et_02);
             final TextView tv_03 = baseViewHolder.getView(R.id.et_03);
+            final TextView list_siginle_id = baseViewHolder.getView(R.id.list_siginle_id);
+            final  TextView list_check_man_id = baseViewHolder.getView(R.id.list_check_man_id);
+            final  TextView list_check_type = baseViewHolder.getView(R.id.list_check_type);
+
             RxLogUtils.d(tv_01.getText().toString() + ":" + tv_02.getText().toString() + ":" + tv_03.getText().toString());
             if(!TextUtils.isEmpty(tv_01.getText().toString())) {
                 set.add(tv_01.getText().toString() );
@@ -240,22 +247,25 @@ public class TaskCheckAddActivity extends BaseActivity {
                     String str = it.next();
                     mStringBuffer.append(str+ ",");
                 }
-                mTv02.setText(mStringBuffer.substring(0, mStringBuffer.length() - 1));
+               mTv02.setText(mStringBuffer.substring(0, mStringBuffer.length() - 1));
 
             }
 
             listId.add("");
             listCheckTaskId.add("");
-            listSingleProject.add("df3ecf3d-0380-4e62-809a-f6d2d6309841");
-            listCheckManId.add("武卫兵");
+            listSingleProject.add(list_siginle_id.getText().toString());
+            listCheckManId.add(list_check_man_id.getText().toString());
             listCheckMan.add(tv_01.getText().toString());
-            listCheckType.add("高处作业");
-            listCheckContent.add("在建工程外侧水平安全网设置应符合规范要求，多层和高层建筑每隔四层且不大于10m，应设一道3m宽的水平安全网");
+            listCheckType.add(list_check_type.getText().toString());
+            listCheckContent.add(tv_03.getText().toString());
             listCheckStatus.add("0");
             if(baseViewHolder.getAdapterPosition() == mProjectStatusRsps.size()-1&&isCommit==true){
                 TaskCheckAddReq req = new TaskCheckAddReq();
                 req.setCheckNum(mEt01.getText().toString());
                 req.setCheckDate(mTv01.getText().toString());
+/*
+                req.setProjectNum(RxSPUtils.getContent(Const.PRO));
+*/
                 req.setProjectId(projectId);
                 req.setProjectName(projectName);
                 req.setListId(listId);
@@ -271,6 +281,7 @@ public class TaskCheckAddActivity extends BaseActivity {
                 req.setUpdateDate(mTv01.getText().toString());
                 req.setCreateDate(mTv01.getText().toString());
                 req.setCheckMen(mTv02.getText().toString());
+                req.setCreateMan(RxSPUtils.getString(TaskCheckAddActivity.this,Const.PROJECTNAME));
                 if(mRb01.isChecked()){
                     req.setCheckBasis("计划");
                 }else if(mRb02.isChecked()){
@@ -294,130 +305,166 @@ public class TaskCheckAddActivity extends BaseActivity {
                 });
             }
 
-
             tv_01.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    final MaterialDialog dialog = new MaterialDialog.Builder(TaskCheckAddActivity.this)
+                    dialog01 = new MaterialDialog.Builder(TaskCheckAddActivity.this)
                             .title("检查联系人").titleColor(TaskCheckAddActivity.this.getResources().getColor(R.color.main_color))
                             .customView(R.layout.dialog_task_check_add01, wrapInScrollView)
                             .positiveText("取消")
                             .show();
-                    View view1 = dialog.getCustomView();
+                    View view1 = dialog01.getCustomView();
                     RecyclerView mRvContent2 = view1.findViewById(R.id.rv_content);
                     mRvContent2.setLayoutManager(new LinearLayoutManager(TaskCheckAddActivity.this));
-                    ArrayList<QzjxBeanRsp> mQzjxBeanRsps = new ArrayList<QzjxBeanRsp>();
-                    BaseQuickAdapter mBaseQuickAdapter2 = new BaseQuickAdapter<QzjxBeanRsp, BaseViewHolder>(R.layout.item_task_check_add_item_01, mQzjxBeanRsps) {
+                    BaseQuickAdapter mBaseQuickAdapter2 = new BaseQuickAdapter<BaseBeanRsp.JokerVOBean.MonitorListBean, BaseViewHolder>(R.layout.item_task_check_add_item_01, personList) {
                         @Override
-                        protected void convert(final BaseViewHolder baseViewHolder, final QzjxBeanRsp rowsBean) {
-                            baseViewHolder.setText(R.id.tv_01, rowsBean.getSbdjbh());
-                            baseViewHolder.setText(R.id.tv_02, rowsBean.getSblx());
-                            baseViewHolder.setText(R.id.tv_03, rowsBean.getSbxh());
-                            baseViewHolder.setText(R.id.tv_04, rowsBean.getSfyzx());
-                         baseViewHolder.getView(R.id.ll_01).setOnClickListener(new View.OnClickListener() {
+                        protected void convert(final BaseViewHolder baseViewHolder, final BaseBeanRsp.JokerVOBean.MonitorListBean rowsBean) {
+                            baseViewHolder.setText(R.id.tv_01, rowsBean.getMonitorName());
+                            baseViewHolder.setText(R.id.tv_02, rowsBean.getMonitorType());
+                            baseViewHolder.getView(R.id.ll_01).setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
-                                      tv_01.setText(rowsBean.getSbdjbh());
-                                      dialog.dismiss();
+                                    tv_01.setText(rowsBean.getMonitorName());
+                                    list_check_man_id.setText(rowsBean.getPersonId());
+                                    dialog01.hide();
                                 }
                             });
                         }
                     };
                     mRvContent2.setAdapter(mBaseQuickAdapter2);
-                    QzjxBeanRsp qzjxBeanRsp = new QzjxBeanRsp();
-                    qzjxBeanRsp.setSbdjbh("123");
-                    qzjxBeanRsp.setSblx("456");
-                    qzjxBeanRsp.setSbxh("789");
-                    qzjxBeanRsp.setSfyzx("1000");
-                    mQzjxBeanRsps.add(qzjxBeanRsp);
-                    QzjxBeanRsp qzjxBeanRsp2 = new QzjxBeanRsp();
-                    qzjxBeanRsp2.setSbdjbh("abc");
-                    qzjxBeanRsp2.setSblx("def");
-                    qzjxBeanRsp2.setSbxh("ghk");
-                    qzjxBeanRsp2.setSfyzx("mmp");
-                    mQzjxBeanRsps.add(qzjxBeanRsp2);
                     mBaseQuickAdapter2.notifyDataSetChanged();
                 }
             });
             tv_02.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    MaterialDialog dialog = new MaterialDialog.Builder(TaskCheckAddActivity.this)
+                     dialog02 = new MaterialDialog.Builder(TaskCheckAddActivity.this)
                             .title("选择工程单体").titleColor(TaskCheckAddActivity.this.getResources().getColor(R.color.main_color))
                             .customView(R.layout.dialog_task_check_add01, wrapInScrollView)
                             .positiveText("取消")
                             .show();
-                    View view1 = dialog.getCustomView();
+                    View view1 = dialog02.getCustomView();
                     RecyclerView mRvContent2 = view1.findViewById(R.id.rv_content);
                     mRvContent2.setLayoutManager(new LinearLayoutManager(TaskCheckAddActivity.this));
-                    ArrayList<QzjxBeanRsp> mQzjxBeanRsps = new ArrayList<QzjxBeanRsp>();
-                    BaseQuickAdapter mBaseQuickAdapter2 = new BaseQuickAdapter<QzjxBeanRsp, BaseViewHolder>(R.layout.item_task_check_add_item_02, mQzjxBeanRsps) {
+                    BaseQuickAdapter mBaseQuickAdapter2 = new BaseQuickAdapter<BaseBeanRsp.JokerVOBean.MonitorListBean, BaseViewHolder>(R.layout.item_task_check_add_item_02,jokerVOList ) {
                         @Override
-                        protected void convert(BaseViewHolder baseViewHolder, QzjxBeanRsp rowsBean) {
-                            baseViewHolder.setText(R.id.tv_01, rowsBean.getSbdjbh());
-                        }
-                    };
-                    mRvContent2.setAdapter(mBaseQuickAdapter2);
-                    QzjxBeanRsp qzjxBeanRsp = new QzjxBeanRsp();
-                    qzjxBeanRsp.setSbdjbh("123");
-                    qzjxBeanRsp.setSblx("456");
-                    qzjxBeanRsp.setSbxh("789");
-                    qzjxBeanRsp.setSfyzx("1000");
-                    mQzjxBeanRsps.add(qzjxBeanRsp);
-                    QzjxBeanRsp qzjxBeanRsp2 = new QzjxBeanRsp();
-                    qzjxBeanRsp2.setSbdjbh("123");
-                    qzjxBeanRsp2.setSblx("456");
-                    qzjxBeanRsp2.setSbxh("789");
-                    qzjxBeanRsp2.setSfyzx("1000");
-                    mQzjxBeanRsps.add(qzjxBeanRsp2);
-                    mBaseQuickAdapter2.notifyDataSetChanged();
-                }
-            });
-            tv_03.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    MaterialDialog dialog = new MaterialDialog.Builder(TaskCheckAddActivity.this)
-                            .title("选择检查内容").titleColor(TaskCheckAddActivity.this.getResources().getColor(R.color.main_color))
-                            .customView(R.layout.dialog_task_check_add03, wrapInScrollView)
-                            .positiveText("取消")
-                            .show();
-                    View view1 = dialog.getCustomView();
-                    RecyclerView mRvContent2 = view1.findViewById(R.id.rv_content);
-                    mRvContent2.setLayoutManager(new LinearLayoutManager(TaskCheckAddActivity.this));
-                    ArrayList<QzjxBeanRsp> mQzjxBeanRsps = new ArrayList<QzjxBeanRsp>();
-                    BaseQuickAdapter mBaseQuickAdapter2 = new BaseQuickAdapter<QzjxBeanRsp, BaseViewHolder>(R.layout.item_task_check_add_item_03, mQzjxBeanRsps) {
-                        @Override
-                        protected void convert(BaseViewHolder baseViewHolder, QzjxBeanRsp rowsBean) {
-                            baseViewHolder.setText(R.id.tv_01, rowsBean.getSbdjbh());
-                            baseViewHolder.setText(R.id.tv_02, rowsBean.getSblx());
-                            baseViewHolder.setText(R.id.tv_03, rowsBean.getSbxh());
-                            baseViewHolder.getView(R.id.tv_04).setOnClickListener(new View.OnClickListener() {
+                        protected void convert(BaseViewHolder baseViewHolder, final BaseBeanRsp.JokerVOBean.MonitorListBean rowsBean) {
+                            baseViewHolder.setText(R.id.tv_01,rowsBean.getBranchName());
+                            baseViewHolder.getView(R.id.ll_01).setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
-                                    RxToast.showToast("查看");
+                                    tv_02.setText(rowsBean.getBranchName());
+                                    list_siginle_id.setText(rowsBean.getPk());
+                                    dialog02.hide();
                                 }
                             });
                         }
                     };
                     mRvContent2.setAdapter(mBaseQuickAdapter2);
-                    QzjxBeanRsp qzjxBeanRsp = new QzjxBeanRsp();
-                    qzjxBeanRsp.setSbdjbh("123");
-                    qzjxBeanRsp.setSblx("456");
-                    qzjxBeanRsp.setSbxh("789");
-                    qzjxBeanRsp.setSfyzx("1000");
-                    mQzjxBeanRsps.add(qzjxBeanRsp);
-                    QzjxBeanRsp qzjxBeanRsp2 = new QzjxBeanRsp();
-                    qzjxBeanRsp2.setSbdjbh("123");
-                    qzjxBeanRsp2.setSblx("456");
-                    qzjxBeanRsp2.setSbxh("789");
-                    qzjxBeanRsp2.setSfyzx("1000");
-                    mQzjxBeanRsps.add(qzjxBeanRsp2);
-                    mBaseQuickAdapter2.notifyDataSetChanged();
+                }
+            });
+            tv_03.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                     dialog03 = new MaterialDialog.Builder(TaskCheckAddActivity.this)
+                            .title("选择检查内容").titleColor(TaskCheckAddActivity.this.getResources().getColor(R.color.main_color))
+                            .customView(R.layout.dialog_task_check_add03, wrapInScrollView)
+                            .positiveText("取消")
+                            .show();
+                    View view1 = dialog03.getCustomView();
+                    RecyclerView mRvContent2 = view1.findViewById(R.id.rv_content);
+                    final EditText editText =view1.findViewById(R.id.et_search);
+                    view1.findViewById(R.id.tv_search).setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            if(TextUtils.isEmpty(editText.getText().toString())){
+                                RxToast.showToast("请输入内容");
+                                return;
+                            }
+                            getData03(editText.getText().toString());
+                        }
+                    });
+                    mRvContent2.setLayoutManager(new LinearLayoutManager(TaskCheckAddActivity.this));
+                     mBaseQuickAdapter2 = new BaseQuickAdapter<BaseBeanRsp.JokerVOBean.MonitorListBean, BaseViewHolder>(R.layout.item_task_check_add_item_03, jokerVOList2) {
+                        @Override
+                        protected void convert(BaseViewHolder baseViewHolder, final BaseBeanRsp.JokerVOBean.MonitorListBean rowsBean) {
+                            baseViewHolder.setText(R.id.tv_01, rowsBean.getLawContent());
+                            baseViewHolder.setText(R.id.tv_02, rowsBean.getLawType());
+                            baseViewHolder.getView(R.id.ll_01).setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    tv_03.setText(rowsBean.getLawContent());
+                                    list_check_type.setText(rowsBean.getLawType());
+                                    dialog03.hide();
+                                }
+                            });
+                        }
+                    };
+                    mRvContent2.setAdapter(mBaseQuickAdapter2);
                 }
             });
         }
     }
+    private List<BaseBeanRsp.JokerVOBean.MonitorListBean> personList = new ArrayList<BaseBeanRsp.JokerVOBean.MonitorListBean>();
+    private List<BaseBeanRsp.JokerVOBean.MonitorListBean> jokerVOList = new ArrayList<BaseBeanRsp.JokerVOBean.MonitorListBean>();
+    private List<BaseBeanRsp.JokerVOBean.MonitorListBean> jokerVOList2 = new ArrayList<BaseBeanRsp.JokerVOBean.MonitorListBean>();
 
+    private void getData01() {
+        String id = RxSPUtils.getString(TaskCheckAddActivity.this,Const.PROJECTID);
+        CommonProjectIdReq req = new CommonProjectIdReq();
+         req.setProjectId(id);
+        Observable<BaseBeanRsp<CommonProjectIdReq>> observable = RetrofitFactory.getInstance().getMonitor(req);
+        observable.compose(RxSchedulers.<BaseBeanRsp<CommonProjectIdReq>>compose(
+        )).subscribe(new BaseObserver<CommonProjectIdReq>() {
+            @Override
+            protected void onHandleSuccess(BaseBeanRsp<CommonProjectIdReq> t) {
+                personList.addAll(t.getJokerVO().getPersonList());
+
+            }
+            @Override
+            protected void onHandleEmpty(BaseBeanRsp<CommonProjectIdReq> t) {
+                RxToast.showToast(t.getResult());
+            }
+        });
+    }
+    private void getData02() {
+        String id = RxSPUtils.getString(TaskCheckAddActivity.this,Const.PROJECTID);
+        CommonProjectIdReq req = new CommonProjectIdReq();
+        req.setProjectId(id);
+        Observable<BaseBeanRsp<CommonProjectIdReq>> observable = RetrofitFactory.getInstance().getSingleProject(req);
+        observable.compose(RxSchedulers.<BaseBeanRsp<CommonProjectIdReq>>compose(
+        )).subscribe(new BaseObserver<CommonProjectIdReq>() {
+            @Override
+            protected void onHandleSuccess(BaseBeanRsp<CommonProjectIdReq> t) {
+                jokerVOList.addAll(t.getJokerVO().getJokerVOList());
+            }
+            @Override
+            protected void onHandleEmpty(BaseBeanRsp<CommonProjectIdReq> t) {
+                RxToast.showToast(t.getResult());
+            }
+        });
+    }
+    private void getData03(String search) {
+        String id = RxSPUtils.getString(TaskCheckAddActivity.this,Const.PROJECTID);
+        CommonProjectIdReq req = new CommonProjectIdReq();
+        req.setProjectId(id);
+        req.setLawContent(search);
+        Observable<BaseBeanRsp<CommonProjectIdReq>> observable = RetrofitFactory.getInstance().getLawData(req);
+        observable.compose(RxSchedulers.<BaseBeanRsp<CommonProjectIdReq>>compose(
+        )).subscribe(new BaseObserver<CommonProjectIdReq>() {
+            @Override
+            protected void onHandleSuccess(BaseBeanRsp<CommonProjectIdReq> t) {
+                jokerVOList2.clear();
+                jokerVOList2.addAll(t.getJokerVO().getJokerVOList());
+                if(mBaseQuickAdapter2!=null)
+                mBaseQuickAdapter2.notifyDataSetChanged();
+            }
+            @Override
+            protected void onHandleEmpty(BaseBeanRsp<CommonProjectIdReq> t) {
+                RxToast.showToast(t.getResult());
+            }
+        });
+    }
     int mYear, mMonth, mDay;
     String days="";
     /**

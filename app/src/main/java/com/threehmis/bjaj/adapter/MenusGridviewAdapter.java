@@ -15,6 +15,7 @@ import com.threehmis.bjaj.R;
 import com.threehmis.bjaj.api.Const;
 import com.threehmis.bjaj.api.RetrofitFactory;
 import com.threehmis.bjaj.api.bean.respon.GetMenusListRsp;
+import com.threehmis.bjaj.module.home.fragment.map.griddetail.errormessage.ErrorMessageActivity;
 import com.threehmis.bjaj.module.home.fragment.map.griddetail.jsj.JsjActivity;
 import com.threehmis.bjaj.module.home.fragment.map.griddetail.localcheck.LocalCheckActivity;
 import com.threehmis.bjaj.module.home.fragment.map.griddetail.monitorrecode.MonitorRecodeActivity;
@@ -106,10 +107,12 @@ public class MenusGridviewAdapter extends android.widget.BaseAdapter {
         public void onClick(View view) {
             RxSPUtils.putString(activity,Const.PROJECTID,projectID); // 保存项目id
             RxSPUtils.putString(activity,Const.PROJECTNAME,projectName); // 保存项目名
+            RxSPUtils.putString(activity,Const.PROJECTCODE,projectCode); // 保存项目名
+
             Intent  intent;
             switch (pos) {
                 case 0:  //工程信息
-                     intent = new Intent(activity, ProjectInfoActivity.class);
+                    intent = new Intent(activity, ProjectInfoActivity.class);
                     Bundle bundle1 = new Bundle();
                     bundle1.putString(Const.PROJECTID, projectID);
                     intent.putExtra(Const.PROJECTNAME, projectName);
@@ -151,12 +154,19 @@ public class MenusGridviewAdapter extends android.widget.BaseAdapter {
                     intent.putExtra(Const.PROJECTID,projectID);
                     activity.startActivity(intent);
                     break;
+                case 8://处罚信息
+                    intent = new Intent(activity, ErrorMessageActivity.class);
+                    intent.putExtra(Const.PROJECTID,projectID);
+                    intent.putExtra(Const.PROJECTCODE,projectCode);
+                    activity.startActivity(intent);
+                    break;
                 case 9://安评信息
                     intent = new Intent(activity, SafeCommentActivity.class);
                     intent.putExtra(Const.PROJECTID,projectID);
                     intent.putExtra(Const.PROJECTCODE,projectCode);
                     activity.startActivity(intent);
                     break;
+
                 case 11://起重机械
                     intent = new Intent(activity, QzjxActivity.class);
                     intent.putExtra(Const.PROJECTID,projectID);

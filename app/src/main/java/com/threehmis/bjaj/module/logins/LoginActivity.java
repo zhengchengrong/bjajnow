@@ -19,6 +19,7 @@ import com.threehmis.bjaj.module.base.BaseActivity;
 import com.threehmis.bjaj.module.home.HomeActivity;
 import com.threehmis.bjaj.utils.CDUtil;
 import com.threehmis.bjaj.utils.SPUtils;
+import com.vondear.rxtools.RxSPUtils;
 import com.vondear.rxtools.view.RxToast;
 
 import butterknife.BindView;
@@ -92,11 +93,13 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements ILogi
         if (mAgree.isChecked()) {
             //实例化SharedPreferences.Editor对象（第二步）
             SPUtils.put(this,Const.PHONENUM,mPhoneNum.getText().toString());
-            SPUtils.put(this,Const.PASSWORD,mPhoneNum.getText().toString());
+         //   SPUtils.put(this,Const.PASSWORD,mPhoneNum.getText().toString());
             SPUtils.put(this,Const.ISCHECKED,true);
         }
         // 登陆页面本地缓存保存坐标点
         CDUtil.saveObject(loginInfoBean.projectList, Const.LOGINDATE);
+        //缓存账号
+        RxSPUtils.putString(this,Const.PHONENUM,mPhoneNum.getText().toString());
         dialog.cancel();
         //登陆成功后，跳转到主页面
         startActivity(HomeActivity.class);

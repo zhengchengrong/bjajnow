@@ -1,7 +1,9 @@
 package com.threehmis.bjaj.module.home.fragment.map.griddetail.supervisionjd;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -13,10 +15,13 @@ import com.threehmis.bjaj.api.RetrofitFactory;
 import com.threehmis.bjaj.api.RxSchedulers;
 import com.threehmis.bjaj.api.bean.BaseBeanRsp;
 import com.threehmis.bjaj.api.bean.request.SupervisionPlanFirstReq;
+import com.threehmis.bjaj.api.bean.respon.SupervisionJDRsp;
 import com.threehmis.bjaj.api.bean.respon.SupervisionPlanFirstRsp;
 import com.threehmis.bjaj.module.base.BaseActivity;
 import com.vondear.rxtools.RxSPUtils;
 import com.vondear.rxtools.view.RxToast;
+
+import java.util.Calendar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -34,7 +39,7 @@ public class SupervisionJDActivity extends BaseActivity {
     @BindView(R.id.tv_back)
     TextView mTvBack;
     @BindView(R.id.tv_01)
-    EditText mTv01;
+    TextView mTv01;
     @BindView(R.id.tv_02)
     EditText mTv02;
     @BindView(R.id.tv_03)
@@ -69,10 +74,6 @@ public class SupervisionJDActivity extends BaseActivity {
     EditText mTv17;
     @BindView(R.id.et_01)
     EditText mEt01;
-    @BindView(R.id.iv_photo)
-    ImageView mIvPhoto;
-    @BindView(R.id.iv_add)
-    ImageView mIvAdd;
     @BindView(R.id.tv_commit)
     TextView mTvCommit;
 
@@ -90,50 +91,39 @@ public class SupervisionJDActivity extends BaseActivity {
     @Override
     protected void initViews() {
         id = RxSPUtils.getString(this, Const.PROJECTID);
+        Calendar ca = Calendar.getInstance();
+        mYear = ca.get(Calendar.YEAR);
+        mMonth = ca.get(Calendar.MONTH);
+        mDay = ca.get(Calendar.DAY_OF_MONTH);
+        mTv01.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new DatePickerDialog(SupervisionJDActivity.this, onDateSetListener, mYear, mMonth, mDay).show();
+            }
+        });
         initTitle();
         getDatas();
     }
     private void getDatas() {
 
         SupervisionPlanFirstReq req = new SupervisionPlanFirstReq();
-       req.setProjectId(id);
-      /*  req.setProjectId("5f82526c-ffae-4b4d-b63b-0d357c7db42d");*/
+    /*   req.setProjectId(id);*/
+        req.setProjectId("5f82526c-ffae-4b4d-b63b-0d357c7db42d");
         req.setMonitorName(Const.SUPERVISIONPLANTEXT3);// 监督交底
-        Observable<BaseBeanRsp<SupervisionPlanFirstRsp>> observable = RetrofitFactory.getInstance().getMonitorInfo(req);
-        observable.compose(RxSchedulers.<BaseBeanRsp<SupervisionPlanFirstRsp>>compose(
-        )).subscribe(new BaseObserver<SupervisionPlanFirstRsp>() {
+        Observable<BaseBeanRsp<SupervisionJDRsp>> observable = RetrofitFactory.getInstance().getMonitorJDInfo(req);
+        observable.compose(RxSchedulers.<BaseBeanRsp<SupervisionJDRsp>>compose(
+        )).subscribe(new BaseObserver<SupervisionJDRsp>() {
             @Override
-            protected void onHandleSuccess(BaseBeanRsp<SupervisionPlanFirstRsp> beanRsp) {
-                if (beanRsp.getProjectList()!=null&&beanRsp.getProjectList().size() > 0) {
-                    SupervisionPlanFirstRsp rsp = beanRsp.getProjectList().get(0);
-                        mTv01.setText(rsp.getJdjdJDRQ());
-                        mTv02.setText(rsp.getJdjhJDZZ());
-                        mTv03.setText(rsp.getJdjhJDY());
-
-                        mTv04.setText(rsp.getJdjdJSDW());
-                        mTv05.setText(rsp.getJdjdJSDWQYAQBMFZR());
-                        mTv06.setText(rsp.getJdjdJSDWXMFZR());
-                        mTv07.setText(rsp.getJdjdJSDWQYXMAQFZR());
-                        mTv08.setText(rsp.getJdjdJSDWQYQTRY());
-
-                        mTv09.setText(rsp.getJdjdSGZCBDW());
-                        mTv10.setText(rsp.getJdjdSGZCBDWQYAQBMFZR());
-                        mTv11.setText(rsp.getJdjdSGZCBDWXMJL());
-                        mTv12.setText(rsp.getJdjdXMAQFZR());
-                        mTv13.setText(rsp.getJdjdSGZCBDWQTRY());
-
-                        mTv14.setText(rsp.getJdjdJLDW());
-                        mTv15.setText(rsp.getJdjdJLDWXMZJLGCS());
-                        mTv16.setText(rsp.getJdjdJLDWXMAQJLGCS());
-                        mTv17.setText(rsp.getJdjdJLDWQTRY());
+            protected void onHandleSuccess(BaseBeanRsp<SupervisionJDRsp> beanRsp) {
+              if(beanRsp.getShowSubmit().equals("1")){
+                  //无记录
 
 
-                }
+              }
 
             }
-
             @Override
-            protected void onHandleEmpty(BaseBeanRsp<SupervisionPlanFirstRsp> t) {
+            protected void onHandleEmpty(BaseBeanRsp<SupervisionJDRsp> t) {
                 RxToast.showToast(t.getResult());
             }
         });
@@ -153,4 +143,40 @@ public class SupervisionJDActivity extends BaseActivity {
             }
         });
     }
+
+    int mYear, mMonth, mDay;
+    String days="";
+    /**
+     * 日期选择器对话框监听
+     */
+    private DatePickerDialog.OnDateSetListener onDateSetListener = new DatePickerDialog.OnDateSetListener() {
+
+        @Override
+        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+            mYear = year;
+            mMonth = monthOfYear;
+            mDay = dayOfMonth;
+
+            if (mMonth + 1 < 10) {
+                if (mDay < 10) {
+                    days = new StringBuffer().append(mYear).append("-").append("0").
+                            append(mMonth + 1).append("-").append("0").append(mDay).append("").toString();
+                } else {
+                    days = new StringBuffer().append(mYear).append("-").append("0").
+                            append(mMonth + 1).append("-").append(mDay).append("").toString();
+                }
+
+            } else {
+                if (mDay < 10) {
+                    days = new StringBuffer().append(mYear).append("-").
+                            append(mMonth + 1).append("-").append("0").append(mDay).append("").toString();
+                } else {
+                    days = new StringBuffer().append(mYear).append("-").
+                            append(mMonth + 1).append("-").append(mDay).append("").toString();
+                }
+
+            }
+            mTv01.setText(days);
+        }
+    };
 }

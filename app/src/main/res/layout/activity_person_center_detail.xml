@@ -55,7 +55,7 @@
             android:text="序号"
             android:layout_weight="2.5"
             android:gravity="center_vertical|center_horizontal"
-            android:textSize="@dimen/sp_admin_main_03"
+            android:textSize="@dimen/sp_admin_main_02"
             />
         <TextView
             android:layout_width="match_parent"
@@ -63,7 +63,7 @@
             android:text="安全检查点"
             android:layout_weight="2"
             android:gravity="center_vertical|center_horizontal"
-            android:textSize="@dimen/sp_admin_main_03"
+            android:textSize="@dimen/sp_admin_main_02"
             />
         <TextView
             android:layout_width="match_parent"
@@ -71,7 +71,7 @@
             android:text="是否需要上传照片"
             android:layout_weight="2.5"
             android:gravity="center_vertical|center_horizontal"
-            android:textSize="@dimen/sp_admin_main_03"
+            android:textSize="@dimen/sp_admin_main_02"
             />
         <TextView
             android:layout_width="match_parent"
@@ -79,7 +79,7 @@
             android:text="应得分"
             android:layout_weight="2"
             android:gravity="center_vertical|center_horizontal"
-            android:textSize="@dimen/sp_admin_main_03"
+            android:textSize="@dimen/sp_admin_main_02"
             />
     </LinearLayout>
     <include layout="@layout/layout_menu_line_main_color" />

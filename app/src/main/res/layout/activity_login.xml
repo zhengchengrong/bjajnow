@@ -173,6 +173,7 @@
                 android:layout_marginRight="20dp"
                 android:text="修改地址"
                 android:textColor="#ffffff"
+                android:visibility="gone"
                 android:textSize="18dp" />
 
         </LinearLayout>

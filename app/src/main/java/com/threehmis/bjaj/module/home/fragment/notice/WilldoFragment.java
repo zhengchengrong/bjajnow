@@ -15,6 +15,7 @@ import com.threehmis.bjaj.R;
 import com.threehmis.bjaj.api.bean.respon.ProjectStatusRsp;
 import com.threehmis.bjaj.api.bean.respon.WillDoRsp;
 import com.threehmis.bjaj.module.base.BaseFragment;
+import com.threehmis.bjaj.module.home.fragment.notice.activity.WillDoSafeJDGZSHActivity;
 import com.threehmis.bjaj.module.home.fragment.notice.activity.WillDoSafeJDSXSQActivity;
 import com.threehmis.bjaj.widget.EmptyLayout;
 
@@ -55,18 +56,29 @@ public class WilldoFragment extends BaseFragment {
         willDoRsp.setTitle("安全监督手续申请审核");
         willDoRsp.setType("0");
         mWillDoRsps.add(willDoRsp);
-
+        WillDoRsp willDoRsp2 = new WillDoRsp();
+        willDoRsp2.setDate("2018-09-12");
+        willDoRsp2.setTitle("中止施工安全监督告知审核");
+        willDoRsp2.setType("1");
+        mWillDoRsps.add(willDoRsp2);
         mBaseQuickAdapter = new BaseQuickAdapter<WillDoRsp, BaseViewHolder>(R.layout.woill_do_item_01, mWillDoRsps) {
             @Override
-            protected void convert(BaseViewHolder baseViewHolder, WillDoRsp rowsBean) {
+            protected void convert(BaseViewHolder baseViewHolder, final WillDoRsp rowsBean) {
                 baseViewHolder.setText(R.id.title,rowsBean.getTitle());
                 baseViewHolder.setText(R.id.type,rowsBean.getType());
                 baseViewHolder.setText(R.id.time,rowsBean.getDate());
                 baseViewHolder.getView(R.id.ll_woill).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intent = new Intent(mActivity,WillDoSafeJDSXSQActivity.class);
-                        startActivity(intent);
+                        if(rowsBean.getType().equals("0")) {
+                            //安全监督手续申请审核
+                            Intent intent = new Intent(mActivity, WillDoSafeJDSXSQActivity.class);
+                            startActivity(intent);
+                        }else if(rowsBean.getType().equals("1")){
+                            //中止施工安全监督告知审核
+                            Intent intent = new Intent(mActivity, WillDoSafeJDGZSHActivity.class);
+                            startActivity(intent);
+                        }
                     }
                 });
             }

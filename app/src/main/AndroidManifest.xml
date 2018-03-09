@@ -75,12 +75,14 @@
         <activity android:name=".module.home.fragment.map.griddetail.rectificationnotify.RectificationNotifyActivity"/>
         <activity android:name=".module.home.fragment.map.griddetail.safecomment.SafeCommentActivity"/>
         <activity android:name=".module.home.fragment.map.griddetail.qzjx.QzjxActivity"/>
+        <activity android:name=".module.home.fragment.map.griddetail.qzjx.QzjxDetailActivity"/>
         <activity android:name=".module.home.fragment.map.griddetail.jsj.JsjActivity"/>
         <activity android:name=".module.home.fragment.map.griddetail.supervisionplan.SupervisionPlanActivity"/>
         <activity android:name=".module.home.fragment.map.griddetail.supervisionjd.SupervisionJDActivity"/>
         <activity android:name=".module.home.fragment.personcenter.PersonCenterDetailActivity"/>
         <activity android:name=".module.home.fragment.notice.activity.WillDoSafeJDSXSQActivity"/>
-
+        <activity android:name=".module.home.fragment.notice.activity.WillDoSafeJDGZSHActivity"/>
+        <activity android:name=".module.home.fragment.map.griddetail.errormessage.ErrorMessageActivity"/>
 
         <!-- 权限提示 -->
         <activity

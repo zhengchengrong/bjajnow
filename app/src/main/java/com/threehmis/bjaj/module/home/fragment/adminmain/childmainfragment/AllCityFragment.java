@@ -125,8 +125,8 @@ public class AllCityFragment extends BaseFragment implements View.OnClickListene
         aList.add(view02);
         aList.add(view03);
 
-        /*aList.add(li.inflate(R.layout.view_city_two,null,false));
-        aList.add(li.inflate(R.layout.view_city_three,null,false));*/
+        /*aList.add(li.inflate(R.supervision_plan_01.view_city_two,null,false));
+        aList.add(li.inflate(R.supervision_plan_01.view_city_three,null,false));*/
         mAdapter = new MyPagerAdapter(aList);
         mVpCity.setAdapter(mAdapter);
 

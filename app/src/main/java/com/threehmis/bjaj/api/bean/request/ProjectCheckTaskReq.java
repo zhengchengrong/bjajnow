@@ -5,11 +5,11 @@ package com.threehmis.bjaj.api.bean.request;
 public class ProjectCheckTaskReq {
 
 
-	private String projectId;
+	private String projectId="";
 
-	private String checkStatus;
+	private String checkStatus="";
 
-	private String signDate;
+	private String signDate="";
 
 	public String getCheckStatus() {
 		return checkStatus;

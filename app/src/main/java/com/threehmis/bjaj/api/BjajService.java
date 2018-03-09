@@ -13,6 +13,7 @@ import com.threehmis.bjaj.api.bean.BaseBeanRsp;
 import com.threehmis.bjaj.api.bean.BaseEntity;
 import com.threehmis.bjaj.api.bean.ItemResult;
 import com.threehmis.bjaj.api.bean.request.ChangeAddressRequestBean;
+import com.threehmis.bjaj.api.bean.request.CommonProjectIdReq;
 import com.threehmis.bjaj.api.bean.request.GetLoginListReq;
 import com.threehmis.bjaj.api.bean.request.GetMenusListReq;
 import com.threehmis.bjaj.api.bean.request.GetSearchReq;
@@ -23,6 +24,7 @@ import com.threehmis.bjaj.api.bean.request.ProjectInfoReq;
 import com.threehmis.bjaj.api.bean.request.QzjxBeanReq;
 import com.threehmis.bjaj.api.bean.request.SafeCommentBeanReq;
 import com.threehmis.bjaj.api.bean.request.SupervisionPlanFirstReq;
+import com.threehmis.bjaj.api.bean.request.SupervisionPlanReq;
 import com.threehmis.bjaj.api.bean.request.TaskCheckAddReq;
 import com.threehmis.bjaj.api.bean.respon.ChangeAddressResponBean;
 import com.threehmis.bjaj.api.bean.respon.GetExamReportRsp;
@@ -37,6 +39,7 @@ import com.threehmis.bjaj.api.bean.respon.ProjectStatusRsp;
 import com.threehmis.bjaj.api.bean.respon.ProjectTaskCheckRsp;
 import com.threehmis.bjaj.api.bean.respon.QzjxBeanRsp;
 import com.threehmis.bjaj.api.bean.respon.SafeCommentRsp;
+import com.threehmis.bjaj.api.bean.respon.SupervisionJDRsp;
 import com.threehmis.bjaj.api.bean.respon.SupervisionPlanFirstRsp;
 
 /**
@@ -100,11 +103,27 @@ public interface BjajService {
     //获取监督计划
     @POST("monitorInfo/getMonitorInfo")
     Observable<BaseBeanRsp<SupervisionPlanFirstRsp>> getMonitorInfo(@Body SupervisionPlanFirstReq req);
-
-    //获取监督计划
+    //获取监督交底
+    @POST("monitorInfo/getMonitorInfo")
+    Observable<BaseBeanRsp<SupervisionJDRsp>> getMonitorJDInfo(@Body SupervisionPlanFirstReq req);
+    //添加任务指派
     @POST("checkTask/saveCheckTask")
     Observable<BaseBeanRsp<SupervisionPlanFirstRsp>> saveCheckTask(@Body TaskCheckAddReq req);
+    //添加监督计划
+    @POST("monitorInfo/saveMonitorInfo")
+    Observable<BaseBeanRsp<SupervisionPlanFirstRsp>> saveMonitorInfo(@Body SupervisionPlanReq req);
 
+    //添加监督员
+    @POST("project/getMonitor")
+    Observable<BaseBeanRsp<CommonProjectIdReq>> getMonitor(@Body CommonProjectIdReq req);
+
+    //添加监督员
+    @POST("singleProject/getSingleProject")
+    Observable<BaseBeanRsp<CommonProjectIdReq>> getSingleProject(@Body CommonProjectIdReq req);
+
+    //添加监督员
+    @POST("lawData/getLawData")
+    Observable<BaseBeanRsp<CommonProjectIdReq>> getLawData(@Body CommonProjectIdReq req);
     //获取变更记录
 /*    @POST("monitorInfo/getMonitorInfo")
     Observable<BaseBeanRsp<SupervisionPlanFirstRsp>> getMonitorInfo2(@Body SupervisionPlanFirstReq req);*/

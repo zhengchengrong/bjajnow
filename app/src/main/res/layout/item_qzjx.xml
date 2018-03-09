@@ -6,6 +6,7 @@
     android:background="@color/white"
     >
     <LinearLayout
+        android:id="@+id/ll_qzjx"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -20,7 +21,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/jsj_01"
+                android:text="设备登记编号"
                 android:drawableLeft="@drawable/qzjx_loggo"
                 android:drawablePadding="@dimen/dp_4"
                 />
@@ -40,7 +41,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/jsj_02"
+                android:text="设备名称（类型）"
                 android:drawableLeft="@drawable/qzjx_loggo"
                 android:drawablePadding="@dimen/dp_4"
                 />
@@ -60,7 +61,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/jsj_03"
+                android:text="设备型号"
                 android:drawableLeft="@drawable/qzjx_loggo"
                 android:drawablePadding="@dimen/dp_4"
                 />
@@ -79,7 +80,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/jsj_04"
+                android:text="设备使用登记编号"
                 android:drawableLeft="@drawable/qzjx_loggo"
                 android:drawablePadding="@dimen/dp_4"
                 />
@@ -98,7 +99,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/jsj_05"
+                android:text="是否已注销"
                 android:drawableLeft="@drawable/qzjx_loggo"
                 android:drawablePadding="@dimen/dp_4"
                 />
@@ -109,25 +110,5 @@
                 android:layout_alignParentRight="true"
                 />
         </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/dp_10"
-            >
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/jsj_06"
-                android:drawableLeft="@drawable/qzjx_loggo"
-                android:drawablePadding="@dimen/dp_4"
-                />
-            <TextView
-                android:id="@+id/tv_06"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                />
-        </RelativeLayout>
     </LinearLayout>
-
 </RelativeLayout>

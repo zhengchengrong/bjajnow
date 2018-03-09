@@ -121,6 +121,42 @@
             android:layout_marginRight="@dimen/dp_5"
             />
     </RelativeLayout>
+    <TextView
+        android:id="@+id/list_siginle_id"
+        android:layout_width="@dimen/dp_100"
+        android:layout_height="wrap_content"
+        android:text="单体工程id"
+        android:layout_centerVertical="true"
+        android:textColor="@color/admin_main_select_text"
+        android:textSize="@dimen/sp_admin_main_02"
+        android:padding="@dimen/dp_5"
+        android:gravity="right"
+        android:layout_marginRight="@dimen/dp_10"
+        />
+    <TextView
+        android:id="@+id/list_check_man_id"
+        android:layout_width="@dimen/dp_100"
+        android:layout_height="wrap_content"
+        android:text="检查人id"
+        android:layout_centerVertical="true"
+        android:textColor="@color/admin_main_select_text"
+        android:textSize="@dimen/sp_admin_main_02"
+        android:padding="@dimen/dp_5"
+        android:gravity="right"
+        android:layout_marginRight="@dimen/dp_10"
+        />
+    <TextView
+        android:id="@+id/list_check_type"
+        android:layout_width="@dimen/dp_100"
+        android:layout_height="wrap_content"
+        android:text="检查内容类别"
+        android:layout_centerVertical="true"
+        android:textColor="@color/admin_main_select_text"
+        android:textSize="@dimen/sp_admin_main_02"
+        android:padding="@dimen/dp_5"
+        android:gravity="right"
+        android:layout_marginRight="@dimen/dp_10"
+        />
 
     <View
         android:layout_width="match_parent"

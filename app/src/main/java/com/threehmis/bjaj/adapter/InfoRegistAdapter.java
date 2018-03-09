@@ -397,8 +397,8 @@ public class InfoRegistAdapter extends RecyclerView.Adapter<InfoRegistAdapter.Vi
 
             BaseBeanRsp<StateSuccessRsp> stateSuccessRsp = JSON.parseObject(body, new TypeReference<BaseBeanRsp<StateSuccessRsp>>() {
             });
-            if (stateSuccessRsp.projectList.get(0).pk.length()>0)
-            checkId=stateSuccessRsp.projectList.get(0).pk;
+            if (stateSuccessRsp.getProjectList().get(0).pk.length()>0)
+            checkId=stateSuccessRsp.getProjectList().get(0).pk;
             isok=2;
             mHandler2.sendEmptyMessage(stateSuccessRsp.verification ? RetrofitFactory.MSG_SUCESS : RetrofitFactory.MSG_FAIL);
         }

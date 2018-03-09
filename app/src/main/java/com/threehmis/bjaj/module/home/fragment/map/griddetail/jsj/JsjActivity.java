@@ -1,5 +1,6 @@
 package com.threehmis.bjaj.module.home.fragment.map.griddetail.jsj;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -69,7 +70,7 @@ public class JsjActivity extends BaseActivity {
         sgxkzh = getIntent().getStringExtra(Const.SGXKZH);
         initTitle();
         mRvContent.setLayoutManager(new LinearLayoutManager(this));
-        mBaseQuickAdapter = new BaseQuickAdapter<JsjBeanRsp, BaseViewHolder>(R.layout.item_qzjx, mQzjxBeanRsps) {
+        mBaseQuickAdapter = new BaseQuickAdapter<JsjBeanRsp, BaseViewHolder>(R.layout.item_jsj, mQzjxBeanRsps) {
             @Override
             protected void convert(BaseViewHolder baseViewHolder, JsjBeanRsp rowsBean) {
                 baseViewHolder.setText(R.id.tv_01, rowsBean.getDtgcmc());
@@ -78,7 +79,13 @@ public class JsjActivity extends BaseActivity {
                 baseViewHolder.setText(R.id.tv_04, rowsBean.getJcsj());
                 baseViewHolder.setText(R.id.tv_05, rowsBean.getJcjl());
                 baseViewHolder.setText(R.id.tv_06, rowsBean.getSfycc());
-
+                baseViewHolder.getView(R.id.ll_jsj).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(JsjActivity.this,JsjDetailActivity.class);
+                        startActivity(intent);
+                    }
+                });
             }
         };
         mRvContent.setAdapter(mBaseQuickAdapter);

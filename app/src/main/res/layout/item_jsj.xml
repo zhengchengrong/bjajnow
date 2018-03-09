@@ -2,11 +2,11 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="@dimen/dp_8"
+    android:padding="@dimen/dp_10"
     android:background="@color/white"
     >
     <LinearLayout
-        android:id="@+id/ll_01"
+        android:id="@+id/ll_jsj"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -16,12 +16,12 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/dp_6"
+            android:padding="@dimen/dp_10"
             >
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="姓名"
+                android:text="@string/jsj_01"
                 android:drawableLeft="@drawable/qzjx_loggo"
                 android:drawablePadding="@dimen/dp_4"
                 />
@@ -36,12 +36,12 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/dp_6"
+            android:padding="@dimen/dp_10"
             >
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="监督员类别"
+                android:text="@string/jsj_02"
                 android:drawableLeft="@drawable/qzjx_loggo"
                 android:drawablePadding="@dimen/dp_4"
                 />
@@ -56,13 +56,12 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/dp_6"
-            android:visibility="gone"
+            android:padding="@dimen/dp_10"
             >
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="执法证号"
+                android:text="@string/jsj_03"
                 android:drawableLeft="@drawable/qzjx_loggo"
                 android:drawablePadding="@dimen/dp_4"
                 />
@@ -76,13 +75,12 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/dp_6"
-            android:visibility="gone"
+            android:padding="@dimen/dp_10"
             >
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="是否科室负责人"
+                android:text="@string/jsj_04"
                 android:drawableLeft="@drawable/qzjx_loggo"
                 android:drawablePadding="@dimen/dp_4"
                 />
@@ -96,18 +94,36 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/dp_6"
-            android:visibility="gone"
+            android:padding="@dimen/dp_10"
             >
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="资质等级"
+                android:text="@string/jsj_05"
                 android:drawableLeft="@drawable/qzjx_loggo"
                 android:drawablePadding="@dimen/dp_4"
                 />
             <TextView
                 android:id="@+id/tv_05"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_10"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/jsj_06"
+                android:drawableLeft="@drawable/qzjx_loggo"
+                android:drawablePadding="@dimen/dp_4"
+                />
+            <TextView
+                android:id="@+id/tv_06"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"

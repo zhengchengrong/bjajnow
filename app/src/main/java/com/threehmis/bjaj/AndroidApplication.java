@@ -236,5 +236,4 @@ public class AndroidApplication extends MultiDexApplication {
         return getLoginListRsp!=null?getLoginListRsp.get(0).getPersonId():"";
     }
 
-
 }

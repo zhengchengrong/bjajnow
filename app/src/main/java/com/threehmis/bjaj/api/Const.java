@@ -35,6 +35,7 @@ public class Const {
     // 监督地列表页面 ProjectListFragment ProjectListAdapter
     public static final String PROJECTID = "projectID";
     public static final String PROJECTNAME = "projectName";
+
     public static final String CUSTOMERID = "customerId";
     public static final String INTERFACEURL = "interfaceUrl";
     public static final String BEAN = "bean";
@@ -45,6 +46,8 @@ public class Const {
     public static final String SUPERVISIONPLANTEXT = "监督计划";
     public static final String SUPERVISIONPLANTEXT2 = "监督计划变更";
     public static final String SUPERVISIONPLANTEXT3 = "监督交底";
+    public static final String VERSIONID = "3HJD0035";
+    public static final String ID = "id";
 
 
     private Const() {

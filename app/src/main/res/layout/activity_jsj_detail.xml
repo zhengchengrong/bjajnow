@@ -1,31 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.NestedScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         >
-        <include layout="@layout/my_include_title" />
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_1"
-            android:background="@color/light_gray"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_50"
-            android:text="工程概况"
-            android:background="@color/light_gray"
-            android:gravity="center_vertical"
-            android:textSize="@dimen/sp_admin_main_01"
-            android:paddingLeft="@dimen/dp_10"
-            android:textColor="@color/main_color"
-            />
-
-        <include  layout="@layout/layout_menu_line_main_color"/>
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_40"
@@ -33,25 +16,20 @@
             android:paddingRight="@dimen/dp_20"
             >
             <TextView
-                android:id="@+id/tv_flag01"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="工程名称"
+                android:text="单体名称"
                 android:layout_centerVertical="true"
                 android:textSize="@dimen/sp_16"
                 />
-            <EditText
-                android:id="@+id/et_01"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/tv_01"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
-                android:layout_marginLeft="@dimen/dp_10"
-                android:layout_toRightOf="@+id/tv_flag01"
-                android:gravity="right"
-
-                android:background="@null"
-                android:textSize="@dimen/sp_14"
+                android:textSize="@dimen/sp_16"
+                android:layout_marginLeft="@dimen/dp_120"
                 android:textColor="@color/admin_main_select_text"
                 />
         </RelativeLayout>
@@ -67,24 +45,20 @@
             android:paddingRight="@dimen/dp_20"
             >
             <TextView
-                android:id="@+id/tv_flag02"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="安全监督编号"
+                android:text="备案登记表编号"
                 android:layout_centerVertical="true"
                 android:textSize="@dimen/sp_16"
                 />
-            <EditText
-                android:id="@+id/et_02"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/tv_02"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
-                android:layout_marginLeft="@dimen/dp_10"
-                android:layout_toRightOf="@+id/tv_flag02"
-                android:gravity="right"
-                android:background="@null"
-                android:textSize="@dimen/sp_14"
+                android:textSize="@dimen/sp_16"
+                android:layout_marginLeft="@dimen/dp_120"
                 android:textColor="@color/admin_main_select_text"
                 />
         </RelativeLayout>
@@ -100,24 +74,20 @@
             android:paddingRight="@dimen/dp_20"
             >
             <TextView
-                android:id="@+id/tv_flag03"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="地址"
+                android:text="产品名称"
                 android:layout_centerVertical="true"
                 android:textSize="@dimen/sp_16"
                 />
-            <EditText
-                android:id="@+id/et_03"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/tv_03"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
-                android:layout_marginLeft="@dimen/dp_10"
-                android:layout_toRightOf="@+id/tv_flag03"
-                android:gravity="right"
-                android:background="@null"
-                android:textSize="@dimen/sp_14"
+                android:textSize="@dimen/sp_16"
+                android:layout_marginLeft="@dimen/dp_120"
                 android:textColor="@color/admin_main_select_text"
                 />
         </RelativeLayout>
@@ -133,56 +103,20 @@
             android:paddingRight="@dimen/dp_20"
             >
             <TextView
-                android:id="@+id/tv_flag04"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="工程类型"
+                android:text="产品型号"
                 android:layout_centerVertical="true"
                 android:textSize="@dimen/sp_16"
                 />
-            <Spinner
-                android:id="@+id/spinner01"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginLeft="@dimen/dp_10"
-                android:layout_toRightOf="@+id/tv_flag04"
-                android:textSize="@dimen/sp_14"
-                android:textColor="@color/admin_main_select_text"
-                >
-            </Spinner>
-        </RelativeLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_1"
-            android:background="@color/light_gray"
-            />
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_40"
-            android:paddingLeft="@dimen/dp_20"
-            android:paddingRight="@dimen/dp_20"
-            >
             <TextView
-                android:id="@+id/tv_flag05"
+                android:id="@+id/tv_04"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="层数/幢数"
-                android:layout_centerVertical="true"
-                android:textSize="@dimen/sp_16"
-                />
-            <EditText
-                android:id="@+id/et_05"
-                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
-                android:layout_marginLeft="@dimen/dp_10"
-                android:layout_toRightOf="@+id/tv_flag05"
-                android:gravity="right"
-                android:background="@null"
-                android:textSize="@dimen/sp_14"
+                android:textSize="@dimen/sp_16"
+                android:layout_marginLeft="@dimen/dp_120"
                 android:textColor="@color/admin_main_select_text"
                 />
         </RelativeLayout>
@@ -198,24 +132,20 @@
             android:paddingRight="@dimen/dp_20"
             >
             <TextView
-                android:id="@+id/tv_flag06"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="建筑物总高"
+                android:text="生产厂商"
                 android:layout_centerVertical="true"
                 android:textSize="@dimen/sp_16"
                 />
-            <EditText
-                android:id="@+id/et_06"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/tv_05"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
-                android:layout_marginLeft="@dimen/dp_10"
-                android:layout_toRightOf="@+id/tv_flag06"
-                android:gravity="right"
-                android:background="@null"
-                android:textSize="@dimen/sp_14"
+                android:textSize="@dimen/sp_16"
+                android:layout_marginLeft="@dimen/dp_120"
                 android:textColor="@color/admin_main_select_text"
                 />
         </RelativeLayout>
@@ -231,24 +161,21 @@
             android:paddingRight="@dimen/dp_20"
             >
             <TextView
-                android:id="@+id/tv_flag07"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="建筑面积"
+                android:text="科学技术成果鉴定
+（评估）证书编号"
                 android:layout_centerVertical="true"
                 android:textSize="@dimen/sp_16"
                 />
-            <EditText
-                android:id="@+id/et_07"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/tv_06"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
-                android:layout_marginLeft="@dimen/dp_10"
-                android:layout_toRightOf="@+id/tv_flag07"
-                android:gravity="right"
-                android:background="@null"
-                android:textSize="@dimen/sp_14"
+                android:textSize="@dimen/sp_16"
+                android:layout_marginLeft="@dimen/dp_120"
                 android:textColor="@color/admin_main_select_text"
                 />
         </RelativeLayout>
@@ -264,24 +191,20 @@
             android:paddingRight="@dimen/dp_20"
             >
             <TextView
-                android:id="@+id/tv_flag08"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="工程造价"
+                android:text="检测单位"
                 android:layout_centerVertical="true"
                 android:textSize="@dimen/sp_16"
                 />
-            <EditText
-                android:id="@+id/et_08"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/tv_07"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
-                android:layout_marginLeft="@dimen/dp_10"
-                android:layout_toRightOf="@+id/tv_flag08"
-                android:gravity="right"
-                android:background="@null"
-                android:textSize="@dimen/sp_14"
+                android:textSize="@dimen/sp_16"
+                android:layout_marginLeft="@dimen/dp_120"
                 android:textColor="@color/admin_main_select_text"
                 />
         </RelativeLayout>
@@ -297,69 +220,20 @@
             android:paddingRight="@dimen/dp_20"
             >
             <TextView
-                android:id="@+id/tv_flag09"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="工程单体明细"
+                android:text="检测单位联系人"
                 android:layout_centerVertical="true"
                 android:textSize="@dimen/sp_16"
                 />
-            <EditText
-                android:id="@+id/et_09"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginLeft="@dimen/dp_10"
-                android:layout_toRightOf="@+id/tv_flag09"
-                android:gravity="right"
-                android:background="@null"
-                android:textSize="@dimen/sp_14"
-                android:textColor="@color/admin_main_select_text"
-                />
-        </RelativeLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_1"
-            android:background="@color/light_gray"
-            />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_50"
-            android:text="主要参建企业"
-            android:background="@color/light_gray"
-            android:gravity="center_vertical"
-            android:textSize="@dimen/sp_admin_main_01"
-            android:paddingLeft="@dimen/dp_10"
-            android:textColor="@color/main_color"
-            />
-
-        <include  layout="@layout/layout_menu_line_main_color"/>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_40"
-            android:paddingLeft="@dimen/dp_20"
-            android:paddingRight="@dimen/dp_20"
-            >
             <TextView
-                android:id="@+id/tv_flag10"
+                android:id="@+id/tv_08"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="建设企业"
-                android:layout_centerVertical="true"
-                android:textSize="@dimen/sp_16"
-                />
-            <EditText
-                android:id="@+id/et_10"
-                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
-                android:layout_marginLeft="@dimen/dp_10"
-                android:layout_toRightOf="@+id/tv_flag10"
-                android:gravity="right"
-                android:background="@null"
-                android:textSize="@dimen/sp_14"
+                android:textSize="@dimen/sp_16"
+                android:layout_marginLeft="@dimen/dp_120"
                 android:textColor="@color/admin_main_select_text"
                 />
         </RelativeLayout>
@@ -375,24 +249,20 @@
             android:paddingRight="@dimen/dp_20"
             >
             <TextView
-                android:id="@+id/tv_flag11"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="施工企业"
+                android:text="检测单位联系电话"
                 android:layout_centerVertical="true"
                 android:textSize="@dimen/sp_16"
                 />
-            <EditText
-                android:id="@+id/et_11"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/tv_09"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
-                android:layout_marginLeft="@dimen/dp_10"
-                android:layout_toRightOf="@+id/tv_flag11"
-                android:gravity="right"
-                android:background="@null"
-                android:textSize="@dimen/sp_14"
+                android:textSize="@dimen/sp_16"
+                android:layout_marginLeft="@dimen/dp_120"
                 android:textColor="@color/admin_main_select_text"
                 />
         </RelativeLayout>
@@ -408,70 +278,20 @@
             android:paddingRight="@dimen/dp_20"
             >
             <TextView
-                android:id="@+id/tv_flag12"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="监理企业"
+                android:text="检测报告编号"
                 android:layout_centerVertical="true"
                 android:textSize="@dimen/sp_16"
                 />
-            <EditText
-                android:id="@+id/et_12"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginLeft="@dimen/dp_10"
-                android:layout_toRightOf="@+id/tv_flag12"
-                android:gravity="right"
-                android:background="@null"
-                android:textSize="@dimen/sp_14"
-                android:textColor="@color/admin_main_select_text"
-                />
-        </RelativeLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_1"
-            android:background="@color/light_gray"
-            />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_50"
-            android:text="主要参建人员"
-            android:background="@color/light_gray"
-            android:gravity="center_vertical"
-            android:textSize="@dimen/sp_admin_main_01"
-            android:paddingLeft="@dimen/dp_10"
-            android:textColor="@color/main_color"
-            />
-
-        <include  layout="@layout/layout_menu_line_main_color"/>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_40"
-            android:paddingLeft="@dimen/dp_20"
-            android:paddingRight="@dimen/dp_20"
-            >
             <TextView
-                android:id="@+id/tv_flag13"
+                android:id="@+id/tv_10"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="建设单位项目负责人"
-                android:layout_centerVertical="true"
-                android:textSize="@dimen/sp_16"
-                />
-            <EditText
-                android:id="@+id/et_13"
-                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
-                android:layout_marginLeft="@dimen/dp_10"
-                android:layout_toRightOf="@+id/tv_flag13"
-                android:gravity="right"
-                android:background="@null"
-                android:textSize="@dimen/sp_14"
+                android:textSize="@dimen/sp_16"
+                android:layout_marginLeft="@dimen/dp_120"
                 android:textColor="@color/admin_main_select_text"
                 />
         </RelativeLayout>
@@ -487,24 +307,20 @@
             android:paddingRight="@dimen/dp_20"
             >
             <TextView
-                android:id="@+id/tv_flag14"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="施工总承包单位项目负责人"
+                android:text="检测时间"
                 android:layout_centerVertical="true"
                 android:textSize="@dimen/sp_16"
                 />
-            <EditText
-                android:id="@+id/et_14"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/tv_11"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
-                android:layout_marginLeft="@dimen/dp_10"
-                android:layout_toRightOf="@+id/tv_flag14"
-                android:gravity="right"
-                android:background="@null"
-                android:textSize="@dimen/sp_14"
+                android:textSize="@dimen/sp_16"
+                android:layout_marginLeft="@dimen/dp_120"
                 android:textColor="@color/admin_main_select_text"
                 />
         </RelativeLayout>
@@ -520,70 +336,20 @@
             android:paddingRight="@dimen/dp_20"
             >
             <TextView
-                android:id="@+id/tv_flag15"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="监理单位总监理工程师"
+                android:text="检测结论"
                 android:layout_centerVertical="true"
                 android:textSize="@dimen/sp_16"
                 />
-            <EditText
-                android:id="@+id/et_15"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginLeft="@dimen/dp_10"
-                android:layout_toRightOf="@+id/tv_flag15"
-                android:gravity="right"
-                android:background="@null"
-                android:textSize="@dimen/sp_14"
-                android:textColor="@color/admin_main_select_text"
-                />
-        </RelativeLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_1"
-            android:background="@color/light_gray"
-            />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_50"
-            android:text="受理情况"
-            android:background="@color/light_gray"
-            android:gravity="center_vertical"
-            android:textSize="@dimen/sp_admin_main_01"
-            android:paddingLeft="@dimen/dp_10"
-            android:textColor="@color/main_color"
-            />
-
-        <include  layout="@layout/layout_menu_line_main_color"/>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_40"
-            android:paddingLeft="@dimen/dp_20"
-            android:paddingRight="@dimen/dp_20"
-            >
             <TextView
-                android:id="@+id/tv_flag16"
+                android:id="@+id/tv_12"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="受理人"
-                android:layout_centerVertical="true"
-                android:textSize="@dimen/sp_16"
-                />
-            <EditText
-                android:id="@+id/et_16"
-                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
-                android:layout_marginLeft="@dimen/dp_10"
-                android:layout_toRightOf="@+id/tv_flag16"
-                android:gravity="right"
-                android:background="@null"
-                android:textSize="@dimen/sp_14"
+                android:textSize="@dimen/sp_16"
+                android:layout_marginLeft="@dimen/dp_120"
                 android:textColor="@color/admin_main_select_text"
                 />
         </RelativeLayout>
@@ -599,24 +365,20 @@
             android:paddingRight="@dimen/dp_20"
             >
             <TextView
-                android:id="@+id/tv_flag17"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="受理意见"
+                android:text="使用机位数"
                 android:layout_centerVertical="true"
                 android:textSize="@dimen/sp_16"
                 />
-            <EditText
-                android:id="@+id/et_17"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/tv_13"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
-                android:layout_marginLeft="@dimen/dp_10"
-                android:layout_toRightOf="@+id/tv_flag17"
-                android:gravity="right"
-                android:background="@null"
-                android:textSize="@dimen/sp_14"
+                android:textSize="@dimen/sp_16"
+                android:layout_marginLeft="@dimen/dp_120"
                 android:textColor="@color/admin_main_select_text"
                 />
         </RelativeLayout>
@@ -632,24 +394,20 @@
             android:paddingRight="@dimen/dp_20"
             >
             <TextView
-                android:id="@+id/tv_flag18"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="受理时间"
+                android:text="架体高度(m)"
                 android:layout_centerVertical="true"
                 android:textSize="@dimen/sp_16"
                 />
             <TextView
-                android:id="@+id/et_18"
-                android:layout_width="match_parent"
+                android:id="@+id/tv_14"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
-                android:layout_marginLeft="@dimen/dp_10"
-                android:layout_toRightOf="@+id/tv_flag18"
-                android:gravity="right"
-                android:background="@null"
-                android:textSize="@dimen/sp_14"
+                android:textSize="@dimen/sp_16"
+                android:layout_marginLeft="@dimen/dp_120"
                 android:textColor="@color/admin_main_select_text"
                 />
         </RelativeLayout>
@@ -658,100 +416,382 @@
             android:layout_height="@dimen/dp_1"
             android:background="@color/light_gray"
             />
-        <TextView
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_50"
-            android:text="审核情况"
+            android:layout_height="@dimen/dp_40"
+            android:paddingLeft="@dimen/dp_20"
+            android:paddingRight="@dimen/dp_20"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="架体宽度(m)"
+                android:layout_centerVertical="true"
+                android:textSize="@dimen/sp_16"
+                />
+            <TextView
+                android:id="@+id/tv_15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:textSize="@dimen/sp_16"
+                android:layout_marginLeft="@dimen/dp_120"
+                android:textColor="@color/admin_main_select_text"
+                />
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
             android:background="@color/light_gray"
-            android:gravity="center_vertical"
-            android:textSize="@dimen/sp_admin_main_01"
-            android:paddingLeft="@dimen/dp_10"
-            android:textColor="@color/main_color"
             />
-
-        <include  layout="@layout/layout_menu_line_main_color"/>
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_30"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:layout_marginLeft="@dimen/dp_20"
-            android:layout_marginTop="@dimen/dp_10"
+            android:layout_height="@dimen/dp_40"
+            android:paddingLeft="@dimen/dp_20"
+            android:paddingRight="@dimen/dp_20"
             >
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:text="审核情况"
-                android:textSize="@dimen/sp_admin_main_03"
+                android:text="架体支撑最大跨度(m)"
+                android:layout_centerVertical="true"
+                android:textSize="@dimen/sp_16"
                 />
-            <RadioGroup
-                android:id="@+id/rg_basic"
-                android:layout_width="match_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal"
-
-                android:layout_height="wrap_content" >
-                <RadioButton
-                    android:id="@+id/rb_01"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="通过"
-                    android:layout_marginRight="@dimen/dp_10"
-                    android:checked="true"
-                    />
-                <RadioButton
-                    android:id="@+id/rb_02"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/dp_10"
-                    android:text="退回"/>
-            </RadioGroup>
-        </LinearLayout>
-        <LinearLayout
+            <TextView
+                android:id="@+id/tv_16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:textSize="@dimen/sp_16"
+                android:layout_marginLeft="@dimen/dp_120"
+                android:textColor="@color/admin_main_select_text"
+                />
+        </RelativeLayout>
+        <View
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_80"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:layout_marginLeft="@dimen/dp_20"
-            android:layout_marginTop="@dimen/dp_5"
+            android:layout_height="@dimen/dp_1"
+            android:background="@color/light_gray"
+            />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_40"
+            android:paddingLeft="@dimen/dp_20"
+            android:paddingRight="@dimen/dp_20"
             >
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:text="审核意见"
-                android:textSize="@dimen/sp_admin_main_03"
+                android:text="单元提升荷载(t)"
+                android:layout_centerVertical="true"
+                android:textSize="@dimen/sp_16"
                 />
-            <EditText
-                android:id="@+id/et_19"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_70"
-                android:layout_weight="1"
-                android:background="@drawable/shape_round_gray_bored"
-                android:textSize="@dimen/sp_admin_main_03"
-                android:layout_marginRight="@dimen/dp_20"
-                android:padding="@dimen/dp_5"
-
+            <TextView
+                android:id="@+id/tv_17"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:textSize="@dimen/sp_16"
+                android:layout_marginLeft="@dimen/dp_120"
+                android:textColor="@color/admin_main_select_text"
                 />
-
-        </LinearLayout>
-        <TextView
-            android:id="@+id/tv_commit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical|center_horizontal"
-            android:textColor="@color/white"
-            android:text="提交"
-            android:background="@drawable/shape_main_color_select"
-            android:textSize="@dimen/sp_admin_main_02"
-            android:paddingLeft="@dimen/dp_40"
-            android:paddingRight="@dimen/dp_40"
-            android:paddingTop="@dimen/dp_5"
-            android:paddingBottom="@dimen/dp_5"
-            android:layout_gravity="center_horizontal|center_vertical"
-            android:layout_marginTop="@dimen/dp_20"
-            android:layout_marginBottom="@dimen/dp_20"
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:background="@color/light_gray"
+            />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_40"
+            android:paddingLeft="@dimen/dp_20"
+            android:paddingRight="@dimen/dp_20"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="动力形式"
+                android:layout_centerVertical="true"
+                android:textSize="@dimen/sp_16"
+                />
+            <TextView
+                android:id="@+id/tv_18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:textSize="@dimen/sp_16"
+                android:layout_marginLeft="@dimen/dp_120"
+                android:textColor="@color/admin_main_select_text"
+                />
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:background="@color/light_gray"
+            />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_40"
+            android:paddingLeft="@dimen/dp_20"
+            android:paddingRight="@dimen/dp_20"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="提升速度"
+                android:layout_centerVertical="true"
+                android:textSize="@dimen/sp_16"
+                />
+            <TextView
+                android:id="@+id/tv_19"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:textSize="@dimen/sp_16"
+                android:layout_marginLeft="@dimen/dp_120"
+                android:textColor="@color/admin_main_select_text"
+                />
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:background="@color/light_gray"
+            />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_40"
+            android:paddingLeft="@dimen/dp_20"
+            android:paddingRight="@dimen/dp_20"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="是否已拆除"
+                android:layout_centerVertical="true"
+                android:textSize="@dimen/sp_16"
+                />
+            <TextView
+                android:id="@+id/tv_20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:textSize="@dimen/sp_16"
+                android:layout_marginLeft="@dimen/dp_120"
+                android:textColor="@color/admin_main_select_text"
+                />
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:background="@color/light_gray"
+            />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_40"
+            android:paddingLeft="@dimen/dp_20"
+            android:paddingRight="@dimen/dp_20"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="拆除时间"
+                android:layout_centerVertical="true"
+                android:textSize="@dimen/sp_16"
+                />
+            <TextView
+                android:id="@+id/tv_21"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:textSize="@dimen/sp_16"
+                android:layout_marginLeft="@dimen/dp_120"
+                android:textColor="@color/admin_main_select_text"
+                />
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:background="@color/light_gray"
+            />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_40"
+            android:paddingLeft="@dimen/dp_20"
+            android:paddingRight="@dimen/dp_20"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="拆除人"
+                android:layout_centerVertical="true"
+                android:textSize="@dimen/sp_16"
+                />
+            <TextView
+                android:id="@+id/tv_22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:textSize="@dimen/sp_16"
+                android:layout_marginLeft="@dimen/dp_120"
+                android:textColor="@color/admin_main_select_text"
+                />
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:background="@color/light_gray"
+            />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_40"
+            android:paddingLeft="@dimen/dp_20"
+            android:paddingRight="@dimen/dp_20"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="拆除人审批时间"
+                android:layout_centerVertical="true"
+                android:textSize="@dimen/sp_16"
+                />
+            <TextView
+                android:id="@+id/tv_23"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:textSize="@dimen/sp_16"
+                android:layout_marginLeft="@dimen/dp_120"
+                android:textColor="@color/admin_main_select_text"
+                />
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:background="@color/light_gray"
+            />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_40"
+            android:paddingLeft="@dimen/dp_20"
+            android:paddingRight="@dimen/dp_20"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="拆除人所在机构"
+                android:layout_centerVertical="true"
+                android:textSize="@dimen/sp_16"
+                />
+            <TextView
+                android:id="@+id/tv_24"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:textSize="@dimen/sp_16"
+                android:layout_marginLeft="@dimen/dp_120"
+                android:textColor="@color/admin_main_select_text"
+                />
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:background="@color/light_gray"
+            />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_40"
+            android:paddingLeft="@dimen/dp_20"
+            android:paddingRight="@dimen/dp_20"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="拆除人所在部门"
+                android:layout_centerVertical="true"
+                android:textSize="@dimen/sp_16"
+                />
+            <TextView
+                android:id="@+id/tv_25"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:textSize="@dimen/sp_16"
+                android:layout_marginLeft="@dimen/dp_120"
+                android:textColor="@color/admin_main_select_text"
+                />
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:background="@color/light_gray"
+            />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_40"
+            android:paddingLeft="@dimen/dp_20"
+            android:paddingRight="@dimen/dp_20"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="创建日期"
+                android:layout_centerVertical="true"
+                android:textSize="@dimen/sp_16"
+                />
+            <TextView
+                android:id="@+id/tv_26"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:textSize="@dimen/sp_16"
+                android:layout_marginLeft="@dimen/dp_120"
+                android:textColor="@color/admin_main_select_text"
+                />
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:background="@color/light_gray"
+            />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_40"
+            android:paddingLeft="@dimen/dp_20"
+            android:paddingRight="@dimen/dp_20"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="修改日期"
+                android:layout_centerVertical="true"
+                android:textSize="@dimen/sp_16"
+                />
+            <TextView
+                android:id="@+id/tv_27"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:textSize="@dimen/sp_16"
+                android:layout_marginLeft="@dimen/dp_120"
+                android:textColor="@color/admin_main_select_text"
+                />
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:background="@color/light_gray"
             />
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>
