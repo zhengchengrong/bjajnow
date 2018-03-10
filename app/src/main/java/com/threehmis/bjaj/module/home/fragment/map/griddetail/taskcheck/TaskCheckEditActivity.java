@@ -1,8 +1,10 @@
+/*
+ * Copyright (c) zcr 2018.
+ */
+
 package com.threehmis.bjaj.module.home.fragment.map.griddetail.taskcheck;
 
 import android.app.DatePickerDialog;
-import android.graphics.Canvas;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
@@ -19,7 +21,6 @@ import com.chad.library.adapter.base.BaseItemDraggableAdapter;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.callback.ItemDragAndSwipeCallback;
-import com.chad.library.adapter.base.listener.OnItemSwipeListener;
 import com.threehmis.bjaj.R;
 import com.threehmis.bjaj.api.BaseObserver;
 import com.threehmis.bjaj.api.Const;
@@ -30,35 +31,29 @@ import com.threehmis.bjaj.api.bean.request.CommonProjectIdReq;
 import com.threehmis.bjaj.api.bean.request.TaskCheckAddBeanReq;
 import com.threehmis.bjaj.api.bean.request.TaskCheckAddReq;
 import com.threehmis.bjaj.api.bean.respon.ProjectTaskCheckRsp;
-import com.threehmis.bjaj.api.bean.respon.QzjxBeanRsp;
 import com.threehmis.bjaj.api.bean.respon.SupervisionPlanFirstRsp;
 import com.threehmis.bjaj.module.base.BaseActivity;
 import com.threehmis.bjaj.utils.CDUtil;
-import com.threehmis.bjaj.utils.SPUtils;
 import com.threehmis.bjaj.widget.EmptyLayout;
 import com.vondear.rxtools.RxLogUtils;
 import com.vondear.rxtools.RxSPUtils;
 import com.vondear.rxtools.view.RxToast;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import io.reactivex.Observable;
 
 /**
  * Created by llz on 2018/2/27.
  */
 
-public class TaskCheckAddActivity extends BaseActivity {
+public class TaskCheckEditActivity extends BaseActivity {
 
 
     @BindView(R.id.tv_title)
@@ -107,14 +102,26 @@ public class TaskCheckAddActivity extends BaseActivity {
     private List<String> listCheckType;
     private List<String> listCheckContent;
     private List<String> listCheckStatus;
+    // 修改
+    List<ProjectTaskCheckRsp.CheckDivisionVOSetBean> checkDivisionVOSet ;
     private StringBuffer mStringBuffer = new StringBuffer();
-    Set<String> set = new HashSet<>();
+    Set<String> set = new HashSet<String>();
+    Set<String> set01 = new HashSet<String>();
 
     private boolean isCommit;
+    private boolean isAdd;
+
+
+    private String checkNum="";
+    private String checkDate="";
+    private String checkBase="";
+    private String id="";
+    private boolean flag;
+
 
     @Override
     protected int attachLayoutRes() {
-        return R.layout.activity_task_check_add;
+        return R.layout.activity_task_check_edit;
     }
 
     @Override
@@ -124,6 +131,21 @@ public class TaskCheckAddActivity extends BaseActivity {
 
     @Override
     protected void initViews() {
+        checkBase = getIntent().getStringExtra(Const.CHECKBASIS);
+        checkNum = getIntent().getStringExtra(Const.CEHCKNUM);
+        checkDate = getIntent().getStringExtra(Const.DATES);
+        id = getIntent().getStringExtra(Const.ID);
+        flag = getIntent().getBooleanExtra(Const.FLAG,false);
+        mEt01.setText(checkNum);
+        mTv01.setText(checkDate);
+        if(checkBase.equals("计划")){
+            mRb01.setChecked(true);
+        }else if(checkBase.equals("专项")){
+            mRb02.setChecked(true);
+        }else{
+            mRb03.setChecked(true);
+        }
+
         initTitle();
         getData01();
         getData02();
@@ -148,12 +170,10 @@ public class TaskCheckAddActivity extends BaseActivity {
             public void onClick(View view) {
                 TaskCheckAddBeanReq taskCheckAddBeanReq = new TaskCheckAddBeanReq();
                 mProjectStatusRsps.add(taskCheckAddBeanReq);
+                isAdd = true;
                 mItemDragAdapter.notifyDataSetChanged();
             }
         });
-
-        TaskCheckAddBeanReq taskCheckAddBeanReq = new TaskCheckAddBeanReq();
-        mProjectStatusRsps.add(taskCheckAddBeanReq);
         mRvContent.setLayoutManager(new LinearLayoutManager(this));
         mRvContent.setAdapter(mItemDragAdapter);
         ItemDragAndSwipeCallback itemDragAndSwipeCallback = new ItemDragAndSwipeCallback(mItemDragAdapter);
@@ -181,6 +201,7 @@ public class TaskCheckAddActivity extends BaseActivity {
                     RxToast.showToast("请输入检查日期!");
                     return;
                 }
+             //   mTv02.setText(mStringBuffer.substring(0, mStringBuffer.length() - 1));
                 mItemDragAdapter.notifyDataSetChanged();
 
             }
@@ -194,13 +215,26 @@ public class TaskCheckAddActivity extends BaseActivity {
         mTv01.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new DatePickerDialog(TaskCheckAddActivity.this, onDateSetListener, mYear, mMonth, mDay).show();
+                new DatePickerDialog(TaskCheckEditActivity.this, onDateSetListener, mYear, mMonth, mDay).show();
             }
         });
-
-
-
-
+        //修改初始化
+            checkDivisionVOSet = (ArrayList<ProjectTaskCheckRsp.CheckDivisionVOSetBean>) CDUtil
+                    .readObject(Const.ROWSBEAN);
+            if (checkDivisionVOSet != null && checkDivisionVOSet.size() > 0) {
+                for (int i = 0; i < checkDivisionVOSet.size(); i++) {
+                    TaskCheckAddBeanReq taskTemp = new TaskCheckAddBeanReq();
+                    taskTemp.setCreateMan(checkDivisionVOSet.get(i).getCheckMan());
+                    taskTemp.setCreateManId(checkDivisionVOSet.get(i).getCheckManId());
+                    taskTemp.setListSingleProject(checkDivisionVOSet.get(i).getSingleProject()); //问题
+                    taskTemp.setListSingleProjectId(checkDivisionVOSet.get(i).getSingleProject());
+                    taskTemp.setCheckType(checkDivisionVOSet.get(i).getCheckType());
+                    taskTemp.setCheckContetnt(checkDivisionVOSet.get(i).getCheckContent());
+                    taskTemp.setCheckStatus(checkDivisionVOSet.get(i).getCheckStatus());
+                    mProjectStatusRsps.add(taskTemp);
+                    mItemDragAdapter.notifyDataSetChanged();
+                }
+        }
     }
 
     @Override
@@ -224,7 +258,7 @@ public class TaskCheckAddActivity extends BaseActivity {
     BaseQuickAdapter mBaseQuickAdapter2;
     public class ItemDragAdapter extends BaseItemDraggableAdapter<TaskCheckAddBeanReq, BaseViewHolder> {
         public ItemDragAdapter(ArrayList<TaskCheckAddBeanReq> data) {
-            super(R.layout.item_task_check_add_01, data);
+            super(R.layout.item_task_check_edit_01, data);
         }
 
         @Override
@@ -236,9 +270,17 @@ public class TaskCheckAddActivity extends BaseActivity {
             final  TextView list_check_man_id = baseViewHolder.getView(R.id.list_check_man_id);
             final  TextView list_check_type = baseViewHolder.getView(R.id.list_check_type);
 
-
+            //修改
+            if(flag == true&&isCommit==false&&isAdd==false) {
+                tv_01.setText(item.getCreateMan());
+                tv_02.setText(item.getListSingleProject());
+                tv_03.setText(item.getCheckContetnt());
+                list_siginle_id.setText(item.getListSingleProjectId());
+                list_check_man_id.setText(item.getCreateManId());
+                list_check_type.setText(item.getCheckType());
+            }
             RxLogUtils.d(tv_01.getText().toString() + ":" + tv_02.getText().toString() + ":" + tv_03.getText().toString());
-            if(!TextUtils.isEmpty(tv_01.getText().toString())) {
+     /*       if(!TextUtils.isEmpty(tv_01.getText().toString())) {
                 set.add(tv_01.getText().toString() );
                 Iterator<String> it = set.iterator();
                 mStringBuffer.setLength(0);
@@ -246,25 +288,39 @@ public class TaskCheckAddActivity extends BaseActivity {
                     String str = it.next();
                     mStringBuffer.append(str+ ",");
                 }
-               mTv02.setText(mStringBuffer.substring(0, mStringBuffer.length() - 1));
 
+            }*/
+            if(isCommit==true) { //只有提交的通知才加数据
+                listId.add("");
+                listCheckTaskId.add("");
+                listSingleProject.add(list_siginle_id.getText().toString());
+                listCheckManId.add(list_check_man_id.getText().toString());
+                listCheckMan.add(tv_01.getText().toString());
+                listCheckType.add(list_check_type.getText().toString());
+                listCheckContent.add(tv_03.getText().toString());
+                listCheckStatus.add("0");
+
+                // 遍历旧集合,获取得到每一个元素
+                Iterator it = listCheckMan.iterator();
+                String str="";
+                while (it.hasNext()) {
+                    String s = (String) it.next();
+                    // 拿这个元素到新集合去找，看有没有
+                    set01.add(s);
+                }
+                Iterator<String> it2 = set01.iterator();
+                while (it2.hasNext()) {
+                     str += it2.next()+",";
+
+
+                }
+                mTv02.setText(str.substring(0,str.length()-1));
             }
-
-            listId.add("");
-            listCheckTaskId.add("");
-            listSingleProject.add(list_siginle_id.getText().toString());
-            listCheckManId.add(list_check_man_id.getText().toString());
-            listCheckMan.add(tv_01.getText().toString());
-            listCheckType.add(list_check_type.getText().toString());
-            listCheckContent.add(tv_03.getText().toString());
-            listCheckStatus.add("0");
             if(baseViewHolder.getAdapterPosition() == mProjectStatusRsps.size()-1&&isCommit==true){
                 TaskCheckAddReq req = new TaskCheckAddReq();
                 req.setCheckNum(mEt01.getText().toString());
                 req.setCheckDate(mTv01.getText().toString());
-/*
-                req.setProjectNum(RxSPUtils.getContent(Const.PRO));
-*/
+                req.setId(id);
                 req.setProjectId(projectId);
                 req.setProjectName(projectName);
                 req.setListId(listId);
@@ -281,7 +337,7 @@ public class TaskCheckAddActivity extends BaseActivity {
                 req.setUpdateDate(mTv01.getText().toString());
                 req.setCreateDate(mTv01.getText().toString());
                 req.setCheckMen(mTv02.getText().toString());
-                req.setCreateMan(RxSPUtils.getString(TaskCheckAddActivity.this,Const.PHONENUM));
+                req.setCreateMan(RxSPUtils.getString(TaskCheckEditActivity.this,Const.PHONENUM));
                 if(mRb01.isChecked()){
                     req.setCheckBasis("计划");
                 }else if(mRb02.isChecked()){
@@ -289,14 +345,14 @@ public class TaskCheckAddActivity extends BaseActivity {
                 }else{
                     req.setCheckBasis("其他");
                 }
-                Observable<BaseBeanRsp<SupervisionPlanFirstRsp>> observable = RetrofitFactory.getInstance().saveCheckTask(req);
+                Observable<BaseBeanRsp<SupervisionPlanFirstRsp>> observable = RetrofitFactory.getInstance().editCheckTask(req);
                 observable.compose(RxSchedulers.<BaseBeanRsp<SupervisionPlanFirstRsp>>compose(
                 )).subscribe(new BaseObserver<SupervisionPlanFirstRsp>() {
                     @Override
                     protected void onHandleSuccess(BaseBeanRsp<SupervisionPlanFirstRsp> beanRsp) {
                         // 登陆成功 保存用户信息等操作
                         RxToast.showToast(beanRsp.getResult());
-                        TaskCheckAddActivity.this.finish();
+                        TaskCheckEditActivity.this.finish();
                     }
                     @Override
                     protected void onHandleEmpty(BaseBeanRsp<SupervisionPlanFirstRsp> beanRsp) {
@@ -308,14 +364,14 @@ public class TaskCheckAddActivity extends BaseActivity {
             tv_01.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    dialog01 = new MaterialDialog.Builder(TaskCheckAddActivity.this)
-                            .title("检查联系人").titleColor(TaskCheckAddActivity.this.getResources().getColor(R.color.main_color))
+                    dialog01 = new MaterialDialog.Builder(TaskCheckEditActivity.this)
+                            .title("检查联系人").titleColor(TaskCheckEditActivity.this.getResources().getColor(R.color.main_color))
                             .customView(R.layout.dialog_task_check_add01, wrapInScrollView)
                             .positiveText("取消")
                             .show();
                     View view1 = dialog01.getCustomView();
                     RecyclerView mRvContent2 = view1.findViewById(R.id.rv_content);
-                    mRvContent2.setLayoutManager(new LinearLayoutManager(TaskCheckAddActivity.this));
+                    mRvContent2.setLayoutManager(new LinearLayoutManager(TaskCheckEditActivity.this));
                     BaseQuickAdapter mBaseQuickAdapter2 = new BaseQuickAdapter<BaseBeanRsp.JokerVOBean.MonitorListBean, BaseViewHolder>(R.layout.item_task_check_add_item_01, personList) {
                         @Override
                         protected void convert(final BaseViewHolder baseViewHolder, final BaseBeanRsp.JokerVOBean.MonitorListBean rowsBean) {
@@ -338,14 +394,14 @@ public class TaskCheckAddActivity extends BaseActivity {
             tv_02.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                     dialog02 = new MaterialDialog.Builder(TaskCheckAddActivity.this)
-                            .title("选择工程单体").titleColor(TaskCheckAddActivity.this.getResources().getColor(R.color.main_color))
+                     dialog02 = new MaterialDialog.Builder(TaskCheckEditActivity.this)
+                            .title("选择工程单体").titleColor(TaskCheckEditActivity.this.getResources().getColor(R.color.main_color))
                             .customView(R.layout.dialog_task_check_add01, wrapInScrollView)
                             .positiveText("取消")
                             .show();
                     View view1 = dialog02.getCustomView();
                     RecyclerView mRvContent2 = view1.findViewById(R.id.rv_content);
-                    mRvContent2.setLayoutManager(new LinearLayoutManager(TaskCheckAddActivity.this));
+                    mRvContent2.setLayoutManager(new LinearLayoutManager(TaskCheckEditActivity.this));
                     BaseQuickAdapter mBaseQuickAdapter2 = new BaseQuickAdapter<BaseBeanRsp.JokerVOBean.MonitorListBean, BaseViewHolder>(R.layout.item_task_check_add_item_02,jokerVOList ) {
                         @Override
                         protected void convert(BaseViewHolder baseViewHolder, final BaseBeanRsp.JokerVOBean.MonitorListBean rowsBean) {
@@ -366,8 +422,8 @@ public class TaskCheckAddActivity extends BaseActivity {
             tv_03.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                     dialog03 = new MaterialDialog.Builder(TaskCheckAddActivity.this)
-                            .title("选择检查内容").titleColor(TaskCheckAddActivity.this.getResources().getColor(R.color.main_color))
+                     dialog03 = new MaterialDialog.Builder(TaskCheckEditActivity.this)
+                            .title("选择检查内容").titleColor(TaskCheckEditActivity.this.getResources().getColor(R.color.main_color))
                             .customView(R.layout.dialog_task_check_add03, wrapInScrollView)
                             .positiveText("取消")
                             .show();
@@ -384,7 +440,7 @@ public class TaskCheckAddActivity extends BaseActivity {
                             getData03(editText.getText().toString());
                         }
                     });
-                    mRvContent2.setLayoutManager(new LinearLayoutManager(TaskCheckAddActivity.this));
+                    mRvContent2.setLayoutManager(new LinearLayoutManager(TaskCheckEditActivity.this));
                      mBaseQuickAdapter2 = new BaseQuickAdapter<BaseBeanRsp.JokerVOBean.MonitorListBean, BaseViewHolder>(R.layout.item_task_check_add_item_03, jokerVOList2) {
                         @Override
                         protected void convert(BaseViewHolder baseViewHolder, final BaseBeanRsp.JokerVOBean.MonitorListBean rowsBean) {
@@ -410,7 +466,7 @@ public class TaskCheckAddActivity extends BaseActivity {
     private List<BaseBeanRsp.JokerVOBean.MonitorListBean> jokerVOList2 = new ArrayList<BaseBeanRsp.JokerVOBean.MonitorListBean>();
 
     private void getData01() {
-        String id = RxSPUtils.getString(TaskCheckAddActivity.this,Const.PROJECTID);
+        String id = RxSPUtils.getString(TaskCheckEditActivity.this,Const.PROJECTID);
         CommonProjectIdReq req = new CommonProjectIdReq();
          req.setProjectId(id);
         Observable<BaseBeanRsp<CommonProjectIdReq>> observable = RetrofitFactory.getInstance().getMonitor(req);
@@ -428,7 +484,7 @@ public class TaskCheckAddActivity extends BaseActivity {
         });
     }
     private void getData02() {
-        String id = RxSPUtils.getString(TaskCheckAddActivity.this,Const.PROJECTID);
+        String id = RxSPUtils.getString(TaskCheckEditActivity.this,Const.PROJECTID);
         CommonProjectIdReq req = new CommonProjectIdReq();
         req.setProjectId(id);
         Observable<BaseBeanRsp<CommonProjectIdReq>> observable = RetrofitFactory.getInstance().getSingleProject(req);
@@ -445,7 +501,7 @@ public class TaskCheckAddActivity extends BaseActivity {
         });
     }
     private void getData03(String search) {
-        String id = RxSPUtils.getString(TaskCheckAddActivity.this,Const.PROJECTID);
+        String id = RxSPUtils.getString(TaskCheckEditActivity.this,Const.PROJECTID);
         CommonProjectIdReq req = new CommonProjectIdReq();
         req.setProjectId(id);
         req.setLawContent(search);

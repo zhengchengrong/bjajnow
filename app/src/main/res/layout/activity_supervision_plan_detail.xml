@@ -10,6 +10,9 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         >
+        <include
+            layout="@layout/my_include_title"
+            />
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_40"
@@ -247,19 +250,19 @@
             android:background="@color/light_gray"
             />
         <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_40"
-        android:paddingLeft="@dimen/dp_20"
-        android:paddingRight="@dimen/dp_20"
-        >
-        <TextView
-            android:id="@+id/tv_08"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="计划竣工日期"
-            android:layout_centerVertical="true"
-            android:textSize="@dimen/sp_16"
-            />
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_40"
+            android:paddingLeft="@dimen/dp_20"
+            android:paddingRight="@dimen/dp_20"
+            >
+            <TextView
+                android:id="@+id/tv_08"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="计划竣工日期"
+                android:layout_centerVertical="true"
+                android:textSize="@dimen/sp_16"
+                />
             <TextView
                 android:id="@+id/tv_date_08"
                 android:layout_width="wrap_content"
@@ -274,7 +277,7 @@
                 android:focusable="false"
                 android:textColor="@color/admin_main_select_text"
                 />
-    </RelativeLayout>
+        </RelativeLayout>
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_1"
@@ -298,34 +301,30 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/dp_8"
             >
-        <TextView
-            android:id="@+id/tv_bottom_01"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:textSize="@dimen/sp_14"
-            android:text="含有超过一定规模的危险性较大的分部分项工程情况：共有"
-            android:lineSpacingExtra="@dimen/dp_6"
-            android:textColor="@color/admin_main_select_text"
-            android:layout_marginTop="@dimen/dp_10"
-            android:layout_marginBottom="@dimen/dp_10"
-            />
-            <EditText
-                android:id="@+id/et_bottom_01"
+            <TextView
+                android:id="@+id/tv_bottom_01"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical|center_horizontal"
-                android:layout_toRightOf="@+id/tv_bottom_01"
+                android:layout_centerVertical="true"
+                android:textSize="@dimen/sp_14"
+                android:text="含有超过一定规模的危险性较大的分部分项工程情况："
+                android:lineSpacingExtra="@dimen/dp_6"
+                android:textColor="@color/admin_main_select_text"
+                android:layout_marginTop="@dimen/dp_10"
                 android:layout_marginBottom="@dimen/dp_10"
+                android:textStyle="bold"
                 />
+
             <TextView
+                android:id="@+id/tv_all"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/sp_14"
-                android:text="项"
+                android:text="共有4项"
                 android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/et_bottom_01"
+                android:layout_toRightOf="@+id/tv_bottom_01"
                 android:textColor="@color/admin_main_select_text"
+                android:textStyle="bold"
                 />
         </RelativeLayout>
         <TextView
@@ -337,28 +336,37 @@
             android:textColor="@color/admin_main_select_text"
             android:layout_marginLeft="@dimen/dp_8"
             />
+        <TextView
+            android:id="@+id/tv_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/sp_14"
+            android:textColor="@color/admin_main_select_text"
+            android:layout_marginLeft="@dimen/dp_8"
+            />
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="@dimen/dp_60"
             android:layout_marginTop="@dimen/dp_10"
             >
-        <TextView
-            android:id="@+id/tv_flag06"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/sp_14"
-            android:text="施工单位近一年内生产安全事故情况:"
-            android:lineSpacingExtra="@dimen/dp_6"
-            android:textColor="@color/admin_main_select_text"
-            android:layout_marginLeft="@dimen/dp_8"
-            />
+            <TextView
+                android:id="@+id/tv_flag06"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/sp_14"
+                android:text="施工单位近一年内生产安全事故情况:"
+                android:lineSpacingExtra="@dimen/dp_6"
+                android:textColor="@color/admin_main_select_text"
+                android:layout_marginLeft="@dimen/dp_8"
+                android:textStyle="bold"
+                />
             <RadioGroup
                 android:id="@+id/rg_01"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_flag06"
                 android:orientation="horizontal"
-                android:layout_centerVertical="true"
                 >
                 <RadioButton
                     android:id="@+id/rb_01"
@@ -367,8 +375,6 @@
                     android:text="未发生"
                     android:textSize="@dimen/sp_14"
                     android:checked="true"
-                    android:layout_centerVertical="true"
-
                     />
                 <RadioButton
                     android:id="@+id/rb_02"
@@ -376,7 +382,6 @@
                     android:layout_height="match_parent"
                     android:text="发生过"
                     android:textSize="@dimen/sp_14"
-                    android:layout_centerVertical="true"
                     />
             </RadioGroup>
             <RelativeLayout
@@ -385,83 +390,177 @@
                 android:layout_marginLeft="@dimen/dp_8"
                 android:layout_toRightOf="@+id/rg_01"
                 android:layout_below="@+id/tv_flag06"
+                android:layout_marginTop="@dimen/dp_5"
                 >
                 <TextView
                     android:id="@+id/tv_flag02"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/sp_14"
-                    android:text="(共"
+                    android:text=""
                     android:textColor="@color/admin_main_select_text"
-                    android:layout_centerVertical="true"
-                    />
-                <EditText
-                    android:id="@+id/et_bottom_02"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/tv_flag02"
-                    android:text="1"
-                    android:layout_centerVertical="true"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/sp_14"
-                    android:text="起)"
-                    android:layout_toRightOf="@+id/et_bottom_02"
-                    android:textColor="@color/admin_main_select_text"
-                    android:layout_centerVertical="true"
-
                     />
             </RelativeLayout>
         </RelativeLayout>
+
 
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/dp_8"
             >
-        <TextView
-            android:id="@+id/tv_bottom_02"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/sp_14"
-            android:text="在施工安全监督周期内,计划对该工程进行施工安全抽查"
-            android:layout_centerVertical="true"
-            android:textColor="@color/admin_main_select_text"
-            />
-        <EditText
-            android:id="@+id/et_bottom_03"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/tv_bottom_02"
-            />
             <TextView
+                android:id="@+id/tv_bottom_02"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/sp_14"
-                android:text="次"
+                android:text="在施工安全监督周期内,计划对该工程进行施工安全抽查"
                 android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/et_bottom_03"
+                android:textColor="@color/admin_main_select_text"
+                />
+            <TextView
+                android:id="@+id/et_bottom_03"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/sp_14"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/tv_bottom_02"
+                android:textColor="@color/admin_main_select_text"
+                android:layout_marginBottom="@dimen/dp_10"
+                />
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_10"
+            android:background="@color/light_gray"
+            />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_40"
+            android:paddingLeft="@dimen/dp_20"
+            android:paddingRight="@dimen/dp_20"
+            >
+        <TextView
+            android:id="@+id/tv_11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="变更原因"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/sp_16"
+            />
+        <TextView
+            android:id="@+id/et_07"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:textSize="@dimen/sp_16"
+            android:background="@null"
+            android:layout_toRightOf="@+id/tv_11"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:textColor="@color/admin_main_select_text"
+            />
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:background="@color/light_gray"
+            />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_40"
+            android:paddingLeft="@dimen/dp_20"
+            android:paddingRight="@dimen/dp_20"
+            >
+        <TextView
+            android:id="@+id/tv_12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="变更内容"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/sp_16"
+            />
+        <TextView
+            android:id="@+id/et_08"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:textSize="@dimen/sp_16"
+            android:background="@null"
+            android:layout_toRightOf="@+id/tv_12"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:textColor="@color/admin_main_select_text"
+            />
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:background="@color/light_gray"
+        />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_40"
+            android:paddingLeft="@dimen/dp_20"
+            android:paddingRight="@dimen/dp_20"
+            >
+            <TextView
+                android:id="@+id/tv_13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="变更人"
+                android:layout_centerVertical="true"
+                android:textSize="@dimen/sp_16"
+                />
+            <TextView
+                android:id="@+id/et_09"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:textSize="@dimen/sp_16"
+                android:background="@null"
+                android:layout_toRightOf="@+id/tv_13"
+                android:layout_marginLeft="@dimen/dp_20"
                 android:textColor="@color/admin_main_select_text"
                 />
         </RelativeLayout>
-        <TextView
-            android:id="@+id/tv_commit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical|center_horizontal"
-            android:textColor="@color/white"
-            android:text="提交"
-            android:background="@drawable/shape_main_color_select"
-            android:textSize="@dimen/sp_admin_main_02"
-            android:paddingTop="@dimen/dp_10"
-            android:paddingBottom="@dimen/dp_10"
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:background="@color/light_gray"
+            />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_40"
             android:paddingLeft="@dimen/dp_20"
             android:paddingRight="@dimen/dp_20"
-            android:layout_gravity="center_horizontal|center_vertical"
-            android:layout_marginTop="@dimen/dp_10"
-            android:layout_marginBottom="@dimen/dp_10"
+            >
+            <TextView
+                android:id="@+id/tv_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="变更日期"
+                android:layout_centerVertical="true"
+                android:textSize="@dimen/sp_16"
+                />
+            <TextView
+                android:id="@+id/et_10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:textSize="@dimen/sp_16"
+                android:background="@null"
+                android:layout_toRightOf="@+id/tv_14"
+                android:layout_marginLeft="@dimen/dp_20"
+                android:textColor="@color/admin_main_select_text"
+                />
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:background="@color/light_gray"
             />
     </LinearLayout>
 

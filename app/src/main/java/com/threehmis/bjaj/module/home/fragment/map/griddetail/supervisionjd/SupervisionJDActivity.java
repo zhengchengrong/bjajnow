@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.threehmis.bjaj.R;
@@ -14,7 +13,9 @@ import com.threehmis.bjaj.api.Const;
 import com.threehmis.bjaj.api.RetrofitFactory;
 import com.threehmis.bjaj.api.RxSchedulers;
 import com.threehmis.bjaj.api.bean.BaseBeanRsp;
+import com.threehmis.bjaj.api.bean.request.SupervisionJDReq;
 import com.threehmis.bjaj.api.bean.request.SupervisionPlanFirstReq;
+import com.threehmis.bjaj.api.bean.request.SupervisionPlanReq;
 import com.threehmis.bjaj.api.bean.respon.SupervisionJDRsp;
 import com.threehmis.bjaj.api.bean.respon.SupervisionPlanFirstRsp;
 import com.threehmis.bjaj.module.base.BaseActivity;
@@ -76,8 +77,52 @@ public class SupervisionJDActivity extends BaseActivity {
     EditText mEt01;
     @BindView(R.id.tv_commit)
     TextView mTvCommit;
+    @BindView(R.id.tv_flag01)
+    TextView mTvFlag01;
+    @BindView(R.id.tv_flag02)
+    TextView mTvFlag02;
+    @BindView(R.id.tv_flag03)
+    TextView mTvFlag03;
+    @BindView(R.id.tv_flag04)
+    TextView mTvFlag04;
+    @BindView(R.id.tv_flag05)
+    TextView mTvFlag05;
+    @BindView(R.id.tv_flag06)
+    TextView mTvFlag06;
+    @BindView(R.id.tv_flag07)
+    TextView mTvFlag07;
+    @BindView(R.id.tv_flag08)
+    TextView mTvFlag08;
+    @BindView(R.id.tv_flag09)
+    TextView mTvFlag09;
+    @BindView(R.id.tv_flag10)
+    TextView mTvFlag10;
+    @BindView(R.id.tv_flag11)
+    TextView mTvFlag11;
+    @BindView(R.id.tv_flag12)
+    TextView mTvFlag12;
+    @BindView(R.id.tv_flag13)
+    TextView mTvFlag13;
+    @BindView(R.id.tv_flag14)
+    TextView mTvFlag14;
+    @BindView(R.id.tv_flag15)
+    TextView mTvFlag15;
+    @BindView(R.id.tv_flag16)
+    TextView mTvFlag16;
+    @BindView(R.id.tv_flag17)
+    TextView mTvFlag17;
+    @BindView(R.id.tv_flag18)
+    TextView mTvFlag18;
+    private String id = "";
+    String code = "";
+    String projectName="";
+    String projectNum="";
+    String registerDate="";
+    String registerMan="";
+    String updateDate="";
+    String versionId="3HJD0035";
 
-    private String id="";
+
     @Override
     protected int attachLayoutRes() {
         return R.layout.activity_supervison_jd;
@@ -91,6 +136,7 @@ public class SupervisionJDActivity extends BaseActivity {
     @Override
     protected void initViews() {
         id = RxSPUtils.getString(this, Const.PROJECTID);
+        code = RxSPUtils.getString(this, Const.PROJECTCODE);
         Calendar ca = Calendar.getInstance();
         mYear = ca.get(Calendar.YEAR);
         mMonth = ca.get(Calendar.MONTH);
@@ -103,31 +149,120 @@ public class SupervisionJDActivity extends BaseActivity {
         });
         initTitle();
         getDatas();
+        mTvCommit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SupervisionJDReq supervisionPlanReq = new SupervisionJDReq();
+                supervisionPlanReq.setProjectId(id);
+                supervisionPlanReq.setProjectCode(code);
+                supervisionPlanReq.setMonitorName("监督交底");
+                supervisionPlanReq.setSspType("PROJECT");
+                supervisionPlanReq.setMonitorPK("b1c3c335-f4ac-450e-9ffc-453bde23b9f3");
+                supervisionPlanReq.setIsTrigger("$U_CHECKBOX_OFF$");
+                supervisionPlanReq.setProjectNum(projectNum);
+                supervisionPlanReq.setProjectName(projectName);
+                supervisionPlanReq.setStatus("0");
+                supervisionPlanReq.setRegisterDate(registerDate);
+                supervisionPlanReq.setRegisterMan(registerMan);
+                supervisionPlanReq.setVersionId("3HJD0035");
+                supervisionPlanReq.setJdjdAQJDBH(projectNum);
+                supervisionPlanReq.setJdjdGCMC(projectName);
+
+                //建设单位
+                supervisionPlanReq.setJdjdZDZZ(mTv02.getText().toString());
+                supervisionPlanReq.setJdjdZDZY(mTv03.getText().toString());
+                supervisionPlanReq.setJdjdJSDW(mTv04.getText().toString());
+                supervisionPlanReq.setJdjdJSDWQYAQBMFZR(mTv05.getText().toString());
+                supervisionPlanReq.setJdjdXMAQFZR(mTv07.getText().toString());
+                supervisionPlanReq.setJdjdJSDWQYQTRY(mTv08.getText().toString());
+                //监理单位
+                supervisionPlanReq.setJdjdJLDWQTRY(mTv17.getText().toString());
+                //施工总承包单位
+                supervisionPlanReq.setJdjdSGZCBDW(mTv09.getText().toString());
+                supervisionPlanReq.setJdjdSGZCBDWQYAQBMFZR(mTv10.getText().toString());
+                supervisionPlanReq.setJdjdSGZCBDWXMJL(mTv12.getText().toString());
+                supervisionPlanReq.setJdjdQTCJDWRY(mTv13.getText().toString());
+                supervisionPlanReq.setJdjdZDZZ(mTv02.getText().toString());
+                supervisionPlanReq.setJdjdZDZY(mTv03.getText().toString());
+                supervisionPlanReq.setJdjdJDRQ(mTv01.getText().toString());
+                supervisionPlanReq.setJdjdAQYQ(mEt01.getText().toString());
+
+                Observable<BaseBeanRsp<SupervisionPlanFirstRsp>> observable = RetrofitFactory.getInstance().saveMonitorInfo(supervisionPlanReq);
+                observable.compose(RxSchedulers.<BaseBeanRsp<SupervisionPlanFirstRsp>>compose(
+                )).subscribe(new BaseObserver<SupervisionPlanFirstRsp>() {
+                    @Override
+                    protected void onHandleSuccess(BaseBeanRsp<SupervisionPlanFirstRsp> t) {
+                        RxToast.showToast(t.getResult());
+                        SupervisionJDActivity.this.finish();
+                    }
+                    @Override
+                    protected void onHandleEmpty(BaseBeanRsp<SupervisionPlanFirstRsp> t) {
+                        RxToast.showToast(t.getResult());
+                    }
+                });
+            }
+        });
     }
+
     private void getDatas() {
 
         SupervisionPlanFirstReq req = new SupervisionPlanFirstReq();
-    /*   req.setProjectId(id);*/
-        req.setProjectId("5f82526c-ffae-4b4d-b63b-0d357c7db42d");
+          req.setProjectId(id);
+      //  req.setProjectId("5f82526c-ffae-4b4d-b63b-0d357c7db42d");
         req.setMonitorName(Const.SUPERVISIONPLANTEXT3);// 监督交底
         Observable<BaseBeanRsp<SupervisionJDRsp>> observable = RetrofitFactory.getInstance().getMonitorJDInfo(req);
         observable.compose(RxSchedulers.<BaseBeanRsp<SupervisionJDRsp>>compose(
         )).subscribe(new BaseObserver<SupervisionJDRsp>() {
             @Override
             protected void onHandleSuccess(BaseBeanRsp<SupervisionJDRsp> beanRsp) {
-              if(beanRsp.getShowSubmit().equals("1")){
-                  //无记录
+                if (beanRsp.getShowSubmit().equals("1")) {
+                    //无记录
+                    mTv02.setText(beanRsp.getJokerVO().getMonitorLeader());
+                    mTv03.setText(beanRsp.getJokerVO().getMonitor());
+                     projectName=beanRsp.getJokerVO().getProjectName();
+                     projectNum=beanRsp.getJokerVO().getProjectNum();
 
-
-              }
+                    for (int i = 0; i < beanRsp.getJokerVO().getPersonList().size(); i++) {
+                        BaseBeanRsp<SupervisionJDRsp>.JokerVOBean.MonitorListBean supervisionJDRsp = beanRsp.getJokerVO().getPersonList().get(i);
+                        if(supervisionJDRsp!=null) {
+                            if (supervisionJDRsp.getUnitType().equals("建设单位")) {
+                                mTv04.setText(supervisionJDRsp.getUnitName());
+                                if (supervisionJDRsp.getPersonDuty().equals("企业法定代表人")) {
+                                    mTv05.setText(supervisionJDRsp.getPersonName());
+                                }
+                                if (supervisionJDRsp.getPersonDuty().equals("项目负责人")) {
+                                    mTv07.setText(supervisionJDRsp.getPersonName());
+                                }
+                            }
+                        }
+                    }
+                    for (int i = 0; i < beanRsp.getJokerVO().getPersonList().size(); i++) {
+                        BaseBeanRsp<SupervisionJDRsp>.JokerVOBean.MonitorListBean supervisionJDRsp = beanRsp.getJokerVO().getPersonList().get(i);
+                        if(supervisionJDRsp!=null) {
+                            if (supervisionJDRsp.getUnitType().equals("施工总承包单位")) {
+                                mTv09.setText(supervisionJDRsp.getUnitName());
+                                if (supervisionJDRsp.getPersonDuty().equals("企业法定代表人")) {
+                                    mTv10.setText(supervisionJDRsp.getPersonName());
+                                }
+                                if (supervisionJDRsp.getPersonDuty().equals("项目安全负责人")) {
+                                    mTv12.setText(supervisionJDRsp.getPersonName());
+                                }
+                            }
+                        }
+                    }
+                }else{
+                    mTvCommit.setVisibility(View.GONE);
+                }
 
             }
+
             @Override
             protected void onHandleEmpty(BaseBeanRsp<SupervisionJDRsp> t) {
                 RxToast.showToast(t.getResult());
             }
         });
     }
+
     @Override
     protected void updateViews(boolean isRefresh) {
 
@@ -145,7 +280,7 @@ public class SupervisionJDActivity extends BaseActivity {
     }
 
     int mYear, mMonth, mDay;
-    String days="";
+    String days = "";
     /**
      * 日期选择器对话框监听
      */
@@ -179,4 +314,6 @@ public class SupervisionJDActivity extends BaseActivity {
             mTv01.setText(days);
         }
     };
+
+
 }

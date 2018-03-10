@@ -152,7 +152,6 @@ public class SupervisionPlanFragment01 extends BaseFragment {
         mTvCommit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                check();
                 SupervisionPlanReq supervisionPlanReq = new SupervisionPlanReq();
                 supervisionPlanReq.setPk(pk);
                 supervisionPlanReq.setProjectId(id);
@@ -177,10 +176,12 @@ public class SupervisionPlanFragment01 extends BaseFragment {
                 supervisionPlanReq.setProjectName(mEt05.getText().toString());
                 supervisionPlanReq.setMonitorPK("b1c3c335-f4ac-450e-9ffc-453bde23b9f3");
                 supervisionPlanReq.setIsTrigger("$U_CHECKBOX_OFF$");
-                supervisionPlanReq.setJdjhJDZZ(jdzz.toString().substring(0,jdzz.length()-1));
+                supervisionPlanReq.setJdjhJDZZ("监督组长"+jdzz.toString().substring(0,jdzz.length()-1));
                 supervisionPlanReq.setJdjhJDZZZFZH(jdzzno.toString().substring(0,jdzz.length()-1));
                 supervisionPlanReq.setJdjhJDY(jdy.toString().substring(0,jdzz.length()-1));
                 supervisionPlanReq.setJdjhJDYZFZH(jdyno.toString().substring(0,jdzz.length()-1));
+                supervisionPlanReq.setRegisterDate(mTvDate02.getText().toString());
+                supervisionPlanReq.setRegisterMan(RxSPUtils.getContent(mActivity,Const.PHONENUM));
                 if (mRb01.isChecked()) {
                     supervisionPlanReq.setJdjhWFS("$U_CHECKBOX_ON$");
                 } else if (mRb02.isChecked()) {
@@ -205,46 +206,11 @@ public class SupervisionPlanFragment01 extends BaseFragment {
         getDatas();
     }
 
-    private void check() {
-   /*     if(TextUtils.isEmpty(mEt01.getText().toString())){
-            RxToast.showToast("请输入计划编号");
-            return;
-        }
-        if(TextUtils.isEmpty(mEt03.getText().toString())){
-            RxToast.showToast("请输入编制人");
-            return;
-        }
-        if(TextUtils.isEmpty(mEt04.getText().toString())){
-            RxToast.showToast("请输入安全监督编号");
-            return;
-        }
-        if(TextUtils.isEmpty(mEt05.getText().toString())){
-            RxToast.showToast("请输入工程名称");
-            return;
-        }
-        if(TextUtils.isEmpty(mEt06.getText().toString())){
-            RxToast.showToast("请输入工程地址");
-            return;
-        }
-        if(TextUtils.isEmpty(mEt09.getText().toString())){
-            RxToast.showToast("请输入监督组长");
-            return;
-        }
-        if(TextUtils.isEmpty(mEt10.getText().toString())){
-            RxToast.showToast("请输入执法证号");
-            return;
-        }
-        if(TextUtils.isEmpty(mEt11.getText().toString())){
-            RxToast.showToast("请输入监督员");
-            return;
-        }
-*/
-    }
 
     private void getDatas() {
         final SupervisionPlanFirstReq req = new SupervisionPlanFirstReq();
-        //  req.setProjectId(id);
-        req.setProjectId("5f82526c-ffae-4b4d-b63b-0d357c7db42d");
+        req.setProjectId(id);
+      /*  req.setProjectId("5f82526c-ffae-4b4d-b63b-0d357c7db42d");*/
         req.setMonitorName(Const.SUPERVISIONPLANTEXT);
         Observable<BaseBeanRsp<SupervisionPlanFirstRsp>> observable = RetrofitFactory.getInstance().getMonitorInfo(req);
         observable.compose(RxSchedulers.<BaseBeanRsp<SupervisionPlanFirstRsp>>compose(
@@ -291,6 +257,27 @@ public class SupervisionPlanFragment01 extends BaseFragment {
                     }
                 }else{
                     mTvCommit.setVisibility(View.GONE);
+                    if(beanRsp.getProjectList()!=null && beanRsp.getProjectList().size()>0){
+                        SupervisionPlanFirstRsp supervisionPlanFirstRsp = beanRsp.getProjectList().get(0);
+                        mEt01.setText(supervisionPlanFirstRsp.getJdjhJHBH()==null?"":supervisionPlanFirstRsp.getJdjhJHBH());
+                        mTvDate02.setText(supervisionPlanFirstRsp.getJdjhBZRQ()==null?"":supervisionPlanFirstRsp.getJdjhBZRQ());
+                        mEt03.setText(supervisionPlanFirstRsp.getJdjhBZR()==null?"":supervisionPlanFirstRsp.getJdjhBZR());
+                        mEt04.setText(supervisionPlanFirstRsp.getJdjhAQJDBH()==null?"":supervisionPlanFirstRsp.getJdjhAQJDBH());
+                        mEt05.setText(supervisionPlanFirstRsp.getJdjhGCMC()==null?"":supervisionPlanFirstRsp.getJdjhGCMC());
+                        mEt06.setText(supervisionPlanFirstRsp.getJdjhGCDZ()==null?"":supervisionPlanFirstRsp.getJdjhGCDZ());
+                        mTvDate07.setText(supervisionPlanFirstRsp.getJdjhJHKGRQ()==null?"":supervisionPlanFirstRsp.getJdjhJHKGRQ());
+                        mTvDate08.setText(supervisionPlanFirstRsp.getJdjhJHJGRQ()==null?"":supervisionPlanFirstRsp.getJdjhJHJGRQ());
+                        mEtBottom01.setText(supervisionPlanFirstRsp.getJdjhWDGC());
+                        mEtBottom02.setText(supervisionPlanFirstRsp.getJdjhAQSG());
+                        mEtBottom03.setText(supervisionPlanFirstRsp.getJdjhAQCC());
+                        if(supervisionPlanFirstRsp.getJdjhWFS().equals("$U_CHECKBOX_ON$")){
+                            mRb01.setChecked(true);
+                        }else{
+                            mRb02.setChecked(true);
+                        }
+
+                    }
+
                 }
 
             }

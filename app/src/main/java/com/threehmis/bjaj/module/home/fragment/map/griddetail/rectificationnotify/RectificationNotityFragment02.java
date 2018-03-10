@@ -78,14 +78,15 @@ public class RectificationNotityFragment02 extends BaseFragment {
             @Override
             protected void convert(BaseViewHolder baseViewHolder, final ProjectTaskCheckRsp rowsBean) {
                 baseViewHolder.setText(R.id.tv_01, baseViewHolder.getAdapterPosition() + 1 + "");
-                baseViewHolder.setText(R.id.tv_02, rowsBean.getCheckNum());
-                baseViewHolder.setText(R.id.tv_03, rowsBean.getCheckDate());
-                baseViewHolder.setText(R.id.tv_04, rowsBean.getReplyDate());
-                baseViewHolder.getView(R.id.tv_05).setOnClickListener(new View.OnClickListener() {
+                baseViewHolder.setText(R.id.tv_02, rowsBean.getNoticeNum());
+                baseViewHolder.setText(R.id.tv_03, rowsBean.getSignDate());
+                baseViewHolder.setText(R.id.tv_04,rowsBean.getReplyDate());
+                baseViewHolder.getView(R.id.ll_01).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(mActivity, LocalCheckDetailActivity.class);
                         intent.putExtra(Const.BEAN, rowsBean);
+                        intent.putExtra(Const.FLAG,true);
                         startActivity(intent);
 
                     }
@@ -113,8 +114,8 @@ public class RectificationNotityFragment02 extends BaseFragment {
      /*   req.setProjectId(id);
         req.setCheckStatus(0+"");
         req.setSignDate(DateUtil.getStringDateShort());*/
-        req.setProjectId("1bb69ede-b55f-46e8-b35b-1540ae7bd152");
-        req.setCheckStatus(2 + "");
+        req.setProjectId(id);
+        req.setCheckStatus(6 + "");
         req.setSignDate(days);
         Observable<BaseBeanRsp<ProjectTaskCheckRsp>> observable = RetrofitFactory.getInstance().getCheckTask(req);
         observable.compose(RxSchedulers.<BaseBeanRsp<ProjectTaskCheckRsp>>compose(

@@ -43,14 +43,15 @@ public class MenusGridviewAdapter extends android.widget.BaseAdapter {
 
     List<GetMenusListRsp> listRsps = new ArrayList<>();
     private Activity activity;
-    private String projectID, projectName,projectCode,sgxkzh;
+    private String projectID, projectName,projectCode,sgxkzh,projectNum;
 
-    public MenusGridviewAdapter(Activity activity, String projectID, String projectName,String projectCode,String sgxkzh) {
+    public MenusGridviewAdapter(Activity activity, String projectID, String projectName,String projectCode,String sgxkzh,String projectNum) {
         this.activity = activity;
         this.projectID = projectID;
         this.projectName = projectName;
         this.projectCode = projectCode;
         this.sgxkzh = sgxkzh;
+        this.projectNum = projectNum;
     }
 
     @Override
@@ -107,8 +108,8 @@ public class MenusGridviewAdapter extends android.widget.BaseAdapter {
         public void onClick(View view) {
             RxSPUtils.putString(activity,Const.PROJECTID,projectID); // 保存项目id
             RxSPUtils.putString(activity,Const.PROJECTNAME,projectName); // 保存项目名
-            RxSPUtils.putString(activity,Const.PROJECTCODE,projectCode); // 保存项目名
-
+            RxSPUtils.putString(activity,Const.PROJECTCODE,projectCode); //
+            RxSPUtils.putString(activity,Const.PROJECTNUM,projectNum);
             Intent  intent;
             switch (pos) {
                 case 0:  //工程信息

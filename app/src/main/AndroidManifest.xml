@@ -69,6 +69,7 @@
         <activity android:name=".module.home.fragment.map.griddetail.schedule.ScheduleDetailActivity"/>
         <activity android:name=".module.home.fragment.map.griddetail.taskcheck.TaskCheckActivity"/>
         <activity android:name=".module.home.fragment.map.griddetail.taskcheck.TaskCheckAddActivity"/>
+        <activity android:name=".module.home.fragment.map.griddetail.taskcheck.TaskCheckEditActivity"/>
         <activity android:name=".module.home.fragment.map.griddetail.localcheck.LocalCheckActivity"/>
         <activity android:name=".module.home.fragment.map.griddetail.localcheck.LocalCheckDetailActivity"/>
         <activity android:name=".module.home.fragment.map.griddetail.monitorrecode.MonitorRecodeActivity"/>
@@ -78,6 +79,7 @@
         <activity android:name=".module.home.fragment.map.griddetail.qzjx.QzjxDetailActivity"/>
         <activity android:name=".module.home.fragment.map.griddetail.jsj.JsjActivity"/>
         <activity android:name=".module.home.fragment.map.griddetail.supervisionplan.SupervisionPlanActivity"/>
+        <activity android:name=".module.home.fragment.map.griddetail.supervisionplan.SupervisionPlanDetailActivity"/>
         <activity android:name=".module.home.fragment.map.griddetail.supervisionjd.SupervisionJDActivity"/>
         <activity android:name=".module.home.fragment.personcenter.PersonCenterDetailActivity"/>
         <activity android:name=".module.home.fragment.notice.activity.WillDoSafeJDSXSQActivity"/>

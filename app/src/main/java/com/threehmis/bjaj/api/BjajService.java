@@ -23,6 +23,7 @@ import com.threehmis.bjaj.api.bean.request.ProjectInfoProgressReq;
 import com.threehmis.bjaj.api.bean.request.ProjectInfoReq;
 import com.threehmis.bjaj.api.bean.request.QzjxBeanReq;
 import com.threehmis.bjaj.api.bean.request.SafeCommentBeanReq;
+import com.threehmis.bjaj.api.bean.request.SupervisionJDReq;
 import com.threehmis.bjaj.api.bean.request.SupervisionPlanFirstReq;
 import com.threehmis.bjaj.api.bean.request.SupervisionPlanReq;
 import com.threehmis.bjaj.api.bean.request.TaskCheckAddReq;
@@ -109,10 +110,15 @@ public interface BjajService {
     //添加任务指派
     @POST("checkTask/saveCheckTask")
     Observable<BaseBeanRsp<SupervisionPlanFirstRsp>> saveCheckTask(@Body TaskCheckAddReq req);
+    //添加任务指派
+    @POST("checkTask/modifyCheckTask")
+    Observable<BaseBeanRsp<SupervisionPlanFirstRsp>> editCheckTask(@Body TaskCheckAddReq req);
     //添加监督计划
     @POST("monitorInfo/saveMonitorInfo")
     Observable<BaseBeanRsp<SupervisionPlanFirstRsp>> saveMonitorInfo(@Body SupervisionPlanReq req);
-
+    //添加监督计划
+    @POST("monitorInfo/saveMonitorInfo")
+    Observable<BaseBeanRsp<SupervisionPlanFirstRsp>> saveMonitorInfo(@Body SupervisionJDReq req);
     //添加监督员
     @POST("project/getMonitor")
     Observable<BaseBeanRsp<CommonProjectIdReq>> getMonitor(@Body CommonProjectIdReq req);

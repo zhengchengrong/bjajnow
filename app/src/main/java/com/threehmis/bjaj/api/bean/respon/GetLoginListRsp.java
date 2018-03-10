@@ -23,6 +23,15 @@ public class GetLoginListRsp implements Serializable {
 	public String customerId;
 	public String address;
 	private String projectCode;
+	private String projectNum;
+
+	public String getProjectNum() {
+		return projectNum;
+	}
+
+	public void setProjectNum(String projectNum) {
+		this.projectNum = projectNum;
+	}
 
 	public String getSgxkzh() {
 		return sgxkzh;

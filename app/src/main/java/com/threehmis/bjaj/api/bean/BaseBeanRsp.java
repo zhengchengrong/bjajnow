@@ -88,8 +88,32 @@ public class BaseBeanRsp<DATA>  {
         private String projectNum;
         private String projectName;
         private String jdjhJSDW;
+        private String monitor;
+        private String monitorLeader;
+        private String projectCode;
+        public String getProjectCode() {
+            return projectCode;
+        }
 
+        public void setProjectCode(String projectCode) {
+            this.projectCode = projectCode;
+        }
 
+        public String getMonitor() {
+            return monitor;
+        }
+
+        public void setMonitor(String monitor) {
+            this.monitor = monitor;
+        }
+
+        public String getMonitorLeader() {
+            return monitorLeader;
+        }
+
+        public void setMonitorLeader(String monitorLeader) {
+            this.monitorLeader = monitorLeader;
+        }
 
         private List<?> dangerousList;
         private List<MonitorListBean> monitorList;
@@ -202,6 +226,43 @@ public class BaseBeanRsp<DATA>  {
             private String lawType;
             private String lawContent;
             private String id;
+
+            private String personDuty;
+            private String personName;
+            private String unitType;
+            private String unitName;
+
+            public String getPersonDuty() {
+                return personDuty;
+            }
+
+            public void setPersonDuty(String personDuty) {
+                this.personDuty = personDuty;
+            }
+
+            public String getPersonName() {
+                return personName;
+            }
+
+            public void setPersonName(String personName) {
+                this.personName = personName;
+            }
+
+            public String getUnitType() {
+                return unitType;
+            }
+
+            public void setUnitType(String unitType) {
+                this.unitType = unitType;
+            }
+
+            public String getUnitName() {
+                return unitName;
+            }
+
+            public void setUnitName(String unitName) {
+                this.unitName = unitName;
+            }
 
             public String getLawType() {
                 return lawType;

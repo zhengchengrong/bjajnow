@@ -86,13 +86,19 @@ public class QzjxActivity extends BaseActivity {
         };
         mRvContent.setAdapter(mBaseQuickAdapter);
         getDate();
+        mTvSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
 
     private void getDate() {
         showLoading();
         QzjxBeanReq req = new QzjxBeanReq();
-        //req.setSgxkzh(sgxkzh);
-        req.setSgxkzh("[2013]施建字0330号");
+        req.setSgxkzh(sgxkzh);
+      //  req.setSgxkzh("[2013]施建字0330号");
         Observable<BaseBeanRsp<QzjxBeanRsp>> observable = RetrofitFactory.getInstance().getQZJX(req);
         observable.compose(RxSchedulers.<BaseBeanRsp<QzjxBeanRsp>>compose(
         )).subscribe(new BaseObserver<QzjxBeanRsp>() {

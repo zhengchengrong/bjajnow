@@ -6,31 +6,67 @@ package com.threehmis.bjaj.api.bean.request;
 
 public class TaskCheckAddBeanReq {
 
-    private String name;
-    private String dtgc;
-    private String checkContent;
+    private String createMan="";
+    private String createManId="";
+    private String listSingleProject="";
+    private String listSingleProjectId="";
+    private String checkType="";
+    private String checkContetnt="";
+    private String checkStatus="";
 
-    public String getName() {
-        return name;
+    public String getCreateManId() {
+        return createManId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCreateManId(String createManId) {
+        this.createManId = createManId;
     }
 
-    public String getDtgc() {
-        return dtgc;
+    public String getCheckContetnt() {
+        return checkContetnt;
     }
 
-    public void setDtgc(String dtgc) {
-        this.dtgc = dtgc;
+    public void setCheckContetnt(String checkContetnt) {
+        this.checkContetnt = checkContetnt;
     }
 
-    public String getCheckContent() {
-        return checkContent;
+    public String getCreateMan() {
+        return createMan;
     }
 
-    public void setCheckContent(String checkContent) {
-        this.checkContent = checkContent;
+    public void setCreateMan(String createMan) {
+        this.createMan = createMan;
+    }
+
+    public String getListSingleProject() {
+        return listSingleProject;
+    }
+
+    public void setListSingleProject(String listSingleProject) {
+        this.listSingleProject = listSingleProject;
+    }
+
+    public String getListSingleProjectId() {
+        return listSingleProjectId;
+    }
+
+    public void setListSingleProjectId(String listSingleProjectId) {
+        this.listSingleProjectId = listSingleProjectId;
+    }
+
+    public String getCheckType() {
+        return checkType;
+    }
+
+    public void setCheckType(String checkType) {
+        this.checkType = checkType;
+    }
+
+    public String getCheckStatus() {
+        return checkStatus;
+    }
+
+    public void setCheckStatus(String checkStatus) {
+        this.checkStatus = checkStatus;
     }
 }

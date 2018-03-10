@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     >
     <LinearLayout
+        android:id="@+id/ll_01"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_45"
         android:orientation="horizontal"
@@ -46,16 +47,7 @@
             android:gravity="center_vertical|center_horizontal"
             android:textSize="@dimen/sp_admin_main_03"
             />
-        <TextView
-            android:id="@+id/tv_05"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="查看"
-            android:layout_weight="2"
-            android:gravity="center_vertical|center_horizontal"
-            android:textColor="@color/main_color"
-            android:textSize="@dimen/sp_admin_main_03"
-            />
+
     </LinearLayout>
     <View
         android:layout_width="match_parent"

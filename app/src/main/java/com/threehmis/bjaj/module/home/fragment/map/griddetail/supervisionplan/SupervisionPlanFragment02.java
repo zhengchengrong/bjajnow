@@ -1,5 +1,6 @@
 package com.threehmis.bjaj.module.home.fragment.map.griddetail.supervisionplan;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -61,14 +62,16 @@ public class SupervisionPlanFragment02 extends BaseFragment {
         mRvContent.setLayoutManager(new LinearLayoutManager(mActivity));
         mBaseQuickAdapter = new BaseQuickAdapter<SupervisionPlanFirstRsp, BaseViewHolder>(R.layout.item_supervision_plan_01, mPlanFirstRsps) {
             @Override
-            protected void convert(BaseViewHolder baseViewHolder, SupervisionPlanFirstRsp rowsBean) {
+            protected void convert(BaseViewHolder baseViewHolder, final SupervisionPlanFirstRsp rowsBean) {
                 baseViewHolder.setText(R.id.tv_01,baseViewHolder.getAdapterPosition()+1+"");
                 baseViewHolder.setText(R.id.tv_02,rowsBean.getJdjhBGRQ());
                 baseViewHolder.setText(R.id.tv_03,rowsBean.getJdjhBGR());
                 baseViewHolder.getView(R.id.ll_01).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        RxToast.showToast("查看");
+                       Intent intent = new Intent(mActivity,SupervisionPlanDetailActivity.class);
+                        intent.putExtra(Const.BEAN, rowsBean);
+                        startActivity(intent);
                     }
                 });
             }
@@ -79,7 +82,8 @@ public class SupervisionPlanFragment02 extends BaseFragment {
     }
     private void getDatas() {
         SupervisionPlanFirstReq req = new SupervisionPlanFirstReq();
-        req.setProjectId(id);
+        req.setProjectId("5f82526c-ffae-4b4d-b63b-0d357c7db42d");
+        //req.setProjectId(id);
         // req.setProjectId("5f82526c-ffae-4b4d-b63b-0d357c7db42d");
         req.setMonitorName(Const.SUPERVISIONPLANTEXT2);// 监督计划变更
         Observable<BaseBeanRsp<SupervisionPlanFirstRsp>> observable = RetrofitFactory.getInstance().getMonitorInfo(req);

@@ -8,6 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.EditText;
+import android.widget.RadioGroup;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
@@ -20,6 +24,7 @@ import com.threehmis.bjaj.api.bean.BaseBeanRsp;
 import com.threehmis.bjaj.api.bean.request.ProjectCheckTaskReq;
 import com.threehmis.bjaj.api.bean.respon.ProjectTaskCheckRsp;
 import com.threehmis.bjaj.module.base.BaseFragment;
+import com.threehmis.bjaj.utils.CDUtil;
 import com.threehmis.bjaj.widget.EmptyLayout;
 import com.vondear.rxtools.RxSPUtils;
 import com.vondear.rxtools.view.RxToast;
@@ -64,12 +69,20 @@ public class TaskCheckFragment01 extends BaseFragment {
                 baseViewHolder.setText(R.id.tv_02, rowsBean.getCheckNum());
                 baseViewHolder.setText(R.id.tv_03, rowsBean.getCheckMen());
                 baseViewHolder.setText(R.id.tv_04, rowsBean.getCheckDate());
+
                 baseViewHolder.getView(R.id.tv_05).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         // 修改
-                        Intent intent = new Intent(mActivity, TaskCheckAddActivity.class);
+                        Intent intent = new Intent(mActivity, TaskCheckEditActivity.class);
+                        intent.putExtra(Const.CEHCKNUM,rowsBean.getCheckNum());
+                        intent.putExtra(Const.DATES,rowsBean.getCheckDate());
+                        intent.putExtra(Const.CHECKBASIS,rowsBean.getCheckBasis());
                         intent.putExtra(Const.ID,rowsBean.getId());
+                        intent.putExtra(Const.FLAG,true);
+                        // 登陆页面本地列表
+                        CDUtil.deleteDataCache(Const.ROWSBEAN);
+                        CDUtil.saveObject(rowsBean.getCheckDivisionVOSet(), Const.ROWSBEAN);
                         startActivity(intent);
                     }
                 });
@@ -89,13 +102,20 @@ public class TaskCheckFragment01 extends BaseFragment {
                 startActivity(intent);
             }
         });
+
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
         getDatas();
     }
 
     private void getDatas() {
         ProjectCheckTaskReq req = new ProjectCheckTaskReq();
-        // req.setProjectId(id);
-        req.setProjectId("1bb69ede-b55f-46e8-b35b-1540ae7bd152");
+        req.setProjectId(id);
+       // req.setProjectId("1bb69ede-b55f-46e8-b35b-1540ae7bd152");
         req.setCheckStatus(0 + "");
         // req.setSignDate(DateUtil.getStringDateShort());
 /*       req.setProjectId("1bb69ede-b55f-46e8-b35b-1540ae7bd152");
@@ -106,6 +126,7 @@ public class TaskCheckFragment01 extends BaseFragment {
         )).subscribe(new BaseObserver<ProjectTaskCheckRsp>() {
             @Override
             protected void onHandleSuccess(BaseBeanRsp<ProjectTaskCheckRsp> projectTaskCheckRspBaseBeanRsp) {
+                mProjectStatusRsps.clear();
                 mProjectStatusRsps.addAll(projectTaskCheckRspBaseBeanRsp.getProjectList());
                 mBaseQuickAdapter.notifyDataSetChanged();
             }

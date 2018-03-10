@@ -76,8 +76,8 @@ public class LocalCheckFragment01 extends BaseFragment {
         ProjectCheckTaskReq req = new ProjectCheckTaskReq();
        // req.setProjectId(id);
         req.setProjectId(id);
-        req.setCheckStatus(0+"");
-        req.setSignDate(DateUtil.getStringDateShort());
+        req.setCheckStatus(1+"");
+    //    req.setSignDate(DateUtil.getStringDateShort());
 /*        req.setProjectId("1bb69ede-b55f-46e8-b35b-1540ae7bd152");
         req.setCheckStatus(2+"");
         req.setSignDate("2018-01-29");*/
@@ -103,7 +103,7 @@ public class LocalCheckFragment01 extends BaseFragment {
 
     @Override
     protected int attachLayoutRes() {
-        return R.layout.fragment_task_check01;
+        return R.layout.fragment_local_check01;
     }
 
 

@@ -85,12 +85,12 @@ public class ProjectListotherAdapter extends RecyclerView.Adapter<ProjectListoth
         public void onClick(View view) {
 
             Intent intent = new Intent(context, ProjectActivity.class);
-            intent.putExtra("projectID",listRsps.get(position).projectID);
-            intent.putExtra("projectName",listRsps.get(position).projectName);
+            intent.putExtra(Const.PROJECTID,listRsps.get(position).projectID);
+            intent.putExtra(Const.PROJECTNAME,listRsps.get(position).projectName);
             intent.putExtra(Const.PROJECTCODE,listRsps.get(position).getProjectCode());
-            intent.putExtra("customerId", AndroidApplication.getInstance().getcustomerId());
+            intent.putExtra(Const.CUSTOMERID, AndroidApplication.getInstance().getcustomerId());
             intent.putExtra(Const.SGXKZH,listRsps.get(position).getSgxkzh());
-
+            intent.putExtra(Const.PROJECTNUM,listRsps.get(position).getProjectNum());
             context.startActivity(intent);
         }
     }

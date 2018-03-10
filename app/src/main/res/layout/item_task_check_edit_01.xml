@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) zcr 2018.
+  -->
+
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -131,7 +135,6 @@
         android:textSize="@dimen/sp_admin_main_02"
         android:padding="@dimen/dp_5"
         android:gravity="right"
-        android:visibility="gone"
         android:layout_marginRight="@dimen/dp_10"
         />
     <TextView
@@ -143,7 +146,6 @@
         android:textColor="@color/admin_main_select_text"
         android:textSize="@dimen/sp_admin_main_02"
         android:padding="@dimen/dp_5"
-        android:visibility="gone"
         android:gravity="right"
         android:layout_marginRight="@dimen/dp_10"
         />
@@ -157,7 +159,6 @@
         android:textSize="@dimen/sp_admin_main_02"
         android:padding="@dimen/dp_5"
         android:gravity="right"
-        android:visibility="gone"
         android:layout_marginRight="@dimen/dp_10"
         />
 

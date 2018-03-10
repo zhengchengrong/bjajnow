@@ -48,6 +48,11 @@ public class Const {
     public static final String SUPERVISIONPLANTEXT3 = "监督交底";
     public static final String VERSIONID = "3HJD0035";
     public static final String ID = "id";
+    public static final String PROJECTNUM = "projectNum";
+    public static final String ROWSBEAN = "rowsbean";
+    public static final String FLAG = "flag";
+    public static final String CHECKBASIS = "checkbasis";
+    public static final String CEHCKNUM = "checkNum";
 
 
     private Const() {

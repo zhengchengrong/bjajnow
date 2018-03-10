@@ -178,13 +178,13 @@ public class MapFragment extends Fragment {
                     if (marker == mMarker[i]) {
 //                        Toast.makeText(getContext(), "你点击了" + getLoginListRsp.get(i).projectID, Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getContext(), ProjectActivity.class);
-                        intent.putExtra("projectID", getLoginListRsp.get(i).projectID);
-                        intent.putExtra("projectName", getLoginListRsp.get(i).projectName);
-                        intent.putExtra("customerId", getLoginListRsp.get(i).customerId);
+                        intent.putExtra(Const.PROJECTID, getLoginListRsp.get(i).projectID);
+                        intent.putExtra(Const.PROJECTNUM, getLoginListRsp.get(i).projectName);
+                        intent.putExtra(Const.CUSTOMERID, getLoginListRsp.get(i).customerId);
                         intent.putExtra(Const.SGXKZH,getLoginListRsp.get(i).getSgxkzh());
                         intent.putExtra(Const.PROJECTCODE,getLoginListRsp.get(i).getProjectCode());
                         intent.putExtra(Const.SGXKZH,getLoginListRsp.get(i).getSgxkzh());
-
+                        intent.putExtra(Const.PROJECTNUM,getLoginListRsp.get(i).getProjectNum());
                         startActivity(intent);
 
                     }
