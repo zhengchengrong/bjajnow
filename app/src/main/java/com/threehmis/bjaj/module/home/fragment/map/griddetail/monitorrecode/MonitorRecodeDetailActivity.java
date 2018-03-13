@@ -2,7 +2,7 @@
  * Copyright (c) zcr 2018.
  */
 
-package com.threehmis.bjaj.module.home.fragment.map.griddetail.rectificationnotify;
+package com.threehmis.bjaj.module.home.fragment.map.griddetail.monitorrecode;
 
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -33,7 +33,7 @@ import jp.shts.android.library.TriangleLabelView;
  * Created by llz on 2018/2/27.
  */
 
-public class RectificationNotifyDetailActivity extends BaseActivity {
+public class MonitorRecodeDetailActivity extends BaseActivity {
 
     @BindView(R.id.tv_title)
     TextView mTvTitle;
@@ -87,10 +87,6 @@ public class RectificationNotifyDetailActivity extends BaseActivity {
     RadioGroup mRgBasic03;
     @BindView(R.id.tv_07)
     TextView mTv07;
-    @BindView(R.id.tv_08)
-    TextView mTv08;
-    @BindView(R.id.tv_09)
-    TextView mTv09;
     private String rbBasic;
 
     private boolean flag;
@@ -100,7 +96,7 @@ public class RectificationNotifyDetailActivity extends BaseActivity {
 
     @Override
     protected int attachLayoutRes() {
-        return R.layout.activity_rectification_notify_detail;
+        return R.layout.activity_monitor_recode_detail;
     }
 
     @Override
@@ -117,32 +113,26 @@ public class RectificationNotifyDetailActivity extends BaseActivity {
         mTv02.setText(mProjectTaskCheckRsp.getCheckDate());
         mTv03.setText(mProjectTaskCheckRsp.getCheckMen());
 
-        if (!TextUtils.isEmpty(mProjectTaskCheckRsp.getReformType())) {
+        if(!TextUtils.isEmpty(mProjectTaskCheckRsp.getReformType())) {
             if (mProjectTaskCheckRsp.getReformType().equals("立即整改")) {
                 mRb04.setChecked(true);
             } else if (mProjectTaskCheckRsp.getReformType().equals("期限整改")) {
                 mRb05.setChecked(true);
             } else if (mProjectTaskCheckRsp.getReformType().equals("停工整改")) {
                 mRb06.setChecked(true);
-            } else if (mProjectTaskCheckRsp.getReformType().equals("无")) {
+            } else  {
                 mRb07.setChecked(true);
             }
         }
-        if(!TextUtils.isEmpty(mProjectTaskCheckRsp.getSignMan())){
-            mTv08.setText(mProjectTaskCheckRsp.getSignMan());
-        }
-        if(!TextUtils.isEmpty(mProjectTaskCheckRsp.getSignDate())){
-            mTv09.setText(mProjectTaskCheckRsp.getSignDate());
-        }
         mTv05.setText(mProjectTaskCheckRsp.getReformDate());
 
-        if (mProjectTaskCheckRsp.getIsUnitJd().equals("1")) {
+        if(mProjectTaskCheckRsp.getIsUnitJd().equals("1")){
             mRb08.setChecked(true);
         }
-        if (mProjectTaskCheckRsp.getIsCityJd().equals("1")) {
+        if(mProjectTaskCheckRsp.getIsCityJd().equals("1")){
             mRb09.setChecked(true);
         }
-        if (mProjectTaskCheckRsp.getIsCountyJd().equals("1")) {
+        if(mProjectTaskCheckRsp.getIsCountyJd().equals("1")){
             mRb10.setChecked(true);
         }
 
@@ -155,9 +145,6 @@ public class RectificationNotifyDetailActivity extends BaseActivity {
         if (mProjectTaskCheckRsp.getCheckBasis().equals("其他")) {
             mRb03.setChecked(true);
         }
-
-
-
         mRgBasic.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
@@ -174,7 +161,7 @@ public class RectificationNotifyDetailActivity extends BaseActivity {
         mRvContent.setLayoutManager(new LinearLayoutManager(this));
         datas = new ArrayList<ProjectTaskCheckRsp.CheckDivisionVOSetBean>();
         datas.addAll(mProjectTaskCheckRsp.getCheckDivisionVOSet());
-        mBaseQuickAdapter = new BaseQuickAdapter<ProjectTaskCheckRsp.CheckDivisionVOSetBean, BaseViewHolder>(R.layout.item_local_check_detail, datas) {
+        mBaseQuickAdapter = new BaseQuickAdapter<ProjectTaskCheckRsp.CheckDivisionVOSetBean, BaseViewHolder>(R.layout.item_monitor_recode_detail, datas) {
             @Override
             protected void convert(BaseViewHolder baseViewHolder, ProjectTaskCheckRsp.CheckDivisionVOSetBean rowsBean) {
                 TriangleLabelView triangleLabelView =    baseViewHolder.getView(R.id.tlv_01);
@@ -194,6 +181,7 @@ public class RectificationNotifyDetailActivity extends BaseActivity {
                     editText.setVisibility(View.VISIBLE);
                     editText.setText(rowsBean.getCheckResult());
                 }
+
                 radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
@@ -234,7 +222,7 @@ public class RectificationNotifyDetailActivity extends BaseActivity {
     }
 
     private void initTitle() {
-        mTvTitle.setText("整改通知");
+        mTvTitle.setText("监督记录");
         mTvBack.setVisibility(View.VISIBLE);
         mTvBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -245,10 +233,4 @@ public class RectificationNotifyDetailActivity extends BaseActivity {
     }
 
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
 }

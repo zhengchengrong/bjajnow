@@ -25,6 +25,7 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import io.reactivex.Observable;
+import jp.shts.android.library.TriangleLabelView;
 
 /**
  * Created by llz on 2018/2/27.
@@ -60,7 +61,7 @@ public class LocalCheckFragment02 extends BaseFragment {
                 baseViewHolder.getView(R.id.ll_01).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intent = new Intent(mActivity,LocalCheckDetailActivity.class);
+                        Intent intent = new Intent(mActivity,LocalCheckDetail2Activity.class);
                         intent.putExtra(Const.BEAN, rowsBean);
                         intent.putExtra(Const.FLAG,true);//查看
                         startActivity(intent);
@@ -80,7 +81,7 @@ public class LocalCheckFragment02 extends BaseFragment {
         req.setCheckStatus(-2+"");
         req.setSignDate("2018-01-29");*/
         req.setProjectId(id);
-        req.setCheckStatus(2+"");
+        req.setCheckStatus(-2+"");
         //req.setCheckStatus(1+"");
         //  req.setSignDate(DateUtil.getStringDateShort());
         Observable<BaseBeanRsp<ProjectTaskCheckRsp>> observable = RetrofitFactory.getInstance().getCheckTask(req);

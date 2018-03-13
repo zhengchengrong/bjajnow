@@ -100,6 +100,8 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements ILogi
         CDUtil.saveObject(loginInfoBean.projectList, Const.LOGINDATE);
         //缓存账号
         RxSPUtils.putString(this,Const.PHONENUM,mPhoneNum.getText().toString());
+        RxSPUtils.putString(this,Const.PASSWORD,mPassword.getText().toString());
+
         dialog.cancel();
         //登陆成功后，跳转到主页面
         startActivity(HomeActivity.class);

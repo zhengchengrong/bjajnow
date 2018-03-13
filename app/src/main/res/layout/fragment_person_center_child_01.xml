@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+
+<android.support.v4.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+<LinearLayout
+   android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white"
@@ -39,7 +44,8 @@
             android:layout_marginLeft="@dimen/dp_10"
             android:layout_toRightOf="@+id/tv_flag01"
             android:gravity="right"
-
+            android:focusable="false"
+            android:enabled="false"
             android:background="@null"
             android:textSize="@dimen/sp_14"
             android:textColor="@color/admin_main_select_text"
@@ -64,6 +70,7 @@
             android:layout_centerVertical="true"
             android:textSize="@dimen/sp_16"
             />
+
         <EditText
             android:id="@+id/et_02"
             android:layout_width="match_parent"
@@ -73,10 +80,25 @@
             android:layout_marginLeft="@dimen/dp_10"
             android:layout_toRightOf="@+id/tv_flag02"
             android:gravity="right"
-
             android:background="@null"
+            android:password="true"
             android:textSize="@dimen/sp_14"
+            android:hint="请输入修改密码"
             android:textColor="@color/admin_main_select_text"
+            />
+        <TextView
+            android:id="@+id/tv_edit01"
+            android:layout_width="@dimen/dp_60"
+            android:layout_height="wrap_content"
+            android:text="修改"
+            android:layout_alignParentRight="true"
+            android:padding="@dimen/dp_5"
+            android:textColor="@color/white"
+            android:gravity="center_vertical|center_horizontal"
+            android:background="@drawable/shape_main_color_select"
+            android:layout_toLeftOf="@+id/et_02"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dp_120"
             />
     </RelativeLayout>
     <View
@@ -107,7 +129,8 @@
             android:layout_marginLeft="@dimen/dp_10"
             android:layout_toRightOf="@+id/tv_flag03"
             android:gravity="right"
-
+            android:focusable="false"
+            android:enabled="false"
             android:background="@null"
             android:textSize="@dimen/sp_14"
             android:textColor="@color/admin_main_select_text"
@@ -152,7 +175,8 @@
             android:layout_marginLeft="@dimen/dp_10"
             android:layout_toRightOf="@+id/tv_flag04"
             android:gravity="right"
-
+            android:focusable="false"
+            android:enabled="false"
             android:background="@null"
             android:textSize="@dimen/sp_14"
             android:textColor="@color/admin_main_select_text"
@@ -186,7 +210,8 @@
             android:layout_marginLeft="@dimen/dp_10"
             android:layout_toRightOf="@+id/tv_flag05"
             android:gravity="right"
-
+            android:focusable="false"
+            android:enabled="false"
             android:background="@null"
             android:textSize="@dimen/sp_14"
             android:textColor="@color/admin_main_select_text"
@@ -220,7 +245,8 @@
             android:layout_marginLeft="@dimen/dp_10"
             android:layout_toRightOf="@+id/tv_flag06"
             android:gravity="right"
-
+            android:focusable="false"
+            android:enabled="false"
             android:background="@null"
             android:textSize="@dimen/sp_14"
             android:textColor="@color/admin_main_select_text"
@@ -254,7 +280,8 @@
             android:layout_marginLeft="@dimen/dp_10"
             android:layout_toRightOf="@+id/tv_flag07"
             android:gravity="right"
-
+            android:focusable="false"
+            android:enabled="false"
             android:background="@null"
             android:textSize="@dimen/sp_14"
             android:textColor="@color/admin_main_select_text"
@@ -288,7 +315,8 @@
             android:layout_marginLeft="@dimen/dp_10"
             android:layout_toRightOf="@+id/tv_flag08"
             android:gravity="right"
-
+            android:focusable="false"
+            android:enabled="false"
             android:background="@null"
             android:textSize="@dimen/sp_14"
             android:textColor="@color/admin_main_select_text"
@@ -322,7 +350,8 @@
             android:layout_marginLeft="@dimen/dp_10"
             android:layout_toRightOf="@+id/tv_flag09"
             android:gravity="right"
-
+            android:focusable="false"
+            android:enabled="false"
             android:background="@null"
             android:textSize="@dimen/sp_14"
             android:textColor="@color/admin_main_select_text"
@@ -333,4 +362,87 @@
         android:layout_height="@dimen/dp_1"
         android:background="@color/light_gray"
         />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        android:paddingLeft="@dimen/dp_20"
+        android:paddingRight="@dimen/dp_20"
+        >
+        <TextView
+            android:id="@+id/tv_flag10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="资质等级"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/sp_16"
+            />
+        <EditText
+            android:id="@+id/et_10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_toRightOf="@+id/tv_flag10"
+            android:gravity="right"
+            android:background="@null"
+            android:focusable="false"
+            android:enabled="false"
+            android:textSize="@dimen/sp_14"
+            android:textColor="@color/admin_main_select_text"
+            />
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:background="@color/light_gray"
+        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        android:paddingLeft="@dimen/dp_20"
+        android:paddingRight="@dimen/dp_20"
+        >
+        <TextView
+            android:id="@+id/tv_flag11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="电话"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/sp_16"
+            />
+        <EditText
+            android:id="@+id/et_11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_toRightOf="@+id/tv_flag11"
+            android:gravity="right"
+            android:background="@null"
+            android:textSize="@dimen/sp_14"
+            android:textColor="@color/admin_main_select_text"
+            />
+        <TextView
+            android:id="@+id/tv_edit02"
+            android:layout_width="@dimen/dp_60"
+            android:layout_height="wrap_content"
+            android:text="修改"
+            android:layout_alignParentRight="true"
+            android:padding="@dimen/dp_5"
+            android:textColor="@color/white"
+            android:gravity="center_vertical|center_horizontal"
+            android:background="@drawable/shape_main_color_select"
+            android:layout_toLeftOf="@+id/et_11"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dp_120"
+            />
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:background="@color/light_gray"
+        />
 </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

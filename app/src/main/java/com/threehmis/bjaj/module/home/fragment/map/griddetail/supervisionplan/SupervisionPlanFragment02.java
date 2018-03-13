@@ -82,8 +82,7 @@ public class SupervisionPlanFragment02 extends BaseFragment {
     }
     private void getDatas() {
         SupervisionPlanFirstReq req = new SupervisionPlanFirstReq();
-        req.setProjectId("5f82526c-ffae-4b4d-b63b-0d357c7db42d");
-        //req.setProjectId(id);
+        req.setProjectId(id);
         // req.setProjectId("5f82526c-ffae-4b4d-b63b-0d357c7db42d");
         req.setMonitorName(Const.SUPERVISIONPLANTEXT2);// 监督计划变更
         Observable<BaseBeanRsp<SupervisionPlanFirstRsp>> observable = RetrofitFactory.getInstance().getMonitorInfo(req);

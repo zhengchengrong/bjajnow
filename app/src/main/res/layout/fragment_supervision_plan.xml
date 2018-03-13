@@ -337,6 +337,15 @@
             android:textColor="@color/admin_main_select_text"
             android:layout_marginLeft="@dimen/dp_8"
             />
+        <EditText
+            android:id="@+id/et_jtbk"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_40"
+            android:background="@drawable/shape_round_gray_bored"
+            android:gravity="left|top"
+            android:layout_margin="@dimen/dp_10"
+            android:text=""
+            />
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="@dimen/dp_60"

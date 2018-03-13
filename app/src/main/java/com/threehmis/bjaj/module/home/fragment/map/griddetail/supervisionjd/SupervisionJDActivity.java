@@ -186,7 +186,6 @@ public class SupervisionJDActivity extends BaseActivity {
                 supervisionPlanReq.setJdjdZDZY(mTv03.getText().toString());
                 supervisionPlanReq.setJdjdJDRQ(mTv01.getText().toString());
                 supervisionPlanReq.setJdjdAQYQ(mEt01.getText().toString());
-
                 Observable<BaseBeanRsp<SupervisionPlanFirstRsp>> observable = RetrofitFactory.getInstance().saveMonitorInfo(supervisionPlanReq);
                 observable.compose(RxSchedulers.<BaseBeanRsp<SupervisionPlanFirstRsp>>compose(
                 )).subscribe(new BaseObserver<SupervisionPlanFirstRsp>() {
@@ -205,10 +204,8 @@ public class SupervisionJDActivity extends BaseActivity {
     }
 
     private void getDatas() {
-
         SupervisionPlanFirstReq req = new SupervisionPlanFirstReq();
           req.setProjectId(id);
-      //  req.setProjectId("5f82526c-ffae-4b4d-b63b-0d357c7db42d");
         req.setMonitorName(Const.SUPERVISIONPLANTEXT3);// 监督交底
         Observable<BaseBeanRsp<SupervisionJDRsp>> observable = RetrofitFactory.getInstance().getMonitorJDInfo(req);
         observable.compose(RxSchedulers.<BaseBeanRsp<SupervisionJDRsp>>compose(
@@ -252,6 +249,29 @@ public class SupervisionJDActivity extends BaseActivity {
                     }
                 }else{
                     mTvCommit.setVisibility(View.GONE);
+                    mTv01.setText(beanRsp.getProjectList().get(0).getJdjdJDRQ());
+                    mTv02.setText(beanRsp.getProjectList().get(0).getJdjdZDZZ());
+                    mTv03.setText(beanRsp.getProjectList().get(0).getJdjdZDZY());
+
+                    mTv04.setText(beanRsp.getProjectList().get(0).getJdjdJSDW());
+                    mTv05.setText(beanRsp.getProjectList().get(0).getJdjdJSDWQYAQBMFZR());
+                    mTv06.setText(beanRsp.getProjectList().get(0).getJdjdJSDWXMFZR());
+                    mTv07.setText(beanRsp.getProjectList().get(0).getJdjdJSDWQYXMAQFZR());
+                    mTv08.setText(beanRsp.getProjectList().get(0).getJdjdJSDWQYQTRY());
+
+                    mTv09.setText(beanRsp.getProjectList().get(0).getJdjdSGZCBDW());
+                    mTv10.setText(beanRsp.getProjectList().get(0).getJdjdSGZCBDWQYAQBMFZR());
+                    mTv11.setText(beanRsp.getProjectList().get(0).getJdjdSGZCBDWXMJL());
+                    mTv12.setText(beanRsp.getProjectList().get(0).getJdjdXMAQFZR());
+                    mTv13.setText(beanRsp.getProjectList().get(0).getJdjdSGZCBDWQTRY());
+
+
+                    mTv14.setText(beanRsp.getProjectList().get(0).getJdjdJLDW());
+                    mTv15.setText(beanRsp.getProjectList().get(0).getJdjdJLDWXMZJLGCS());
+                    mTv16.setText(beanRsp.getProjectList().get(0).getJdjdJLDWQYAQBMFZR());
+                    mTv17.setText(beanRsp.getProjectList().get(0).getJdjdJLDWQTRY());
+                    mEt01.setText(beanRsp.getProjectList().get(0).getJdjdAQYQ());
+
                 }
 
             }

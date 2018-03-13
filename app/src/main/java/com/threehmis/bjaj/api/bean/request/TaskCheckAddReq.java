@@ -46,6 +46,7 @@ public class TaskCheckAddReq {
     private String createDate="";
     private String updateDate="";
     private String versionId="";
+    private String otherProblem="";
     private List<String> listId;
     private List<String> listCheckTaskId;
     private List<String> listSingleProject;
@@ -54,6 +55,23 @@ public class TaskCheckAddReq {
     private List<String> listCheckType;
     private List<String> listCheckContent;
     private List<String> listCheckStatus;
+    private List<String> listCheckResult;
+
+    public String getOtherProblem() {
+        return otherProblem;
+    }
+
+    public void setOtherProblem(String otherProblem) {
+        this.otherProblem = otherProblem;
+    }
+
+    public List<String> getListCheckResult() {
+        return listCheckResult;
+    }
+
+    public void setListCheckResult(List<String> listCheckResult) {
+        this.listCheckResult = listCheckResult;
+    }
 
     public String getId() {
         return id;

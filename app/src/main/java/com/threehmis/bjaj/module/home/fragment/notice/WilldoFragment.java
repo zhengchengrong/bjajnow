@@ -16,7 +16,9 @@ import com.threehmis.bjaj.api.bean.respon.ProjectStatusRsp;
 import com.threehmis.bjaj.api.bean.respon.WillDoRsp;
 import com.threehmis.bjaj.module.base.BaseFragment;
 import com.threehmis.bjaj.module.home.fragment.notice.activity.WillDoSafeJDGZSHActivity;
+import com.threehmis.bjaj.module.home.fragment.notice.activity.WillDoSafeJDJHSHActivity;
 import com.threehmis.bjaj.module.home.fragment.notice.activity.WillDoSafeJDSXSQActivity;
+import com.threehmis.bjaj.module.home.fragment.notice.activity.WillDoSafeZZSGJDActivity;
 import com.threehmis.bjaj.widget.EmptyLayout;
 
 import java.util.ArrayList;
@@ -61,6 +63,21 @@ public class WilldoFragment extends BaseFragment {
         willDoRsp2.setTitle("中止施工安全监督告知审核");
         willDoRsp2.setType("1");
         mWillDoRsps.add(willDoRsp2);
+        WillDoRsp willDoRsp3 = new WillDoRsp();
+        willDoRsp3.setDate("2018-09-12");
+        willDoRsp3.setTitle("恢复施工安全监督告知书审核");
+        willDoRsp3.setType("2");
+        mWillDoRsps.add(willDoRsp3);
+        WillDoRsp willDoRsp4 = new WillDoRsp();
+        willDoRsp4.setDate("2018-09-12");
+        willDoRsp4.setTitle("恢复施工安全监督告知书审核");
+        willDoRsp4.setType("3");
+        mWillDoRsps.add(willDoRsp4);
+        WillDoRsp willDoRsp5 = new WillDoRsp();
+        willDoRsp5.setDate("2018-09-12");
+        willDoRsp5.setTitle("监督计划审核");
+        willDoRsp5.setType("4");
+        mWillDoRsps.add(willDoRsp4);
         mBaseQuickAdapter = new BaseQuickAdapter<WillDoRsp, BaseViewHolder>(R.layout.woill_do_item_01, mWillDoRsps) {
             @Override
             protected void convert(BaseViewHolder baseViewHolder, final WillDoRsp rowsBean) {
@@ -77,6 +94,18 @@ public class WilldoFragment extends BaseFragment {
                         }else if(rowsBean.getType().equals("1")){
                             //中止施工安全监督告知审核
                             Intent intent = new Intent(mActivity, WillDoSafeJDGZSHActivity.class);
+                            startActivity(intent);
+                        }else if(rowsBean.getType().equals("2")){
+                            //中止施工安全监督告知审核
+                            Intent intent = new Intent(mActivity, WillDoSafeJDGZSHActivity.class);
+                            startActivity(intent);
+                        }else if(rowsBean.getType().equals("3")){
+                            //中止施工安全监督告知审核
+                            Intent intent = new Intent(mActivity, WillDoSafeZZSGJDActivity.class);
+                            startActivity(intent);
+                        }else if(rowsBean.getType().equals("4")){
+                            //中止施工安全监督告知审核
+                            Intent intent = new Intent(mActivity, WillDoSafeJDJHSHActivity.class);
                             startActivity(intent);
                         }
                     }

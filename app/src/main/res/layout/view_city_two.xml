@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) zcr 2018.
+  -->
+
 <LinearLayout
     android:id="@+id/course_viewflipper"
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
@@ -20,10 +24,11 @@
      android:layout_margin="@dimen/dp_10"
      android:layout_height="150dp" />
     <TextView
-        android:id="@+id/tv_01"
+        android:id="@+id/tv_02"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_10"
         android:layout_marginLeft="@dimen/dp_20"
+
         />
 </LinearLayout>

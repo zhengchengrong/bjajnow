@@ -72,18 +72,28 @@
         <activity android:name=".module.home.fragment.map.griddetail.taskcheck.TaskCheckEditActivity"/>
         <activity android:name=".module.home.fragment.map.griddetail.localcheck.LocalCheckActivity"/>
         <activity android:name=".module.home.fragment.map.griddetail.localcheck.LocalCheckDetailActivity"/>
+        <activity android:name=".module.home.fragment.map.griddetail.localcheck.LocalCheckDetail2Activity"/>
         <activity android:name=".module.home.fragment.map.griddetail.monitorrecode.MonitorRecodeActivity"/>
+        <activity android:name=".module.home.fragment.map.griddetail.monitorrecode.MonitorRecodeDetailActivity"/>
         <activity android:name=".module.home.fragment.map.griddetail.rectificationnotify.RectificationNotifyActivity"/>
+        <activity android:name=".module.home.fragment.map.griddetail.rectificationnotify.RectificationNotifyDetailActivity"/>
         <activity android:name=".module.home.fragment.map.griddetail.safecomment.SafeCommentActivity"/>
         <activity android:name=".module.home.fragment.map.griddetail.qzjx.QzjxActivity"/>
         <activity android:name=".module.home.fragment.map.griddetail.qzjx.QzjxDetailActivity"/>
         <activity android:name=".module.home.fragment.map.griddetail.jsj.JsjActivity"/>
+        <activity android:name=".module.home.fragment.map.griddetail.jsj.JsjDetailActivity"/>
         <activity android:name=".module.home.fragment.map.griddetail.supervisionplan.SupervisionPlanActivity"/>
         <activity android:name=".module.home.fragment.map.griddetail.supervisionplan.SupervisionPlanDetailActivity"/>
         <activity android:name=".module.home.fragment.map.griddetail.supervisionjd.SupervisionJDActivity"/>
         <activity android:name=".module.home.fragment.personcenter.PersonCenterDetailActivity"/>
+        <activity android:name=".module.home.fragment.personcenter.PersonCenterChildDetailActivity"/>
+        <activity android:name=".module.home.fragment.personcenter.PersonCenterChildLowDetailActivity"/>
         <activity android:name=".module.home.fragment.notice.activity.WillDoSafeJDSXSQActivity"/>
         <activity android:name=".module.home.fragment.notice.activity.WillDoSafeJDGZSHActivity"/>
+        <activity android:name=".module.home.fragment.notice.activity.WillDoSafeHFSGAQJDActivity"/>
+        <activity android:name=".module.home.fragment.notice.activity.WillDoSafeZZSGJDActivity"/>
+        <activity android:name=".module.home.fragment.notice.activity.WillDoSafeJDJHSHActivity"/>
+
         <activity android:name=".module.home.fragment.map.griddetail.errormessage.ErrorMessageActivity"/>
 
         <!-- 权限提示 -->

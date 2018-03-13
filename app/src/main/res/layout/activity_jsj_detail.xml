@@ -9,6 +9,9 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         >
+        <include
+            layout="@layout/my_include_title"
+            />
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_40"
@@ -163,8 +166,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="科学技术成果鉴定
-（评估）证书编号"
+                android:text="科学技术成果鉴定\n(评估)证书编号"
                 android:layout_centerVertical="true"
                 android:textSize="@dimen/sp_16"
                 />

@@ -72,7 +72,7 @@ public class JsjActivity extends BaseActivity {
         mRvContent.setLayoutManager(new LinearLayoutManager(this));
         mBaseQuickAdapter = new BaseQuickAdapter<JsjBeanRsp, BaseViewHolder>(R.layout.item_jsj, mQzjxBeanRsps) {
             @Override
-            protected void convert(BaseViewHolder baseViewHolder, JsjBeanRsp rowsBean) {
+            protected void convert(BaseViewHolder baseViewHolder, final JsjBeanRsp rowsBean) {
                 baseViewHolder.setText(R.id.tv_01, rowsBean.getDtgcmc());
                 baseViewHolder.setText(R.id.tv_02, rowsBean.getCpmc());
                 baseViewHolder.setText(R.id.tv_03, rowsBean.getCpxh());
@@ -83,6 +83,7 @@ public class JsjActivity extends BaseActivity {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(JsjActivity.this,JsjDetailActivity.class);
+                        intent.putExtra(Const.JSJ,rowsBean);
                         startActivity(intent);
                     }
                 });
@@ -97,7 +98,7 @@ public class JsjActivity extends BaseActivity {
         JsjBeanReq req = new JsjBeanReq();
         req.setSgxkzh(sgxkzh);
         req.setCpmc(cpmc);
- /*       req.setSgxkzh("2011-074");
+    /*  req.setSgxkzh("2011-074");
         req.setCpmc("动轨");*/
         //req.setSgxkzh("[2013]施建字0330号");
         Observable<BaseBeanRsp<JsjBeanRsp>> observable = RetrofitFactory.getInstance().getJsj(req);

@@ -434,8 +434,8 @@
     <dimen name="sp_admin_main_04">14sp</dimen>
     <dimen name="sp_admin_main_05">12sp</dimen>
 
-    <dimen name="dp_admin_main_radius">12dp</dimen>
-    <dimen name="dp_admin_main_elevation">8dp</dimen>
+    <dimen name="dp_admin_main_radius">8dp</dimen>
+    <dimen name="dp_admin_main_elevation">2dp</dimen>
     <!-- 公共分割线-->
     <dimen name="dirver_horizontal_height">1dip</dimen>
 </resources>

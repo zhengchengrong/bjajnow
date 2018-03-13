@@ -653,6 +653,14 @@
         android:layout_marginTop="@dimen/dp_10"
         android:layout_marginLeft="@dimen/dp_20"
         />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_10"
+        android:text="         工程建设责任主体（建设单位、施工单位、监理单位）应认真执行安全生产有关法律法规、标准规范及有关文件、规定的要求，精心施工，严格管理，确保施工安全和施工现场安全。参照本交底内容，建设单位应负责对其直接发包的专业承包单位、施工总承包单位应负责对其分包的专业分包单位和劳务分包单位进行安全管理。
+       建设、施工、监理单位应当根据建设工程的实际情况制定工程项目保证安全生产的措施方案，包括安全管理组织机构及相应人员安全生产岗位职责和工作制度等，各项安全工作均应责任到人，并将以上资料提交至监督机构。
+      对本工程其他施工安全要求:"
+        />
     <EditText
         android:id="@+id/et_01"
         android:layout_width="match_parent"
@@ -660,12 +668,13 @@
         android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
         android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_10"
         android:layout_toRightOf="@+id/tv_flag18"
-        android:background="@null"
+        android:background="@drawable/shape_round_gray_bored"
         android:textSize="@dimen/sp_14"
-        android:focusable="false"
-        android:enabled="false"
+        android:text=""
         android:textColor="@color/admin_main_select_text"
+
         />
     <TextView
         android:id="@+id/tv_commit"

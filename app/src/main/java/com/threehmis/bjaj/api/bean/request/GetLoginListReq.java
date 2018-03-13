@@ -7,7 +7,32 @@ public class GetLoginListReq extends BaseBeanReq<GetLoginListRsp> {
 
 //	phone=13808892360&password=123
 
-	public String username,password;
+	public String username,password,userId,personId,mobilePhone;
+
+	public String getPersonId() {
+		return personId;
+	}
+
+	public void setPersonId(String personId) {
+		this.personId = personId;
+	}
+
+	public String getMobilePhone() {
+		return mobilePhone;
+	}
+
+	public void setMobilePhone(String mobilePhone) {
+		this.mobilePhone = mobilePhone;
+	}
+
+	public String getUserId() {
+
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 
 	public String getUsername() {
 		return username;

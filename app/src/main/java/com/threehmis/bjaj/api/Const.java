@@ -53,6 +53,9 @@ public class Const {
     public static final String FLAG = "flag";
     public static final String CHECKBASIS = "checkbasis";
     public static final String CEHCKNUM = "checkNum";
+    public static final String JSJ = "jsj";
+    public static final String TYPE = "type";
+    public static final String PK = "PK";
 
 
     private Const() {

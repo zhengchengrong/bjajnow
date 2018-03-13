@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -85,19 +86,25 @@ public class QzjxActivity extends BaseActivity {
             }
         };
         mRvContent.setAdapter(mBaseQuickAdapter);
-        getDate();
+        getDate("");
         mTvSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(TextUtils.isEmpty(mEt01.getText().toString())){
+                    RxToast.showToast("请输入搜索内容");
+                }else{
+                    getDate(mEt01.getText().toString());
+                }
 
             }
         });
     }
 
-    private void getDate() {
+    private void getDate(String search) {
         showLoading();
         QzjxBeanReq req = new QzjxBeanReq();
         req.setSgxkzh(sgxkzh);
+        req.setSbdjbh(search);
       //  req.setSgxkzh("[2013]施建字0330号");
         Observable<BaseBeanRsp<QzjxBeanRsp>> observable = RetrofitFactory.getInstance().getQZJX(req);
         observable.compose(RxSchedulers.<BaseBeanRsp<QzjxBeanRsp>>compose(

@@ -1,8 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <RelativeLayout
+        android:id="@+id/rl_admin_main_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_50"
+        android:layout_alignParentBottom="true"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="@drawable/shape_admin_main_color"
+        >
+        <ImageView
+            android:id="@+id/iv_flag01"
+            android:layout_width="@dimen/dp_30"
+            android:layout_height="@dimen/dp_30"
+            android:src="@drawable/admin_main_light_logo"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp_10"
+            />
+        <TextView
+            android:id="@+id/tv_admin_main_bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_bottom_text"
+            android:layout_toRightOf="@+id/iv_flag01"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/sp_admin_main_05"
+            android:layout_marginRight="@dimen/dp_15"
+            android:textColor="@color/main_text_color"
+            android:paddingLeft="@dimen/dp_6"
+            android:paddingRight="@dimen/dp_6"
+            />
+        <ImageView
+            android:id="@+id/iv_flag02"
+            android:layout_width="@dimen/dp_14"
+            android:layout_height="@dimen/dp_14"
+            android:src="@drawable/delet"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/dp_6"
+            android:layout_marginRight="@dimen/dp_2"
+            />
+    </RelativeLayout>
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -213,7 +262,7 @@
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/dp_50"
             android:orientation="horizontal"
             android:layout_marginLeft="@dimen/dp_10"
             android:layout_marginRight="@dimen/dp_10"
@@ -224,10 +273,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_40"
                 android:layout_weight="1"
-                app:cardBackgroundColor="@color/main_color"
+                android:layout_margin="@dimen/dp_5"
                 app:cardElevation="@dimen/dp_admin_main_elevation"
                 app:cardCornerRadius="@dimen/dp_admin_main_radius"
-                android:layout_margin="@dimen/dp_5"
+                app:contentPadding="4dp"
+                app:cardBackgroundColor="@color/main_color"
                 >
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -238,7 +288,6 @@
                         android:layout_height="wrap_content"
                         android:text="施工许可4500项"
                         android:gravity="center_horizontal"
-                        android:layout_marginTop="@dimen/dp_2"
                         android:textColor="@color/white"
                         android:textSize="@dimen/sp_admin_main_05"
                         />
@@ -261,10 +310,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_40"
                 android:layout_weight="1"
-                android:padding="@dimen/dp_10"
                 app:cardElevation="@dimen/dp_admin_main_elevation"
                 app:cardCornerRadius="@dimen/dp_admin_main_radius"
                 android:layout_margin="@dimen/dp_5"
+                app:contentPadding="4dp"
                 >
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -275,12 +324,10 @@
                         android:layout_height="wrap_content"
                         android:text="施工许可4500项"
                         android:gravity="center_horizontal"
-                        android:layout_marginTop="@dimen/dp_2"
                         android:textSize="@dimen/sp_admin_main_05"
                         />
                     <TextView
                         android:id="@+id/tv_all_xuke_02_b"
-                        android:layout_gravity="center"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="施工许可1500项"
@@ -298,17 +345,18 @@
                 android:layout_margin="@dimen/dp_5"
                 app:cardElevation="@dimen/dp_admin_main_elevation"
                 app:cardCornerRadius="@dimen/dp_admin_main_radius"
+                app:contentPadding="4dp"
                 >
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    >
                     <TextView
                         android:id="@+id/tv_all_xuke_03"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="施工许可4500项"
                         android:gravity="center_horizontal"
-                        android:layout_marginTop="@dimen/dp_2"
                         android:textSize="@dimen/sp_admin_main_05"
                         />
                     <TextView
@@ -331,3 +379,4 @@
         </com.threehmis.bjaj.widget.WrapContentHeightViewPager>
     </LinearLayout>
 </ScrollView>
+    </RelativeLayout>

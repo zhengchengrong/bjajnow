@@ -13,6 +13,35 @@ public class CommonProjectIdReq {
     private String projectId;
     private String lawContent;
 
+    private String lawType;
+    private String lawTitle;
+
+    public String getPk() {
+        return pk;
+    }
+
+    public void setPk(String pk) {
+        this.pk = pk;
+    }
+
+    private String pk;
+
+    public String getLawType() {
+        return lawType;
+    }
+
+    public void setLawType(String lawType) {
+        this.lawType = lawType;
+    }
+
+    public String getLawTitle() {
+        return lawTitle;
+    }
+
+    public void setLawTitle(String lawTitle) {
+        this.lawTitle = lawTitle;
+    }
+
     public String getLawContent() {
         return lawContent;
     }

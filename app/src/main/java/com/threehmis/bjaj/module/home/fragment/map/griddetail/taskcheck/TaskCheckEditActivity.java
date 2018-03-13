@@ -158,8 +158,6 @@ public class TaskCheckEditActivity extends BaseActivity {
         listCheckType = new ArrayList<String>();
         listCheckContent = new ArrayList<String>();
         listCheckStatus = new ArrayList<String>();
-
-
         projectId = RxSPUtils.getString(this, Const.PROJECTID);
         projectName = RxSPUtils.getString(this, Const.PROJECTNAME);
         projectNum = RxSPUtils.getString(this,Const.PROJECTNUM);
@@ -176,16 +174,16 @@ public class TaskCheckEditActivity extends BaseActivity {
         });
         mRvContent.setLayoutManager(new LinearLayoutManager(this));
         mRvContent.setAdapter(mItemDragAdapter);
-        ItemDragAndSwipeCallback itemDragAndSwipeCallback = new ItemDragAndSwipeCallback(mItemDragAdapter);
+    /*    ItemDragAndSwipeCallback itemDragAndSwipeCallback = new ItemDragAndSwipeCallback(mItemDragAdapter);
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(itemDragAndSwipeCallback);
         itemTouchHelper.attachToRecyclerView(mRvContent);
-        mItemDragAdapter.enableSwipeItem();
+        mItemDragAdapter.enableSwipeItem();*/
         mTvCommit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 isCommit = true;
-                listId.clear();
-                listCheckTaskId.clear();
+             /*   listId.clear();
+                listCheckTaskId.clear();*/
                 listSingleProject.clear();
                 listCheckManId.clear();
                 listCheckMan.clear();
@@ -233,6 +231,9 @@ public class TaskCheckEditActivity extends BaseActivity {
                     taskTemp.setCheckStatus(checkDivisionVOSet.get(i).getCheckStatus());
                     mProjectStatusRsps.add(taskTemp);
                     mItemDragAdapter.notifyDataSetChanged();
+                    listId.add(checkDivisionVOSet.get(i).getId());
+                    listCheckTaskId.add(checkDivisionVOSet.get(i).getCheckTaskID());
+
                 }
         }
     }
@@ -291,8 +292,8 @@ public class TaskCheckEditActivity extends BaseActivity {
 
             }*/
             if(isCommit==true) { //只有提交的通知才加数据
-                listId.add("");
-                listCheckTaskId.add("");
+           /*     listId.add("");
+                listCheckTaskId.add("");*/
                 listSingleProject.add(list_siginle_id.getText().toString());
                 listCheckManId.add(list_check_man_id.getText().toString());
                 listCheckMan.add(tv_01.getText().toString());

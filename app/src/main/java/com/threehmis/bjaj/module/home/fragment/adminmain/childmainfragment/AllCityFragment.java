@@ -2,17 +2,26 @@ package com.threehmis.bjaj.module.home.fragment.adminmain.childmainfragment;
 
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.support.v7.widget.CardView;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.threehmis.bjaj.R;
+import com.threehmis.bjaj.api.BaseObserver;
+import com.threehmis.bjaj.api.RetrofitFactory;
+import com.threehmis.bjaj.api.RxSchedulers;
+import com.threehmis.bjaj.api.bean.BaseBeanRsp;
+import com.threehmis.bjaj.api.bean.request.AllCityBeanReq;
 import com.threehmis.bjaj.module.base.BaseFragment;
 import com.threehmis.bjaj.widget.WrapContentHeightViewPager;
 import com.vondear.rxtools.view.RxToast;
@@ -22,6 +31,7 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import io.reactivex.Observable;
 
 /**
  * Created by llz on 2018/2/22.
@@ -34,8 +44,8 @@ public class AllCityFragment extends BaseFragment implements View.OnClickListene
     Spinner mIdSpinnerAll;
     @BindView(R.id.id_spinner_year)
     Spinner mIdSpinnerYear;
-    private static final String[] year = {"年份", "2018", "2018", "2018", "2018"};
-    private static final String[] all = {"全部", "第一季度", "第一季度", "第一季度", "第一季度"};
+    private static final String[] year = {"年份", "2018", "2017", "2016", "2015"};
+    private static final String[] all = {"全部", "第一季度", "第二季度", "第三季度", "第四季度"};
     @BindView(R.id.tv_all_num_01)
     TextView mTvAllNum01;
     @BindView(R.id.tv_all_num_01_a)
@@ -70,12 +80,22 @@ public class AllCityFragment extends BaseFragment implements View.OnClickListene
     TextView mTvAllXuke03C;
     @BindView(R.id.vp_city)
     WrapContentHeightViewPager mVpCity;
+
+
     @BindView(R.id.cv_01)
     CardView mCv01;
     @BindView(R.id.cv_02)
     CardView mCv02;
     @BindView(R.id.cv_03)
     CardView mCv03;
+    @BindView(R.id.iv_flag01)
+    ImageView mIvFlag01;
+    @BindView(R.id.tv_admin_main_bottom)
+    TextView mTvAdminMainBottom;
+    @BindView(R.id.iv_flag02)
+    ImageView mIvFlag02;
+    @BindView(R.id.rl_admin_main_bottom)
+    RelativeLayout mRlAdminMainBottom;
     private ArrayList<View> aList;
     private MyPagerAdapter mAdapter;
     private ArrayAdapter<String> adapterYear;
@@ -84,6 +104,13 @@ public class AllCityFragment extends BaseFragment implements View.OnClickListene
     private View view01;
     private View view02;
     private View view03;
+    Animation alphaAnimation;
+    Animation translateAnimatioin;
+
+
+    TextView tv01;
+    TextView tv02;
+    TextView tv03;
 
     @Override
     protected void initInjector() {
@@ -103,7 +130,6 @@ public class AllCityFragment extends BaseFragment implements View.OnClickListene
         //设置默认值
         mIdSpinnerYear.setVisibility(View.VISIBLE);
 
-
         adapterAll = new ArrayAdapter<String>(mActivity, android.R.layout.simple_spinner_item, all);
         //设置下拉列表的风格
         adapterAll.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -116,23 +142,73 @@ public class AllCityFragment extends BaseFragment implements View.OnClickListene
         aList = new ArrayList<View>();
         LayoutInflater li = mActivity.getLayoutInflater();
         view01 = li.inflate(R.layout.view_city_one, null, false);
-        view02 = li.inflate(R.layout.view_city_one, null, false);
-        view03 = li.inflate(R.layout.view_city_one, null, false);
-
-       /* LinearLayout linearLayout = view01.findViewById(R.id.course_viewflipper);
-        linearLayout.addView( new PieChart3D01View(mActivity));*/
+        tv01 = view01.findViewById(R.id.tv_01);
+        view02 = li.inflate(R.layout.view_city_two, null, false);
+        tv02 = view02.findViewById(R.id.tv_02);
+        view03 = li.inflate(R.layout.view_city_three, null, false);
+        tv03 = view03.findViewById(R.id.tv_03);
         aList.add(view01);
         aList.add(view02);
         aList.add(view03);
 
-        /*aList.add(li.inflate(R.supervision_plan_01.view_city_two,null,false));
-        aList.add(li.inflate(R.supervision_plan_01.view_city_three,null,false));*/
         mAdapter = new MyPagerAdapter(aList);
         mVpCity.setAdapter(mAdapter);
-
         mCv01.setOnClickListener(this);
         mCv02.setOnClickListener(this);
         mCv03.setOnClickListener(this);
+
+        alphaAnimation = AnimationUtils.loadAnimation(mActivity, R.anim.alphaanim);
+        mRlAdminMainBottom.setVisibility(View.VISIBLE);
+        mRlAdminMainBottom.startAnimation(alphaAnimation);
+        translateAnimatioin = AnimationUtils.loadAnimation(mActivity, R.anim.alphaanim);
+        mRlAdminMainBottom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mRlAdminMainBottom.startAnimation(translateAnimatioin);
+            }
+        });
+        getData();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        mRlAdminMainBottom.clearAnimation();
+    }
+
+    private void getData() {
+        AllCityBeanReq allCityBeanReq = new AllCityBeanReq();
+        allCityBeanReq.setIsMonitorUnit("0");
+        Observable<BaseBeanRsp<Object>> observable = RetrofitFactory.getInstance().getProjectStatistic(allCityBeanReq);
+        observable.compose(RxSchedulers.<BaseBeanRsp<Object>>compose(
+        )).subscribe(new BaseObserver<Object>() {
+            @Override
+            protected void onHandleSuccess(BaseBeanRsp<Object> t) {
+                RxToast.showToast(t.getJokerVO().getJdProject());
+                mTvAllNum01.setText(t.getJokerVO().getJdProject());
+                mTvAllNum02.setText(t.getJokerVO().getZjProject());
+                mTvAllNum03.setText(t.getJokerVO().getTgProject());
+                mTvAllNum04.setText(t.getJokerVO().getStopJDProject());
+                mTvAllNum05.setText(t.getJokerVO().getEndJDProject());
+                mTvAllXuke01.setText("施工许可" + t.getJokerVO().getNonLSProject() + "项");
+                mTvAllXuke01A.setText("临时工程" + t.getJokerVO().getLsProject() + "项");
+                mTvAllXuke02.setText("房屋建筑" + t.getJokerVO().getHouseProject() + "项");
+                mTvAllXuke02B.setText("市政公用" + t.getJokerVO().getGoverProject() + "项");
+                mTvAllXuke02B.setText("危大工程" + t.getJokerVO().getGoverProject() + "项");
+                String str = "        共发放监督告知书<font color='#2083E8'>" + t.getJokerVO().getTotalJDGZ() + "次</font>,制定安全" +
+                        "监督计划<font color='#2083E8'>" + t.getJokerVO().getTotalJDJH() + "次</font>,监督抽查<font color='#2083E8'>" + t.getJokerVO().getTotalJDCC() + "次</font>,处罚" +
+                        "金额<font color='#2083E8'>" + t.getJokerVO().getTotalCFJE() + "次</font>,处罚工程<font color='#2083E8'>" + t.getJokerVO().getTotalCFGC() + "次</font>,处罚" +
+                        "企业<font color='#2083E8'>" + t.getJokerVO().getTotalCFQY() + "次</font>,下发整改处理<font color='#2083E8'>" + t.getJokerVO().getTotalZGCL() + "次</font>。";
+                tv01.setText(Html.fromHtml(str));
+                tv02.setText(Html.fromHtml(str));
+                tv03.setText(Html.fromHtml(str));
+
+            }
+
+            @Override
+            protected void onHandleEmpty(BaseBeanRsp<Object> t) {
+            }
+        });
     }
 
     @Override
@@ -148,7 +224,7 @@ public class AllCityFragment extends BaseFragment implements View.OnClickListene
     @Override
     public void onClick(View view) {
 
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.cv_01:
                 mCv01.setCardBackgroundColor(mActivity.getResources().getColor(R.color.main_color));
                 mCv02.setCardBackgroundColor(mActivity.getResources().getColor(R.color.white));
@@ -190,13 +266,12 @@ public class AllCityFragment extends BaseFragment implements View.OnClickListene
 
     }
 
-
     //使用数组形式操作
     class SpinnerSelectedListener implements AdapterView.OnItemSelectedListener {
 
         public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,
                                    long arg3) {
-            RxToast.showToast(year[arg2]);
+            //  RxToast.showToast(year[arg2]);
         }
 
         public void onNothingSelected(AdapterView<?> arg0) {

@@ -36,6 +36,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import io.reactivex.Observable;
+import jp.shts.android.library.TriangleLabelView;
 
 /**
  * Created by llz on 2018/2/27.
@@ -74,13 +75,15 @@ public class RectificatioinNotifyFragment01 extends BaseFragment {
         mBaseQuickAdapter = new BaseQuickAdapter<ProjectTaskCheckRsp, BaseViewHolder>(R.layout.item_rectification_notify_01, mProjectStatusRsps) {
             @Override
             protected void convert(BaseViewHolder baseViewHolder, final ProjectTaskCheckRsp rowsBean) {
+
                 baseViewHolder.setText(R.id.tv_01, baseViewHolder.getAdapterPosition() + 1 + "");
                 baseViewHolder.setText(R.id.tv_02, rowsBean.getNoticeNum());
                 baseViewHolder.setText(R.id.tv_03, rowsBean.getSignDate());
                 baseViewHolder.getView(R.id.ll_01).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intent = new Intent(mActivity, LocalCheckDetailActivity.class);
+                        Intent intent = new Intent(mActivity, RectificationNotifyDetailActivity.class);
+                        intent.putExtra(Const.FLAG,true);
                         intent.putExtra(Const.BEAN, rowsBean);
                         startActivity(intent);
 
@@ -106,11 +109,6 @@ public class RectificatioinNotifyFragment01 extends BaseFragment {
     private void getDatas() {
         showLoading();
         ProjectCheckTaskReq req = new ProjectCheckTaskReq();
-        // req.setProjectId(id);
-     /*   req.setProjectId(id);
-        req.setCheckStatus(0+"");
-        req.setSignDate(DateUtil.getStringDateShort());*/
-        //req.setProjectId("1bb69ede-b55f-46e8-b35b-1540ae7bd152");
         req.setProjectId(id);
         req.setCheckStatus(5 + "");
         req.setSignDate(days);

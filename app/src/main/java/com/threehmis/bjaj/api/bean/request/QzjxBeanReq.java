@@ -8,6 +8,16 @@ public class QzjxBeanReq {
 
     private  String sgxkzh="";
 
+    private String sbdjbh="";
+
+    public String getSbdjbh() {
+        return sbdjbh;
+    }
+
+    public void setSbdjbh(String sbdjbh) {
+        this.sbdjbh = sbdjbh;
+    }
+
     public String getSgxkzh() {
         return sgxkzh;
     }

@@ -28,7 +28,6 @@
             app:primaryTextSize="16sp"
             app:secondaryTextColor="@color/white"
             app:secondaryTextSize="11sp" />
-
         <TextView
             android:id="@+id/tv_flag01"
             android:layout_width="wrap_content"
@@ -45,7 +44,6 @@
             android:layout_marginTop="@dimen/dp_10"
             android:layout_marginLeft="@dimen/dp_10"
             android:layout_toRightOf="@+id/tv_flag01"
-            android:textSize="@dimen/sp_admin_main_03"
             />
         <TextView
             android:id="@+id/tv_flag02"
@@ -94,8 +92,6 @@
             android:layout_below="@+id/tv_flag02"
             android:layout_marginBottom="@dimen/dp_5"
             android:layout_centerVertical="true"
-            android:textSize="@dimen/sp_admin_main_03"
-
             />
         <TextView
             android:id="@+id/tv_flag04"

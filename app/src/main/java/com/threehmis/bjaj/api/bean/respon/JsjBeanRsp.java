@@ -1,10 +1,12 @@
 package com.threehmis.bjaj.api.bean.respon;
 
+import java.io.Serializable;
+
 /**
  * Created by llz on 2018/2/28.
  */
 
-public class JsjBeanRsp {
+public class JsjBeanRsp  implements Serializable{
 
 
     /**
@@ -37,33 +39,33 @@ public class JsjBeanRsp {
      * xgsj : 2014-03-21
      */
 
-    private String dtgcmc;
-    private String badjbbh;
-    private String cpmc;
-    private String cpxh;
-    private String sccsmc;
-    private String kxjscgjdzsbh;
-    private String jcdwmc;
-    private String jcdwlxr;
-    private String jcdwlxdh;
-    private String jcbgbh;
-    private String jcsj;
-    private String jcjl;
-    private String syjws;
-    private String jtgd;
-    private String jtkd;
-    private String jtzczdkd;
-    private String dytshz;
-    private String dlxs;
-    private String tssd;
-    private String sfycc;
-    private String yccbsczsj;
-    private String ccr;
-    private String ccrspsj;
-    private String ccrszjg;
-    private String ccrszbm;
-    private String cjsj;
-    private String xgsj;
+    private String dtgcmc ="";
+    private String badjbbh="";
+    private String cpmc="";
+    private String cpxh="";
+    private String sccsmc="";
+    private String kxjscgjdzsbh="";
+    private String jcdwmc="";
+    private String jcdwlxr="";
+    private String jcdwlxdh="";
+    private String jcbgbh="";
+    private String jcsj="";
+    private String jcjl="";
+    private String syjws="";
+    private String jtgd="";
+    private String jtkd="";
+    private String jtzczdkd="";
+    private String dytshz="";
+    private String dlxs="";
+    private String tssd="";
+    private String sfycc="";
+    private String yccbsczsj="";
+    private String ccr="";
+    private String ccrspsj="";
+    private String ccrszjg="";
+    private String ccrszbm="";
+    private String cjsj="";
+    private String xgsj="";
 
     public String getDtgcmc() {
         return dtgcmc;

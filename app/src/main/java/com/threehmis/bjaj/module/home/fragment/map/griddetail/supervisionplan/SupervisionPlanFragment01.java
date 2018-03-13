@@ -23,7 +23,6 @@ import com.threehmis.bjaj.api.bean.request.SupervisionPlanFirstReq;
 import com.threehmis.bjaj.api.bean.request.SupervisionPlanReq;
 import com.threehmis.bjaj.api.bean.respon.SupervisionPlanFirstRsp;
 import com.threehmis.bjaj.module.base.BaseFragment;
-import com.threehmis.bjaj.utils.SPUtils;
 import com.vondear.rxtools.RxSPUtils;
 import com.vondear.rxtools.view.RxToast;
 
@@ -104,6 +103,9 @@ public class SupervisionPlanFragment01 extends BaseFragment {
     TextView mTvCommit;
     @BindView(R.id.ll_add_person)
     LinearLayout mLlAddPerson;
+    @BindView(R.id.et_jtbk)
+    EditText mEtJtbk;
+    Unbinder unbinder;
 
     private String pk = "";
 
@@ -128,8 +130,8 @@ public class SupervisionPlanFragment01 extends BaseFragment {
         mYear = ca.get(Calendar.YEAR);
         mMonth = ca.get(Calendar.MONTH);
         mDay = ca.get(Calendar.DAY_OF_MONTH);
-        mEt03.setText(RxSPUtils.getString(mActivity,Const.PHONENUM));
-        mTvDate02.setText(mYear+"-"+(mMonth+1)+"-"+mDay);
+        mEt03.setText(RxSPUtils.getString(mActivity, Const.PHONENUM));
+        mTvDate02.setText(mYear + "-" + (mMonth + 1) + "-" + mDay);
         mTvDate02.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -176,12 +178,13 @@ public class SupervisionPlanFragment01 extends BaseFragment {
                 supervisionPlanReq.setProjectName(mEt05.getText().toString());
                 supervisionPlanReq.setMonitorPK("b1c3c335-f4ac-450e-9ffc-453bde23b9f3");
                 supervisionPlanReq.setIsTrigger("$U_CHECKBOX_OFF$");
-                supervisionPlanReq.setJdjhJDZZ("监督组长"+jdzz.toString().substring(0,jdzz.length()-1));
-                supervisionPlanReq.setJdjhJDZZZFZH(jdzzno.toString().substring(0,jdzz.length()-1));
-                supervisionPlanReq.setJdjhJDY(jdy.toString().substring(0,jdzz.length()-1));
-                supervisionPlanReq.setJdjhJDYZFZH(jdyno.toString().substring(0,jdzz.length()-1));
+                supervisionPlanReq.setJdjhJDZZ("监督组长" + jdzz.toString().substring(0, jdzz.length() - 1));
+                supervisionPlanReq.setJdjhJDZZZFZH(jdzzno.toString().substring(0, jdzz.length() - 1));
+                supervisionPlanReq.setJdjhJDY(jdy.toString().substring(0, jdzz.length() - 1));
+                supervisionPlanReq.setJdjhJDYZFZH(jdyno.toString().substring(0, jdzz.length() - 1));
                 supervisionPlanReq.setRegisterDate(mTvDate02.getText().toString());
-                supervisionPlanReq.setRegisterMan(RxSPUtils.getContent(mActivity,Const.PHONENUM));
+                supervisionPlanReq.setRegisterMan(RxSPUtils.getContent(mActivity, Const.PHONENUM));
+                supervisionPlanReq.setJdjhJTBK(mEtJtbk.getText().toString());
                 if (mRb01.isChecked()) {
                     supervisionPlanReq.setJdjhWFS("$U_CHECKBOX_ON$");
                 } else if (mRb02.isChecked()) {
@@ -194,7 +197,9 @@ public class SupervisionPlanFragment01 extends BaseFragment {
                     @Override
                     protected void onHandleSuccess(BaseBeanRsp<SupervisionPlanFirstRsp> t) {
                         RxToast.showToast(t.getResult());
+                        mActivity.finish();
                     }
+
                     @Override
                     protected void onHandleEmpty(BaseBeanRsp<SupervisionPlanFirstRsp> t) {
                         RxToast.showToast(t.getResult());
@@ -227,52 +232,54 @@ public class SupervisionPlanFragment01 extends BaseFragment {
                     mEt06.setText(jokerVOBean.getAddress());
                     mTvDate07.setText(jokerVOBean.getBeginDate());
                     mTvDate08.setText(jokerVOBean.getEndDate());
-                    for(int i=0;i<jokerVOBean.getPersonList().size();i++){
+                    mEtJtbk.setText(beanRsp.getProjectList().get(0).getJdjhJTBK() == null ? "" : beanRsp.getProjectList().get(0).getJdjhJTBK());
+                    for (int i = 0; i < jokerVOBean.getPersonList().size(); i++) {
                         BaseBeanRsp.JokerVOBean.MonitorListBean monitorListBean = beanRsp.getJokerVO().getPersonList().get(i);
-                        if(monitorListBean.getMonitorType().equals("监督组长")){
-                        View view = mActivity.getLayoutInflater().inflate(R.layout.supervision_plan_01,null);
-                        ((EditText)view.findViewById(R.id.et_01)).setText(monitorListBean.getMonitorName());
-                         ((TextView)view.findViewById(R.id.tv_01)).setText(monitorListBean.getMonitorType());
-                        if(!TextUtils.isEmpty(monitorListBean.getMonitorTitleNo())){
-                            ((EditText)view.findViewById(R.id.et_02)).setText(monitorListBean.getMonitorTitleNo());
-                        }
-                        jdzz.append(monitorListBean.getMonitorName()+",");
-                        jdzzno.append(monitorListBean.getMonitorTitleNo()+",");
+                        if (monitorListBean.getMonitorType().equals("监督组长")) {
+                            View view = mActivity.getLayoutInflater().inflate(R.layout.supervision_plan_01, null);
+                            ((EditText) view.findViewById(R.id.et_01)).setText(monitorListBean.getMonitorName());
+                            ((TextView) view.findViewById(R.id.tv_01)).setText(monitorListBean.getMonitorType());
+                            if (!TextUtils.isEmpty(monitorListBean.getMonitorTitleNo())) {
+                                ((EditText) view.findViewById(R.id.et_02)).setText(monitorListBean.getMonitorTitleNo());
+                            }
+                            jdzz.append(monitorListBean.getMonitorName() + ",");
+                            jdzzno.append(monitorListBean.getMonitorTitleNo() + ",");
                             mLlAddPerson.addView(view);
                         }
                     }
-                    for(int i=0;i<jokerVOBean.getPersonList().size();i++){
+                    for (int i = 0; i < jokerVOBean.getPersonList().size(); i++) {
                         BaseBeanRsp.JokerVOBean.MonitorListBean monitorListBean = beanRsp.getJokerVO().getPersonList().get(i);
-                        if(monitorListBean.getMonitorType().equals("监督组员")){
-                            View view2 = mActivity.getLayoutInflater().inflate(R.layout.supervision_plan_01,null);
-                            ((EditText)view2.findViewById(R.id.et_01)).setText(monitorListBean.getMonitorName());
-                            ((TextView)view2.findViewById(R.id.tv_01)).setText(monitorListBean.getMonitorType());
-                            if(!TextUtils.isEmpty(monitorListBean.getMonitorTitleNo())){
-                                ((EditText)view2.findViewById(R.id.et_02)).setText(monitorListBean.getMonitorTitleNo());
+                        if (monitorListBean.getMonitorType().equals("监督组员")) {
+                            View view2 = mActivity.getLayoutInflater().inflate(R.layout.supervision_plan_01, null);
+                            ((EditText) view2.findViewById(R.id.et_01)).setText(monitorListBean.getMonitorName());
+                            ((TextView) view2.findViewById(R.id.tv_01)).setText(monitorListBean.getMonitorType());
+                            if (!TextUtils.isEmpty(monitorListBean.getMonitorTitleNo())) {
+                                ((EditText) view2.findViewById(R.id.et_02)).setText(monitorListBean.getMonitorTitleNo());
                             }
-                            jdy.append(monitorListBean.getMonitorName()+",");
-                            jdyno.append(monitorListBean.getMonitorTitleNo()+",");
+                            jdy.append(monitorListBean.getMonitorName() + ",");
+                            jdyno.append(monitorListBean.getMonitorTitleNo() + ",");
                             mLlAddPerson.addView(view2);
                         }
                     }
-                }else{
+                } else {
                     mTvCommit.setVisibility(View.GONE);
-                    if(beanRsp.getProjectList()!=null && beanRsp.getProjectList().size()>0){
+                    if (beanRsp.getProjectList() != null && beanRsp.getProjectList().size() > 0) {
                         SupervisionPlanFirstRsp supervisionPlanFirstRsp = beanRsp.getProjectList().get(0);
-                        mEt01.setText(supervisionPlanFirstRsp.getJdjhJHBH()==null?"":supervisionPlanFirstRsp.getJdjhJHBH());
-                        mTvDate02.setText(supervisionPlanFirstRsp.getJdjhBZRQ()==null?"":supervisionPlanFirstRsp.getJdjhBZRQ());
-                        mEt03.setText(supervisionPlanFirstRsp.getJdjhBZR()==null?"":supervisionPlanFirstRsp.getJdjhBZR());
-                        mEt04.setText(supervisionPlanFirstRsp.getJdjhAQJDBH()==null?"":supervisionPlanFirstRsp.getJdjhAQJDBH());
-                        mEt05.setText(supervisionPlanFirstRsp.getJdjhGCMC()==null?"":supervisionPlanFirstRsp.getJdjhGCMC());
-                        mEt06.setText(supervisionPlanFirstRsp.getJdjhGCDZ()==null?"":supervisionPlanFirstRsp.getJdjhGCDZ());
-                        mTvDate07.setText(supervisionPlanFirstRsp.getJdjhJHKGRQ()==null?"":supervisionPlanFirstRsp.getJdjhJHKGRQ());
-                        mTvDate08.setText(supervisionPlanFirstRsp.getJdjhJHJGRQ()==null?"":supervisionPlanFirstRsp.getJdjhJHJGRQ());
+                        mEt01.setText(supervisionPlanFirstRsp.getJdjhJHBH() == null ? "" : supervisionPlanFirstRsp.getJdjhJHBH());
+                        mTvDate02.setText(supervisionPlanFirstRsp.getJdjhBZRQ() == null ? "" : supervisionPlanFirstRsp.getJdjhBZRQ());
+                        mEt03.setText(supervisionPlanFirstRsp.getJdjhBZR() == null ? "" : supervisionPlanFirstRsp.getJdjhBZR());
+                        mEt04.setText(supervisionPlanFirstRsp.getJdjhAQJDBH() == null ? "" : supervisionPlanFirstRsp.getJdjhAQJDBH());
+                        mEt05.setText(supervisionPlanFirstRsp.getJdjhGCMC() == null ? "" : supervisionPlanFirstRsp.getJdjhGCMC());
+                        mEt06.setText(supervisionPlanFirstRsp.getJdjhGCDZ() == null ? "" : supervisionPlanFirstRsp.getJdjhGCDZ());
+                        mTvDate07.setText(supervisionPlanFirstRsp.getJdjhJHKGRQ() == null ? "" : supervisionPlanFirstRsp.getJdjhJHKGRQ());
+                        mTvDate08.setText(supervisionPlanFirstRsp.getJdjhJHJGRQ() == null ? "" : supervisionPlanFirstRsp.getJdjhJHJGRQ());
                         mEtBottom01.setText(supervisionPlanFirstRsp.getJdjhWDGC());
                         mEtBottom02.setText(supervisionPlanFirstRsp.getJdjhAQSG());
                         mEtBottom03.setText(supervisionPlanFirstRsp.getJdjhAQCC());
-                        if(supervisionPlanFirstRsp.getJdjhWFS().equals("$U_CHECKBOX_ON$")){
+                        mEtJtbk.setText(beanRsp.getProjectList().get(0).getJdjhJTBK() == null ? "" : supervisionPlanFirstRsp.getJdjhJTBK());
+                        if (supervisionPlanFirstRsp.getJdjhWFS().equals("$U_CHECKBOX_ON$")) {
                             mRb01.setChecked(true);
-                        }else{
+                        } else {
                             mRb02.setChecked(true);
                         }
 
@@ -403,7 +410,17 @@ public class SupervisionPlanFragment01 extends BaseFragment {
     };
 
 
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // TODO: inflate a fragment view
+        View rootView = super.onCreateView(inflater, container, savedInstanceState);
+        unbinder = ButterKnife.bind(this, rootView);
+        return rootView;
+    }
 
-
-
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
+    }
 }

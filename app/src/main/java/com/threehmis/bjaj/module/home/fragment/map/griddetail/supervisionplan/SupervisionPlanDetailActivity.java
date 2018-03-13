@@ -151,7 +151,7 @@ public class SupervisionPlanDetailActivity extends BaseActivity {
 
 
     private void initTitle() {
-        mTvTitle.setText("形象进度");
+        mTvTitle.setText("变更记录查看");
         mTvBack.setVisibility(View.VISIBLE);
         mTvBack.setOnClickListener(new View.OnClickListener() {
             @Override

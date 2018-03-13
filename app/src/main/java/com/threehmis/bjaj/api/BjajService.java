@@ -12,6 +12,7 @@ import retrofit2.http.Url;
 import com.threehmis.bjaj.api.bean.BaseBeanRsp;
 import com.threehmis.bjaj.api.bean.BaseEntity;
 import com.threehmis.bjaj.api.bean.ItemResult;
+import com.threehmis.bjaj.api.bean.request.AllCityBeanReq;
 import com.threehmis.bjaj.api.bean.request.ChangeAddressRequestBean;
 import com.threehmis.bjaj.api.bean.request.CommonProjectIdReq;
 import com.threehmis.bjaj.api.bean.request.GetLoginListReq;
@@ -43,6 +44,8 @@ import com.threehmis.bjaj.api.bean.respon.SafeCommentRsp;
 import com.threehmis.bjaj.api.bean.respon.SupervisionJDRsp;
 import com.threehmis.bjaj.api.bean.respon.SupervisionPlanFirstRsp;
 
+import java.util.ArrayList;
+
 /**
  * Created by zhengchengrong on 2017/9/1.
  */
@@ -67,6 +70,15 @@ public interface BjajService {
     @POST("login/getProjectList")
     Observable<BaseBeanRsp<GetLoginListRsp>> toLogin(@Body GetLoginListReq  req);
 
+    // 获取用户信息
+    @POST("user/getUserInfo")
+    Observable<BaseBeanRsp<GetLoginListRsp>> getUserInfo(@Body GetLoginListReq  req);
+    // 修改密码
+    @POST("user/modifyPassword")
+    Observable<BaseBeanRsp<GetLoginListRsp>> modifyPassword(@Body GetLoginListReq  req);
+    // 修改电话
+    @POST("person/modifyPhone")
+    Observable<BaseBeanRsp<GetLoginListRsp>> modifyPhone(@Body GetLoginListReq  req);
     //根据关键字搜索地图上的位置
     @POST("project/getProjectListByKeyword")
     Observable<BaseBeanRsp<GetSearchRsp>> byKeyForMapLocal(@Body GetSearchReq req);
@@ -130,6 +142,20 @@ public interface BjajService {
     //添加监督员
     @POST("lawData/getLawData")
     Observable<BaseBeanRsp<CommonProjectIdReq>> getLawData(@Body CommonProjectIdReq req);
+
+    //获取安全行为
+    @POST("lawData/getLawDataType")
+    Observable<BaseBeanRsp<Object>> getLawDataType(@Body CommonProjectIdReq req);
+    //获取安全行为列表
+    @POST("lawData/getLawDataList")
+    Observable<BaseBeanRsp<Object>> getLawDataList(@Body CommonProjectIdReq req);
+    //获取安全行为列表详情
+    @POST("lawData/getLawDataInfo")
+    Observable<BaseBeanRsp<Object>> getLawDataInfo(@Body CommonProjectIdReq req);
+
+    //获取首页信息
+    @POST("project/getProjectStatistic")
+    Observable<BaseBeanRsp<Object>> getProjectStatistic(@Body AllCityBeanReq req);
     //获取变更记录
 /*    @POST("monitorInfo/getMonitorInfo")
     Observable<BaseBeanRsp<SupervisionPlanFirstRsp>> getMonitorInfo2(@Body SupervisionPlanFirstReq req);*/

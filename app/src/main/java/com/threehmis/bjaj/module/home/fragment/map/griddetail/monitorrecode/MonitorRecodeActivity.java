@@ -77,7 +77,7 @@ public class MonitorRecodeActivity extends BaseActivity {
                 baseViewHolder.getView(R.id.ll_01).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intent = new Intent(MonitorRecodeActivity.this,LocalCheckDetailActivity.class);
+                        Intent intent = new Intent(MonitorRecodeActivity.this,MonitorRecodeDetailActivity.class);
                         intent.putExtra(Const.BEAN, rowsBean);
                         intent.putExtra(Const.FLAG,true);//查看
                         startActivity(intent);
@@ -92,13 +92,8 @@ public class MonitorRecodeActivity extends BaseActivity {
 
     private void getDatas() {
         ProjectCheckTaskReq req = new ProjectCheckTaskReq();
-        // req.setProjectId(id);
-  /*      req.setProjectId("1bb69ede-b55f-46e8-b35b-1540ae7bd152");
-        req.setCheckStatus(2+"");
-        req.setSignDate("2018-01-29");*/
         req.setProjectId(id);
-        req.setCheckStatus(4 + "");
-       // req.setSignDate(DateUtil.getStringDateShort());
+        req.setCheckStatus(-4 + "");
         Observable<BaseBeanRsp<ProjectTaskCheckRsp>> observable = RetrofitFactory.getInstance().getCheckTask(req);
         observable.compose(RxSchedulers.<BaseBeanRsp<ProjectTaskCheckRsp>>compose(
         )).subscribe(new BaseObserver<ProjectTaskCheckRsp>() {

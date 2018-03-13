@@ -27,7 +27,7 @@
             android:layout_height="match_parent"
             android:text="形象进度"
             android:layout_weight="2"
-            android:gravity="center_vertical"
+            android:gravity="center_vertical|center_horizontal"
             android:textSize="@dimen/sp_admin_main_03"
             />
         <TextView

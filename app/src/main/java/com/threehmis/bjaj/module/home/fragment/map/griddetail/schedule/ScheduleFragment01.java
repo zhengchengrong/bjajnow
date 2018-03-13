@@ -60,7 +60,7 @@ public class ScheduleFragment01 extends BaseFragment {
             @Override
             protected void convert(BaseViewHolder baseViewHolder, ProjectStatusRsp rowsBean) {
                 baseViewHolder.setText(R.id.tv_01,baseViewHolder.getAdapterPosition()+1+"");
-                baseViewHolder.setText(R.id.tv_02,rowsBean.getProjectName());
+                baseViewHolder.setText(R.id.tv_02,rowsBean.getProjectStatus());
                 baseViewHolder.setText(R.id.tv_03,rowsBean.getRegisterDate());
             }
         };

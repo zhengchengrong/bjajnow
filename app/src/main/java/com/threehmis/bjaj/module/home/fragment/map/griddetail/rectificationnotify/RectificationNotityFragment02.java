@@ -84,9 +84,9 @@ public class RectificationNotityFragment02 extends BaseFragment {
                 baseViewHolder.getView(R.id.ll_01).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intent = new Intent(mActivity, LocalCheckDetailActivity.class);
-                        intent.putExtra(Const.BEAN, rowsBean);
+                        Intent intent = new Intent(mActivity, RectificationNotifyDetailActivity.class);
                         intent.putExtra(Const.FLAG,true);
+                        intent.putExtra(Const.BEAN, rowsBean);
                         startActivity(intent);
 
                     }
